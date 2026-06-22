@@ -1,2 +1,99 @@
-# Doktor-System-Design
-Repositório central do Doktor System Design. Este espaço reúne as diretrizes de arquitetura, padrões de desenvolvimento e componentes reutilizáveis fundamentais para garantir a consistência, a escalabilidade e a excelência técnica em todos os nossos projetos.
+# Doktor System-Design
+
+Repositorio central de padroes de arquitetura, qualidade, documentacao, prompts e guias reutilizaveis para projetos de software.
+
+## Autor
+
+**Andre Gustavo Melo da Silva**  
+GitHub: [@AndreGustavoms](https://github.com/AndreGustavoms)
+
+## Mapa rapido
+
+| Area | Para que serve |
+|------|----------------|
+| [AGENTS.md](AGENTS.md) | Roteiro de leitura para agentes de IA. Comece por aqui quando for usar o repositorio como contexto operacional. |
+| [docs/INDICE-GERAL.md](docs/INDICE-GERAL.md) | Indice completo de documentos, guias e scripts. |
+| [core/](core/) | Padroes obrigatorios: frontend, backend, README, qualidade minima, prompts base, start script e template de contexto IA. |
+| [docs/CORE-PADROES-OBRIGATORIOS.md](docs/CORE-PADROES-OBRIGATORIOS.md) | Indice dos documentos obrigatorios. |
+| [docs/CHECKLIST-PUBLICACAO.md](docs/CHECKLIST-PUBLICACAO.md) | Checklist para revisar identidade, scripts, links e qualidade antes de publicar. |
+| [docs/CURADORIA-DOS-GUIAS.md](docs/CURADORIA-DOS-GUIAS.md) | Plano para revisar e transformar guias importados em padroes Doktor. |
+| [docs/GUIAS-OPCIONAIS.md](docs/GUIAS-OPCIONAIS.md) | Indice dos guias reutilizaveis por dominio. |
+| [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](docs/GIT-POLITICA-DE-VERSIONAMENTO.md) | Politica de branches, commits e documentacao viva. |
+| [docs/STACK-E-ARQUITETURA.md](docs/STACK-E-ARQUITETURA.md) | Stack padrao e criterios de arquitetura por tipo de projeto. |
+| [docs/IDENTIDADE-DOKTOR.md](docs/IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor: autoria local, influencia da origem e direcao visual/tecnica. |
+| [docs/PADROES-OBSERVADOS-GITHUB.md](docs/PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
+| [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar ou sincronizar estes padroes em outros projetos. |
+| [docs/DECISOES-DE-IDENTIDADE.md](docs/DECISOES-DE-IDENTIDADE.md) | Registro das decisoes de autoria, marca, stack e identidade publica. |
+| [IA.md](IA.md) | Contexto operacional vivo deste repositorio para continuidade entre sessoes. |
+| [guias/](guias/) | Guias opcionais de frontend, backend e integracao, usados somente quando a funcionalidade pedir. |
+| [scripts/](scripts/) | Instaladores do comando global de sincronizacao do Doktor System-Design. |
+| [NOTICE.md](NOTICE.md) | Atribuicao da origem MIT usada como base inicial. |
+
+## Estrutura
+
+```text
+Doktor-System-Design/
+|-- AGENTS.md
+|-- CONTRIBUTING.md
+|-- IA.md
+|-- LICENSE
+|-- NOTICE.md
+|-- README.md
+|-- core/
+|   |-- DESIGN_SYSTEM_BACKEND.md
+|   |-- DESIGN_SYSTEM_FRONTEND.md
+|   |-- DESIGN_SYSTEM_README.md
+|   |-- GUIA-START-APP-SCRIPT.md
+|   |-- GUIA_MINIMO_QUALIDADE.md
+|   |-- PROMPT_BASE_BACKEND.md
+|   |-- PROMPT_BASE_FRONTEND.md
+|   `-- TEMPLATE-CONTEXTO-IA.md
+|-- docs/
+|   |-- CHECKLIST-PUBLICACAO.md
+|   |-- CORE-PADROES-OBRIGATORIOS.md
+|   |-- CURADORIA-DOS-GUIAS.md
+|   |-- DECISOES-DE-IDENTIDADE.md
+|   |-- GIT-POLITICA-DE-VERSIONAMENTO.md
+|   |-- GUIAS-OPCIONAIS.md
+|   |-- IDENTIDADE-DOKTOR.md
+|   |-- INDICE-GERAL.md
+|   |-- STACK-E-ARQUITETURA.md
+|   `-- INSTALACAO-EM-OUTROS-PROJETOS.md
+|-- guias/
+|   |-- backend/
+|   |-- frontend/
+|   `-- integracao/
+`-- scripts/
+    |-- bash-zsh/
+    |-- cmd/
+    `-- powershell/
+```
+
+## Uso recomendado
+
+1. Leia [AGENTS.md](AGENTS.md) para saber quais arquivos abrir em cada tipo de tarefa.
+2. Use [core/GUIA_MINIMO_QUALIDADE.md](core/GUIA_MINIMO_QUALIDADE.md) como contrato minimo para qualquer entrega.
+3. Use os documentos em `core/` como padrao obrigatorio de projeto.
+4. Consulte `guias/` apenas quando a funcionalidade aparecer no escopo.
+5. Atualize [IA.md](IA.md) quando houver decisoes estruturais, riscos ou pendencias relevantes.
+6. Antes de publicar, confira o estado das escolhas em [docs/DECISOES-DE-IDENTIDADE.md](docs/DECISOES-DE-IDENTIDADE.md).
+
+## Stack padrao
+
+O Doktor System-Design agora usa uma baseline tecnica documentada em [docs/STACK-E-ARQUITETURA.md](docs/STACK-E-ARQUITETURA.md). Resumo:
+
+| Contexto | Padrao |
+|----------|--------|
+| Frontend app | React + TypeScript + Vite + Tailwind CSS |
+| Frontend simples | HTML + CSS + JavaScript |
+| Backend comum | Python + Django + Django REST Framework |
+| Banco inicial | SQLite |
+| Banco em producao | PostgreSQL |
+| Deploy backend pequeno/medio | Railway ou plataforma equivalente |
+| Automacao | Python, PowerShell e Bash conforme ambiente |
+
+Desvios sao permitidos quando houver motivo tecnico claro e documentado.
+
+## Licenca e origem
+
+O material base foi importado de um projeto MIT. A atribuicao foi preservada em [NOTICE.md](NOTICE.md) e a licenca esta em [LICENSE](LICENSE).
