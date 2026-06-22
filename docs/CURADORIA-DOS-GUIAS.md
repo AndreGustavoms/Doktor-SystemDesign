@@ -84,6 +84,8 @@ Atualize esta tabela conforme os guias forem revisados.
 | `guias/frontend/GUIA-HEATMAP-DE-ATIVIDADE.md` | Revisado | Reescrito como calendario de intensidade generico, sem dependencia de produto especifico. |
 | `guias/frontend/GUIA-ONBOARDING-E-AJUDA.md` | Revisado | Reescrito como onboarding curto e central de ajuda declarativa. |
 | `guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md` | Revisado | Reescrito como agenda semanal generica com alerta de proximo evento. |
+| `guias/backend/GUIA-BACKEND-CPF.md` | Revisado | Reescrito como guia backend generico, com contratos, testes e guardrails de dados pessoais. |
+| `guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md` | Revisado | Reescrito como guia educacional de cifra, com aviso claro de nao uso para seguranca real. |
 
 ## Regra de ouro
 
