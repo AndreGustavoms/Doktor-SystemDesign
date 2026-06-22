@@ -24,8 +24,10 @@
 | Construir ou alterar **backend** | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) | [`core/PROMPT_BASE_BACKEND.md`](core/PROMPT_BASE_BACKEND.md) (montar o prompt inicial) |
 | Escolher ou justificar **stack/arquitetura** | [`docs/STACK-E-ARQUITETURA.md`](docs/STACK-E-ARQUITETURA.md) | [`docs/PADROES-OBSERVADOS-GITHUB.md`](docs/PADROES-OBSERVADOS-GITHUB.md) quando precisar alinhar com padroes publicos do autor |
 | Escrever ou revisar **README / documentacao** | [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md) | - |
+| Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
 | Criar uma **aplicacao web rodavel** | [`core/GUIA-START-APP-SCRIPT.md`](core/GUIA-START-APP-SCRIPT.md) - todo app web exige um `start_app.py` na raiz | - |
 | Registrar **contexto/memoria do projeto** | [`core/TEMPLATE-CONTEXTO-IA.md`](core/TEMPLATE-CONTEXTO-IA.md) - copie o template e preencha continuamente | - |
+| Validar **projeto pronto** | [`docs/CHECKLIST-PROJETO-PRONTO.md`](docs/CHECKLIST-PROJETO-PRONTO.md) | [`scripts/validate-repo.ps1`](scripts/validate-repo.ps1), quando estiver validando este repo |
 | **Versionar mudancas neste repositorio** | [`docs/GIT-POLITICA-DE-VERSIONAMENTO.md`](docs/GIT-POLITICA-DE-VERSIONAMENTO.md) - direto no `main` por padrao; commits `tipo: descricao`; doc viva no mesmo commit | [CONTRIBUTING.md](CONTRIBUTING.md) (se for via fork) |
 | Preparar **publicacao/divulgacao** do repositorio | [`docs/CHECKLIST-PUBLICACAO.md`](docs/CHECKLIST-PUBLICACAO.md) | [`docs/DECISOES-DE-IDENTIDADE.md`](docs/DECISOES-DE-IDENTIDADE.md) |
 | **Baixar/sincronizar** este repo em outro projeto | [`docs/INSTALACAO-EM-OUTROS-PROJETOS.md`](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) - metodos por clone, ZIP, sparse checkout e scripts | - |
@@ -46,6 +48,7 @@ Use um guia **somente** quando a tarefa pedir aquela funcionalidade. As palavras
 | [`guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md`](guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md) | Alerta automatico de proxima aula + grade semanal de horarios | horarios, grade, aulas, alerta, tabela semanal |
 | [`guias/frontend/GUIA-ONBOARDING-E-AJUDA.md`](guias/frontend/GUIA-ONBOARDING-E-AJUDA.md) | Onboarding de primeira visita + centro de ajuda permanente | onboarding, tooltip, ajuda, tutorial, primeira visita |
 | [`guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md`](guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md) | Kit base Card/Button/Badge em TypeScript + Tailwind, zero dependencias | componentes base, card, button, badge, design kit |
+| [`guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md`](guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md) | Breadcrumb tecnico, copiar caminho e metadata bar | breadcrumb, path, copiar, metadata, arquivo, repositorio |
 | [`guias/backend/GUIA-BACKEND-CPF.md`](guias/backend/GUIA-BACKEND-CPF.md) | Geracao, validacao e normalizacao de CPF com testes e guardrails | cpf, validacao de documento, dados sinteticos, formulario |
 | [`guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md`](guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md) | Cifra de Cesar tradicional e numerica + normalizacao de acentos + web (Brython) | criptografia, cifra, encode/decode, educacional |
 | [`guias/integracao/GUIA-INTEGRACAO-API-GITHUB.md`](guias/integracao/GUIA-INTEGRACAO-API-GITHUB.md) | Coleta de repositorios GitHub com token, paginacao, retry e rate limit | github api, importar repositorios, portfolio, rate limit |

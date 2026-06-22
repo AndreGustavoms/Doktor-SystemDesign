@@ -112,3 +112,9 @@ git pull origin main
 | Quero so os padroes obrigatorios | Sparse checkout de `core/` |
 | Quero so guias reutilizaveis | Sparse checkout de `guias/` |
 | Quero um comando recorrente | Instaladores em `scripts/` |
+
+## Depois de copiar
+
+Use [GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) para aplicar os documentos em um projeto novo e [CHECKLIST-PROJETO-PRONTO.md](CHECKLIST-PROJETO-PRONTO.md) para validar antes de entregar.
+
+Templates prontos ficam em [../templates](../templates).

@@ -10,6 +10,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [AGENTS.md](../AGENTS.md) | Roteiro de leitura para agentes de IA. |
 | [IA.md](../IA.md) | Contexto operacional vivo deste repositorio. |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Como contribuir ou abrir PR. |
+| [CHANGELOG.md](../CHANGELOG.md) | Historico de versoes e mudancas. |
 
 ## Core obrigatorio
 
@@ -29,6 +30,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | Documento | Uso |
 |-----------|-----|
 | [docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md) | Baseline tecnica por contexto. |
+| [docs/GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) | Fluxo rapido para aplicar o system design em projeto novo. |
 | [docs/IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor, misturando autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
 | [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](GIT-POLITICA-DE-VERSIONAMENTO.md) | Regras de branch, commit e documentacao viva. |
@@ -36,8 +38,20 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar/sincronizar estes padroes em outros projetos. |
 | [docs/DECISOES-DE-IDENTIDADE.md](DECISOES-DE-IDENTIDADE.md) | Registro de autoria, marca, stack e identidade publica. |
 | [docs/CHECKLIST-PUBLICACAO.md](CHECKLIST-PUBLICACAO.md) | Checklist antes de publicar ou divulgar. |
+| [docs/CHECKLIST-PROJETO-PRONTO.md](CHECKLIST-PROJETO-PRONTO.md) | Checklist para validar um projeto antes de entregar. |
+| [docs/VALIDACAO-SCRIPTS.md](VALIDACAO-SCRIPTS.md) | Estado e roteiro de validacao dos scripts `doktor`. |
 | [NOTICE.md](../NOTICE.md) | Atribuicao legal da origem MIT. |
 | [LICENSE](../LICENSE) | Licenca MIT preservada da origem. |
+
+## Templates
+
+| Template | Uso |
+|----------|-----|
+| [README-template.md](../templates/README-template.md) | README inicial para projetos. |
+| [IA-template.md](../templates/IA-template.md) | Contexto operacional IA. |
+| [DEPLOY-template.md](../templates/DEPLOY-template.md) | Guia de deploy por projeto. |
+| [SECURITY-template.md](../templates/SECURITY-template.md) | Checklist/documento de seguranca. |
+| [ADR-0001-template.md](../templates/ADR-0001-template.md) | Registro de decisao arquitetural. |
 
 ## Guias frontend
 
@@ -77,3 +91,4 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [scripts/powershell/install-doktor-powershell.ps1](../scripts/powershell/install-doktor-powershell.ps1) | Instala o comando `doktor` em PowerShell. |
 | [scripts/cmd/install-doktor-cmd.cmd](../scripts/cmd/install-doktor-cmd.cmd) | Instala o comando `doktor` em CMD. |
 | [scripts/cmd/doktor-command.cmd](../scripts/cmd/doktor-command.cmd) | Implementacao do comando `doktor` para CMD. |
+| [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI. |

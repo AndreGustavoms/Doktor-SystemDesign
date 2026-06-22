@@ -28,6 +28,10 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Guias de integracao revisados: Railway, Scraping Multiformato e GitHub API.
 - Leitura dos repositorios publicos de `AndreGustavoms` registrada em `docs/PADROES-OBSERVADOS-GITHUB.md`.
 - Guias frontend revisados/criados: Background Visual, Calendario Academico, Particulas e Glow, Componentes UI Compostos, Breadcrumb e Metadata Bar, Arvore Hierarquica, Arvore de Materiais Dual View, Heatmap de Atividade, Onboarding e Ajuda, Sistema de Alerta e Grade.
+- Guia rapido de uso, checklist de projeto pronto e templates copiaveis criados.
+- CI simples adicionada com `scripts/validate-repo.ps1` e `.github/workflows/validate.yml`.
+- Guias backend CPF e Cifra de Cesar reescritos no padrao Doktor.
+- Versao inicial registrada em `VERSION` e `CHANGELOG.md`.
 
 ## Decisoes tomadas
 
@@ -41,10 +45,11 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 
 ## Pendencias
 
-- Melhorar gradualmente a escrita dos guias backend opcionais e qualquer guia novo importado.
+- Melhorar gradualmente qualquer guia novo importado.
 - Seguir `docs/CURADORIA-DOS-GUIAS.md` para manter os guias opcionais como padroes Doktor revisados.
 - Testar os instaladores `scripts/` em ambientes reais antes de recomendar uso publico amplo.
 - Usar `docs/CHECKLIST-PUBLICACAO.md` antes de push/divulgacao.
+- Criar tag `v0.1.0` depois de confirmar remoto correto e renderizacao no GitHub.
 
 ## Validacao recente
 
@@ -55,3 +60,5 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Blocos de interrogacao conhecidos nos guias frontend foram removidos por reescrita dos guias afetados.
 - Guias frontend opcionais foram neutralizados para nao depender de projetos pessoais ou exemplos herdados.
 - Identidade Doktor agora aceita influencia da origem como DNA de system design, preservada em documento proprio e atribuicao legal.
+- Validador local cobre ASCII, links Markdown, texto quebrado, parser PowerShell e help CMD.
+- Bash/Zsh real ainda nao foi validado porque o ambiente local apontou para WSL sem `/bin/bash`.
