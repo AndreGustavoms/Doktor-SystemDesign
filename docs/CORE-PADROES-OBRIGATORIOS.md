@@ -6,6 +6,12 @@ A pasta [`core/`](../core/) concentra os artefatos que devem acompanhar **todo p
 
 Para projetos destino, copie tambem [`templates/AGENTS-template.md`](../templates/AGENTS-template.md) como `AGENTS.md` na raiz. Ele e o roteador leve que faz a IA abrir apenas os documentos necessarios.
 
+## Design System Testes
+
+Padrao obrigatorio de **testes para projetos Doktor**. Define tipos de teste (unitario, integracao, E2E), piramide de testes, nomenclatura, estrutura AAA, o que testar, o que nao testar, uso correto de mocks, cobertura minima por tipo de projeto e checklist de entrega.
+
+[Ver design system testes](../core/DESIGN_SYSTEM_TESTES.md)
+
 ## Design System API REST
 
 Padrao obrigatorio de **contrato, nomenclatura, status codes, versionamento e tratamento de erro para APIs HTTP**. Cobre metodos HTTP, formato de resposta com envelope `data`/`error`, paginacao, filtros, autenticacao via Bearer token e checklist de entrega.

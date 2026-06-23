@@ -28,6 +28,7 @@
 | Organizar **estrutura e responsabilidades** do codigo | [`core/DESIGN_SYSTEM_ARQUITETURA.md`](core/DESIGN_SYSTEM_ARQUITETURA.md) | - |
 | Aplicar **seguranca** (secrets, autenticacao, validacao, OWASP) | [`core/DESIGN_SYSTEM_SEGURANCA.md`](core/DESIGN_SYSTEM_SEGURANCA.md) | - |
 | Projetar ou revisar **API REST** (contratos, status codes, versionamento) | [`core/DESIGN_SYSTEM_API_REST.md`](core/DESIGN_SYSTEM_API_REST.md) | - |
+| Escrever ou revisar **testes** (unitario, integracao, E2E, mocks) | [`core/DESIGN_SYSTEM_TESTES.md`](core/DESIGN_SYSTEM_TESTES.md) | - |
 | Escolher ou justificar **stack/arquitetura** | [`docs/STACK-E-ARQUITETURA.md`](docs/STACK-E-ARQUITETURA.md) | [`docs/PADROES-OBSERVADOS-GITHUB.md`](docs/PADROES-OBSERVADOS-GITHUB.md) quando precisar alinhar com padroes publicos do autor |
 | Escrever ou revisar **README / documentacao** | [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md) | - |
 | Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/AGENTS-template.md`](templates/AGENTS-template.md) para orientar a IA no projeto destino; [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
