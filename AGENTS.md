@@ -4,6 +4,8 @@
 >
 > **Quando usar**: Leia este arquivo **primeiro**. Ele diz exatamente quais documentos abrir conforme a tarefa, para que voce nunca precise ler o repositorio inteiro.
 >
+> **Objetivo**: Direcionar a IA desde o inicio, preservar qualidade minima e reduzir gasto de contexto. Este arquivo e um roteador progressivo, nao um convite para ler tudo.
+>
 > Para humanos, o mapa completo esta no [README.md](README.md).
 > Para navegacao detalhada, consulte [docs/INDICE-GERAL.md](docs/INDICE-GERAL.md).
 
@@ -15,6 +17,7 @@
 2. **Identifique o tipo de tarefa** e abra apenas os documentos indicados na secao 2.
 3. **Consulte `guias/` somente sob demanda**: use a tabela da secao 3 para ver se a funcionalidade pedida ja tem um guia pronto. Se nao tiver, nao leia nenhum.
 4. **Nao leia documentos "por garantia".** Cada arquivo deste repositorio so e necessario no cenario indicado abaixo.
+5. **Ao levar o padrao para outro projeto**, copie [`templates/AGENTS-template.md`](templates/AGENTS-template.md) como `AGENTS.md` na raiz do projeto destino.
 
 ## 2. Roteiro por tipo de tarefa
 
@@ -22,9 +25,10 @@
 |------------------|----------------------------|----------------|
 | Construir ou alterar **frontend** | [`core/DESIGN_SYSTEM_FRONTEND.md`](core/DESIGN_SYSTEM_FRONTEND.md) | [`core/PROMPT_BASE_FRONTEND.md`](core/PROMPT_BASE_FRONTEND.md) (montar o prompt inicial) |
 | Construir ou alterar **backend** | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) | [`core/PROMPT_BASE_BACKEND.md`](core/PROMPT_BASE_BACKEND.md) (montar o prompt inicial) |
+| Organizar **estrutura e responsabilidades** do codigo | [`core/DESIGN_SYSTEM_ARQUITETURA.md`](core/DESIGN_SYSTEM_ARQUITETURA.md) | - |
 | Escolher ou justificar **stack/arquitetura** | [`docs/STACK-E-ARQUITETURA.md`](docs/STACK-E-ARQUITETURA.md) | [`docs/PADROES-OBSERVADOS-GITHUB.md`](docs/PADROES-OBSERVADOS-GITHUB.md) quando precisar alinhar com padroes publicos do autor |
 | Escrever ou revisar **README / documentacao** | [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md) | - |
-| Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
+| Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/AGENTS-template.md`](templates/AGENTS-template.md) para orientar a IA no projeto destino; [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
 | Criar uma **aplicacao web rodavel** | [`core/GUIA-START-APP-SCRIPT.md`](core/GUIA-START-APP-SCRIPT.md) - todo app web exige um `start_app.py` na raiz | - |
 | Registrar **contexto/memoria do projeto** | [`core/TEMPLATE-CONTEXTO-IA.md`](core/TEMPLATE-CONTEXTO-IA.md) - copie o template e preencha continuamente | - |
 | Validar **projeto pronto** | [`docs/CHECKLIST-PROJETO-PRONTO.md`](docs/CHECKLIST-PROJETO-PRONTO.md) | [`scripts/validate-repo.ps1`](scripts/validate-repo.ps1), quando estiver validando este repo |
@@ -67,3 +71,4 @@ Valem para agentes alterando **este** repositorio; a fonte completa e [`docs/GIT
 
 - **Nao e codigo de producao** - e documentacao de padroes; o unico codigo executavel sao os instaladores em [`scripts/`](scripts/).
 - **Identidade parcialmente definida** - nome, autoria e comando global ja foram decididos; consulte [`docs/DECISOES-DE-IDENTIDADE.md`](docs/DECISOES-DE-IDENTIDADE.md) antes de tratar a stack como preferencia pessoal publica.
+- **Nao e checklist cego** - o valor esta em abrir so o necessario, manter `IA.md` atualizado e validar o que foi entregue.

@@ -12,7 +12,7 @@ Use quando quiser manter uma pasta independente, sem trazer o historico Git dest
 
 ```powershell
 $repoUrl = "https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
-$dest = "Padrao de qualidade - Doktor System-Design"
+$dest = "doktor SystemDesign"
 $tmpDir = Join-Path $env:TEMP ("doktor-standards-" + [guid]::NewGuid())
 
 git clone --depth 1 $repoUrl $tmpDir
@@ -26,7 +26,7 @@ Remove-Item -Recurse -Force $tmpDir
 
 ```bash
 repo_url="https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
-dest="Padrao de qualidade - Doktor System-Design"
+dest="doktor SystemDesign"
 tmp_dir="$(mktemp -d)"
 
 git clone --depth 1 "$repo_url" "$tmp_dir/repo"
@@ -46,7 +46,7 @@ Os scripts em [../scripts](../scripts) instalam um comando de sincronizacao para
 | PowerShell | [scripts/powershell/install-doktor-powershell.ps1](../scripts/powershell/install-doktor-powershell.ps1) |
 | CMD | [scripts/cmd/install-doktor-cmd.cmd](../scripts/cmd/install-doktor-cmd.cmd) |
 
-O comando instalado e `doktor`, em minusculo. Ele sincroniza uma copia completa deste repositorio na pasta atual, dentro de `Padrao de qualidade - Doktor System-Design`.
+O comando instalado e `doktor`, em minusculo. Ele sincroniza uma copia completa deste repositorio na pasta atual, dentro de `doktor SystemDesign`.
 
 ## 3. Baixar como ZIP
 
@@ -55,7 +55,7 @@ O comando instalado e `doktor`, em minusculo. Ele sincroniza uma copia completa 
 ```powershell
 Invoke-WebRequest -Uri "https://github.com/AndreGustavoms/Doktor-SystemDesign/archive/refs/heads/main.zip" -OutFile "doktor-system-design.zip"
 Expand-Archive "doktor-system-design.zip" -DestinationPath .
-Rename-Item "Doktor-SystemDesign-main" "Padrao de qualidade - Doktor System-Design"
+Rename-Item "Doktor-SystemDesign-main" "doktor SystemDesign"
 Remove-Item "doktor-system-design.zip"
 ```
 
@@ -64,14 +64,14 @@ Remove-Item "doktor-system-design.zip"
 ```bash
 curl -L https://github.com/AndreGustavoms/Doktor-SystemDesign/archive/refs/heads/main.zip -o doktor-system-design.zip
 unzip doktor-system-design.zip
-mv Doktor-SystemDesign-main "Padrao de qualidade - Doktor System-Design"
+mv Doktor-SystemDesign-main "doktor SystemDesign"
 rm doktor-system-design.zip
 ```
 
 ## 4. Clonar com Git
 
 ```bash
-git clone --depth 1 https://github.com/AndreGustavoms/Doktor-SystemDesign.git "Padrao de qualidade - Doktor System-Design"
+git clone --depth 1 https://github.com/AndreGustavoms/Doktor-SystemDesign.git "doktor SystemDesign"
 ```
 
 Use esta opcao quando quiser atualizar depois com `git pull`.

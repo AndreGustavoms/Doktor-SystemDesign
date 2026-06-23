@@ -4,6 +4,14 @@ A pasta [`core/`](../core/) concentra os artefatos que devem acompanhar **todo p
 
 > Voltar ao [README](../README.md).
 
+Para projetos destino, copie tambem [`templates/AGENTS-template.md`](../templates/AGENTS-template.md) como `AGENTS.md` na raiz. Ele e o roteador leve que faz a IA abrir apenas os documentos necessarios.
+
+## Design System Arquitetura
+
+Padrao obrigatorio de **organizacao, responsabilidade e estrutura de codigo**. Define separacao por camadas, regras de nomenclatura, tamanho de funcoes e arquivos, antipadroes a evitar e checklist de entrega. Vale para frontend, backend e scripts.
+
+[Ver design system arquitetura](../core/DESIGN_SYSTEM_ARQUITETURA.md)
+
 ## Design System Frontend
 
 Guia completo de padronizacao visual para front-end, extraido do **Doktor**. Documenta paleta, tipografia, layout, componentes, animacoes e padroes de interface. Inclui separacao explicita entre principios universais e escolhas especificas do Doktor.

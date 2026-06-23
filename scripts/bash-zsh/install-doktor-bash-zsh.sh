@@ -5,7 +5,7 @@
 set -euo pipefail
 
 REPO_URL="https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
-DEST_NAME="Padrao de qualidade - Doktor System-Design"
+DEST_NAME="doktor SystemDesign"
 BLOCK_BEGIN="# >>> doktor command (managed by install-doktor.sh) >>>"
 BLOCK_END="# <<< doktor command (managed by install-doktor.sh) <<<"
 
