@@ -6,6 +6,12 @@ A pasta [`core/`](../core/) concentra os artefatos que devem acompanhar **todo p
 
 Para projetos destino, copie tambem [`templates/AGENTS-template.md`](../templates/AGENTS-template.md) como `AGENTS.md` na raiz. Ele e o roteador leve que faz a IA abrir apenas os documentos necessarios.
 
+## Design System Seguranca
+
+Padrao obrigatorio de **seguranca desde o primeiro commit**. Define o que nunca commitar, protecao de secrets e variaveis de ambiente, autenticacao e autorizacao, validacao de entrada, SQL injection, XSS, exposicao de dados, headers HTTP e OWASP Top 10. Inclui checklist de seguranca por entrega.
+
+[Ver design system seguranca](../core/DESIGN_SYSTEM_SEGURANCA.md)
+
 ## Design System Arquitetura
 
 Padrao obrigatorio de **organizacao, responsabilidade e estrutura de codigo**. Define separacao por camadas, regras de nomenclatura, tamanho de funcoes e arquivos, antipadroes a evitar e checklist de entrega. Vale para frontend, backend e scripts.
