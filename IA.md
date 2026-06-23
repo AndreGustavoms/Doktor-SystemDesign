@@ -32,9 +32,16 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Proposito do Doktor reforcado como padrao leve para orientar IA em projetos novos, reduzir consumo de contexto e evitar leitura desnecessaria.
 - Template `templates/AGENTS-template.md` criado para ser copiado como `AGENTS.md` na raiz de projetos destino.
 - Guia rapido, checklist de projeto pronto e README-template ajustados para tratar `AGENTS.md` como parte do fluxo de projeto com IA.
+- `docs/GUIA-RAPIDO-USO.md` passou a separar niveis de adocao (minimo, recomendado e completo) e incluir prompt inicial para IA.
 - CI simples adicionada com `scripts/validate-repo.ps1` e `.github/workflows/validate.yml`.
 - Guias backend CPF e Cifra de Cesar reescritos no padrao Doktor.
 - Versao inicial registrada em `VERSION` e `CHANGELOG.md`.
+- Scripts de instalacao validados em ambiente real (PowerShell, CMD, Bash/Git Bash).
+- Repositorio renomeado no GitHub para `Doktor-SystemDesign`; remote e todas as referencias internas atualizados.
+- Pasta destino do comando `doktor` renomeada para `doktor SystemDesign`.
+- Hook Git nativo `scripts/hooks/commit-msg` adicionado para validar Conventional Commits; instrucoes em `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`.
+- Politica de commits expandida: estrutura com escopo opcional, tipos `style` e `test`, modo imperativo e regra de nao misturar refatoracao com feature.
+- `core/DESIGN_SYSTEM_ARQUITETURA.md` criado: organizacao por camadas, nomenclatura, regras de funcao/arquivo, antipadroes e checklist de entrega.
 
 ## Decisoes tomadas
 
@@ -52,6 +59,9 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Melhorar gradualmente qualquer guia novo importado.
 - Seguir `docs/CURADORIA-DOS-GUIAS.md` para manter os guias opcionais como padroes Doktor revisados.
 - Testar Bash/Zsh nativo no Linux, macOS ou WSL com `rsync` disponivel (Git Bash no Windows nao inclui `rsync` por padrao).
+- Criar guia de seguranca (secrets, variaveis de ambiente, OWASP basico, o que nunca commitar).
+- Criar guia de padrao de API REST (contratos, status codes, versionamento, tratamento de erro).
+- Criar guia dedicado de testes (cobertura minima, nomenclatura, o que testar e o que nao testar).
 
 ## Validacao recente (2026-06-23)
 
