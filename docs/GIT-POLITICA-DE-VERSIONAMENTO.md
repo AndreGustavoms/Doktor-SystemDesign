@@ -126,6 +126,33 @@ Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `d
 
 ---
 
-## 6. Contribuicao externa (via fork)
+## 6. Hook de validacao de commit (opcional mas recomendado)
+
+O arquivo `scripts/hooks/commit-msg` bloqueia qualquer commit cuja mensagem nao siga o padrao Conventional Commits. Zero dependencias - e um script shell nativo do Git.
+
+### Instalar (uma vez por maquina)
+
+**Linux, macOS, Git Bash ou WSL:**
+
+```bash
+cp scripts/hooks/commit-msg .git/hooks/commit-msg
+chmod +x .git/hooks/commit-msg
+```
+
+**PowerShell (Windows):**
+
+```powershell
+Copy-Item scripts\hooks\commit-msg .git\hooks\commit-msg
+```
+
+Pronto. A partir dai, qualquer `git commit` com mensagem fora do padrao e bloqueado com instrucoes claras.
+
+### Por que nao e automatico
+
+Hooks ficam em `.git/hooks/`, que o Git nao versiona. Cada pessoa precisa rodar o comando acima uma vez apos clonar o repositorio.
+
+---
+
+## 7. Contribuicao externa (via fork)
 
 Tudo acima vale para quem trabalha **direto neste repositorio**. Quem contribui **de fora** segue o fluxo de fork + branch + Pull Request descrito em [`CONTRIBUTING.md`](../CONTRIBUTING.md), onde criar branch e parte natural do processo.
