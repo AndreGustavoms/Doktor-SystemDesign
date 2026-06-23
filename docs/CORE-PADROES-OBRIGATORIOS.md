@@ -6,6 +6,12 @@ A pasta [`core/`](../core/) concentra os artefatos que devem acompanhar **todo p
 
 Para projetos destino, copie tambem [`templates/AGENTS-template.md`](../templates/AGENTS-template.md) como `AGENTS.md` na raiz. Ele e o roteador leve que faz a IA abrir apenas os documentos necessarios.
 
+## Design System API REST
+
+Padrao obrigatorio de **contrato, nomenclatura, status codes, versionamento e tratamento de erro para APIs HTTP**. Cobre metodos HTTP, formato de resposta com envelope `data`/`error`, paginacao, filtros, autenticacao via Bearer token e checklist de entrega.
+
+[Ver design system API REST](../core/DESIGN_SYSTEM_API_REST.md)
+
 ## Design System Seguranca
 
 Padrao obrigatorio de **seguranca desde o primeiro commit**. Define o que nunca commitar, protecao de secrets e variaveis de ambiente, autenticacao e autorizacao, validacao de entrada, SQL injection, XSS, exposicao de dados, headers HTTP e OWASP Top 10. Inclui checklist de seguranca por entrega.
