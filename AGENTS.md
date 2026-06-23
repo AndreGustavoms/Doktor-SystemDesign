@@ -66,7 +66,7 @@ Use um guia **somente** quando a tarefa pedir aquela funcionalidade. As palavras
 
 Valem para agentes alterando **este** repositorio; a fonte completa e [`docs/GIT-POLITICA-DE-VERSIONAMENTO.md`](docs/GIT-POLITICA-DE-VERSIONAMENTO.md).
 
-- **Git**: commite direto no `main` por padrao; branch **so** para feature grande, refatoracao significativa ou alto risco. Commits no formato `tipo(escopo): descricao no imperativo` — tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Um hook nativo em `scripts/hooks/commit-msg` rejeita mensagens fora do padrao.
+- **Git**: commite direto no `main` por padrao; branch **so** para feature grande, refatoracao significativa ou alto risco. Commits no formato `tipo(escopo): descricao no imperativo` - tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Um hook nativo em `scripts/hooks/commit-msg` rejeita mensagens fora do padrao.
 - **Documentacao viva**: ao mudar comportamento, estrutura ou comandos, atualize README, `docs/`, guias e `IA.md` afetados **no mesmo commit**.
 - **Linguagem**: escrita open source - acessivel a qualquer leitor, sem valores hardcoded, caminhos locais ou contexto privado (referencia: [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md), secao 3.5).
 
