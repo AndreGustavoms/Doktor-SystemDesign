@@ -58,22 +58,33 @@ Use prefixo + descricao curta em kebab-case:
 
 - **Sempre commite apos uma adicao concluida.** Nao acumule varias mudancas soltas sem commitar.
 - Cada commit deve ser uma unidade coesa: uma ideia, um motivo. Se voce precisa usar "e" varias vezes para descrever o commit, provavelmente sao dois commits.
+- E mais facil reverter um commit de 5 linhas do que um de 500.
 
-### Mensagem
+### Estrutura da mensagem
 
-Mensagens seguem o formato **Conventional Commits**: `tipo: descricao no imperativo`.
+Mensagens seguem o formato **Conventional Commits**:
 
-Tipos usados neste repositorio:
+```
+<tipo>(<escopo opcional>): <descricao curta em minusculas>
 
-| Tipo | Quando usar |
-|------|-------------|
-| `feat:` | Nova funcionalidade ou conteudo novo (guia, script, comando). |
-| `fix:` | Correcao de bug, link quebrado, erro de conteudo. |
-| `docs:` | Mudanca apenas em documentacao. |
-| `refactor:` | Reorganizacao sem mudar comportamento observavel. |
-| `chore:` | Manutencao (configuracao, dependencias, ajustes de repo). |
+[corpo opcional: mais detalhes se necessario]
 
-A descricao deve explicar **o que mudou e por que**, em linguagem geral e acessivel (o repositorio e open source - veja [`DESIGN_SYSTEM_README.md`](../core/DESIGN_SYSTEM_README.md), secao 3.5). Sem valores hardcoded, caminhos locais ou contexto privado na mensagem.
+[rodape opcional: ex: Closes #123]
+```
+
+Escreva a descricao no **modo imperativo** - como se estivesse dando uma ordem ao codigo.
+
+### Tipos de commit
+
+| Tipo | Quando usar | Exemplo |
+|------|-------------|---------|
+| `feat` | Nova funcionalidade ou conteudo novo | `feat(auth): adiciona login com Google` |
+| `fix` | Correcao de bug, link quebrado, erro de conteudo | `fix(api): corrige timeout na rota de listagem` |
+| `docs` | Mudanca apenas em documentacao | `docs: atualiza README com passos de deploy` |
+| `style` | Formatacao, espacos, ponto-e-virgula - sem mudar logica | `style: normaliza indentacao nos scripts` |
+| `refactor` | Reorganizacao sem mudar comportamento observavel | `refactor(ui): simplifica componente de botao` |
+| `test` | Adicao ou modificacao de testes | `test: cobre caso de CPF invalido` |
+| `chore` | Manutencao, configuracao, dependencias, ajustes de repo | `chore(deps): atualiza lodash` |
 
 ### Exemplos
 
@@ -84,6 +95,11 @@ A descricao deve explicar **o que mudou e por que**, em linguagem geral e acessi
 | `fix bug` | `fix: trata caminho com espacos no instalador cmd` |
 | `feat: novo guia + ajustes no readme + fix de link` (3 coisas) | tres commits separados, um por mudanca |
 | `wip` | (nao commite "wip" no `main`; termine a unidade ou use branch) |
+| `Refatorado o botao de envio` | `refactor(ui): refatora botao de envio` |
+
+### Nao misture refatoracao com feature
+
+Se voce esta limpando codigo antigo **e** entregando uma regra de negocio nova, sao dois commits separados. Refatoracao e entrega de comportamento novo tem motivacoes diferentes e devem ser reverseis de forma independente.
 
 ---
 
@@ -104,7 +120,7 @@ Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `d
 
 - [ ] A mudanca vai para o `main`? (Se for criar branch, ela e feature grande, refatoracao significativa ou alto risco?)
 - [ ] O commit e uma unidade coesa, com escopo claro?
-- [ ] A mensagem segue `tipo: descricao` e explica **o que** e **por que**?
+- [ ] A mensagem segue `tipo(escopo): descricao` no imperativo e explica **o que** e **por que**?
 - [ ] Nao ha segredo, token, caminho local ou contexto privado na mensagem nem nos arquivos.
 - [ ] A documentacao afetada (README, `docs/`, guias, `IA.md`) foi atualizada no mesmo passo.
 
