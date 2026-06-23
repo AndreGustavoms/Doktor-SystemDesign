@@ -1,8 +1,8 @@
-# Design System - Testes
+﻿# Design System - Testes
 
 > **O que e**: Padrao obrigatorio de testes para projetos Doktor. Define o que testar, como nomear, cobertura minima, tipos de teste e o que nao vale a pena testar.
 >
-> **Quando usar**: Em qualquer projeto com codigo executavel. Teste nao e fase final — e parte da entrega.
+> **Quando usar**: Em qualquer projeto com codigo executavel. Teste nao e fase final  - e parte da entrega.
 
 ---
 
@@ -10,7 +10,7 @@
 
 **Teste que nao quebra quando o comportamento muda nao esta testando nada.**
 
-O objetivo do teste nao e cobertura percentual — e confianca para mudar o codigo sem medo. Um teste bem escrito documenta o comportamento esperado e avisa quando algo quebra. Um teste mal escrito e ruido.
+O objetivo do teste nao e cobertura percentual  - e confianca para mudar o codigo sem medo. Um teste bem escrito documenta o comportamento esperado e avisa quando algo quebra. Um teste mal escrito e ruido.
 
 ---
 
@@ -29,7 +29,7 @@ Testa uma unica funcao ou classe em isolamento. Sem banco, sem rede, sem sistema
 Testa a interacao entre camadas reais: servico + banco, rota + autenticacao, fila + worker.
 
 - **O que testar**: fluxos completos que envolvem mais de uma camada.
-- **Banco**: use banco real (SQLite em memoria ou instancia de teste). Evite mock de banco — [ja causou incidentes em producao](../docs/GIT-POLITICA-DE-VERSIONAMENTO.md).
+- **Banco**: use banco real (SQLite em memoria ou instancia de teste). Evite mock de banco  - [ja causou incidentes em producao](../docs/GIT-POLITICA-DE-VERSIONAMENTO.md).
 - **Velocidade**: segundos. Roda menos vezes, mas cobre o que unitario nao cobre.
 
 ### End-to-end (E2E)
@@ -139,8 +139,8 @@ Regras:
 
 ### Sempre testar
 
-- Regras de negocio em `services/` — sao o nucleo do sistema.
-- Validacoes e casos de erro — o caminho feliz funciona; o que quebra o sistema sao os casos de borda.
+- Regras de negocio em `services/`  - sao o nucleo do sistema.
+- Validacoes e casos de erro  - o caminho feliz funciona; o que quebra o sistema sao os casos de borda.
 - Calculos, transformacoes e algoritmos.
 - Integracao com banco de dados via repositorios.
 - Rotas de API: status code, formato de resposta, autenticacao.
@@ -181,12 +181,12 @@ Use mock so quando necessario. Mock em excesso e sinal de design ruim.
 
 - Dependencias externas com efeito colateral: email, SMS, pagamento, servico terceiro.
 - Chamadas de rede em testes unitarios.
-- Relógio (`datetime.now()`) quando o teste depende do momento atual.
+- Relogio (`datetime.now()`) quando o teste depende do momento atual.
 
 ### Quando NAO usar mock
 
 - Banco de dados em testes de integracao. Use banco real em memoria.
-- Servicos internos da propria aplicacao — se voce mocka seu proprio codigo, nao esta testando integracao.
+- Servicos internos da propria aplicacao  - se voce mocka seu proprio codigo, nao esta testando integracao.
 
 ```python
 # Errado - mocka o banco, nao testa a query real

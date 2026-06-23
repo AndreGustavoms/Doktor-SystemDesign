@@ -41,7 +41,7 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate-repo.ps1
 
 Essa validacao cobre:
 
-- ASCII;
+- ASCII em arquivos de texto;
 - links Markdown relativos;
 - texto quebrado conhecido;
 - parser do instalador PowerShell;
@@ -107,4 +107,3 @@ O teste real passa quando:
 - `doktor` cria ou atualiza somente a pasta destino;
 - arquivos fora da pasta destino nao sao removidos;
 - uma segunda execucao informa que ja estava atualizado ou nao aplica mudancas inesperadas.
-

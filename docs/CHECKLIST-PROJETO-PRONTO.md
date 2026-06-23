@@ -7,6 +7,7 @@ Use este checklist antes de chamar um projeto de pronto, entregar para outra pes
 - [ ] O objetivo do projeto esta claro em uma frase.
 - [ ] O que esta fora do escopo foi registrado.
 - [ ] A stack real esta documentada.
+- [ ] `AGENTS.md` existe quando o projeto usa IA como apoio operacional.
 - [ ] As principais decisoes estao em `IA.md` ou `docs/`.
 
 ## README
@@ -33,6 +34,7 @@ Use este checklist antes de chamar um projeto de pronto, entregar para outra pes
 
 - [ ] Entradas sao validadas.
 - [ ] Erros tem formato previsivel.
+- [ ] Contratos de API usam status codes, paginacao e formato de erro consistentes quando houver API HTTP.
 - [ ] Regras de negocio ficam fora de controllers/views quando possivel.
 - [ ] Operacoes sensiveis exigem autenticacao/autorizacao.
 - [ ] Logs nao gravam segredo.
@@ -59,8 +61,10 @@ Use este checklist antes de chamar um projeto de pronto, entregar para outra pes
 
 ## Qualidade
 
+- [ ] Estrutura, nomes e responsabilidades seguem o padrao do projeto.
 - [ ] Testes automatizados rodam localmente ou ha validacao manual objetiva.
 - [ ] CI roda validacoes basicas.
+- [ ] `AGENTS.md` aponta apenas para documentos existentes ou para uma copia Doktor sincronizada.
 - [ ] Links Markdown relevantes funcionam.
 - [ ] Encoding/texto quebrado foi verificado.
 - [ ] `IA.md` esta atualizado.
@@ -69,4 +73,3 @@ Use este checklist antes de chamar um projeto de pronto, entregar para outra pes
 ## Frase de controle
 
 Um projeto esta pronto quando outra pessoa consegue rodar, validar, entender decisoes e continuar o trabalho sem depender da conversa original.
-

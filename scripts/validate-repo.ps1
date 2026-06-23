@@ -27,9 +27,20 @@ function Get-RepoFiles {
         Where-Object { $_.FullName -notmatch '\\.git\\' }
 }
 
+function Test-IsBinaryAsset($File) {
+    $binaryExtensions = @(
+        '.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico',
+        '.pdf', '.zip', '.7z', '.gz', '.tar',
+        '.woff', '.woff2', '.ttf', '.otf'
+    )
+    return $binaryExtensions -contains $File.Extension.ToLowerInvariant()
+}
+
 function Test-Ascii {
     $bad = @()
     foreach ($file in Get-RepoFiles) {
+        if (Test-IsBinaryAsset $file) { continue }
+
         $text = Get-Content -Raw -LiteralPath $file.FullName
         foreach ($ch in $text.ToCharArray()) {
             if ([int][char]$ch -gt 127) {

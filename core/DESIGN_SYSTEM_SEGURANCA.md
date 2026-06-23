@@ -1,8 +1,8 @@
-# Design System - Seguranca
+﻿# Design System - Seguranca
 
 > **O que e**: Padrao obrigatorio de seguranca para projetos Doktor. Define o que nunca commitar, como proteger secrets, praticas minimas de codigo seguro e checklist de entrega.
 >
-> **Quando usar**: Em qualquer projeto, desde o primeiro commit. Seguranca nao e fase final — e requisito desde o inicio.
+> **Quando usar**: Em qualquer projeto, desde o primeiro commit. Seguranca nao e fase final  - e requisito desde o inicio.
 
 ---
 
@@ -16,7 +16,7 @@ Uma vulnerabilidade descoberta em producao custa muito mais do que um dia de des
 
 ## 2. O que NUNCA commitar
 
-Esta e a regra mais critica. Uma vez que um secret vai para o historico do Git, considere-o comprometido — mesmo que voce delete o arquivo depois, o historico preserva o dado.
+Esta e a regra mais critica. Uma vez que um secret vai para o historico do Git, considere-o comprometido  - mesmo que voce delete o arquivo depois, o historico preserva o dado.
 
 **Nunca commitar:**
 
@@ -135,7 +135,7 @@ def get_user_data(request):
 
 - Valide tipo, formato e tamanho de todo campo antes de processar.
 - Use serializers ou schemas de validacao (Pydantic, DRF Serializers, Zod, Yup).
-- Rejeite o que nao e esperado — nao tente "consertar" input invalido silenciosamente.
+- Rejeite o que nao e esperado  - nao tente "consertar" input invalido silenciosamente.
 - Sanitize HTML quando exibir conteudo gerado por usuario (evita XSS).
 
 ### SQL Injection
@@ -214,7 +214,7 @@ Next.js: configure em `next.config.js` via `headers()`.
 
 ---
 
-## 9. OWASP Top 10 — referencia rapida
+## 9. OWASP Top 10  - referencia rapida
 
 As vulnerabilidades mais comuns. Conheca para nao reproduzir:
 

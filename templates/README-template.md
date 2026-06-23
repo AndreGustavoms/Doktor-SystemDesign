@@ -43,6 +43,7 @@ Se nao houver teste automatico:
 ## Estrutura
 
 ```text
+AGENTS.md
 src/
 docs/
 tests/
@@ -60,6 +61,7 @@ Nunca coloque segredo real neste README.
 
 ## Documentacao
 
+- `AGENTS.md`
 - `IA.md`
 - `docs/DEPLOY.md`
 - `SECURITY.md`

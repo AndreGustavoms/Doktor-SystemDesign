@@ -17,6 +17,10 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | Documento | Uso |
 |-----------|-----|
 | [core/GUIA_MINIMO_QUALIDADE.md](../core/GUIA_MINIMO_QUALIDADE.md) | Contrato curto de qualidade para qualquer entrega. |
+| [core/DESIGN_SYSTEM_API_REST.md](../core/DESIGN_SYSTEM_API_REST.md) | Padroes de API REST, status codes, versionamento, paginacao e erros. |
+| [core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md) | Padroes de organizacao, camadas, nomenclatura e responsabilidades. |
+| [core/DESIGN_SYSTEM_SEGURANCA.md](../core/DESIGN_SYSTEM_SEGURANCA.md) | Padroes de seguranca, secrets, auth, validacao e OWASP basico. |
+| [core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md) | Padroes de testes, piramide, nomenclatura, mocks e cobertura. |
 | [core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md) | Padroes de frontend, UI, UX, componentes e identidade visual. |
 | [core/DESIGN_SYSTEM_BACKEND.md](../core/DESIGN_SYSTEM_BACKEND.md) | Padroes de backend, arquitetura, API, persistencia, testes e seguranca. |
 | [core/DESIGN_SYSTEM_README.md](../core/DESIGN_SYSTEM_README.md) | Padrao para escrever READMEs consistentes. |
@@ -47,6 +51,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 
 | Template | Uso |
 |----------|-----|
+| [AGENTS-template.md](../templates/AGENTS-template.md) | Roteiro raiz para orientar agentes de IA em projetos destino. |
 | [README-template.md](../templates/README-template.md) | README inicial para projetos. |
 | [IA-template.md](../templates/IA-template.md) | Contexto operacional IA. |
 | [DEPLOY-template.md](../templates/DEPLOY-template.md) | Guia de deploy por projeto. |
@@ -91,4 +96,5 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [scripts/powershell/install-doktor-powershell.ps1](../scripts/powershell/install-doktor-powershell.ps1) | Instala o comando `doktor` em PowerShell. |
 | [scripts/cmd/install-doktor-cmd.cmd](../scripts/cmd/install-doktor-cmd.cmd) | Instala o comando `doktor` em CMD. |
 | [scripts/cmd/doktor-command.cmd](../scripts/cmd/doktor-command.cmd) | Implementacao do comando `doktor` para CMD. |
+| [scripts/hooks/commit-msg](../scripts/hooks/commit-msg) | Hook opcional para validar mensagens Conventional Commits. |
 | [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI. |

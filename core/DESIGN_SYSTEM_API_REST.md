@@ -1,4 +1,4 @@
-# Design System - Padrao de API REST
+﻿# Design System - Padrao de API REST
 
 > **O que e**: Padrao obrigatorio de contrato, nomenclatura, status codes, versionamento e tratamento de erro para APIs REST em projetos Doktor.
 >
@@ -10,7 +10,7 @@
 
 **Uma API e um contrato publico. Quem consome nao deve ser surpreendido.**
 
-Consistencia e mais importante do que criatividade. Endpoints, respostas e erros previsíveis reduzem bugs, facilitam integracao e tornam a API autodocumentavel.
+Consistencia e mais importante do que criatividade. Endpoints, respostas e erros previsiveis reduzem bugs, facilitam integracao e tornam a API autodocumentavel.
 
 ---
 
@@ -169,7 +169,7 @@ Versione a API desde o inicio. Mudar contrato sem versionar quebra clientes exis
 ```
 
 - Simples, explicito, facil de testar no browser e em ferramentas como Postman.
-- Use `v1`, `v2` — nunca datas ou nomes.
+- Use `v1`, `v2`  - nunca datas ou nomes.
 
 ### Quando criar uma nova versao
 
@@ -237,7 +237,7 @@ GET /users?status=active&sort=name&page=1    combinado
   ```
   Authorization: Bearer <token>
   ```
-- Nunca passe token em query param (`?token=...`) — aparece em logs de servidor.
+- Nunca passe token em query param (`?token=...`)  - aparece em logs de servidor.
 - Tokens de API de longa duracao devem ter escopo restrito (leitura, escrita, admin).
 - Rotas publicas devem ser excecao documentada, nao padrao.
 
@@ -260,9 +260,9 @@ Ferramentas recomendadas: **Swagger/OpenAPI** para APIs publicas ou de time. Par
 
 - [ ] Endpoints usam substantivos no plural e kebab-case.
 - [ ] Metodo HTTP correto para cada operacao.
-- [ ] Status codes corretos — sem erro com status 200.
+- [ ] Status codes corretos  - sem erro com status 200.
 - [ ] Formato de resposta consistente com envelope `data` / `error`.
-- [ ] Erros nao expõem stack trace ou detalhes internos.
+- [ ] Erros nao expoem stack trace ou detalhes internos.
 - [ ] Listas sempre paginadas com `meta`.
 - [ ] API versionada desde a primeira rota publica.
 - [ ] Autenticacao via Bearer token no header.

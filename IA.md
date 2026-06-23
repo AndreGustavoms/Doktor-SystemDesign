@@ -33,6 +33,8 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Template `templates/AGENTS-template.md` criado para ser copiado como `AGENTS.md` na raiz de projetos destino.
 - Guia rapido, checklist de projeto pronto e README-template ajustados para tratar `AGENTS.md` como parte do fluxo de projeto com IA.
 - `docs/GUIA-RAPIDO-USO.md` passou a separar niveis de adocao (minimo, recomendado e completo) e incluir prompt inicial para IA.
+- README, AGENTS, indice, guia rapido e template de AGENTS alinhados aos documentos recentes de API REST, arquitetura, seguranca, testes e hook de commit.
+- Asset `assets/social-preview.png` criado para social preview do GitHub; validador ajustado para ignorar assets binarios na checagem ASCII.
 - CI simples adicionada com `scripts/validate-repo.ps1` e `.github/workflows/validate.yml`.
 - Guias backend CPF e Cifra de Cesar reescritos no padrao Doktor.
 - Versao inicial registrada em `VERSION` e `CHANGELOG.md`.
@@ -42,6 +44,12 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Hook Git nativo `scripts/hooks/commit-msg` adicionado para validar Conventional Commits; instrucoes em `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`.
 - Politica de commits expandida: estrutura com escopo opcional, tipos `style` e `test`, modo imperativo e regra de nao misturar refatoracao com feature.
 - `core/DESIGN_SYSTEM_ARQUITETURA.md` criado: organizacao por camadas, nomenclatura, regras de funcao/arquivo, antipadroes e checklist de entrega.
+- `core/DESIGN_SYSTEM_SEGURANCA.md` criado: secrets, variaveis de ambiente, autenticacao, autorizacao, validacao de entrada, SQL injection, XSS, headers HTTP, OWASP Top 10 e checklist de entrega.
+- `core/DESIGN_SYSTEM_API_REST.md` criado: nomenclatura de endpoints, metodos HTTP, status codes, envelope data/error, versionamento, paginacao, filtros, autenticacao Bearer e checklist de entrega.
+- `core/DESIGN_SYSTEM_TESTES.md` criado: tipos de teste, piramide, nomenclatura deve-X-quando-Y, estrutura AAA, mocks, cobertura minima e checklist de entrega.
+- `templates/AGENTS-template.md` criado: template copiavel do AGENTS.md para projetos destino, incluindo os quatro novos padroes no roteiro.
+- Duplicatas de API REST removidas de `AGENTS.md` e `docs/CORE-PADROES-OBRIGATORIOS.md`.
+- `VERSION` atualizado para 0.2.0. Tag `v0.2.0` publicada.
 
 ## Decisoes tomadas
 
@@ -59,9 +67,6 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Melhorar gradualmente qualquer guia novo importado.
 - Seguir `docs/CURADORIA-DOS-GUIAS.md` para manter os guias opcionais como padroes Doktor revisados.
 - Testar Bash/Zsh nativo no Linux, macOS ou WSL com `rsync` disponivel (Git Bash no Windows nao inclui `rsync` por padrao).
-- Criar guia de seguranca (secrets, variaveis de ambiente, OWASP basico, o que nunca commitar).
-- Criar guia de padrao de API REST (contratos, status codes, versionamento, tratamento de erro).
-- Criar guia dedicado de testes (cobertura minima, nomenclatura, o que testar e o que nao testar).
 
 ## Validacao recente (2026-06-23)
 

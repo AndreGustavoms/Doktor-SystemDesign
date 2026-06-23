@@ -34,6 +34,32 @@ Antes de abrir um PR, confirme:
 - `README.md`, `AGENTS.md`, `IA.md` ou documentos em `docs/` foram atualizados se o comportamento mudou.
 - Nao ha segredo, token, caminho local privado ou identidade pessoal indevida.
 
+## Hook de commit (Conventional Commits)
+
+Este repositorio usa um hook Git nativo para validar mensagens de commit. Instale-o uma vez apos clonar:
+
+```bash
+# Bash / Git Bash / WSL
+cp scripts/hooks/commit-msg .git/hooks/commit-msg
+chmod +x .git/hooks/commit-msg
+```
+
+```powershell
+# PowerShell
+Copy-Item scripts/hooks/commit-msg .git/hooks/commit-msg
+```
+
+Formato obrigatorio: `tipo(escopo): descricao no imperativo`
+
+Tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+
+Exemplos validos:
+```
+feat(api): adiciona endpoint de listagem de usuarios
+fix(cmd): corrige exibicao de caminhos no output do robocopy
+docs(readme): atualiza secao de instalacao
+```
+
 ## Fluxo interno e externo
 
 Quem trabalha direto neste repositorio segue a politica de versionamento em [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](docs/GIT-POLITICA-DE-VERSIONAMENTO.md): por padrao, commits pequenos direto no `main`.
