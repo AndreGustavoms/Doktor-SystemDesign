@@ -47,18 +47,14 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 
 - Melhorar gradualmente qualquer guia novo importado.
 - Seguir `docs/CURADORIA-DOS-GUIAS.md` para manter os guias opcionais como padroes Doktor revisados.
-- Testar os instaladores `scripts/` em ambientes reais antes de recomendar uso publico amplo.
-- Usar `docs/CHECKLIST-PUBLICACAO.md` antes de push/divulgacao.
-- Criar tag `v0.1.0` depois de confirmar remoto correto e renderizacao no GitHub.
+- Testar Bash/Zsh nativo no Linux, macOS ou WSL com `rsync` disponivel (Git Bash no Windows nao inclui `rsync` por padrao).
 
-## Validacao recente
+## Validacao recente (2026-06-23)
 
-- Varredura por identidade pessoal confirmou que nomes de terceiros ficaram apenas em `LICENSE` e `NOTICE.md`.
-- Varredura por residuos de submodulo nos scripts deve ser repetida apos qualquer alteracao em `scripts/`.
-- Guias de integracao foram alinhados ao padrao de abertura Doktor e a documentacao oficial foi consultada para Railway/GitHub.
-- Padroes publicos observados: app operacional, React/TypeScript/Vite/Tailwind, componentes proprios, Lucide, acento verde/ciano, documentacao forte e seguranca desde o desenho.
-- Blocos de interrogacao conhecidos nos guias frontend foram removidos por reescrita dos guias afetados.
-- Guias frontend opcionais foram neutralizados para nao depender de projetos pessoais ou exemplos herdados.
-- Identidade Doktor agora aceita influencia da origem como DNA de system design, preservada em documento proprio e atribuicao legal.
-- Validador local cobre ASCII, links Markdown, texto quebrado, parser PowerShell e help CMD.
-- Bash/Zsh real ainda nao foi validado porque o ambiente local apontou para WSL sem `/bin/bash`.
+- Scripts de instalacao validados em ambiente real:
+  - PowerShell: instalacao, `doktor -Help`, `doktor` em pasta temp (58 arquivos), segunda rodada ("ja atualizado"), desinstalacao e perfil limpo.
+  - CMD: instalacao, `doktor` em pasta temp (58 arquivos), desinstalacao. CMD nao detecta "ja atualizado" (robocopy compara por timestamp, nao hash); comportamento esperado documentado.
+  - Bash: sintaxe valida, instalacao e desinstalacao testadas no Git Bash (Windows) com rsync fake. Requer `rsync` em ambiente real.
+- `doktor-command.cmd` corrigido: removida exibicao de caminhos completos da pasta temporaria no preview do robocopy; output usa exit code.
+- Checklist de publicacao e `docs/VALIDACAO-SCRIPTS.md` atualizados com resultados reais.
+- Repositorio publicado em `https://github.com/AndreGustavoms/Doktor-System-Design`, branch `main`, tag `v0.1.0`.

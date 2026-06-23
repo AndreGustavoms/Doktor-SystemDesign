@@ -35,22 +35,27 @@ if errorlevel 1 (
   exit /b 1
 )
 
+set "SHA="
+for /f %%S in ('git -C "%REPO_TMP%" rev-parse --short HEAD 2^>nul') do set "SHA=%%S"
+if not defined SHA set "SHA=?"
+
 if exist "%REPO_TMP%\.git" rmdir /s /q "%REPO_TMP%\.git"
 if not exist "%DEST_NAME%" mkdir "%DEST_NAME%"
 
-echo %C_INFO%[doktor]%C_RESET% Mudancas a aplicar:
-robocopy "%REPO_TMP%" "%DEST_NAME%" /MIR /L /FP /NS /NC /NDL /NJH /NJS /NP > "%TMP_DIR%\changes.txt" 2>nul
-type "%TMP_DIR%\changes.txt"
-
-echo %C_INFO%[doktor]%C_RESET% Aplicando arquivos...
 robocopy "%REPO_TMP%" "%DEST_NAME%" /MIR /NFL /NDL /NJH /NJS /NP >nul
-if %ERRORLEVEL% GEQ 8 (
-  echo %C_ERR%[doktor X]%C_RESET% Falha ao copiar os arquivos.
-  rmdir /s /q "%TMP_DIR%" 2>nul
-  exit /b 1
-)
+set RC=%ERRORLEVEL%
 
 rmdir /s /q "%TMP_DIR%" 2>nul
+
+if %RC% GEQ 8 (
+  echo %C_ERR%[doktor X]%C_RESET% Falha ao copiar os arquivos.
+  exit /b 1
+)
+if %RC% EQU 0 (
+  echo %C_OK%[doktor OK]%C_RESET% Ja estava atualizado em %SHA%.
+) else (
+  echo %C_OK%[doktor OK]%C_RESET% Atualizado para %SHA%.
+)
 echo %C_OK%[doktor OK]%C_RESET% Concluido em .\%DEST_NAME%
 exit /b 0
 

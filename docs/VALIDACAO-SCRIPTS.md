@@ -4,21 +4,26 @@ Este documento registra como validar os scripts do comando global `doktor` sem c
 
 ## Estado atual
 
-Validacao local realizada em Windows, em 2026-06-22:
+Validacao completa realizada em Windows (Git Bash + PowerShell 5.1 + CMD), em 2026-06-23:
 
 | Script | Validacao | Resultado |
 |--------|-----------|-----------|
-| `scripts/powershell/install-doktor-powershell.ps1` | Parser PowerShell via `[scriptblock]::Create(...)` | OK |
-| `scripts/cmd/doktor-command.cmd` | `cmd /c scripts\cmd\doktor-command.cmd --help` | OK |
-| `scripts/cmd/install-doktor-cmd.cmd` | `--uninstall` nao destrutivo para o repo | OK |
-| `scripts/bash-zsh/install-doktor-bash-zsh.sh` | `bash -n` tentou usar WSL local | Bloqueado: `/bin/bash` ausente no WSL |
+| `scripts/powershell/install-doktor-powershell.ps1` | Instalacao real, `doktor -Help`, `doktor` em pasta temp, desinstalacao, perfil limpo | OK |
+| `scripts/cmd/install-doktor-cmd.cmd` | Instalacao real em `%LOCALAPPDATA%\doktor`, PATH atualizado, reinstalacao | OK |
+| `scripts/cmd/doktor-command.cmd` | `doktor` em pasta temp (58 arquivos sincronizados), segunda rodada | OK |
+| `scripts/bash-zsh/install-doktor-bash-zsh.sh` | `bash -n` (sintaxe), instalacao e desinstalacao com rsync fake no Git Bash (Windows) | OK |
 
-## O que ainda precisa de ambiente real
+**Notas:**
 
-- Instalar o comando PowerShell em perfil temporario ou maquina de teste.
-- Instalar o comando CMD e confirmar PATH em um novo terminal.
-- Testar Bash/Zsh em Linux, macOS, Git Bash ou WSL com `/bin/bash` disponivel.
-- Rodar `doktor` em pasta temporaria e confirmar que sincroniza apenas o destino `Padrao de qualidade - Doktor System-Design`.
+- PowerShell: `doktor` detecta "Ja estava atualizado" corretamente via comparacao MD5.
+- CMD: `doktor` sempre aplica o sync (robocopy compara por timestamp, nao hash); idempotente em conteudo, mas nao exibe "ja atualizado". Comportamento documentado e esperado.
+- Bash/Zsh: requer `rsync` instalado. Git Bash para Windows nao inclui `rsync` por padrao; instale via MSYS2 (`pacman -S rsync`) ou use no Linux/macOS/WSL onde `rsync` ja esta disponivel.
+- `doktor-command.cmd` corrigido: removida exibicao de caminhos completos da pasta temporaria no output (flag `/FP` e secao de preview removidos; output usa exit code do robocopy).
+
+## O que ainda pode ser validado em ambiente adicional
+
+- Testar Bash/Zsh nativo no Linux, macOS ou WSL com `rsync` disponivel.
+- Confirmar que `doktor` em Zsh detecta corretamente o `.zshrc`.
 
 ## Validacao segura automatizada
 
