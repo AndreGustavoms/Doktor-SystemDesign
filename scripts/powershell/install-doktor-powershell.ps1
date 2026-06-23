@@ -16,7 +16,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$RepoUrl = 'https://github.com/AndreGustavoms/Doktor-System-Design.git'
+$RepoUrl = 'https://github.com/AndreGustavoms/Doktor-SystemDesign.git'
 $DestName = 'Padrao de qualidade - Doktor System-Design'
 $BlockBegin = '# >>> doktor command (managed by install-doktor.ps1) >>>'
 $BlockEnd = '# <<< doktor command (managed by install-doktor.ps1) <<<'

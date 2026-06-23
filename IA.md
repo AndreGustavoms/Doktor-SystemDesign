@@ -29,6 +29,9 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Leitura dos repositorios publicos de `AndreGustavoms` registrada em `docs/PADROES-OBSERVADOS-GITHUB.md`.
 - Guias frontend revisados/criados: Background Visual, Calendario Academico, Particulas e Glow, Componentes UI Compostos, Breadcrumb e Metadata Bar, Arvore Hierarquica, Arvore de Materiais Dual View, Heatmap de Atividade, Onboarding e Ajuda, Sistema de Alerta e Grade.
 - Guia rapido de uso, checklist de projeto pronto e templates copiaveis criados.
+- Proposito do Doktor reforcado como padrao leve para orientar IA em projetos novos, reduzir consumo de contexto e evitar leitura desnecessaria.
+- Template `templates/AGENTS-template.md` criado para ser copiado como `AGENTS.md` na raiz de projetos destino.
+- Guia rapido, checklist de projeto pronto e README-template ajustados para tratar `AGENTS.md` como parte do fluxo de projeto com IA.
 - CI simples adicionada com `scripts/validate-repo.ps1` e `.github/workflows/validate.yml`.
 - Guias backend CPF e Cifra de Cesar reescritos no padrao Doktor.
 - Versao inicial registrada em `VERSION` e `CHANGELOG.md`.
@@ -42,6 +45,7 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Publicar autoria local como Andre Gustavo Melo da Silva / AndreGustavoms.
 - Usar padroes observados no GitHub como direcao inicial, nao como regra cega para todo projeto.
 - Misturar influencia Felixo/Felipe como heranca estetica/metodologica documentada, sem transferir autoria pessoal para o README principal ou guias tecnicos.
+- Tratar o `AGENTS.md` de projetos destino como roteador leve de contexto: guia minimo sempre, documentos por tipo de tarefa e guias opcionais somente sob demanda.
 
 ## Pendencias
 
@@ -57,4 +61,4 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
   - Bash: sintaxe valida, instalacao e desinstalacao testadas no Git Bash (Windows) com rsync fake. Requer `rsync` em ambiente real.
 - `doktor-command.cmd` corrigido: removida exibicao de caminhos completos da pasta temporaria no preview do robocopy; output usa exit code.
 - Checklist de publicacao e `docs/VALIDACAO-SCRIPTS.md` atualizados com resultados reais.
-- Repositorio publicado em `https://github.com/AndreGustavoms/Doktor-System-Design`, branch `main`, tag `v0.1.0`.
+- Repositorio publicado em `https://github.com/AndreGustavoms/Doktor-SystemDesign`, branch `main`, tag `v0.1.0`.

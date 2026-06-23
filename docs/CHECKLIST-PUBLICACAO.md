@@ -41,7 +41,7 @@ Use este checklist antes de tornar o Doktor System-Design publico, divulgar como
 
 ## Publicacao
 
-- [x] Conferir remoto Git correto. (`https://github.com/AndreGustavoms/Doktor-System-Design.git`, branch `main`).
+- [x] Conferir remoto Git correto. (`https://github.com/AndreGustavoms/Doktor-SystemDesign.git`, branch `main`).
 - [x] Conferir branch atual. (branch `main`).
 - [x] Fazer push.
 - [ ] Abrir o README no GitHub e verificar renderizacao das tabelas e links.

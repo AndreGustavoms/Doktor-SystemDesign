@@ -11,7 +11,7 @@ set "C_OK=%ESC%[1;32m"
 set "C_ERR=%ESC%[1;31m"
 set "C_RESET=%ESC%[0m"
 
-set "REPO_URL=https://github.com/AndreGustavoms/Doktor-System-Design.git"
+set "REPO_URL=https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
 set "DEST_NAME=Padrao de qualidade - Doktor System-Design"
 
 if /I "%~1"=="-h" goto :help

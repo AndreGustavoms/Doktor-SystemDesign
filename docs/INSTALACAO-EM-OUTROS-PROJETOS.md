@@ -11,7 +11,7 @@ Use quando quiser manter uma pasta independente, sem trazer o historico Git dest
 ### PowerShell
 
 ```powershell
-$repoUrl = "https://github.com/AndreGustavoms/Doktor-System-Design.git"
+$repoUrl = "https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
 $dest = "Padrao de qualidade - Doktor System-Design"
 $tmpDir = Join-Path $env:TEMP ("doktor-standards-" + [guid]::NewGuid())
 
@@ -25,7 +25,7 @@ Remove-Item -Recurse -Force $tmpDir
 ### Linux, macOS, Git Bash ou WSL
 
 ```bash
-repo_url="https://github.com/AndreGustavoms/Doktor-System-Design.git"
+repo_url="https://github.com/AndreGustavoms/Doktor-SystemDesign.git"
 dest="Padrao de qualidade - Doktor System-Design"
 tmp_dir="$(mktemp -d)"
 
@@ -53,25 +53,25 @@ O comando instalado e `doktor`, em minusculo. Ele sincroniza uma copia completa 
 ### PowerShell
 
 ```powershell
-Invoke-WebRequest -Uri "https://github.com/AndreGustavoms/Doktor-System-Design/archive/refs/heads/main.zip" -OutFile "doktor-system-design.zip"
+Invoke-WebRequest -Uri "https://github.com/AndreGustavoms/Doktor-SystemDesign/archive/refs/heads/main.zip" -OutFile "doktor-system-design.zip"
 Expand-Archive "doktor-system-design.zip" -DestinationPath .
-Rename-Item "Doktor-System-Design-main" "Padrao de qualidade - Doktor System-Design"
+Rename-Item "Doktor-SystemDesign-main" "Padrao de qualidade - Doktor System-Design"
 Remove-Item "doktor-system-design.zip"
 ```
 
 ### Linux, macOS, Git Bash ou WSL
 
 ```bash
-curl -L https://github.com/AndreGustavoms/Doktor-System-Design/archive/refs/heads/main.zip -o doktor-system-design.zip
+curl -L https://github.com/AndreGustavoms/Doktor-SystemDesign/archive/refs/heads/main.zip -o doktor-system-design.zip
 unzip doktor-system-design.zip
-mv Doktor-System-Design-main "Padrao de qualidade - Doktor System-Design"
+mv Doktor-SystemDesign-main "Padrao de qualidade - Doktor System-Design"
 rm doktor-system-design.zip
 ```
 
 ## 4. Clonar com Git
 
 ```bash
-git clone --depth 1 https://github.com/AndreGustavoms/Doktor-System-Design.git "Padrao de qualidade - Doktor System-Design"
+git clone --depth 1 https://github.com/AndreGustavoms/Doktor-SystemDesign.git "Padrao de qualidade - Doktor System-Design"
 ```
 
 Use esta opcao quando quiser atualizar depois com `git pull`.
@@ -84,7 +84,7 @@ Use esta opcao quando quiser atualizar depois com `git pull`.
 mkdir doktor-core
 cd doktor-core
 git init
-git remote add -f origin https://github.com/AndreGustavoms/Doktor-System-Design.git
+git remote add -f origin https://github.com/AndreGustavoms/Doktor-SystemDesign.git
 git sparse-checkout init --no-cone
 git sparse-checkout set core
 git pull origin main
@@ -96,7 +96,7 @@ git pull origin main
 mkdir doktor-guias
 cd doktor-guias
 git init
-git remote add -f origin https://github.com/AndreGustavoms/Doktor-System-Design.git
+git remote add -f origin https://github.com/AndreGustavoms/Doktor-SystemDesign.git
 git sparse-checkout init --no-cone
 git sparse-checkout set guias
 git pull origin main
@@ -116,5 +116,7 @@ git pull origin main
 ## Depois de copiar
 
 Use [GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) para aplicar os documentos em um projeto novo e [CHECKLIST-PROJETO-PRONTO.md](CHECKLIST-PROJETO-PRONTO.md) para validar antes de entregar.
+
+Para deixar a IA direcionada no projeto destino, copie [../templates/AGENTS-template.md](../templates/AGENTS-template.md) como `AGENTS.md` na raiz do projeto. Esse arquivo deve apontar para os documentos Doktor que voce realmente copiou ou manteve sincronizados.
 
 Templates prontos ficam em [../templates](../templates).
