@@ -1,253 +1,140 @@
-# GUIA-START-APP-SCRIPT - SCRIPT PADRAO DE INICIALIZACAO (OBRIGATORIO)
+# GUIA-START-APP-SCRIPT - MENU DE ENTRADA PADRAO (OBRIGATORIO)
 
-> **O que e**: Um contrato obrigatorio que define que **toda aplicacao web** do `Doktor System-Design` deve trazer um **script de start em Python** que instala dependencias, inicia/reinicia o app e abre o navegador - em **um unico comando**.
+> **O que e**: Um contrato obrigatorio que define que **todo programa** do `Doktor System-Design` - web, CLI, automacao, script, desktop, bot, o que for - deve trazer um **`start_app.py` na raiz** que abre um **menu interativo, colorido e descritivo**. Esse menu e a **porta de entrada unica** do programa para qualquer pessoa: por ele a pessoa instala, configura, inicia e deixa tudo pronto para usar.
 >
-> **Por que e obrigatorio**: Nem todo mundo que roda o projeto tem facilidade com terminal, e quem automatiza servidor local nao quer reaprender o setup a cada projeto. Um `start_app.py` padronizado torna "rodar o app" uma tarefa de **um comando**, identica em qualquer projeto.
+> **Por que e obrigatorio**: O `start_app.py` e a interface entre o programa e quem vai usar. Nem todo mundo tem facilidade com terminal, ninguem deveria precisar decorar comandos, e cada projeto que reinventa o "como rodar" gera atrito. Um menu de entrada padronizado torna **qualquer** programa imediatamente utilizavel: a pessoa roda `python start_app.py`, le opcoes claras e escolhe.
 >
-> **Quando aplicar**: Sempre que o projeto tiver uma aplicacao web rodavel localmente (frontend, backend ou fullstack). Cada **aplicacao web** do repositorio precisa do seu proprio script.
+> **Quando aplicar**: Sempre. Todo programa rodavel do repositorio precisa do seu `start_app.py`. Nao importa se e um site, um CLI, uma automacao agendada ou um scraper - todos passam pela mesma porta de entrada.
+>
+> **Unica excecao** (coerente com o principio de simplicidade do [`GUIA_MINIMO_QUALIDADE.md`](GUIA_MINIMO_QUALIDADE.md), item 3): script interno pequeno e de uso pontual, **sem usuario final** (ex.: utilitario de manutencao rodado so por quem desenvolve), pode dispensar o menu - registre a excecao e o motivo no projeto. Na duvida sobre se algo "tem usuario", tem: faca o menu.
 
 ---
 
 ## 1. Regra central
 
-> **Toda aplicacao web e obrigada a ter um `start_app.py` na raiz que: (1) instala dependencias, (2) inicia ou reinicia o app, (3) abre o app no navegador - tudo com um unico comando.**
+> **Todo programa e obrigado a ter um `start_app.py` na raiz que abre um menu interativo, colorido e descritivo - a porta de entrada unica por onde a pessoa instala, configura, inicia e deixa o programa pronto para usar.**
 
-O objetivo e que qualquer pessoa - mesmo sem experiencia com terminal - consiga rodar o projeto com:
+O objetivo e que qualquer pessoa - mesmo sem experiencia com terminal - rode **um comando**:
 
 ```bash
 python start_app.py
 ```
 
-E que quem automatiza servidor local tenha um ponto de entrada **previsivel e padronizado** para script-ar (CI local, agendadores, atalhos de desktop, etc.).
+...e a partir dai navegue por um **menu**, sem precisar saber nada do programa de antemao. O menu apresenta, descreve e executa as acoes. A pessoa **escolhe** o que quer ativar/rodar.
+
+### O menu nao bloqueia nada
+
+O menu e a porta de entrada, nao um portao trancado. Ele **lista** o que da pra fazer e deixa a pessoa **escolher** - instalar, configurar, iniciar este ou aquele componente, ver status. Nenhuma acao e pre-condicao obrigatoria de outra a ponto de travar o fluxo: se algo ainda nao esta pronto (ex.: dependencias faltando), o menu avisa de forma clara e oferece a opcao de resolver, mas quem decide e a pessoa.
+
+### Sempre menu interativo - nada de flags
+
+**Nao use flags de linha de comando** (`--start`, `--no-browser`, `restart`, etc.) como interface principal. A interface e **sempre o menu interativo** no terminal. Quem usa nao precisa decorar argumento nenhum: roda `python start_app.py`, le as opcoes e escolhe. Toda acao que o programa oferece deve estar **acessivel pelo menu**.
 
 ---
 
-## 2. Contrato obrigatorio do script
+## 2. Como o menu deve ser
 
-Todo `start_app.py` **deve**:
+A regra mais importante de aparencia: **fuja do terminal cru "digite a letra" em branco no fundo preto.** O menu deve ser **interativo, colorido e bem descritivo**.
 
-1. **Instalar dependencias** automaticamente (ou pular se ja instaladas).
-   - Python: `pip install -r requirements.txt` (de preferencia em venv).
-   - Node: `npm install` quando houver `package.json`.
-2. **Iniciar o app** - subir o servidor de dev/producao local.
-3. **Reiniciar** quando ja houver uma instancia rodando na porta (matar a anterior antes de subir, ou avisar e oferecer reinicio).
-4. **Abrir o navegador** automaticamente na URL local correta, **depois** de o servidor estar de pe.
-5. **Funcionar cross-platform** (Windows, Linux, macOS) - usar `sys.executable`, `webbrowser`, e nada de comando preso a um SO so.
-6. **Falhar de forma clara** - se faltar Python/Node, porta ocupada por outro processo, ou comando inexistente, imprimir mensagem legivel dizendo **o que fazer**.
-7. **Nao guardar segredo** - o script orquestra; config sensivel continua em variavel de ambiente (ver Railway / `.env` ignorado).
+- **Interativo** - navegacao por setas/numero com selecao clara do item atual, nao um texto solto pedindo "digite 1, 2 ou 3".
+- **Colorido** - use cor para hierarquia: titulo, opcao em foco, estado (ok/erro/pendente), dicas. Cor com proposito, nao enfeite.
+- **Descritivo** - cada opcao explica **o que faz** em uma linha. A pessoa entende a escolha sem abrir o README.
+- **Com configuracoes e escolhas** - onde fizer sentido, o menu oferece sub-escolhas (porta, perfil, qual componente subir, variaveis), nao assume tudo em silencio.
+- **Com feedback** - ao executar uma acao, mostre progresso e o resultado (sucesso/erro legivel), e volte ao menu.
 
-### Suportar subcomandos minimos
+### Bibliotecas sugeridas (Python continua o padrao)
 
-O script deve aceitar pelo menos:
+O start continua sendo **Python** (`start_app.py`). Para o menu interativo e colorido, use bibliotecas de TUI - declaradas como dependencia do proprio script:
 
-| Comando | O que faz |
+| Biblioteca | Para que |
 |---|---|
-| `python start_app.py` | Instala (se preciso) + inicia + abre o navegador. Padrao. |
-| `python start_app.py restart` | Mata a instancia atual e sobe de novo. |
-| `python start_app.py --no-browser` | Sobe sem abrir o navegador (ideal para servidor/automacao). |
-| `python start_app.py --no-install` | Pula a instalacao (quando ja esta tudo instalado). |
+| [`questionary`](https://github.com/tmbo/questionary) | Menus de selecao por setas, prompts, confirmacoes. |
+| [`rich`](https://github.com/Textualize/rich) | Cor, tabelas, paineis, barras de progresso, status. |
+| [`textual`](https://github.com/Textualize/textual) | TUI completa quando o menu cresce (apps com varias telas). |
+
+> Mantenha o start leve: se for so menu + algumas acoes, `questionary` + `rich` bastam. So traga `textual` quando a porta de entrada virar, de fato, uma interface com varias telas.
 
 ---
 
-## 3. Template de referencia (`start_app.py`)
+## 3. Acoes minimas do menu
 
-Template cross-platform, sem dependencias externas (so stdlib). Ajuste `CONFIG` por projeto.
+Todo menu de entrada deve oferecer, no minimo, estas quatro acoes:
 
-```python
-#!/usr/bin/env python3
-"""
-start_app.py - Script padrao de inicializacao (Doktor System-Design).
+| Acao | O que faz |
+|---|---|
+| **Iniciar / Rodar** | Sobe/executa o programa - servidor web, CLI, automacao, scraper, etc. Acao principal. Quando houver mais de um componente, deixa a pessoa **escolher qual** (ex.: backend, frontend, ambos). |
+| **Instalar / Setup** | Instala dependencias e prepara o ambiente: venv, `pip install`, `npm install`, `.env` a partir de exemplo, pastas necessarias. |
+| **Configurar** | Ajusta configuracoes: portas, variaveis de ambiente, perfis, escolhas do usuario. Sem editar arquivo na mao. |
+| **Status / Sair** | Mostra o estado (instalado? rodando? em que porta?), permite parar uma instancia, e sair do menu de forma limpa. |
 
-Instala dependencias, inicia/reinicia o app e abre o navegador com um comando.
-
-Uso:
-    python start_app.py                # instala (se preciso) + inicia + abre navegador
-    python start_app.py restart        # reinicia a instancia atual
-    python start_app.py --no-browser   # sobe sem abrir o navegador
-    python start_app.py --no-install   # pula a instalacao de dependencias
-"""
-
-import os
-import sys
-import time
-import socket
-import argparse
-import subprocess
-import webbrowser
-from pathlib import Path
-
-# ---------------------------------------------------------------------------
-# CONFIG - ajuste por projeto
-# ---------------------------------------------------------------------------
-ROOT = Path(__file__).resolve().parent
-HOST = "127.0.0.1"
-PORT = 8000
-URL = f"http://{HOST}:{PORT}"
-
-# Comando que sobe o app. Use sys.executable para o Python certo.
-# Exemplos:
-#   Django:  [sys.executable, "manage.py", "runserver", f"{HOST}:{PORT}"]
-#   FastAPI: [sys.executable, "-m", "uvicorn", "app.main:app", "--host", HOST, "--port", str(PORT)]
-#   Flask:   [sys.executable, "-m", "flask", "run", "--host", HOST, "--port", str(PORT)]
-START_COMMAND = [sys.executable, "manage.py", "runserver", f"{HOST}:{PORT}"]
-
-# Dependencias: ("python", "requirements.txt") e/ou ("node", None) se houver package.json
-INSTALL_PYTHON = ROOT / "requirements.txt"   # None para desativar
-INSTALL_NODE = ROOT / "package.json"         # None para desativar
-# ---------------------------------------------------------------------------
-
-
-def log(msg: str) -> None:
-    print(f"[start_app] {msg}", flush=True)
-
-
-def port_in_use(host: str, port: int) -> bool:
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.settimeout(0.5)
-        return s.connect_ex((host, port)) == 0
-
-
-def kill_port(port: int) -> None:
-    """Mata o processo que ocupa a porta (cross-platform)."""
-    log(f"Liberando a porta {port}...")
-    try:
-        if os.name == "nt":
-            out = subprocess.run(
-                ["netstat", "-ano"], capture_output=True, text=True
-            ).stdout
-            pids = {
-                line.split()[-1]
-                for line in out.splitlines()
-                if f":{port}" in line and "LISTENING" in line
-            }
-            for pid in pids:
-                subprocess.run(["taskkill", "/F", "/PID", pid], capture_output=True)
-        else:
-            out = subprocess.run(
-                ["lsof", "-ti", f"tcp:{port}"], capture_output=True, text=True
-            ).stdout
-            for pid in out.split():
-                subprocess.run(["kill", "-9", pid], capture_output=True)
-    except FileNotFoundError:
-        log("Nao consegui liberar a porta automaticamente. Feche o processo manualmente.")
-
-
-def install_deps() -> None:
-    if INSTALL_PYTHON and INSTALL_PYTHON.exists():
-        log("Instalando dependencias Python (pip install -r requirements.txt)...")
-        subprocess.run(
-            [sys.executable, "-m", "pip", "install", "-r", str(INSTALL_PYTHON)],
-            check=True,
-        )
-    if INSTALL_NODE and INSTALL_NODE.exists():
-        npm = "npm.cmd" if os.name == "nt" else "npm"
-        log("Instalando dependencias Node (npm install)...")
-        subprocess.run([npm, "install"], cwd=str(ROOT), check=True)
-
-
-def open_browser_when_ready() -> None:
-    log("Aguardando o servidor responder...")
-    for _ in range(60):  # ate ~30s
-        if port_in_use(HOST, PORT):
-            log(f"Servidor de pe. Abrindo {URL}")
-            webbrowser.open(URL)
-            return
-        time.sleep(0.5)
-    log("Servidor demorou para subir. Abra manualmente: " + URL)
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Inicia o app (Doktor System-Design).")
-    parser.add_argument("command", nargs="?", default="start", choices=["start", "restart"])
-    parser.add_argument("--no-browser", action="store_true", help="nao abre o navegador")
-    parser.add_argument("--no-install", action="store_true", help="pula a instalacao")
-    args = parser.parse_args()
-
-    os.chdir(ROOT)
-
-    if port_in_use(HOST, PORT):
-        if args.command == "restart":
-            kill_port(PORT)
-            time.sleep(1)
-        else:
-            log(f"A porta {PORT} ja esta em uso. Use 'python start_app.py restart' para reiniciar.")
-            if not args.no_browser:
-                webbrowser.open(URL)
-            return 0
-
-    if not args.no_install:
-        try:
-            install_deps()
-        except subprocess.CalledProcessError as e:
-            log(f"Falha ao instalar dependencias: {e}. Resolva e rode de novo.")
-            return 1
-
-    if not args.no_browser:
-        # abre o navegador em paralelo, assim que o servidor responder
-        import threading
-        threading.Thread(target=open_browser_when_ready, daemon=True).start()
-
-    log("Iniciando o app... (Ctrl+C para parar)")
-    try:
-        return subprocess.run(START_COMMAND).returncode
-    except KeyboardInterrupt:
-        log("Encerrado pelo usuario.")
-        return 0
-    except FileNotFoundError:
-        log("Comando de start nao encontrado. Confira START_COMMAND no topo do script.")
-        return 1
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
-```
+Programas maiores podem ter mais opcoes (testes, logs, limpar cache, atualizar) - mas as quatro acima sao o **piso obrigatorio**.
 
 ---
 
-## 4. Ajuste por stack
+## 4. Adaptar por tipo de programa
 
-So o que muda e o `START_COMMAND` e as flags de instalacao.
+So muda **o que cada acao executa**. O menu e o contrato; o conteudo das acoes e por projeto.
 
-| Stack | `START_COMMAND` | Instalacao |
+| Tipo | "Iniciar / Rodar" faz | Observacao |
 |---|---|---|
-| **Django** | `[sys.executable, "manage.py", "runserver", f"{HOST}:{PORT}"]` | `requirements.txt` |
-| **FastAPI / Uvicorn** | `[sys.executable, "-m", "uvicorn", "app.main:app", "--host", HOST, "--port", str(PORT)]` | `requirements.txt` |
-| **Flask** | `[sys.executable, "-m", "flask", "run", "--host", HOST, "--port", str(PORT)]` | `requirements.txt` |
-| **Vite / React (dev)** | `["npm.cmd" if os.name=="nt" else "npm", "run", "dev", "--", "--port", str(PORT)]` | `package.json` |
-| **Fullstack** | suba backend e frontend (dois processos) e abra o front | ambos |
+| **App web** (Django, FastAPI, Flask, Vite/React) | Sobe o servidor local e, se a pessoa quiser, abre o navegador na URL. | Abrir o navegador vira **uma opcao/escolha do menu**, nao um efeito automatico obrigatorio. |
+| **CLI / ferramenta** | Executa o comando principal, ou abre um submenu com os subcomandos disponiveis. | Cada subcomando descrito em uma linha. |
+| **Automacao / script** (scraper, ETL, job) | Roda a tarefa (ex.: "setup + coleta"), mostrando progresso. | Pode oferecer escolhas: rodar uma vez, agendar, escopo. |
+| **Fullstack** | Deixa escolher: subir backend, frontend ou ambos. | Um `start_app.py` na raiz orquestra; ou um por app, mas a **porta de entrada e sempre o menu**. |
+| **Desktop / bot / outro** | Inicia o processo correspondente. | Mesma porta de entrada: `python start_app.py` -> menu. |
 
-> Para fullstack, mantenha um `start_app.py` na raiz que orquestra os dois processos, ou um por aplicacao web - o contrato e **um comando para rodar cada app web**.
+> Para **app web**, abrir o navegador deixa de ser regra automatica e passa a ser uma escolha dentro do menu (a pessoa pode estar num servidor sem navegador). Continua valendo: subir/derrubar instancia, ver em que porta esta, reiniciar - tudo via menu.
 
 ---
 
-## 5. Documentar no README
+## 5. Requisitos tecnicos do script
 
-O `README.md` do projeto **deve** ter uma secao de execucao que aponte para o script como caminho principal:
+Independente do tipo de programa, o `start_app.py`:
+
+1. **Cross-platform** - Windows, Linux, macOS. Use `sys.executable`, `webbrowser`, nada preso a um SO so.
+2. **Falha de forma clara** - sem Python/Node, porta ocupada, dependencia faltando, comando inexistente: mensagem legivel dizendo **o que fazer**, e volta ao menu (nao quebra com stack trace cru).
+3. **Nao guarda segredo** - o script orquestra; config sensivel continua em variavel de ambiente / `.env` ignorado pelo git.
+4. **Instala suas proprias deps de TUI** - se o menu usa `questionary`/`rich`, o passo de Instalar/Setup garante que elas existem (ou o script faz um bootstrap minimo antes de desenhar o menu).
+5. **Estado real** - "Status" deve checar de verdade (porta em uso, venv presente, `.env` existe), nao chutar.
+
+---
+
+## 6. Documentar no README
+
+O `README.md` do projeto **deve** apontar o menu como o caminho principal:
 
 ```md
 ## Como rodar
 
-Forma mais simples (instala, inicia e abre no navegador):
+Forma mais simples - abre o menu interativo onde voce instala, configura e inicia:
 
 \`\`\`bash
 python start_app.py
 \`\`\`
 
-- `python start_app.py restart` - reinicia
-- `python start_app.py --no-browser` - sobe sem abrir o navegador (servidor/automacao)
+No menu voce escolhe: **Instalar/Setup**, **Configurar**, **Iniciar/Rodar** e **Status/Sair**.
 ```
 
+Nao documente flags como interface principal: a interface e o menu.
+
 ---
 
-## 6. Checklist
+## 7. Checklist
 
-- [ ] Existe um `start_app.py` para **cada aplicacao web** do projeto.
-- [ ] `python start_app.py` instala dependencias, inicia o app e abre o navegador.
-- [ ] Suporta `restart`, `--no-browser` e `--no-install`.
-- [ ] Funciona em Windows, Linux e macOS (sem comando preso a um SO).
-- [ ] Falha com mensagem clara (sem Python/Node, porta ocupada, comando ausente).
+- [ ] Existe um `start_app.py` na raiz para **todo programa rodavel** do projeto (nao so apps web) - ou a excecao de script interno pequeno esta registrada com motivo.
+- [ ] `python start_app.py` abre um **menu interativo, colorido e descritivo** - nao um prompt cru de "digite a letra".
+- [ ] O menu oferece, no minimo: **Iniciar/Rodar**, **Instalar/Setup**, **Configurar**, **Status/Sair**.
+- [ ] Cada opcao do menu descreve em uma linha o que faz.
+- [ ] Toda acao do programa esta acessivel **pelo menu** - sem depender de flags decoradas.
+- [ ] O menu nao trava o fluxo: avisa o que falta e deixa a pessoa escolher como resolver.
+- [ ] Funciona em Windows, Linux e macOS, e falha com mensagem clara (voltando ao menu).
 - [ ] Nao contem segredo - config sensivel fica em variavel de ambiente.
-- [ ] O `README.md` documenta `python start_app.py` como forma principal de rodar.
+- [ ] O `README.md` documenta `python start_app.py` (o menu) como forma principal de rodar.
 
 ---
 
+## 8. Ideias para quem quiser contribuir
+
+- Um **template de referencia** de `start_app.py` com menu (`questionary` + `rich`) pronto para copiar e adaptar por tipo de programa.
+- Um pequeno **modulo compartilhado** de menu (estilo, cores, helpers de status) reaproveitavel entre projetos do Doktor.
+- Receitas de "Iniciar/Rodar" por stack (Django, FastAPI, Flask, Vite, scraper, CLI) plugaveis no mesmo menu.

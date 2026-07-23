@@ -24,10 +24,11 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md) | Padroes de frontend, UI, UX, componentes e identidade visual. |
 | [core/DESIGN_SYSTEM_BACKEND.md](../core/DESIGN_SYSTEM_BACKEND.md) | Padroes de backend, arquitetura, API, persistencia, testes e seguranca. |
 | [core/DESIGN_SYSTEM_README.md](../core/DESIGN_SYSTEM_README.md) | Padrao para escrever READMEs consistentes. |
-| [core/GUIA-START-APP-SCRIPT.md](../core/GUIA-START-APP-SCRIPT.md) | Padrao de `start_app.py` para apps web. |
+| [core/GUIA-START-APP-SCRIPT.md](../core/GUIA-START-APP-SCRIPT.md) | Padrao de `start_app.py` com menu interativo para todo programa rodavel. |
 | [core/PROMPT_BASE_FRONTEND.md](../core/PROMPT_BASE_FRONTEND.md) | Prompt base para especificar tarefas de frontend. |
 | [core/PROMPT_BASE_BACKEND.md](../core/PROMPT_BASE_BACKEND.md) | Prompt base para especificar tarefas de backend. |
 | [core/TEMPLATE-CONTEXTO-IA.md](../core/TEMPLATE-CONTEXTO-IA.md) | Template para criar `IA.md` em outros projetos. |
+| [core/DESIGN_SYSTEM_ECONOMIA_IA.md](../core/DESIGN_SYSTEM_ECONOMIA_IA.md) | Economia de contexto e escolha de nivel de modelo de IA por tarefa. |
 
 ## Decisoes e operacao
 
@@ -44,6 +45,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [docs/CHECKLIST-PUBLICACAO.md](CHECKLIST-PUBLICACAO.md) | Checklist antes de publicar ou divulgar. |
 | [docs/CHECKLIST-PROJETO-PRONTO.md](CHECKLIST-PROJETO-PRONTO.md) | Checklist para validar um projeto antes de entregar. |
 | [docs/VALIDACAO-SCRIPTS.md](VALIDACAO-SCRIPTS.md) | Estado e roteiro de validacao dos scripts `doktor`. |
+| [docs/POLITICA-DE-ATUALIZACAO.md](POLITICA-DE-ATUALIZACAO.md) | Como manter guias, stack e sincronizacao com a origem atualizados. |
 | [NOTICE.md](../NOTICE.md) | Atribuicao legal da origem MIT. |
 | [LICENSE](../LICENSE) | Licenca MIT preservada da origem. |
 
@@ -72,6 +74,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-ARVORE-DE-MATERIAIS-DUAL-VIEW.md](../guias/frontend/GUIA-ARVORE-DE-MATERIAIS-DUAL-VIEW.md) | Arvore de materiais com modos de visualizacao. |
 | [GUIA-CALENDARIO-ACADEMICO.md](../guias/frontend/GUIA-CALENDARIO-ACADEMICO.md) | Calendario mensal com eventos. |
 | [GUIA-SISTEMA-DE-ALERTA-E-GRADE.md](../guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md) | Alertas e grade de horarios. |
+| [GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md](../guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md) | Painel de listagem com filtros, ordenacao e views grade/lista/kanban. |
 
 ## Guias backend
 
@@ -87,6 +90,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-INTEGRACAO-API-GITHUB.md](../guias/integracao/GUIA-INTEGRACAO-API-GITHUB.md) | Integracao com GitHub API. |
 | [GUIA-SCRAPING-MULTIFORMATO.md](../guias/integracao/GUIA-SCRAPING-MULTIFORMATO.md) | Scraping, parsers, Playwright e ETL. |
 | [GUIA-DEPLOY-RAILWAY.md](../guias/integracao/GUIA-DEPLOY-RAILWAY.md) | Deploy no Railway. |
+| [GUIA-NOTION-COMO-BASE-DE-DADOS.md](../guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md) | Migrar planilhas/documentos para databases do Notion. |
 
 ## Scripts
 
@@ -98,3 +102,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [scripts/cmd/doktor-command.cmd](../scripts/cmd/doktor-command.cmd) | Implementacao do comando `doktor` para CMD. |
 | [scripts/hooks/commit-msg](../scripts/hooks/commit-msg) | Hook opcional para validar mensagens Conventional Commits. |
 | [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI. |
+| [scripts/tests/run-tests.ps1](../scripts/tests/run-tests.ps1) | Roda todas as suites de teste dos instaladores. |
+| [scripts/tests/installers.tests.ps1](../scripts/tests/installers.tests.ps1) | Testes automatizados dos 3 instaladores (PowerShell, CMD, Bash). |
+| [scripts/cmd/tests/ensure-gitignore.tests.ps1](../scripts/cmd/tests/ensure-gitignore.tests.ps1) | Testes do passo de `.gitignore` automatico no CMD. |
+| [scripts/bash-zsh/tests/installers.tests.sh](../scripts/bash-zsh/tests/installers.tests.sh) | Testes nativos do instalador Bash/Zsh (Linux/macOS/WSL). |

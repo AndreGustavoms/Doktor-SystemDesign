@@ -60,9 +60,9 @@ Contrato curto e obrigatorio para preservar qualidade de software em qualquer pr
 
 [Ver guia minimo de qualidade](../core/GUIA_MINIMO_QUALIDADE.md)
 
-## Start App Script (obrigatorio por app web)
+## Start App Script (obrigatorio por programa)
 
-Contrato obrigatorio: **toda aplicacao web** deve ter um `start_app.py` na raiz que **instala dependencias, inicia/reinicia o app e abre o navegador com um unico comando** (`python start_app.py`). Facilita quem automatiza processos de servidor local e quem nao tem facilidade com terminal. Inclui template Python cross-platform pronto, ajuste por stack (Django, FastAPI, Flask, Vite) e checklist.
+Contrato obrigatorio: **todo programa rodavel** (web, CLI, automacao, script, desktop) deve ter um `start_app.py` na raiz que abre um **menu interativo, colorido e descritivo** - a porta de entrada unica por onde a pessoa instala, configura, inicia e deixa o programa pronto (`python start_app.py`). Sempre menu, nunca flags decoradas. Menu minimo: Iniciar/Rodar, Instalar/Setup, Configurar, Status/Sair.
 
 [Ver guia do start app script](../core/GUIA-START-APP-SCRIPT.md)
 

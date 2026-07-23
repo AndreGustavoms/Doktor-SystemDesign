@@ -98,9 +98,9 @@ Railway continua como guia opcional porque reduz complexidade operacional para b
 | Automacao cross-platform | Python |
 | Windows/PowerShell | PowerShell |
 | Linux/macOS/WSL | Bash/Zsh |
-| Apps web locais | `start_app.py` na raiz |
+| Qualquer programa rodavel | `start_app.py` na raiz com menu interativo |
 
-Todo app web reutilizavel deve priorizar `python start_app.py` como comando de entrada.
+Todo programa (web, CLI, automacao, script, desktop) deve priorizar `python start_app.py` como porta de entrada unica, com menu interativo - nao flags de linha de comando.
 
 ## 7. Como registrar excecoes
 
