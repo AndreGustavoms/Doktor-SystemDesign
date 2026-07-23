@@ -66,6 +66,7 @@ Doktor-System-Design/
 |   |-- DESIGN_SYSTEM_API_REST.md
 |   |-- DESIGN_SYSTEM_ARQUITETURA.md
 |   |-- DESIGN_SYSTEM_BACKEND.md
+|   |-- DESIGN_SYSTEM_ECONOMIA_IA.md
 |   |-- DESIGN_SYSTEM_FRONTEND.md
 |   |-- DESIGN_SYSTEM_README.md
 |   |-- DESIGN_SYSTEM_SEGURANCA.md
@@ -86,6 +87,7 @@ Doktor-System-Design/
 |   |-- GUIAS-OPCIONAIS.md
 |   |-- IDENTIDADE-DOKTOR.md
 |   |-- INDICE-GERAL.md
+|   |-- POLITICA-DE-ATUALIZACAO.md
 |   |-- STACK-E-ARQUITETURA.md
 |   |-- VALIDACAO-SCRIPTS.md
 |   `-- INSTALACAO-EM-OUTROS-PROJETOS.md
@@ -104,7 +106,8 @@ Doktor-System-Design/
     |-- bash-zsh/
     |-- cmd/
     |-- hooks/
-    `-- powershell/
+    |-- powershell/
+    `-- tests/
 ```
 
 ## Uso recomendado
