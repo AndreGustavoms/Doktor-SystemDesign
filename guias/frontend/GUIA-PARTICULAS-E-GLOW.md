@@ -273,3 +273,8 @@ Em input:
 
 O efeito esta pronto quando melhora a percepcao de profundidade sem roubar atencao da tarefa principal.
 
+## Ideias para quem quiser contribuir
+
+- Particulas reagindo ao cursor/toque (parallax leve) sem comprometer performance mobile.
+- Nivel de glow configuravel pelo usuario (preferencia de "efeitos reduzidos" alem do `prefers-reduced-motion` do sistema).
+

@@ -4,6 +4,8 @@
 
 Use cache com Redis quando uma consulta ou calculo caro e repetido com frequencia e o dado pode ficar levemente desatualizado por um periodo curto (segundos a minutos) sem prejudicar o usuario - contagens agregadas, resultado de relatorio pesado, resposta de API externa lenta, sessao compartilhada entre multiplos processos/workers.
 
+Redis tambem serve para **lock distribuido** (garantir que um job agendado rode uma unica vez com varios workers) - esse uso e diferente de cache-aside e esta coberto em `guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md`, secao 4.
+
 ## Quando nao usar
 
 Nao cacheie dado que precisa estar sempre atualizado no instante da leitura (saldo financeiro no momento da transacao, estoque no ato da compra) sem uma estrategia explicita de invalidacao - cache errado aqui vira bug de consistencia. Para cache simples e local a um unico processo, o cache framework do proprio backend (ver `docs/STACK-E-ARQUITETURA.md`, secao 4) pode bastar sem precisar de Redis.

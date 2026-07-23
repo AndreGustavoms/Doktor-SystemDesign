@@ -243,3 +243,8 @@ Para arvores pequenas, retornar a estrutura aninhada pela API e suficiente. Para
 - [ ] Profundidade maxima foi testada em mobile.
 - [ ] Arvore grande usa lazy loading ou virtualizacao.
 
+## Ideias para quem quiser contribuir
+
+- Drag-and-drop para reordenar/mover nos entre pastas, com persistencia no backend.
+- Modo de busca que expande automaticamente o caminho ate o item encontrado.
+

@@ -305,3 +305,8 @@ O deploy esta pronto quando uma pessoa consegue:
 5. validar dominio HTTPS;
 6. entender como voltar para um deploy anterior;
 7. operar sem depender da conversa original que criou o deploy.
+
+## Ideias para quem quiser contribuir
+
+- Script de verificacao pos-deploy (`railway run` + chamada ao healthcheck) para validar automaticamente apos cada `railway up`.
+- Guia complementar de deploy multi-ambiente (staging + production) com promocao controlada entre eles.

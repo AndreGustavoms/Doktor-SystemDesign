@@ -190,3 +190,8 @@ Uma central de ajuda pratica deve ter:
 - [ ] Modal fecha com clique fora e botao de fechar.
 - [ ] Elementos interativos tem `aria-label` quando usam apenas icone.
 
+## Ideias para quem quiser contribuir
+
+- Onboarding contextual que reaparece so na primeira vez que uma feature nova e usada (nao so no primeiro acesso ao produto).
+- Central de ajuda com busca textual entre os topicos, para produtos com mais conteudo.
+

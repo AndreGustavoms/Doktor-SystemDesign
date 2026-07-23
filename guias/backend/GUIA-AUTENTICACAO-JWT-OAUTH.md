@@ -67,6 +67,7 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 - Nunca logue senha (nem em erro, nem em request payload de debug).
 - Nunca compare senha com `==` em texto claro - sempre pelo hasher.
+- O mesmo cuidado vale para token JWT (access e refresh): nunca aparecem em log, nem em stack trace de erro. Ver `guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md`, secao 4, para a lista completa do que nunca vai para o log.
 
 ## 4. Protegendo rotas
 

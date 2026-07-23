@@ -210,3 +210,8 @@ export { cx } from "./cx";
 - [ ] Textos longos nao quebram o layout.
 - [ ] O kit nao depende de contexto de produto especifico.
 
+## Ideias para quem quiser contribuir
+
+- Ampliar o kit com componentes adicionais (Modal, Tooltip, Tabs) mantendo o mesmo zero-dependencia.
+- Documentacao interativa (Storybook ou equivalente leve) para visualizar as variantes.
+

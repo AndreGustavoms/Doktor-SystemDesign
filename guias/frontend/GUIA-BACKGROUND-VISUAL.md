@@ -262,3 +262,8 @@ loadTheme();
 ## 8. Criterio de pronto
 
 O background esta pronto quando melhora a identidade visual sem alterar a tarefa principal do usuario. Se a pessoa percebe o fundo, mas ainda consegue usar a interface sem esforco, o equilibrio esta correto.
+
+## Ideias para quem quiser contribuir
+
+- Presets de tema prontos (claro/escuro/alto contraste) trocaveis em tempo real.
+- Background reativo a eventos do produto (ex.: muda de cor conforme progresso do usuario).

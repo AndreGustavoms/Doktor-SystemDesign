@@ -364,3 +364,8 @@ A integracao esta pronta quando:
 - testes usam fixtures JSON sanitizadas;
 - a UI ou API mostra resumo acionavel de sucesso, erro e limites.
 
+## Ideias para quem quiser contribuir
+
+- Cache local dos dados coletados para reduzir chamadas repetidas em execucoes proximas.
+- Suporte a GitHub GraphQL API como alternativa mais eficiente para coletas grandes.
+

@@ -234,3 +234,8 @@ export function ScheduleTable({ schedule }: { schedule: ScheduleSlot[] }) {
 - [ ] Cores de celula tem contraste suficiente.
 - [ ] O algoritmo considera apenas eventos futuros.
 
+## Ideias para quem quiser contribuir
+
+- Notificacao push/navegador para o alerta de proximo evento, alem do destaque visual.
+- Exportacao da grade semanal para `.ics` (calendario externo).
+

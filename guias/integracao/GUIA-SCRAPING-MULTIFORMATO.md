@@ -1424,3 +1424,8 @@ Um scraper so esta pronto quando:
 - nao vaza dado sensivel.
 
 Se uma dessas garantias nao existir, o scraper pode ate funcionar, mas ainda nao e um padrao confiavel para reutilizacao.
+
+## Ideias para quem quiser contribuir
+
+- Adaptador de parser para formatos adicionais (PDF, planilhas) seguindo a mesma interface offline-first.
+- Dashboard simples de execucoes (sucesso/falha/tempo) para acompanhar coletas recorrentes.

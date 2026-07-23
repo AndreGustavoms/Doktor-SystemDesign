@@ -160,3 +160,8 @@ def test_generated_cpf_is_valid():
 - [ ] Logs e respostas nao vazam dado sensivel sem necessidade.
 - [ ] Uso com dados reais foi revisado com privacidade em mente.
 
+## Ideias para quem quiser contribuir
+
+- Extensao do mesmo padrao para outros documentos com digito verificador (CNPJ, PIS).
+- Gerador com distribuicao configuravel (mais dados de uma UF/faixa especifica) para testes de carga.
+

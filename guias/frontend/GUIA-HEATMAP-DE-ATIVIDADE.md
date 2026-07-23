@@ -218,3 +218,8 @@ export function ActivityHeatmap({ events }: { events: ActivityEvent[] }) {
 - [ ] Tooltip ou detalhe mostra o valor real.
 - [ ] Navegacao por teclado funciona nos dias clicaveis.
 
+## Ideias para quem quiser contribuir
+
+- Comparativo entre periodos (este mes vs. mes anterior) sobreposto no mesmo heatmap.
+- Exportacao da visualizacao como imagem, para compartilhar streak/atividade fora do produto.
+

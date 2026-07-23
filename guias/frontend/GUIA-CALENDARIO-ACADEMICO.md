@@ -350,3 +350,8 @@ Evite texto longo dentro da celula em telas pequenas.
 
 O calendario esta pronto quando a pessoa consegue responder rapidamente: o que acontece hoje, o que vem depois e quais eventos exigem acao.
 
+## Ideias para quem quiser contribuir
+
+- Visualizacao semanal/diaria alem da mensal, para eventos concentrados em poucos dias.
+- Integracao com calendarios externos (Google Calendar, `.ics`) para importar/exportar eventos.
+

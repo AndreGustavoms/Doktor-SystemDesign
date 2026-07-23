@@ -153,3 +153,8 @@ def test_normalizes_accents():
 - [ ] Interface deixa claro que o uso e educacional.
 - [ ] Nenhum dado sensivel depende dessa cifra.
 
+## Ideias para quem quiser contribuir
+
+- Variantes educacionais adicionais (Vigenere, cifra de substituicao) no mesmo padrao didatico.
+- Visualizacao passo a passo do deslocamento de letras para reforcar o aprendizado.
+

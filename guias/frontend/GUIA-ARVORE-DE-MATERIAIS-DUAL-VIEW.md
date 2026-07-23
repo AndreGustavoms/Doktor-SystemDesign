@@ -277,3 +277,8 @@ export function MaterialTree({ nodes }: { nodes: MaterialNode[] }) {
 - [ ] Modo simples funciona sem dependencias extras.
 - [ ] Arvores grandes tem busca, lazy loading ou limite de profundidade.
 
+## Ideias para quem quiser contribuir
+
+- Sincronizar o progresso de leitura com o backend (hoje so localStorage), para persistir entre dispositivos.
+- Filtro por status (visto/nao visto/em progresso) combinado com a busca por nome.
+

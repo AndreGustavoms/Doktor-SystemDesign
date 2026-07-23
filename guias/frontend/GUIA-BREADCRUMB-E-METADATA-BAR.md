@@ -232,3 +232,8 @@ export function FilePage() {
 - [ ] Metadata funciona sem avatar.
 - [ ] Nome de agente/autor e generico no componente.
 - [ ] Visual continua compacto em mobile.
+
+## Ideias para quem quiser contribuir
+
+- Breadcrumb com dropdown para caminhos muito longos (colapsar segmentos do meio).
+- Metadata bar com historico de versoes/edicoes ao clicar na data.

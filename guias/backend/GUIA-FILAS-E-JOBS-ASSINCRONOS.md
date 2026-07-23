@@ -99,6 +99,8 @@ def nightly_cleanup():
 
 Alternativa: usar o proprio scheduler (Celery Beat, cron do sistema) configurado para rodar em uma unica instancia designada, quando a infraestrutura permitir.
 
+Este lock e um uso de Redis diferente do cache-aside (ver `guias/backend/GUIA-CACHE-COM-REDIS.md`) - aqui o valor guardado nao e um dado a reaproveitar, e um sinalizador de exclusividade com TTL curto.
+
 ## 5. Monitoramento de fila
 
 - Tamanho da fila (jobs pendentes) e uma metrica de saude: fila crescendo sem parar indica worker lento ou insuficiente.

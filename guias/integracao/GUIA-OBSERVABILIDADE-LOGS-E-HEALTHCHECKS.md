@@ -75,7 +75,7 @@ Com isso, buscar por um `request_id` no log agregador traz toda a historia de um
 
 ## 4. O que nunca vai para o log
 
-- Senha, token, cookie de sessao, chave de API.
+- Senha, token, cookie de sessao, chave de API. Ver `guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md`, secao 3, para o mesmo cuidado aplicado a senha e token JWT na origem.
 - Numero de cartao de credito, CPF completo sem mascaramento, dado pessoal sensivel sem necessidade.
 - Payload de request inteiro sem filtrar campos sensiveis.
 
