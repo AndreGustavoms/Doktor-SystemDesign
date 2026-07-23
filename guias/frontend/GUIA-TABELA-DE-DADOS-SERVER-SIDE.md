@@ -61,6 +61,8 @@ function useTableState() {
 
 Mudar filtro ou ordenacao sempre reseta para a pagina 1 - senao o usuario pode acabar numa pagina que nao existe mais no resultado filtrado.
 
+Guardar o estado na URL (em vez de `localStorage`) e a escolha certa quando o filtro precisa ser compartilhavel por link ou sobreviver a paginacao no servidor. Para uma colecao pequena renderizada inteira no cliente, onde o filtro e so preferencia pessoal do usuario, `guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md` (secao 2) usa `localStorage` em vez disso.
+
 ## 3. Busca com debounce
 
 Nao dispare uma requisicao a cada tecla digitada - isso gera trafego desnecessario e pode fazer respostas chegarem fora de ordem.

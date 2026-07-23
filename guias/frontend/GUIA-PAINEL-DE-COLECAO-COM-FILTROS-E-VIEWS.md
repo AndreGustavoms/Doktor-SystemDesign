@@ -58,6 +58,8 @@ Dica de portabilidade: renomeie os campos para o seu dominio (`tags` -> `ingredi
 
 Todo o controle do painel e estado local, com dois pontos salvos no `localStorage`: o modo de visualizacao e o conjunto de filtros. A persistencia e defensiva - nunca confie no que esta gravado.
 
+`localStorage` e adequado aqui porque o filtro e preferencia pessoal do usuario numa colecao renderizada inteira no cliente. Quando o filtro precisa ser compartilhavel por link ou a lista e paginada no servidor, use a URL como fonte de verdade em vez disso - ver `guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md` (secao 2).
+
 ### Chaves e defaults
 
 ```js
