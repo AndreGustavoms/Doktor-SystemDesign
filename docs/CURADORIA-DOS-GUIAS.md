@@ -8,20 +8,22 @@ Transformar os guias em material proprio do Doktor System-Design, com linguagem 
 
 ## Estado atual
 
-- Os guias foram importados e normalizados para ASCII.
-- Assinaturas pessoais foram removidas do corpo dos arquivos.
+- **Curadoria concluida**: todos os guias listados na tabela de progresso abaixo estao marcados "Revisado" - nao ha guia pendente de primeira revisao.
+- Os guias importados foram normalizados para ASCII; assinaturas pessoais foram removidas do corpo dos arquivos.
 - Atribuicao legal ficou em `NOTICE.md` e `LICENSE`.
-- Alguns textos perderam acentos e podem ter termos menos naturais por causa da normalizacao.
-- O conteudo tecnico principal foi preservado.
+- Guias novos (nao vindos da origem) seguem a mesma estrutura desde a criacao - nao passam por uma fase separada de "curadoria", ja nascem no padrao.
+- O que muda agora e **manutencao continua**: revisar um guia de novo so quando ele ficar desatualizado tecnicamente (ver `docs/POLITICA-DE-ATUALIZACAO.md`) ou quando um guia novo for adicionado e precisar seguir o mesmo padrao de estrutura e referencias cruzadas com guias relacionados.
 
-## Prioridade de revisao
+## Prioridade de revisao (historico - usado durante a curadoria inicial)
 
-| Prioridade | Guias | Motivo |
+Esta tabela documenta a ordem em que os guias foram revisados na primeira leva de curadoria. Como o processo ja terminou (ver tabela de progresso abaixo), ela serve como registro historico da decisao, nao como fila de trabalho pendente.
+
+| Prioridade original | Guias | Motivo |
 |------------|-------|--------|
 | Alta | `core/GUIA_MINIMO_QUALIDADE.md`, `core/DESIGN_SYSTEM_BACKEND.md`, `core/DESIGN_SYSTEM_FRONTEND.md`, `docs/STACK-E-ARQUITETURA.md` | Sao lidos com mais frequencia e definem padroes gerais. |
 | Media | `core/PROMPT_BASE_BACKEND.md`, `core/PROMPT_BASE_FRONTEND.md`, `core/DESIGN_SYSTEM_README.md`, `core/GUIA-START-APP-SCRIPT.md` | Afetam execucao assistida por IA e experiencia de projeto. |
 | Media | `guias/integracao/GUIA-DEPLOY-RAILWAY.md`, `guias/integracao/GUIA-SCRAPING-MULTIFORMATO.md`, `guias/integracao/GUIA-INTEGRACAO-API-GITHUB.md` | Tem impacto operacional e risco maior quando usados incorretamente. |
-| Baixa | Guias visuais muito especificos em `guias/frontend/` | Uteis como referencia, mas devem ser usados sob demanda. |
+| Baixa | Guias visuais especificos em `guias/frontend/` | Uteis como referencia, mas usados sob demanda. |
 | Baixa | Guias educacionais/backend pontuais | Bons exemplos, mas menos centrais para o repositorio. |
 
 ## Checklist por guia
@@ -34,6 +36,8 @@ Ao revisar um guia, confirme:
 - [ ] Nao ha autor, assinatura, link pessoal ou projeto pessoal no corpo do guia.
 - [ ] O guia explica quando usar e quando nao usar.
 - [ ] O guia inclui riscos, limites e criterios de validacao.
+- [ ] O guia termina com `## Ideias para quem quiser contribuir` (convite a contribuicao, nao "features futuras a implementar" - ver `core/GUIA_MINIMO_QUALIDADE.md`, item 8).
+- [ ] Referencias cruzadas com guias relacionados existem quando fizer sentido tecnico (ex.: um guia que usa Redis para lock aponta para o guia de cache com Redis, e vice-versa).
 - [ ] Links relativos funcionam.
 - [ ] O arquivo permanece ASCII, salvo decisao contraria.
 

@@ -69,6 +69,8 @@ Use este checklist antes de chamar um projeto de pronto, entregar para outra pes
 - [ ] Encoding/texto quebrado foi verificado.
 - [ ] `IA.md` esta atualizado.
 - [ ] O historico Git tem commits pequenos e descritivos.
+- [ ] Os documentos lidos pela IA para chegar ate aqui foram apenas os indicados pelo `AGENTS.md` para cada tarefa - sem leitura "por garantia" nem mais de 1 guia opcional aberto por tarefa (ver `core/DESIGN_SYSTEM_ECONOMIA_IA.md`).
+- [ ] O nivel de modelo de IA usado em cada etapa foi proporcional ao risco/complexidade real da tarefa - nem subutilizado numa decisao critica, nem superdimensionado numa tarefa mecanica.
 
 ## Frase de controle
 

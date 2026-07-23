@@ -19,7 +19,7 @@ Use este checklist antes de tornar o Doktor System-Design publico, divulgar como
 - [x] Criar templates copiaveis de README, IA, deploy, seguranca e ADR.
 - [x] Criar checklist de projeto pronto.
 - [x] Revisar guias backend opcionais principais para melhorar escrita e remover texto herdado.
-- [ ] Revisar guias novos/importados futuros conforme `docs/CURADORIA-DOS-GUIAS.md`.
+- [x] Revisar guias novos/importados conforme `docs/CURADORIA-DOS-GUIAS.md` - todos os guias em `guias/` estao marcados como "Revisado" e seguem a mesma estrutura de secoes (incluindo `Ideias para quem quiser contribuir`).
 
 ## Scripts
 
@@ -46,3 +46,13 @@ Use este checklist antes de tornar o Doktor System-Design publico, divulgar como
 - [x] Fazer push.
 - [ ] Abrir o README no GitHub e verificar renderizacao das tabelas e links.
 - [x] Criar tag `v0.1.0` apos confirmar remoto correto.
+- [x] Criar tag `v0.2.0` apos a leva de padroes de arquitetura/seguranca/API REST/testes.
+- [ ] Criar tag `v0.3.0` apos a leva atual (economia de IA, 10 guias novos/portados, suite de testes dos instaladores, correcao do bug de PATH). Ver `CHANGELOG.md` para o escopo completo.
+
+### Publicacao continua (a cada leva relevante)
+
+Este checklist nao e um evento unico. Sempre que uma leva de mudancas relevante for concluida (novo guia, correcao de bug real, novo documento core):
+
+- [ ] `VERSION` e `CHANGELOG.md` foram atualizados no mesmo commit ou na mesma sessao.
+- [ ] Uma tag correspondente foi criada apos o push (`git tag vX.Y.Z && git push origin vX.Y.Z`).
+- [ ] `IA.md`, secao "Estado atual (resumo vivo)", reflete a versao e o estado publicados.

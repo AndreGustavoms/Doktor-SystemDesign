@@ -2,6 +2,8 @@
 
 Este documento define como manter o Doktor System-Design atualizado ao longo do tempo, para que os padroes nao fiquem presos a versoes antigas de frameworks, modelos de IA ou praticas de mercado.
 
+> **Escopo**: este documento e especifico deste repositorio (o Doktor System-Design em si) - ele fala de sincronizar com o repositorio de origem e manter os proprios padroes atualizados. Por isso ele **nao** foi propagado para `templates/AGENTS-template.md`: um projeto que apenas consome o Doktor nao precisa comparar-se com o Felixo System-Design, so precisa saber onde a copia sincronizada vive (ver `docs/INSTALACAO-EM-OUTROS-PROJETOS.md`). Se um projeto destino quiser uma politica propria de manter suas dependencias/stack atualizadas, isso e uma decisao dele, nao uma copia deste arquivo.
+
 ## 1. Por que isso existe
 
 Documentacao de padroes tecnicos envelhece de duas formas diferentes:
