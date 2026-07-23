@@ -92,6 +92,14 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 [Ver guia](../guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md)
 
+### Painel de Colecao com Filtros e Views
+
+**Painel de listagem** com busca, filtros combinaveis, ordenacao, multiplos modos de visualizacao (grade/lista/kanban), colunas ajustaveis e reordenacao por arrastar, tudo persistido em `localStorage`.
+
+**Quando usar:** listas grandes de itens homogeneos (projetos, produtos, tarefas, artigos) que precisam de filtro, ordenacao e visualizacao configuraveis.
+
+[Ver guia](../guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md)
+
 ## Backend
 
 ### Backend CPF
@@ -137,3 +145,11 @@ Padrao de **scraping multiformato** com Playwright, parsers offline, JSON embuti
 > **Aviso:** se login/autorizacao falhar repetidamente, o guia instrui o agente a parar e acionar o operador humano com passo a passo claro, em vez de insistir em loop.
 
 [Ver guia](../guias/integracao/GUIA-DEPLOY-RAILWAY.md)
+
+### Notion como Base de Dados
+
+Padrao de **migracao de planilhas/documentos para databases estruturadas do Notion**, com schema tipado, cliente resiliente com retry, importacao idempotente/retomavel, anexos e reorganizacao programatica do workspace.
+
+**Quando usar:** importar planilhas de controle, migrar documentos de um Drive, montar catalogos/inventarios, consolidar dados espalhados em bases navegaveis.
+
+[Ver guia](../guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md)

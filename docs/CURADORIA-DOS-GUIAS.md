@@ -86,6 +86,8 @@ Atualize esta tabela conforme os guias forem revisados.
 | `guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md` | Revisado | Reescrito como agenda semanal generica com alerta de proximo evento. |
 | `guias/backend/GUIA-BACKEND-CPF.md` | Revisado | Reescrito como guia backend generico, com contratos, testes e guardrails de dados pessoais. |
 | `guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md` | Revisado | Reescrito como guia educacional de cifra, com aviso claro de nao uso para seguranca real. |
+| `guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md` | Revisado | Portado do repositorio de origem via comparacao direta; reescrito no padrao Doktor sem referencia a projeto especifico. |
+| `guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md` | Revisado | Portado do repositorio de origem via comparacao direta; reescrito no padrao Doktor, sem nomes de clientes/projetos de terceiros. |
 
 ## Regra de ouro
 
