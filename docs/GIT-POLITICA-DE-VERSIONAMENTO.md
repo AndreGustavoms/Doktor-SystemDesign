@@ -50,6 +50,18 @@ Use prefixo + descricao curta em kebab-case:
 - `refactor/` - refatoracao. Ex.: `refactor/separa-docs-por-responsabilidade`
 - `docs/` - documentacao (quando, excepcionalmente, virar uma branch). Ex.: `docs/guia-git`
 
+### Apos o merge: apague a branch
+
+Branch tem vida curta: existe so para abrigar a mudanca ate ela entrar no `main`. **Assim que a branch for mesclada, apague-a** - local e remota. Branch ja mesclada que fica para tras polui a lista, confunde quem nao sabe se ainda esta em uso e mascara o que de fato esta em andamento.
+
+```bash
+git branch -d <branch>                 # apaga local (so se ja foi mesclada)
+git push origin --delete <branch>      # apaga a remota
+git fetch --prune                      # limpa referencias remotas que ja sumiram
+```
+
+Regra pratica: **uma branch viva = trabalho em andamento.** Se o trabalho ja entrou no `main`, a branch nao deveria mais existir.
+
 ---
 
 ## 3. Commits - pequenos, frequentes e descritivos
@@ -112,6 +124,8 @@ Documentacao desatualizada conta como **trabalho incompleto**. Ao mudar comporta
 - guias em [`guias/`](../guias/) afetados.
 - o `IA.md` do projeto (contexto operacional, decisoes, proximos passos).
 
+O `IA.md` deve ser preservado como **linha do tempo tecnica**. Quando uma decisao mudar, nao apague nem reescreva o registro antigo; acrescente uma nova entrada datada com contexto, motivo e validacao. O historico explica como o projeto chegou ao estado atual.
+
 Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `docs/`, crie um novo arquivo ali com responsabilidade unica - foi exatamente o caso deste documento de politica de git.
 
 ---
@@ -123,6 +137,8 @@ Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `d
 - [ ] A mensagem segue `tipo(escopo): descricao` no imperativo e explica **o que** e **por que**?
 - [ ] Nao ha segredo, token, caminho local ou contexto privado na mensagem nem nos arquivos.
 - [ ] A documentacao afetada (README, `docs/`, guias, `IA.md`) foi atualizada no mesmo passo.
+- [ ] O `IA.md` manteve registros anteriores e adicionou novas decisoes como entradas datadas.
+- [ ] Se uma branch foi mesclada, ela foi apagada (local e remota) - nenhuma branch ja mesclada ficou para tras.
 
 ---
 

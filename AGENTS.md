@@ -14,10 +14,11 @@
 ## 1. Protocolo de leitura
 
 1. **Leia sempre** [`core/GUIA_MINIMO_QUALIDADE.md`](core/GUIA_MINIMO_QUALIDADE.md) - o contrato curto de qualidade (menos de 100 linhas). Ele vale para qualquer entrega.
-2. **Identifique o tipo de tarefa** e abra apenas os documentos indicados na secao 2.
+2. **Identifique o tipo de tarefa** e abra apenas os documentos indicados na secao 2. Como regra pratica, uma tarefa comum precisa de no maximo 1-2 documentos alem do guia minimo; mais que isso e sinal de que a tarefa deveria ser dividida ou de que voce esta lendo "por garantia".
 3. **Consulte `guias/` somente sob demanda**: use a tabela da secao 3 para ver se a funcionalidade pedida ja tem um guia pronto. Se nao tiver, nao leia nenhum.
-4. **Nao leia documentos "por garantia".** Cada arquivo deste repositorio so e necessario no cenario indicado abaixo.
-5. **Ao levar o padrao para outro projeto**, copie [`templates/AGENTS-template.md`](templates/AGENTS-template.md) como `AGENTS.md` na raiz do projeto destino.
+4. **Nao leia documentos "por garantia".** Cada arquivo deste repositorio so e necessario no cenario indicado abaixo. Para o raciocinio completo de quando isso vale a pena (nivel de tarefa vs. nivel de modelo, reaproveitamento de contexto ja registrado), veja [`core/DESIGN_SYSTEM_ECONOMIA_IA.md`](core/DESIGN_SYSTEM_ECONOMIA_IA.md).
+5. **Antes de editar manualmente, procure automacao existente.** Se houver script, comando, instalador ou ferramenta reutilizavel para a mudanca, reutilize ou estenda esse caminho primeiro. Edicao manual fica como excecao justificada (ver [`core/GUIA_MINIMO_QUALIDADE.md`](core/GUIA_MINIMO_QUALIDADE.md), item 9).
+6. **Ao levar o padrao para outro projeto**, copie [`templates/AGENTS-template.md`](templates/AGENTS-template.md) como `AGENTS.md` na raiz do projeto destino.
 
 ## 2. Roteiro por tipo de tarefa
 
@@ -32,12 +33,14 @@
 | Escolher ou justificar **stack/arquitetura** | [`docs/STACK-E-ARQUITETURA.md`](docs/STACK-E-ARQUITETURA.md) | [`docs/PADROES-OBSERVADOS-GITHUB.md`](docs/PADROES-OBSERVADOS-GITHUB.md) quando precisar alinhar com padroes publicos do autor |
 | Escrever ou revisar **README / documentacao** | [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md) | - |
 | Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/AGENTS-template.md`](templates/AGENTS-template.md) para orientar a IA no projeto destino; [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
-| Criar uma **aplicacao web rodavel** | [`core/GUIA-START-APP-SCRIPT.md`](core/GUIA-START-APP-SCRIPT.md) - todo app web exige um `start_app.py` na raiz | - |
+| Criar **qualquer programa rodavel** (web, CLI, automacao, script...) | [`core/GUIA-START-APP-SCRIPT.md`](core/GUIA-START-APP-SCRIPT.md) - todo programa exige um `start_app.py` na raiz com menu interativo (porta de entrada) | - |
 | Registrar **contexto/memoria do projeto** | [`core/TEMPLATE-CONTEXTO-IA.md`](core/TEMPLATE-CONTEXTO-IA.md) - copie o template e preencha continuamente | - |
+| Decidir **qual nivel de IA usar** ou reduzir gasto de contexto/tokens | [`core/DESIGN_SYSTEM_ECONOMIA_IA.md`](core/DESIGN_SYSTEM_ECONOMIA_IA.md) | - |
 | Validar **projeto pronto** | [`docs/CHECKLIST-PROJETO-PRONTO.md`](docs/CHECKLIST-PROJETO-PRONTO.md) | [`scripts/validate-repo.ps1`](scripts/validate-repo.ps1), quando estiver validando este repo |
 | **Versionar mudancas neste repositorio** | [`docs/GIT-POLITICA-DE-VERSIONAMENTO.md`](docs/GIT-POLITICA-DE-VERSIONAMENTO.md) - direto no `main` por padrao; commits `tipo: descricao`; doc viva no mesmo commit | [CONTRIBUTING.md](CONTRIBUTING.md) (se for via fork) |
 | Preparar **publicacao/divulgacao** do repositorio | [`docs/CHECKLIST-PUBLICACAO.md`](docs/CHECKLIST-PUBLICACAO.md) | [`docs/DECISOES-DE-IDENTIDADE.md`](docs/DECISOES-DE-IDENTIDADE.md) |
 | **Baixar/sincronizar** este repo em outro projeto | [`docs/INSTALACAO-EM-OUTROS-PROJETOS.md`](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) - metodos por clone, ZIP, sparse checkout e scripts | - |
+| **Manter os padroes atualizados** (stack, guias, sincronizar com origem) | [`docs/POLITICA-DE-ATUALIZACAO.md`](docs/POLITICA-DE-ATUALIZACAO.md) | - |
 | Funcionalidade especifica (arvore, heatmap, deploy...) | o guia correspondente na tabela abaixo | [`docs/GUIAS-OPCIONAIS.md`](docs/GUIAS-OPCIONAIS.md) (descricoes completas) |
 
 ## 3. Indice de guias opcionais
@@ -66,8 +69,10 @@ Use um guia **somente** quando a tarefa pedir aquela funcionalidade. As palavras
 
 Valem para agentes alterando **este** repositorio; a fonte completa e [`docs/GIT-POLITICA-DE-VERSIONAMENTO.md`](docs/GIT-POLITICA-DE-VERSIONAMENTO.md).
 
-- **Git**: commite direto no `main` por padrao; branch **so** para feature grande, refatoracao significativa ou alto risco. Commits no formato `tipo(escopo): descricao no imperativo` - tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Um hook nativo em `scripts/hooks/commit-msg` rejeita mensagens fora do padrao.
+- **Git**: commite direto no `main` por padrao; branch **so** para feature grande, refatoracao significativa ou alto risco. Commits no formato `tipo(escopo): descricao no imperativo` - tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Um hook nativo em `scripts/hooks/commit-msg` rejeita mensagens fora do padrao. Branch mesclada deve ser apagada (local e remota) - nao deixe branch morta para tras.
 - **Documentacao viva**: ao mudar comportamento, estrutura ou comandos, atualize README, `docs/`, guias e `IA.md` afetados **no mesmo commit**.
+- **`IA.md` e linha do tempo**: nao apague registros antigos ao mudar uma decisao tecnica. Adicione um novo registro datado explicando a mudanca, o motivo e a validacao, preservando o raciocinio anterior.
+- **Automacao antes de ajuste manual** (com qualidade): ao mexer em codigo ou dados, procure scripts, comandos e ferramentas reutilizaveis primeiro; so faca alteracao manual quando isso for claramente mais pragmatico, e registre a excecao. Scripts e automacoes sao codigo: organizem-se em pasta apropriada (nao na raiz), seguem responsabilidade separada, tratamento de erros, sem hardcodes, com documentacao.
 - **Linguagem**: escrita open source - acessivel a qualquer leitor, sem valores hardcoded, caminhos locais ou contexto privado (referencia: [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md), secao 3.5).
 
 ## 5. O que este repositorio nao e
