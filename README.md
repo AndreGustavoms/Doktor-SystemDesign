@@ -41,6 +41,8 @@ Nao e um framework rigido nem uma stack obrigatoria. E uma base para reduzir ret
 | [docs/PADROES-OBSERVADOS-GITHUB.md](docs/PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar ou sincronizar estes padroes em outros projetos. |
 | [docs/DECISOES-DE-IDENTIDADE.md](docs/DECISOES-DE-IDENTIDADE.md) | Registro das decisoes de autoria, marca, stack e identidade publica. |
+| [docs/POLITICA-DE-ATUALIZACAO.md](docs/POLITICA-DE-ATUALIZACAO.md) | Como manter guias, stack e sincronizacao com a origem atualizados. |
+| [docs/VALIDACAO-SCRIPTS.md](docs/VALIDACAO-SCRIPTS.md) | Estado de validacao dos instaladores e suite de testes automatizados. |
 | [IA.md](IA.md) | Contexto operacional vivo deste repositorio para continuidade entre sessoes. |
 | [guias/](guias/) | Guias opcionais de frontend, backend e integracao, usados somente quando a funcionalidade pedir. |
 | [scripts/](scripts/) | Instaladores do comando global de sincronizacao do Doktor System-Design. |

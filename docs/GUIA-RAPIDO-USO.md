@@ -116,6 +116,8 @@ Leia:
 - [../core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md)
 - [../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md](../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md)
 - [../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md](../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md), se houver caminho tecnico ou arquivo
+- [../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md](../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md), se houver formulario com validacao cruzada ou etapas
+- [../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md](../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md), se houver listagem grande com paginacao no servidor
 
 Entregue:
 
@@ -135,6 +137,8 @@ Leia:
 - [../core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md)
 - [../core/PROMPT_BASE_BACKEND.md](../core/PROMPT_BASE_BACKEND.md)
 - [../docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md)
+- [../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md](../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md), se houver login por token ou OAuth
+- [../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md](../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md), se houver processamento assincrono ou agendado
 
 Entregue:
 

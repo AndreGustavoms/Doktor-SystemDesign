@@ -1,10 +1,27 @@
 # IA.md - Contexto Operacional
 
+## Estado atual (resumo vivo)
+
+<!--
+  EXCECAO a regra append-only: esta secao e um RESUMO reescrevivel (ver
+  core/TEMPLATE-CONTEXTO-IA.md). Reescreva-a a cada mudanca de estado - o
+  historico completo continua protegido na secao "Historico detalhado" abaixo.
+-->
+
+Ultima atualizacao: [2026-07-23]
+
+- Fase: acervo maduro e auditado. Curadoria dos guias importados concluida; 18 guias tecnicos novos/portados no total, todos padronizados (mesma estrutura de secoes, incluindo `Ideias para quem quiser contribuir` e referencias cruzadas relevantes); scripts de instalacao corrigidos e cobertos por 30 testes automatizados.
+- Documentos-nucleo recentes: `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (nivel de tarefa vs. nivel de modelo, economia de contexto) e `docs/POLITICA-DE-ATUALIZACAO.md` (gatilhos de revisao e sincronizacao com a origem).
+- Versao publicada: `0.3.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
+- Git: regra formal de `git pull` antes de comecar a commitar e `git push` automatico ao final de cada leva, sem esperar confirmacao manual (ver `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`, secao 3).
+- Proximo passo natural: nao ha pendencia de alta prioridade conhecida. Manutencao continua: revisar um guia so quando ficar desatualizado tecnicamente, e sempre que um guia novo for adicionado, checar se ele precisa de referencia cruzada com guias relacionados ja existentes.
+- Risco aberto: nenhum bloqueante conhecido; atencao recorrente e manter os documentos de indice (`docs/INDICE-GERAL.md`, `docs/GUIAS-OPCIONAIS.md`, `AGENTS.md`) sincronizados sempre que um guia for adicionado ou renomeado.
+
 ## Objetivo atual
 
 Transformar este repositorio em uma base propria de system design, qualidade e guias reutilizaveis para projetos Doktor, aproveitando o que havia de bom no repositorio de referencia sem copiar identidade pessoal de terceiros para o corpo da documentacao.
 
-## Estado atual
+## Historico detalhado
 
 - Estrutura importada: `core/`, `docs/`, `guias/`, `scripts/`, `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE`.
 - README reescrito para servir como porta de entrada do Doktor System-Design.
@@ -69,6 +86,18 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
   - `core/DESIGN_SYSTEM_ECONOMIA_IA.md`: nova secao 3.1 "O acervo pode crescer sem aumentar o gasto por tarefa" - guia novo e uma linha a mais na tabela de indice (barata), nao mais leitura por tarefa; regra pratica de escolher palavras-chave especificas o suficiente para nao colidir entre guias. Novo item na lista de sinais de gasto desproporcional (mais de 1 guia opcional aberto para a mesma tarefa).
   - `AGENTS.md` e `templates/AGENTS-template.md`: adicionada regra explicita de abrir no maximo 1 guia opcional por tarefa; tabela de indice da secao 3 atualizada com os 8 guias novos e palavras-chave especificas.
   - `docs/GUIAS-OPCIONAIS.md`, `docs/INDICE-GERAL.md`, `docs/CURADORIA-DOS-GUIAS.md`: atualizados com os 8 guias novos.
+- [2026-07-23] Pedido do usuario: "melhore tudo que for possivel para alcancar um nivel de excelencia absoluto, digno de elogios, para quem for usar" + regra de commits sempre separados/bem formatados + pull/push automatico. Rodada de auditoria completa (agente Explore) identificou 15 achados priorizados; todos os de prioridade alta e media foram resolvidos nesta leva:
+  - **Git**: `docs/GIT-POLITICA-DE-VERSIONAMENTO.md` ganhou secao 3 "Sincronizacao com o remoto" - `git pull` antes de comecar a commitar, `git push` automatico ao final de cada leva de commits, sem esperar confirmacao manual (excecoes: force-push, conflito, segredo). Regra propagada a `AGENTS.md`. No `templates/AGENTS-template.md` isso ficou como recomendacao configuravel (decisao do projeto destino), nao regra automatica herdada.
+  - **Achado critico corrigido**: o `IA.md` deste repositorio nao tinha uma secao chamada "Estado atual (resumo vivo)" apesar de `AGENTS.md`, `templates/AGENTS-template.md` e `core/DESIGN_SYSTEM_ECONOMIA_IA.md` instruirem a IA a ler essa secao primeiro. Adicionada a secao no topo do arquivo; a lista cronologica antiga foi renomeada para "Historico detalhado".
+  - **Versionamento**: `VERSION` avancado de 0.2.0 para 0.3.0; `CHANGELOG.md` ganhou entrada completa cobrindo os 8 commits da leva anterior (economia de IA, menu interativo, suite de testes, correcao de bug do PATH, 10 guias novos/portados) - a versao estava "congelada" 30 dias enquanto o acervo evoluiu bastante.
+  - **Padronizacao de guias**: os 15 guias mais antigos (visuais de frontend, backend educacional, integracao) nao tinham a secao `## Ideias para quem quiser contribuir` que os 10 guias mais recentes ja tinham. Adicionada em todos, com conteudo especifico a cada guia (nao generico).
+  - **Referencias cruzadas adicionadas**: `GUIA-CACHE-COM-REDIS.md` <-> `GUIA-FILAS-E-JOBS-ASSINCRONOS.md` (Redis como lock distribuido, uso diferente de cache-aside); `GUIA-AUTENTICACAO-JWT-OAUTH.md` -> `GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md` (nunca logar token/senha).
+  - `docs/CHECKLIST-PUBLICACAO.md`: item de revisao de guias marcado como concluido; nova secao "Publicacao continua" cobrindo tag/versao a cada leva relevante (nao so no lancamento inicial).
+  - `docs/CURADORIA-DOS-GUIAS.md`: a tabela de "Prioridade de revisao" conflitava com a tabela de progresso (uma dizia "pendente", outra "revisado" para os mesmos guias) - reclassificada como registro historico da curadoria inicial, ja concluida.
+  - `docs/CHECKLIST-PROJETO-PRONTO.md`: 2 itens novos referenciando `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (documentos lidos por tarefa, nivel de modelo proporcional).
+  - `docs/POLITICA-DE-ATUALIZACAO.md`: nota de escopo esclarecendo que o documento e especifico deste repositorio e nao deve ser copiado para projetos destino.
+  - Pequenos ajustes de descoberta: `README.md` (mapa rapido ganhou `docs/POLITICA-DE-ATUALIZACAO.md` e `docs/VALIDACAO-SCRIPTS.md`); `docs/GUIA-RAPIDO-USO.md` (exemplos dos guias novos nas secoes de frontend/backend).
+  - Validado apos as mudancas: `scripts/validate-repo.ps1` OK; suite de testes dos instaladores com 30 testes passando, 1 pulado (falta de `rsync`, comportamento esperado).
 
 ## Decisoes tomadas
 
