@@ -12,7 +12,7 @@
 
 ## 1. Resumo em uma frase
 
-**Commite direto no `main`, em commits pequenos e descritivos, atualizando a documentacao no mesmo passo. So crie branch quando a mudanca for grande, arriscada ou precisar ser testada antes de entrar.**
+**Commite direto no `main`, em commits pequenos e descritivos, atualizando a documentacao no mesmo passo. Puxe do remoto antes de comecar e envie ao final da leva de commits, sem esperar confirmacao manual. So crie branch quando a mudanca for grande, arriscada ou precisar ser testada antes de entrar.**
 
 ---
 
@@ -64,7 +64,21 @@ Regra pratica: **uma branch viva = trabalho em andamento.** Se o trabalho ja ent
 
 ---
 
-## 3. Commits - pequenos, frequentes e descritivos
+## 3. Sincronizacao com o remoto - pull antes, push depois, sempre
+
+Este repositorio tem remoto configurado (`origin`) e o fluxo padrao **nao espera confirmacao manual para sincronizar**:
+
+- **Antes de comecar a commitar**: rode `git pull` (ou `git fetch` + `git merge`/`git rebase` conforme o caso) para garantir que o `main` local esta atualizado. Nunca commite por cima de um `main` desatualizado sem saber.
+- **Depois de uma leva de commits concluida**: rode `git push` automaticamente, sem perguntar a cada commit. "Leva concluida" significa: os commits da tarefa atual foram todos criados, a validacao rodou (secao 5) e nao ha mais nada pendente para aquele pedido.
+- Isso vale para agentes de IA trabalhando neste repositorio: push ao final de uma leva de commits e o comportamento padrao esperado, nao uma acao que precisa ser confirmada a cada vez.
+
+Quando isso **nao** se aplica automaticamente:
+
+- Force-push (`push --force`) nunca e automatico - exige confirmacao explicita, sempre.
+- Se o `pull` gerar conflito, resolva o conflito (ou pare e avise) antes de continuar - nunca force a sincronizacao por cima de um conflito.
+- Commits que tocam segredo, credencial ou dado sensivel exigem revisao antes do push, mesmo que o resto do fluxo seja automatico.
+
+## 4. Commits - pequenos, frequentes e descritivos
 
 ### Frequencia
 
@@ -115,7 +129,7 @@ Se voce esta limpando codigo antigo **e** entregando uma regra de negocio nova, 
 
 ---
 
-## 4. Documentacao viva - parte do mesmo commit
+## 5. Documentacao viva - parte do mesmo commit
 
 Documentacao desatualizada conta como **trabalho incompleto**. Ao mudar comportamento, estrutura ou comandos, atualize **no mesmo commit** (ou na mesma sequencia coesa) os documentos afetados:
 
@@ -130,7 +144,7 @@ Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `d
 
 ---
 
-## 5. Checklist antes de commitar
+## 6. Checklist antes de commitar
 
 - [ ] A mudanca vai para o `main`? (Se for criar branch, ela e feature grande, refatoracao significativa ou alto risco?)
 - [ ] O commit e uma unidade coesa, com escopo claro?
@@ -139,10 +153,12 @@ Se um tema de documentacao nao couber naturalmente nos arquivos existentes de `d
 - [ ] A documentacao afetada (README, `docs/`, guias, `IA.md`) foi atualizada no mesmo passo.
 - [ ] O `IA.md` manteve registros anteriores e adicionou novas decisoes como entradas datadas.
 - [ ] Se uma branch foi mesclada, ela foi apagada (local e remota) - nenhuma branch ja mesclada ficou para tras.
+- [ ] O `main` local foi atualizado (`git pull`) antes de comecar a commitar.
+- [ ] Ao final da leva de commits, o push para o remoto foi feito - sem esperar confirmacao manual, exceto nos casos da secao 3 (force-push, conflito, segredo).
 
 ---
 
-## 6. Hook de validacao de commit (opcional mas recomendado)
+## 7. Hook de validacao de commit (opcional mas recomendado)
 
 O arquivo `scripts/hooks/commit-msg` bloqueia qualquer commit cuja mensagem nao siga o padrao Conventional Commits. Zero dependencias - e um script shell nativo do Git.
 
@@ -169,6 +185,6 @@ Hooks ficam em `.git/hooks/`, que o Git nao versiona. Cada pessoa precisa rodar 
 
 ---
 
-## 7. Contribuicao externa (via fork)
+## 8. Contribuicao externa (via fork)
 
 Tudo acima vale para quem trabalha **direto neste repositorio**. Quem contribui **de fora** segue o fluxo de fork + branch + Pull Request descrito em [`CONTRIBUTING.md`](../CONTRIBUTING.md), onde criar branch e parte natural do processo.

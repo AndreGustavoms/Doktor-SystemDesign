@@ -54,7 +54,8 @@ Se um arquivo indicado ainda nao existir neste projeto, consulte a copia sincron
 - Antes de usar uma API, biblioteca ou metodo, confirme que ela existe na versao instalada - nao presuma de memoria.
 - Registre validacao objetiva com evidencia real de execucao: comando de teste rodado e saida observada, checklist manual, ou motivo de nao haver teste automatico. "Deve funcionar" nao e validacao.
 - Prefira automacao a edicao manual quando ja existir script ou ferramenta reutilizavel para a mudanca; scripts seguem os mesmos padroes de qualidade do projeto.
-- Ao versionar, use Conventional Commits: `tipo(escopo): descricao no imperativo`. Tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Apague branches ja mescladas.
+- Ao versionar, use Conventional Commits: `tipo(escopo): descricao no imperativo`. Tipos validos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`. Cada commit e uma unidade coesa e separada - nao misture temas diferentes no mesmo commit. Apague branches ja mescladas.
+- Sincronizacao com o remoto (`git pull` antes, `git push` depois de cada leva) e uma decisao do projeto destino, nao uma regra automatica herdada do Doktor - confirme com quem mantem o projeto se push automatico e aceitavel antes de adotar esse fluxo.
 - Nunca exponha segredo, token, dado pessoal ou caminho local privado em documentacao publica.
 
 ## 5. Criterio de pronto
