@@ -96,9 +96,25 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 **Painel de listagem** com busca, filtros combinaveis, ordenacao, multiplos modos de visualizacao (grade/lista/kanban), colunas ajustaveis e reordenacao por arrastar, tudo persistido em `localStorage`.
 
-**Quando usar:** listas grandes de itens homogeneos (projetos, produtos, tarefas, artigos) que precisam de filtro, ordenacao e visualizacao configuraveis.
+**Quando usar:** listas grandes de itens homogeneos (projetos, produtos, tarefas, artigos) que precisam de filtro, ordenacao e visualizacao configuraveis, quando os dados cabem no cliente.
 
 [Ver guia](../guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md)
+
+### Formularios Complexos
+
+**Formularios com validacao cruzada**, campos condicionais e submissao em etapas (wizard), usando `react-hook-form` + schema de validacao.
+
+**Quando usar:** cadastros com mais de ~4 campos, validacao entre campos (confirmar senha, datas relacionadas), ou fluxo de multiplas etapas.
+
+[Ver guia](../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md)
+
+### Tabela de Dados Server-Side
+
+**Tabela com paginacao, ordenacao e filtro processados no servidor**, estado sincronizado com a URL e busca com debounce.
+
+**Quando usar:** listagens com milhares de linhas ou mais, onde carregar tudo no cliente nao e viavel.
+
+[Ver guia](../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md)
 
 ## Backend
 
@@ -117,6 +133,30 @@ Sistemas reutilizaveis da **Cifra de Cesar em Python**: cifra tradicional, cifra
 **Quando usar:** apps educacionais de criptografia, playgrounds web, utilitarios de encode/decode.
 
 [Ver guia](../guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md)
+
+### Autenticacao JWT e OAuth
+
+**Autenticacao stateless com JWT** (access/refresh token, revogacao) e **login social via OAuth2/OpenID Connect**, com checklist contra IDOR e vazamento de sessao.
+
+**Quando usar:** API que precisa autenticar via token para consumo mobile/SPA, ou login por Google/GitHub/Microsoft.
+
+[Ver guia](../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md)
+
+### Filas e Jobs Assincronos
+
+**Processamento assincrono** (Celery + Redis como exemplo) com idempotencia, retry com backoff e jobs agendados com garantia de execucao unica.
+
+**Quando usar:** operacao lenta demais para o ciclo de request-response, ou tarefa que precisa rodar em horario agendado.
+
+[Ver guia](../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md)
+
+### Cache com Redis
+
+**Cache-aside com TTL explicito**, invalidacao no fluxo de escrita, fallback quando o Redis cai, sessao compartilhada e rate limiting.
+
+**Quando usar:** consulta/calculo caro e repetido, ou sessao compartilhada entre multiplos processos/workers.
+
+[Ver guia](../guias/backend/GUIA-CACHE-COM-REDIS.md)
 
 ## Integracao
 
@@ -153,3 +193,27 @@ Padrao de **migracao de planilhas/documentos para databases estruturadas do Noti
 **Quando usar:** importar planilhas de controle, migrar documentos de um Drive, montar catalogos/inventarios, consolidar dados espalhados em bases navegaveis.
 
 [Ver guia](../guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md)
+
+### Integracao LLM e Agentes
+
+**Cliente isolado para LLM**, prompt versionado, saida estruturada e validada, tool use com limite de iteracoes e RAG basico com chunking e citacao de fonte.
+
+**Quando usar:** integrar chamada de modelo de linguagem para gerar, classificar, extrair ou orquestrar ferramentas.
+
+[Ver guia](../guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md)
+
+### CI/CD Basico
+
+**Pipeline de integracao continua** (GitHub Actions como exemplo): lint e testes automaticos em todo push/PR, cache de dependencias, segredos protegidos e deploy condicionado ao sucesso dos testes.
+
+**Quando usar:** projeto com testes automatizados e mais de uma pessoa/agente contribuindo.
+
+[Ver guia](../guias/integracao/GUIA-CI-CD-BASICO.md)
+
+### Observabilidade: Logs e Health Checks
+
+**Logs estruturados** com correlacao por requisicao, **health check** que verifica dependencias reais (banco, cache) e metricas minimas de erro/latencia.
+
+**Quando usar:** sistema em producao onde alguem precisa depurar um erro sem acesso ao ambiente rodando ao vivo.
+
+[Ver guia](../guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md)

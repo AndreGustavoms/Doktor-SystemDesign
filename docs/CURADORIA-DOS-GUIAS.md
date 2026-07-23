@@ -88,6 +88,14 @@ Atualize esta tabela conforme os guias forem revisados.
 | `guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md` | Revisado | Reescrito como guia educacional de cifra, com aviso claro de nao uso para seguranca real. |
 | `guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md` | Revisado | Portado do repositorio de origem via comparacao direta; reescrito no padrao Doktor sem referencia a projeto especifico. |
 | `guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md` | Revisado | Portado do repositorio de origem via comparacao direta; reescrito no padrao Doktor, sem nomes de clientes/projetos de terceiros. |
+| `guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md` | Revisado | Guia novo (nao vem da origem): integracao com LLM, prompt versionado, tool use, RAG basico, sem prender a provedor especifico. |
+| `guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md` | Revisado | Guia novo: JWT com refresh/revogacao, autorizacao por objeto (IDOR), OAuth2/OIDC via biblioteca madura. |
+| `guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md` | Revisado | Guia novo: idempotencia, retry com backoff, execucao unica de job agendado. |
+| `guias/backend/GUIA-CACHE-COM-REDIS.md` | Revisado | Guia novo: cache-aside, TTL explicito, invalidacao, fallback de falha do Redis. |
+| `guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md` | Revisado | Guia novo: validacao cruzada, campos condicionais, wizard, acessibilidade de formulario. |
+| `guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md` | Revisado | Guia novo: paginacao/ordenacao/filtro server-side, estado sincronizado com URL, debounce. |
+| `guias/integracao/GUIA-CI-CD-BASICO.md` | Revisado | Guia novo: pipeline de CI com GitHub Actions, cache, segredos, deploy condicionado. |
+| `guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md` | Revisado | Guia novo: logs estruturados, correlacao por request ID, health check com dependencias reais. |
 
 ## Regra de ouro
 

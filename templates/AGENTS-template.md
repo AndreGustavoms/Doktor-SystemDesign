@@ -22,7 +22,7 @@ Este arquivo nao e um framework rigido. Ele e um roteador leve:
 1. Leia sempre `core/GUIA_MINIMO_QUALIDADE.md`.
 2. Antes de alterar arquivos, leia `IA.md` se ele existir - comece pela secao "Estado atual (resumo vivo)", nao pelo historico completo.
 3. Use `README.md` para entender setup, comandos e objetivo publico.
-4. Depois disso, abra apenas os documentos indicados na secao 3. Uma tarefa comum precisa de no maximo 1-2 documentos alem do guia minimo.
+4. Depois disso, abra apenas os documentos indicados na secao 3. Uma tarefa comum precisa de no maximo 1-2 documentos alem do guia minimo. Ter mais guias opcionais disponiveis no acervo (ver ultima linha da secao 3) nao significa ler mais - abra no maximo 1 guia opcional por tarefa.
 5. Antes de editar manualmente, procure automacao existente (script, comando, instalador). Reutilize ou estenda antes de editar na mao; se editar manualmente, registre o motivo.
 
 Se um arquivo indicado ainda nao existir neste projeto, consulte a copia sincronizada do Doktor System-Design ou copie apenas o documento necessario.

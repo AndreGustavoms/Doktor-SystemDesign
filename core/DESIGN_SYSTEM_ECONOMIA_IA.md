@@ -51,6 +51,15 @@ Isto vale para qualquer tier de modelo, inclusive o mais avancado: contexto gast
  - Reaproveite prompts de sistema e contexto estavel entre chamadas em vez de reenviar tudo do zero a cada requisicao, quando a API/ferramenta suportar cache de prompt.
  - Em fluxos automatizados (scripts, integracoes), evite chamar o modelo mais de uma vez para a mesma pergunta; registre e reutilize a resposta quando fizer sentido.
 
+### 3.1 O acervo pode crescer sem aumentar o gasto por tarefa
+
+Um erro comum e achar que "mais guias no repositorio" significa "mais leitura por tarefa". Nao significa, se o roteamento for feito direito:
+
+- Um guia novo em `guias/` e **uma linha a mais na tabela de busca por palavra-chave** do `AGENTS.md` (secao 3) - a IA le a tabela inteira (que e barata, poucas linhas de texto) e abre **no maximo 1** guia que combina com a tarefa, nunca vira-los todos.
+- O custo de adicionar um guia novo e proporcional ao tamanho da tabela de indice, nao ao tamanho do guia em si - o guia so e lido quando a tarefa pedir exatamente aquele dominio.
+- Isso so funciona se a palavra-chave de cada guia for especifica o suficiente para nao colidir com varios guias na mesma busca. Guia novo com palavras-chave genericas demais (ex.: "api", "dados") aumenta ambiguidade e faz a IA abrir mais de um candidato "para conferir qual serve".
+- Regra pratica ao adicionar um guia novo: escolha 4-6 palavras-chave especificas do dominio (nome de tecnologia, termo tecnico exato), teste mentalmente se um prompt tipico do dominio bate so nesse guia e nao em 2-3 outros ao mesmo tempo.
+
 ---
 
 ## 4. Sinais de que o gasto esta desproporcional
@@ -60,6 +69,7 @@ Isto vale para qualquer tier de modelo, inclusive o mais avancado: contexto gast
 - Uma tarefa mecanica (rename, busca, formatacao) foi enviada para o modelo mais avancado disponivel.
 - Uma decisao de arquitetura ou seguranca foi tomada no modelo mais economico sem revisao posterior.
 - O `IA.md` do projeto nao reflete decisoes ja tomadas, forcando a IA a redescobrir contexto por leitura de codigo a cada sessao.
+- Mais de 1 guia opcional foi aberto para a mesma tarefa "para comparar qual serve melhor" - sinal de que as palavras-chave dos guias envolvidos estao ambiguas demais (ver secao 3.1).
 
 Quando notar um desses sinais, ajuste o fluxo antes de continuar - nao acumule o desperdicio "porque ja comecou assim".
 

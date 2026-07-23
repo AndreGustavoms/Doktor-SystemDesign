@@ -75,6 +75,8 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-CALENDARIO-ACADEMICO.md](../guias/frontend/GUIA-CALENDARIO-ACADEMICO.md) | Calendario mensal com eventos. |
 | [GUIA-SISTEMA-DE-ALERTA-E-GRADE.md](../guias/frontend/GUIA-SISTEMA-DE-ALERTA-E-GRADE.md) | Alertas e grade de horarios. |
 | [GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md](../guias/frontend/GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md) | Painel de listagem com filtros, ordenacao e views grade/lista/kanban. |
+| [GUIA-FORMULARIOS-COMPLEXOS.md](../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md) | Formularios com validacao cruzada, campos condicionais e wizard. |
+| [GUIA-TABELA-DE-DADOS-SERVER-SIDE.md](../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md) | Tabela com paginacao/ordenacao/filtro processados no servidor. |
 
 ## Guias backend
 
@@ -82,6 +84,9 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 |------|-------------|
 | [GUIA-BACKEND-CPF.md](../guias/backend/GUIA-BACKEND-CPF.md) | Geracao, validacao e normalizacao de CPF. |
 | [GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md](../guias/backend/GUIA-CRIPTOGRAFIA-CIFRA-DE-CESAR.md) | Cifra de Cesar tradicional/numerica e uso educacional. |
+| [GUIA-AUTENTICACAO-JWT-OAUTH.md](../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md) | Autenticacao JWT (access/refresh) e login social OAuth2/OIDC. |
+| [GUIA-FILAS-E-JOBS-ASSINCRONOS.md](../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md) | Jobs assincronos e agendados com fila, idempotencia e retry. |
+| [GUIA-CACHE-COM-REDIS.md](../guias/backend/GUIA-CACHE-COM-REDIS.md) | Cache-aside com Redis, invalidacao e sessao compartilhada. |
 
 ## Guias de integracao
 
@@ -91,6 +96,9 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-SCRAPING-MULTIFORMATO.md](../guias/integracao/GUIA-SCRAPING-MULTIFORMATO.md) | Scraping, parsers, Playwright e ETL. |
 | [GUIA-DEPLOY-RAILWAY.md](../guias/integracao/GUIA-DEPLOY-RAILWAY.md) | Deploy no Railway. |
 | [GUIA-NOTION-COMO-BASE-DE-DADOS.md](../guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md) | Migrar planilhas/documentos para databases do Notion. |
+| [GUIA-INTEGRACAO-LLM-E-AGENTES.md](../guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md) | Integracao com LLM: cliente isolado, prompt versionado, tool use, RAG. |
+| [GUIA-CI-CD-BASICO.md](../guias/integracao/GUIA-CI-CD-BASICO.md) | Pipeline de CI/CD: lint/teste automatico e deploy condicionado. |
+| [GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md](../guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md) | Logs estruturados, health check e metricas minimas. |
 
 ## Scripts
 
