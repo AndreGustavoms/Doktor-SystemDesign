@@ -35,7 +35,9 @@ Obrigatorio:
 - separar UI, services e utilidades;
 - validar textos para nao estourarem containers;
 - manter acessibilidade basica;
-- atualizar README/IA.md/docs se comportamento ou comandos mudarem;
+- antes de usar uma API/lib/prop, confirmar que existe na versao instalada (nao presumir de memoria);
+- rodar build/lint/testes de verdade e reportar a saida real ("deve funcionar" nao e validacao);
+- atualizar README/IA.md em tempo real conforme o estado do projeto muda, nao so ao final;
 - informar como foi validado.
 ```
 
@@ -85,18 +87,26 @@ Arquitetura esperada:
 - componentes de dominio separados;
 - services/hooks fora da camada visual;
 - tokens ou constantes visuais reutilizaveis;
-- estados de loading, vazio, erro e sucesso.
+- estados de loading, vazio, erro e sucesso;
+- prefira componentes compostos quando houver multiplas partes.
+
+Forma de trabalhar:
+- garanta responsividade a cada etapa, nao so no final;
+- verifique a responsividade com evidencia real: rode o app e inspecione os breakpoints (browser, screenshot); se nao houver como ver a interface, peca para o usuario validar e registre o resultado no `IA.md` - nunca afirme ter testado visualmente sem ter visto;
+- antes de usar uma API, biblioteca ou prop, confirme que ela existe na versao instalada - nao presuma de memoria;
+- rode build, lint e testes e observe a saida real antes de dar a etapa por concluida;
+- atualize README/IA.md em tempo real a cada mudanca relevante de estado do projeto.
 
 Validacao esperada:
-- rodar build/lint/test quando existir;
-- validar visualmente mobile e desktop;
+- rodar build/lint/test quando existir, com saida real observada e reportada;
+- validar visualmente mobile e desktop com evidencia real (execucao, screenshot ou validacao do usuario);
 - registrar verificacao manual quando nao houver teste automatico;
 - apontar risco residual.
 
 Entrega:
 - implementar ou revisar a solucao;
 - atualizar documentacao afetada;
-- explicar o que mudou, por que mudou, como foi validado e qual risco sobrou.
+- explicar o que mudou, por que mudou, como foi validado (com evidencia real) e qual risco sobrou.
 ```
 
 ## 3. Escolha de stack
@@ -145,4 +155,6 @@ Evite pedir ou aceitar:
 - texto decorativo explicando como usar a propria interface;
 - UI dependente de uma unica cor sem hierarquia;
 - animacao constante competindo com conteudo;
+- afirmar que testou responsividade sem ter executado o app ou visto a interface;
+- usar API, biblioteca ou prop sem confirmar que existe na versao instalada;
 - mudanca sem atualizacao de README/IA.md quando comandos ou comportamento mudam.

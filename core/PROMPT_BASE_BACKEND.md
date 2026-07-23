@@ -34,7 +34,9 @@ Obrigatorio:
 - validar entradas;
 - padronizar erros;
 - proteger segredos;
-- atualizar README/IA.md/docs se comportamento ou comandos mudarem;
+- antes de usar uma API/lib/metodo, confirmar que existe na versao instalada (nao presumir de memoria);
+- executar os testes de verdade e reportar a saida real ("deve passar" nao e validacao);
+- atualizar README/IA.md em tempo real conforme o estado do projeto muda, nao so ao final;
 - informar como foi validado.
 ```
 
@@ -82,17 +84,24 @@ Arquitetura esperada:
 - dominio para regras centrais;
 - repositories/models para persistencia;
 - integrations/adapters para terceiros;
-- configuracao por variaveis de ambiente.
+- configuracao por variaveis de ambiente;
+- pense primeiro na ferramenta reutilizavel antes da solucao pontual, e planeje pontos de extensao (Strategy/adapters) para variacoes previsiveis.
+
+Forma de trabalhar:
+- comece pelos testes sempre que possivel: comportamento -> teste -> implementacao -> refatoracao (TDD);
+- antes de usar uma API, biblioteca ou metodo, confirme que ela existe na versao instalada (doc oficial ou codigo) - nao presuma de memoria;
+- execute os testes de verdade e observe a saida real; nao avance de etapa com teste falhando nem declare validacao sem execucao;
+- atualize README/IA.md em tempo real a cada mudanca relevante de estado do projeto, nao apenas no fim.
 
 Validacao esperada:
-- testes automatizados quando possivel;
+- testes automatizados quando possivel, com saida real observada e reportada;
 - verificacao manual objetiva quando teste automatico nao for viavel;
 - registro de risco residual.
 
 Entrega:
 - implementar ou revisar a solucao;
 - atualizar documentacao afetada;
-- explicar o que mudou, por que mudou, como foi validado e qual risco sobrou.
+- explicar o que mudou, por que mudou, como foi validado (com evidencia real de execucao) e qual risco sobrou.
 ```
 
 ## 3. Escolha de stack
@@ -142,4 +151,6 @@ Evite pedir ou aceitar:
 - resposta sem validacao;
 - excecao generica escondendo erro;
 - stack escolhida por preferencia sem justificativa;
+- usar API, biblioteca ou metodo sem confirmar que existe na versao instalada;
+- declarar testes/validacao "deve passar" sem executar e observar a saida real;
 - mudanca sem atualizacao de README/IA.md quando comandos ou comportamento mudam.

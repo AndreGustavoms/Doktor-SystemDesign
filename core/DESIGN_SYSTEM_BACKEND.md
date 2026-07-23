@@ -65,7 +65,14 @@ Quando houver variacoes previsiveis de comportamento, prefira pontos de extensao
 - services especializados;
 - configuracao declarativa.
 
-Evite `if/else` crescente concentrando varias regras no mesmo lugar.
+Evite `if/else` crescente concentrando varias regras no mesmo lugar. O padrao Strategy e uma referencia util: quando houver variacoes de comportamento previsiveis, modele pontos de extensao em vez de concentrar decisoes em condicionais crescentes.
+
+### Ferramenta antes da solucao especifica
+
+- Sempre que possivel, projete primeiro a **ferramenta reutilizavel** e so depois a aplicacao pontual dessa ferramenta.
+- Em vez de escrever codigo acoplado a um unico caso, prefira criar uma base moldavel que aceite variacoes previsiveis.
+- A solucao concreta deve ser uma composicao da ferramenta, nao um bloco rigido que resolve apenas o caso atual.
+- Esse principio e especialmente util em automacoes, scripts e fluxos que tendem a ganhar novas regras com o tempo.
 
 ## 3. Stack padrao
 
@@ -95,12 +102,12 @@ Uma estrutura backend saudavel separa pelo menos estas responsabilidades:
 ```text
 backend/
 |-- app/
-|   |-- api/              # rotas, views, serializers, DTOs
-|   |-- services/         # casos de uso e orquestracao
-|   |-- domain/           # regras centrais e entidades de negocio
-|   |-- repositories/     # consultas e acesso estruturado a dados
-|   |-- integrations/     # APIs externas, storage, email, filas
-|   `-- core/             # config, auth, logging, utilidades
+| |-- api/ # rotas, views, serializers, DTOs
+| |-- services/ # casos de uso e orquestracao
+| |-- domain/ # regras centrais e entidades de negocio
+| |-- repositories/ # consultas e acesso estruturado a dados
+| |-- integrations/ # APIs externas, storage, email, filas
+| `-- core/ # config, auth, logging, utilidades
 |-- tests/
 |-- docs/
 |-- README.md
@@ -135,9 +142,9 @@ Use respostas consistentes:
 
 ```json
 {
-  "data": {},
-  "meta": {},
-  "errors": []
+ "data": {},
+ "meta": {},
+ "errors": []
 }
 ```
 
@@ -217,6 +224,17 @@ Priorize testes para:
 
 Quando teste automatico nao for viavel, registre verificacao manual objetiva no PR, README ou `IA.md`.
 
+### Testes primeiro como padrao de partida (TDD)
+
+- O fluxo preferencial e **TDD (Test-Driven Development)**: **definir comportamento -> escrever teste -> implementar -> refatorar**.
+- Comecar pelos testes ajuda a construir a ferramenta e o sistema em torno de comportamento verificavel, em vez de acopla-los a uma implementacao improvisada.
+- Testes funcionam como trilho de seguranca para manter o codigo moldavel durante extensoes futuras.
+- Excecoes podem existir em spikes exploratorios curtos, mas a consolidacao da solucao deve voltar para um estado protegido por testes.
+
+### Validacao exige evidencia real
+
+Um teste so conta como validacao se foi **executado** e a saida real foi observada - "os testes devem passar" nao e validacao. Regua unica do repositorio (igual a do [`GUIA_MINIMO_QUALIDADE.md`](GUIA_MINIMO_QUALIDADE.md), item 7): teste automatizado obrigatorio para logica de negocio, contrato e correcao de bug; opcional apenas para o que e puramente apresentacional, com verificacao manual registrada.
+
 ## 12. Start app
 
 Todo app web deve ter `start_app.py` na raiz quando for executavel localmente.
@@ -231,22 +249,35 @@ Esse script deve:
 
 Detalhes em [GUIA-START-APP-SCRIPT.md](GUIA-START-APP-SCRIPT.md).
 
-## 13. Checklist backend
+## 13. Documentacao viva durante execucao assistida por IA
+
+Quando a implementacao estiver sendo conduzida com apoio de IA, `README.md` e `IA.md` devem ser tratados como documentos vivos do projeto, nao como tarefa de encerramento:
+
+- `README.md` deve refletir o estado atual utilizavel do sistema.
+- `IA.md` deve refletir contexto tecnico, decisoes, mudancas, bugs, testes e proximos passos.
+- `IA.md` deve preservar a linha do tempo tecnica: decisoes antigas nao devem ser apagadas quando forem superadas; registre uma nova entrada datada com motivo e validacao.
+- Nao deixe a atualizacao desses arquivos apenas para o fim do trabalho: a cada resposta relevante de execucao, se o estado do projeto mudou, a documentacao tambem deve mudar.
+- Se uma decisao tecnica foi tomada, um fluxo foi implementado, um bug foi corrigido ou um teste relevante foi rodado, registre isso em tempo real, nao no resumo final.
+
+Regra pratica: `README.md` registra o que humanos precisam saber para entender e usar o projeto; `IA.md` registra o que outra IA precisa saber para retomar o contexto sem reler todo o codigo.
+
+## 14. Checklist backend
 
 Antes de considerar uma entrega pronta:
 
 - [ ] A stack escolhida esta documentada ou segue a baseline.
 - [ ] As responsabilidades estao separadas.
 - [ ] Regras de negocio nao estao presas em views/controllers.
+- [ ] O codigo favorece extensao com minimo de modificacao no nucleo (Strategy/adapters quando aplicavel).
 - [ ] Entradas externas sao validadas.
 - [ ] Erros sao previsiveis e seguros.
 - [ ] Segredos nao estao no repositorio nem nos logs.
 - [ ] Contratos de API foram preservados ou documentados.
 - [ ] Persistencia esta organizada e com migrations coerentes.
 - [ ] Integracoes externas estao isoladas.
-- [ ] Testes/verificacoes cobrem o risco principal.
-- [ ] README, `IA.md` e docs afetados foram atualizados.
+- [ ] Testes/verificacoes cobrem o risco principal, com saida real observada (nao apenas "deve passar").
+- [ ] README, `IA.md` e docs afetados foram atualizados em tempo real durante o trabalho, nao so ao final.
 
-## 14. Frase de controle
+## 15. Frase de controle
 
 Um backend bom para o Doktor System-Design e aquele que uma pessoa consegue entender, testar, operar e modificar sem depender da conversa original que levou a sua criacao.
