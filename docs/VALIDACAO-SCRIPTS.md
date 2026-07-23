@@ -25,6 +25,36 @@ Validacao completa realizada em Windows (Git Bash + PowerShell 5.1 + CMD), em 20
 - Testar Bash/Zsh nativo no Linux, macOS ou WSL com `rsync` disponivel.
 - Confirmar que `doktor` em Zsh detecta corretamente o `.zshrc`.
 
+## Suite de testes automatizados dos instaladores
+
+Alem da validacao manual acima, o repositorio tem testes automatizados que exercitam os
+tres instaladores sem tocar no ambiente real do usuario (perfil, PATH e registro sao
+redirecionados por variaveis de ambiente proprias para teste: `DOKTOR_PROFILE`,
+`DOKTOR_NO_PAUSE`, `DOKTOR_PATH_REG`, `DOKTOR_REPO_URL`).
+
+Rodar tudo de uma vez:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/tests/run-tests.ps1
+```
+
+Isso executa:
+
+| Suite | O que cobre |
+|-------|-------------|
+| [`scripts/tests/installers.tests.ps1`](../scripts/tests/installers.tests.ps1) | Instalar/reinstalar/desinstalar nos tres terminais (PowerShell, CMD, Bash quando disponivel com `rsync`) |
+| [`scripts/cmd/tests/ensure-gitignore.tests.ps1`](../scripts/cmd/tests/ensure-gitignore.tests.ps1) | Passo de `.gitignore` automatico do `doktor-command.cmd`: idempotencia, nomes acentuados, preservacao de conteudo existente |
+
+No Linux/macOS/WSL, ha tambem uma suite bash nativa equivalente para o instalador Bash/Zsh:
+
+```bash
+bash scripts/bash-zsh/tests/installers.tests.sh
+```
+
+Casos que dependem de `rsync` (Bash) sao pulados com aviso quando a dependencia nao esta
+disponivel no ambiente - o Git Bash do Windows nao inclui `rsync` por padrao (ver nota
+acima); isso e esperado e nao indica falha do instalador.
+
 ## Validacao segura automatizada
 
 Rode:

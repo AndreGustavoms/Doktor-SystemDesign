@@ -16,6 +16,7 @@ set "DEST_NAME=doktor SystemDesign"
 
 if /I "%~1"=="-h" goto :help
 if /I "%~1"=="--help" goto :help
+if /I "%~1"=="--ensure-gitignore" goto :ensure_gitignore_entry
 
 where git >nul 2>nul
 if errorlevel 1 (
@@ -56,6 +57,10 @@ if %RC% EQU 0 (
 ) else (
   echo %C_OK%[doktor OK]%C_RESET% Atualizado para %SHA%.
 )
+
+rem --- se estiver dentro de um repositorio git, garante a pasta no .gitignore ---
+call :ensure_gitignore
+
 echo %C_OK%[doktor OK]%C_RESET% Concluido em .\%DEST_NAME%
 exit /b 0
 
@@ -63,3 +68,38 @@ exit /b 0
 echo Uso: doktor
 echo Sincroniza o Doktor System-Design em ".\%DEST_NAME%".
 exit /b 0
+
+:ensure_gitignore_entry
+rem ============================================================================
+rem  Entrada interna (nao documentada ao usuario) para os testes automatizados.
+rem  Executa SOMENTE o passo do .gitignore, sem clonar nada, no repositorio git
+rem  do diretorio atual. Uso:
+rem     doktor-command.cmd --ensure-gitignore ["<NOME_DA_PASTA>"]
+rem  O segundo argumento (opcional) sobrescreve o nome da pasta de destino, para
+rem  os testes exercitarem nomes acentuados/variados.
+rem ============================================================================
+if not "%~2"=="" set "DEST_NAME=%~2"
+call :ensure_gitignore
+exit /b 0
+
+:ensure_gitignore
+rem ============================================================================
+rem  Garante que "<DEST_NAME>/" apareca UMA UNICA VEZ no .gitignore da raiz do
+rem  repositorio git atual (se houver). Fora de um repositorio git, nao faz nada.
+rem
+rem  Por que delegar ao PowerShell: sob UTF-8 (chcp 65001) o findstr do CMD nao
+rem  casa nomes ACENTUADOS -- o .gitignore e gravado em UTF-8 (ex.: "a" com til =
+rem  bytes C3 A3), mas o findstr procura em OEM, entao nunca encontra a linha e a
+rem  entrada seria DUPLICADA a cada execucao. Alem disso, e preciso garantir a
+rem  quebra de linha final, para nao colar a entrada na linha anterior e fazer o
+rem  git NAO ignorar a pasta. O PowerShell compara (case-sensitive, linha exata)
+rem  e grava em UTF-8 SEM BOM, de forma idempotente e preservando o conteudo.
+rem ============================================================================
+git rev-parse --is-inside-work-tree >nul 2>nul
+if errorlevel 1 goto :eof
+set "GIT_ROOT="
+for /f "delims=" %%R in ('git rev-parse --show-toplevel 2^>nul') do set "GIT_ROOT=%%R"
+if not defined GIT_ROOT goto :eof
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='Stop'; $f=Join-Path $env:GIT_ROOT '.gitignore'; $e=$env:DEST_NAME+'/'; $u=New-Object System.Text.UTF8Encoding($false); $exists=Test-Path -LiteralPath $f; $lines=if($exists){[System.IO.File]::ReadAllLines($f,$u)}else{@()}; if($lines -ccontains $e){exit 0}; $cur=if($exists){[System.IO.File]::ReadAllText($f,$u)}else{''}; if($cur.Length -gt 0 -and $cur[-1] -ne \"`n\"){$cur+=\"`r`n\"}; [System.IO.File]::WriteAllText($f,$cur+$e+\"`r`n\",$u); exit 10"
+if errorlevel 10 echo %C_OK%[doktor OK]%C_RESET% Pasta adicionada ao .gitignore do repositorio: %DEST_NAME%/
+goto :eof

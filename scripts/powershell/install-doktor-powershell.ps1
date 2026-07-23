@@ -8,6 +8,11 @@
 
 .PARAMETER Uninstall
   Remove a funcao "doktor" do perfil.
+
+.NOTES
+  Variaveis de ambiente para automacao/teste (nao usadas em uso normal):
+    DOKTOR_PROFILE    sobrescreve o caminho do $PROFILE alvo
+    DOKTOR_NO_PAUSE   se definida, nao pausa no final (modo automatizado)
 #>
 [CmdletBinding()]
 param(
@@ -116,8 +121,27 @@ $BlockEnd
 "@
 
 function Get-ProfilePath {
+    if ($env:DOKTOR_PROFILE) { return $env:DOKTOR_PROFILE }
     if ($PROFILE -and $PROFILE.CurrentUserAllHosts) { return $PROFILE.CurrentUserAllHosts }
     return $PROFILE
+}
+
+function Confirm-ExecutionPolicy {
+    # No Windows, a ExecutionPolicy padrao (Restricted) impede o PowerShell de
+    # carregar o $PROFILE -- o comando "doktor" ficaria instalado mas nunca
+    # apareceria. Ajusta para RemoteSigned no escopo do usuario, se preciso.
+    if ($env:OS -ne 'Windows_NT') { return }
+    $effective = Get-ExecutionPolicy
+    if ($effective -notin @('Restricted', 'AllSigned')) { return }
+    try {
+        Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force -ErrorAction Stop
+        Write-Ok "ExecutionPolicy ajustada de '$effective' para 'RemoteSigned' (escopo do usuario) - sem isso o PowerShell nao carrega o `$PROFILE e o comando `"doktor`" nao funcionaria."
+    }
+    catch {
+        Write-Warn2 "A ExecutionPolicy atual ('$effective') impede o PowerShell de carregar o `$PROFILE - o comando `"doktor`" NAO vai funcionar ate voce ajustar."
+        Write-Warn2 'Rode em um PowerShell e depois abra um novo terminal:'
+        Write-Warn2 '  Set-ExecutionPolicy -Scope CurrentUser RemoteSigned'
+    }
 }
 
 function Remove-DoktorBlock([string]$Path) {
@@ -134,6 +158,7 @@ function Invoke-Install {
         exit 1
     }
 
+    Confirm-ExecutionPolicy
     $profilePath = Get-ProfilePath
     $profileDir = Split-Path -Parent $profilePath
     if ($profileDir -and -not (Test-Path $profileDir)) { New-Item -ItemType Directory -Force -Path $profileDir | Out-Null }
@@ -160,4 +185,26 @@ function Invoke-Uninstall {
     }
 }
 
-if ($Uninstall) { Invoke-Uninstall } else { Invoke-Install }
+$exitCode = 0
+try {
+    if ($Uninstall) { Invoke-Uninstall } else { Invoke-Install }
+}
+catch {
+    Write-Err2 "Erro inesperado: $($_.Exception.Message)"
+    $exitCode = 1
+}
+
+Write-Host ''
+if ($exitCode -eq 0) {
+    Write-Ok 'Script finalizado com sucesso.'
+} else {
+    Write-Err2 "Script finalizado com erro (codigo $exitCode)."
+}
+# Quando rodado como ARQUIVO (clique duplo / .\script.ps1), pausa e sai com o
+# codigo. Quando rodado via "irm ... | iex" nao ha arquivo ($PSCommandPath
+# vazio) - nesse caso nao chama "exit", que fecharia o terminal do usuario.
+$runAsFile = -not [string]::IsNullOrEmpty($PSCommandPath)
+if ($runAsFile -and -not $env:DOKTOR_NO_PAUSE) {
+    Read-Host 'Pressione Enter para sair' | Out-Null
+}
+if ($runAsFile) { exit $exitCode }
