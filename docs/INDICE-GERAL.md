@@ -118,6 +118,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI (ASCII, links, imagens, roteador, scripts). |
 | [scripts/validate-router.ps1](../scripts/validate-router.ps1) | Valida cobertura e colisao de palavras-chave do roteador de guias no `AGENTS.md`. |
 | [scripts/validate-index.ps1](../scripts/validate-index.ps1) | Valida que todo doc, guia, template e script principal esta listado no `INDICE-GERAL.md`. |
+| [scripts/validate-commit-types.ps1](../scripts/validate-commit-types.ps1) | Valida que os tipos de commit citados nos docs batem com o hook `commit-msg` (fonte da verdade). |
 | [scripts/measure-context.ps1](../scripts/measure-context.ps1) | Mede a economia de contexto do acervo (leitura roteada vs. total). |
 | [scripts/tests/run-tests.ps1](../scripts/tests/run-tests.ps1) | Roda todas as suites de teste dos instaladores. |
 | [scripts/tests/installers.tests.ps1](../scripts/tests/installers.tests.ps1) | Testes automatizados dos 3 instaladores (PowerShell, CMD, Bash). |

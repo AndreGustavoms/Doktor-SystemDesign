@@ -5,8 +5,8 @@
 .DESCRIPTION
   Checa ASCII, links Markdown relativos, imagens locais referenciadas, texto
   quebrado conhecido, o roteador de guias do AGENTS.md, a completude do
-  INDICE-GERAL.md e scripts principais. Nao instala comandos nem altera
-  PATH/perfil do usuario.
+  INDICE-GERAL.md, a consistencia dos tipos de commit (hook vs docs) e scripts
+  principais. Nao instala comandos nem altera PATH/perfil do usuario.
 #>
 [CmdletBinding()]
 param()
@@ -208,6 +208,20 @@ function Test-Index {
     }
 }
 
+function Test-CommitTypes {
+    $ctScript = Join-Path $RepoRoot 'scripts/validate-commit-types.ps1'
+    if (-not (Test-Path -LiteralPath $ctScript)) {
+        Add-Failure "Missing script: $ctScript"
+        return
+    }
+    & powershell -NoProfile -ExecutionPolicy Bypass -File $ctScript | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Ok 'Tipos de commit (hook vs docs)'
+    } else {
+        Add-Failure 'Commit-types validation failed (rode scripts/validate-commit-types.ps1 para detalhes)'
+    }
+}
+
 Push-Location $RepoRoot
 try {
     Test-Ascii
@@ -216,6 +230,7 @@ try {
     Test-BrokenText
     Test-Router
     Test-Index
+    Test-CommitTypes
     Test-Scripts
 
     if ($Failures.Count -gt 0) {

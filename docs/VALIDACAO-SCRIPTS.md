@@ -81,6 +81,7 @@ Essa validacao cobre:
 - texto quebrado conhecido;
 - roteador de guias do `AGENTS.md` (cobertura e palavras-chave, via `scripts/validate-router.ps1`);
 - completude do `docs/INDICE-GERAL.md` (via `scripts/validate-index.ps1`);
+- consistencia dos tipos de commit entre o hook e os docs (via `scripts/validate-commit-types.ps1`);
 - parser do instalador PowerShell;
 - help do comando CMD;
 - presenca dos scripts esperados.
@@ -105,6 +106,19 @@ la - impedindo que o indice dessincronize quando um arquivo novo e adicionado:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-index.ps1
+```
+
+Ele tambem roda dentro do `validate-repo.ps1`.
+
+## Validacao dos tipos de commit
+
+O hook `scripts/hooks/commit-msg` e a fonte da verdade dos tipos de Conventional
+Commits aceitos. Varios documentos repetem essa lista (guia minimo, CONTRIBUTING,
+AGENTS, politica de versionamento); este script garante que nenhum divergiu do
+hook - nem faltando um tipo aceito, nem citando um tipo rejeitado:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-commit-types.ps1
 ```
 
 Ele tambem roda dentro do `validate-repo.ps1`.
