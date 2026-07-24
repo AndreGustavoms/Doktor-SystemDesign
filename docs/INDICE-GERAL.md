@@ -58,6 +58,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [IA-template.md](../templates/IA-template.md) | Contexto operacional IA. |
 | [DEPLOY-template.md](../templates/DEPLOY-template.md) | Guia de deploy por projeto. |
 | [SECURITY-template.md](../templates/SECURITY-template.md) | Checklist/documento de seguranca. |
+| [PRIVACIDADE-LGPD-template.md](../templates/PRIVACIDADE-LGPD-template.md) | Documento de privacidade e LGPD para projetos que tratam dados pessoais. |
 | [ADR-0001-template.md](../templates/ADR-0001-template.md) | Registro de decisao arquitetural. |
 
 ## Guias frontend
