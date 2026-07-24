@@ -4,8 +4,8 @@
 
 .DESCRIPTION
   Checa ASCII, links Markdown relativos, imagens locais referenciadas, texto
-  quebrado conhecido e scripts principais. Nao instala comandos nem altera
-  PATH/perfil do usuario.
+  quebrado conhecido, o roteador de guias do AGENTS.md e scripts principais.
+  Nao instala comandos nem altera PATH/perfil do usuario.
 #>
 [CmdletBinding()]
 param()
@@ -179,12 +179,27 @@ function Test-Scripts {
     }
 }
 
+function Test-Router {
+    $routerScript = Join-Path $RepoRoot 'scripts/validate-router.ps1'
+    if (-not (Test-Path -LiteralPath $routerScript)) {
+        Add-Failure "Missing script: $routerScript"
+        return
+    }
+    & powershell -NoProfile -ExecutionPolicy Bypass -File $routerScript | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Ok 'Router (cobertura e palavras-chave)'
+    } else {
+        Add-Failure 'Router validation failed (rode scripts/validate-router.ps1 para detalhes)'
+    }
+}
+
 Push-Location $RepoRoot
 try {
     Test-Ascii
     Test-MarkdownLinks
     Test-ImageSources
     Test-BrokenText
+    Test-Router
     Test-Scripts
 
     if ($Failures.Count -gt 0) {

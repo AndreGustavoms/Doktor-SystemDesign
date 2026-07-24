@@ -73,10 +73,33 @@ Essa validacao cobre:
 
 - ASCII em arquivos de texto;
 - links Markdown relativos;
+- imagens locais referenciadas em Markdown (capa, badges, `![]()` e `<img src>`);
 - texto quebrado conhecido;
+- roteador de guias do `AGENTS.md` (cobertura e palavras-chave, via `scripts/validate-router.ps1`);
 - parser do instalador PowerShell;
 - help do comando CMD;
 - presenca dos scripts esperados.
+
+## Validacao do roteador de guias
+
+O `AGENTS.md` e o roteador que diz a IA qual guia abrir por tarefa. Um guia fora do
+roteador fica invisivel; palavras-chave repetidas entre guias fazem a IA abrir mais
+de um "para conferir", gastando contexto. Este script garante as duas propriedades:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-router.ps1
+```
+
+Ele ja roda dentro do `validate-repo.ps1`, mas pode ser chamado sozinho ao editar guias.
+
+## Medicao de custo de contexto
+
+Recalcula quanto contexto a leitura roteada economiza frente a ler o acervo inteiro
+(alimenta o dado de `core/DESIGN_SYSTEM_ECONOMIA_IA.md`):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/measure-context.ps1
+```
 
 ## Validacao manual recomendada
 
