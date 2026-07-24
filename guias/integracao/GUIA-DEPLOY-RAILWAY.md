@@ -163,7 +163,7 @@ railway variable list --kv
 railway variable delete SECRET_KEY
 ```
 
-Regras:
+Regras (alinhadas aos padroes de secrets do repo em [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md)):
 
 - segredos ficam no Railway, nao no repositorio;
 - `.env` local e permitido apenas como apoio temporario e nunca deve ser a fonte principal;

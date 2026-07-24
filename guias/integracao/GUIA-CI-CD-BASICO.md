@@ -76,7 +76,7 @@ Para Python, `actions/setup-python` tem opcao equivalente de cache de `pip`.
 
 ## 3. Segredos do pipeline
 
-- Segredos (tokens de deploy, chaves de API de teste) ficam em "Secrets" da plataforma de CI (GitHub Actions Secrets, etc.), nunca escritos no arquivo `.yml`.
+- Segredos (tokens de deploy, chaves de API de teste) ficam em "Secrets" da plataforma de CI (GitHub Actions Secrets, etc.), nunca escritos no arquivo `.yml`. Mesmo principio de secrets do repo: [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md).
 - Nunca imprima o valor de um secret em log (`echo $TOKEN` vaza o valor no log publico do workflow).
 
 ```yaml

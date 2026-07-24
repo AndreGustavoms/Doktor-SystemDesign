@@ -327,7 +327,7 @@ Nao aborte o lote inteiro porque um usuario retornou `404` ou rate limit.
 
 ## 10. Seguranca e governanca
 
-- Token e segredo.
+- Token e segredo - aplique os padroes de secrets e auth do repo: [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md).
 - Backend: use variavel de ambiente ou cofre de segredos.
 - Frontend: salve token apenas se ele for informado pelo proprio usuario.
 - Nunca envie token para logs, analytics ou mensagens de erro.

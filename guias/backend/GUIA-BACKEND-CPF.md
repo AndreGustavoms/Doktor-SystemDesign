@@ -148,7 +148,7 @@ def test_generated_cpf_is_valid():
 - Mascare em interfaces quando possivel.
 - Separe dados sinteticos de dados reais.
 - Nao use CPF gerado em servicos externos reais.
-- Documente motivo de coleta, retencao e exclusao.
+- Documente motivo de coleta, retencao e exclusao. CPF e dado pessoal: registre finalidade, base legal e retencao em um documento de privacidade - base em [`../../templates/PRIVACIDADE-LGPD-template.md`](../../templates/PRIVACIDADE-LGPD-template.md); cuidados tecnicos em [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md).
 
 ## Checklist
 
