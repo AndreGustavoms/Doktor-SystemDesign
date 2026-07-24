@@ -3,8 +3,9 @@
   Validacoes basicas do Doktor System-Design.
 
 .DESCRIPTION
-  Checa ASCII, links Markdown relativos, texto quebrado conhecido e scripts
-  principais. Nao instala comandos nem altera PATH/perfil do usuario.
+  Checa ASCII, links Markdown relativos, imagens locais referenciadas, texto
+  quebrado conhecido e scripts principais. Nao instala comandos nem altera
+  PATH/perfil do usuario.
 #>
 [CmdletBinding()]
 param()
@@ -89,6 +90,37 @@ function Test-MarkdownLinks {
     }
 }
 
+function Test-ImageSources {
+    # Valida <img src="..."> e ![](...) que apontam para arquivos locais.
+    $errors = @()
+    Get-ChildItem -Path $RepoRoot -Recurse -File -Include *.md -Force |
+        Where-Object { $_.FullName -notmatch '\\.git\\' } |
+        ForEach-Object {
+            $file = $_
+            $text = Get-Content -Raw -LiteralPath $file.FullName
+
+            $srcs = @()
+            $srcs += [regex]::Matches($text, '<img[^>]*\ssrc="([^"]+)"') | ForEach-Object { $_.Groups[1].Value }
+            $srcs += [regex]::Matches($text, '!\[[^\]]*\]\(([^)]+)\)') | ForEach-Object { $_.Groups[1].Value }
+
+            foreach ($src in $srcs) {
+                if ($src -match '^(https?:|data:)') { continue }
+                $path = ($src -split '#')[0]
+                if ([string]::IsNullOrWhiteSpace($path)) { continue }
+                $full = Join-Path $file.DirectoryName $path
+                if (-not (Test-Path -LiteralPath $full)) {
+                    $errors += "$($file.FullName) -> $src"
+                }
+            }
+        }
+
+    if ($errors.Count -gt 0) {
+        $errors | ForEach-Object { Add-Failure "Broken image source: $_" }
+    } else {
+        Write-Ok 'Image sources'
+    }
+}
+
 function Test-BrokenText {
     $matches = Get-ChildItem -Path $RepoRoot -Recurse -File -Include *.md -Force |
         Where-Object { $_.FullName -notmatch '\\.git\\' } |
@@ -151,6 +183,7 @@ Push-Location $RepoRoot
 try {
     Test-Ascii
     Test-MarkdownLinks
+    Test-ImageSources
     Test-BrokenText
     Test-Scripts
 

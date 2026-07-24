@@ -93,7 +93,7 @@ Aproximacao de ~4 caracteres por token sobre o conteudo `.md` versionado.
 
 | Cenario de leitura | Arquivos | Tokens aprox. |
 |---|---|---|
-| Ler o acervo inteiro "por garantia" | 67 | ~126.400 |
+| Ler o acervo inteiro "por garantia" | ~72 | ~127.700 |
 | Leitura roteada por `AGENTS.md` + 2 docs-alvo de uma tarefa tipica | 3 | ~7.500 |
 
 Resultado: seguir o roteador em vez de ler tudo custa cerca de **17x menos
@@ -101,9 +101,9 @@ contexto** por tarefa - uma economia de aproximadamente **94%** de tokens de
 leitura. Esse ganho e o proposito central do repo: o acervo pode crescer (secao
 3.1) sem que o custo por tarefa cresca junto, desde que o roteamento seja seguido.
 
-Como reproduzir: contar caracteres dos `.md` lidos em cada cenario e dividir por 4.
-Os valores mudam conforme o acervo cresce; o que importa e a ordem de grandeza da
-diferenca entre ler tudo e ler o roteado.
+Como reproduzir: rode `scripts/measure-context.ps1`, que recalcula estes numeros
+sobre o acervo atual. Os valores mudam conforme o acervo cresce; o que importa e
+a ordem de grandeza da diferenca entre ler tudo e ler o roteado.
 
 ## 7. Ideias para quem quiser contribuir
 
