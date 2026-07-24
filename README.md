@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="assets/social-preview.png" alt="Doktor System-Design" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/AndreGustavoms/Doktor-SystemDesign/actions/workflows/validate.yml"><img src="https://github.com/AndreGustavoms/Doktor-SystemDesign/actions/workflows/validate.yml/badge.svg" alt="Validate"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="VERSION"><img src="https://img.shields.io/badge/versao-0.3.0-informational.svg" alt="Versao"></a>
+</p>
+
 # Doktor System-Design
 
 Repositorio central de padroes leves de arquitetura, qualidade, documentacao, prompts e guias reutilizaveis para projetos de software com apoio de IA.
@@ -23,28 +33,50 @@ Nao e um framework rigido nem uma stack obrigatoria. E uma base para reduzir ret
 
 ## Mapa rapido
 
+### Comece por aqui
+
 | Area | Para que serve |
 |------|----------------|
 | [AGENTS.md](AGENTS.md) | Roteiro de leitura para agentes de IA. Comece por aqui quando for usar o repositorio como contexto operacional. |
 | [docs/INDICE-GERAL.md](docs/INDICE-GERAL.md) | Indice completo de documentos, guias e scripts. |
 | [docs/GUIA-RAPIDO-USO.md](docs/GUIA-RAPIDO-USO.md) | Fluxo curto para aplicar o system design em um projeto novo. |
+| [IA.md](IA.md) | Contexto operacional vivo deste repositorio para continuidade entre sessoes. |
+
+### Padroes e templates
+
+| Area | Para que serve |
+|------|----------------|
 | [core/](core/) | Padroes obrigatorios: arquitetura, API REST, seguranca, testes, frontend, backend, README, qualidade minima, prompts base, start script e contexto IA. |
-| [templates/](templates/) | Templates copiaveis de AGENTS, README, IA, deploy, seguranca e ADR. |
 | [docs/CORE-PADROES-OBRIGATORIOS.md](docs/CORE-PADROES-OBRIGATORIOS.md) | Indice dos documentos obrigatorios. |
+| [docs/STACK-E-ARQUITETURA.md](docs/STACK-E-ARQUITETURA.md) | Stack padrao e criterios de arquitetura por tipo de projeto. |
+| [templates/](templates/) | Templates copiaveis de AGENTS, README, IA, deploy, seguranca e ADR. |
+| [guias/](guias/) | Guias opcionais de frontend, backend e integracao, usados somente quando a funcionalidade pedir. |
+| [docs/GUIAS-OPCIONAIS.md](docs/GUIAS-OPCIONAIS.md) | Indice dos guias reutilizaveis por dominio. |
+
+### Checklists e curadoria
+
+| Area | Para que serve |
+|------|----------------|
 | [docs/CHECKLIST-PROJETO-PRONTO.md](docs/CHECKLIST-PROJETO-PRONTO.md) | Checklist para validar um projeto antes de entregar ou publicar. |
 | [docs/CHECKLIST-PUBLICACAO.md](docs/CHECKLIST-PUBLICACAO.md) | Checklist para revisar identidade, scripts, links e qualidade antes de publicar. |
 | [docs/CURADORIA-DOS-GUIAS.md](docs/CURADORIA-DOS-GUIAS.md) | Plano para revisar e transformar guias importados em padroes Doktor. |
-| [docs/GUIAS-OPCIONAIS.md](docs/GUIAS-OPCIONAIS.md) | Indice dos guias reutilizaveis por dominio. |
-| [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](docs/GIT-POLITICA-DE-VERSIONAMENTO.md) | Politica de branches, commits e documentacao viva. |
-| [docs/STACK-E-ARQUITETURA.md](docs/STACK-E-ARQUITETURA.md) | Stack padrao e criterios de arquitetura por tipo de projeto. |
+| [docs/VALIDACAO-SCRIPTS.md](docs/VALIDACAO-SCRIPTS.md) | Estado de validacao dos instaladores e suite de testes automatizados. |
+
+### Identidade e processo
+
+| Area | Para que serve |
+|------|----------------|
 | [docs/IDENTIDADE-DOKTOR.md](docs/IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor: autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](docs/PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
-| [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar ou sincronizar estes padroes em outros projetos. |
 | [docs/DECISOES-DE-IDENTIDADE.md](docs/DECISOES-DE-IDENTIDADE.md) | Registro das decisoes de autoria, marca, stack e identidade publica. |
+| [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar ou sincronizar estes padroes em outros projetos. |
 | [docs/POLITICA-DE-ATUALIZACAO.md](docs/POLITICA-DE-ATUALIZACAO.md) | Como manter guias, stack e sincronizacao com a origem atualizados. |
-| [docs/VALIDACAO-SCRIPTS.md](docs/VALIDACAO-SCRIPTS.md) | Estado de validacao dos instaladores e suite de testes automatizados. |
-| [IA.md](IA.md) | Contexto operacional vivo deste repositorio para continuidade entre sessoes. |
-| [guias/](guias/) | Guias opcionais de frontend, backend e integracao, usados somente quando a funcionalidade pedir. |
+| [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](docs/GIT-POLITICA-DE-VERSIONAMENTO.md) | Politica de branches, commits e documentacao viva. |
+
+### Scripts e historico
+
+| Area | Para que serve |
+|------|----------------|
 | [scripts/](scripts/) | Instaladores do comando global de sincronizacao do Doktor System-Design. |
 | [scripts/validate-repo.ps1](scripts/validate-repo.ps1) | Validador local usado tambem pela CI. |
 | [CHANGELOG.md](CHANGELOG.md) | Historico de versoes e mudancas relevantes. |
