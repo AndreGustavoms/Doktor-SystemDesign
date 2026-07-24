@@ -1370,6 +1370,7 @@ Formato recomendado:
 ## 18. Guardrails operacionais
 
 - Respeitar termos de uso, autorizacoes, limites e robots quando aplicavel.
+- **Coleta de dados pessoais exige base legal (LGPD), nao so autorizacao tecnica.** Se o scraper captura dado pessoal, registre finalidade, base legal e retencao - use [`../../templates/PRIVACIDADE-LGPD-template.md`](../../templates/PRIVACIDADE-LGPD-template.md); cuidados tecnicos gerais em [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md).
 - Preferir APIs oficiais quando elas existirem e cobrirem o caso.
 - **Segredos sempre do ambiente** (env var), nunca de arquivo, argumento de CLI ou commit.
 - **Nunca colocar credencial/token em URL, log ou mensagem de erro** - monte erros sem a URL quando a chave vai na query.
