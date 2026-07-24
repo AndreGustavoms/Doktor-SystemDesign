@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/AndreGustavoms/Doktor-SystemDesign/actions/workflows/validate.yml"><img src="https://github.com/AndreGustavoms/Doktor-SystemDesign/actions/workflows/validate.yml/badge.svg" alt="Validate"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <a href="VERSION"><img src="https://img.shields.io/badge/versao-0.3.0-informational.svg" alt="Versao"></a>
+  <a href="VERSION"><img src="https://img.shields.io/badge/versao-0.4.0-informational.svg" alt="Versao"></a>
 </p>
 
 # Doktor System-Design

@@ -8,14 +8,15 @@
   historico completo continua protegido na secao "Historico detalhado" abaixo.
 -->
 
-Ultima atualizacao: [2026-07-23]
+Ultima atualizacao: [2026-07-24]
 
-- Fase: acervo maduro e auditado. Curadoria dos guias importados concluida; 18 guias tecnicos novos/portados no total, todos padronizados (mesma estrutura de secoes, incluindo `Ideias para quem quiser contribuir` e referencias cruzadas relevantes); scripts de instalacao corrigidos e cobertos por 30 testes automatizados.
-- Documentos-nucleo recentes: `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (nivel de tarefa vs. nivel de modelo, economia de contexto) e `docs/POLITICA-DE-ATUALIZACAO.md` (gatilhos de revisao e sincronizacao com a origem).
-- Versao publicada: `0.3.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
+- Fase: acervo maduro e auditado, agora com camada de saude de repositorio e automacao de qualidade. 26 guias tecnicos, todos padronizados; scripts de instalacao cobertos por 30 testes automatizados; capa/badges no README; arquivos de comunidade do GitHub presentes.
+- Documentos-nucleo recentes: `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (nivel de tarefa vs. nivel de modelo, economia de contexto, com medicao real do acervo) e `docs/POLITICA-DE-ATUALIZACAO.md` (gatilhos de revisao e sincronizacao com a origem).
+- Versao publicada: `0.4.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
+- Validacao automatizada: `scripts/validate-repo.ps1` agora checa ASCII, links, imagens locais e o roteador de guias (`scripts/validate-router.ps1`: cobertura + colisao de palavras-chave); `scripts/measure-context.ps1` recalcula a economia de contexto do acervo sob demanda.
+- Seguranca/privacidade: `SECURITY.md` na raiz (politica de reporte), `templates/SECURITY-template.md` reforcado e `templates/PRIVACIDADE-LGPD-template.md` novo para projetos com dados pessoais.
 - Git: regra formal de `git pull` antes de comecar a commitar e `git push` automatico ao final de cada leva, sem esperar confirmacao manual (ver `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`, secao 3).
-- Proximo passo natural: nao ha pendencia de alta prioridade conhecida. Manutencao continua: revisar um guia so quando ficar desatualizado tecnicamente, e sempre que um guia novo for adicionado, checar se ele precisa de referencia cruzada com guias relacionados ja existentes.
-- Auditoria de referencias cruzadas (2026-07-23): dos 25 guias, so 5 tinham link inline para outro guia. Verificado par a par por sobreposicao real de escopo (nao forcado): `GUIA-TABELA-DE-DADOS-SERVER-SIDE.md` (secao 2, estado via URL) e `GUIA-PAINEL-DE-COLECAO-COM-FILTROS-E-VIEWS.md` (secao 2, estado via `localStorage`) resolvem o mesmo problema - persistir filtro/view - com trade-off oposto (compartilhavel por link + paginacao server-side vs. preferencia pessoal client-side); agora se referenciam mutuamente explicando quando usar qual. `GUIA-FORMULARIOS-COMPLEXOS.md` avaliado contra a secao 5 do painel (filtros retrateis) e descartado: o painel so usa `<select>`/chips, sem validacao condicional/wizard, entao um link ali seria fraco.
+- Proximo passo natural: nao ha pendencia de alta prioridade conhecida. Manutencao continua: revisar um guia so quando ficar desatualizado tecnicamente, e sempre que um guia novo for adicionado, checar cobertura no roteador (o validador ja pega guia fora do roteador e colisao de palavra-chave) e referencia cruzada com guias relacionados.
 - Risco aberto: nenhum bloqueante conhecido; atencao recorrente e manter os documentos de indice (`docs/INDICE-GERAL.md`, `docs/GUIAS-OPCIONAIS.md`, `AGENTS.md`) sincronizados sempre que um guia for adicionado ou renomeado.
 
 ## Objetivo atual

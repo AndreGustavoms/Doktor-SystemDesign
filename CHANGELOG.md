@@ -4,6 +4,26 @@ Todas as mudancas relevantes do Doktor System-Design devem ser registradas aqui.
 
 Formato baseado em Conventional Commits e versoes semanticas.
 
+## [0.4.0] - 2026-07-24
+
+### Adicionado
+
+- `assets/social-preview.png`: capa do repositorio embutida no topo do `README.md`, com badges de CI, licenca e versao.
+- `SECURITY.md` e `CODE_OF_CONDUCT.md` na raiz, mais `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/` e `.github/dependabot.yml` - arquivos de comunidade que o GitHub reconhece.
+- `.editorconfig` alinhado ao `.gitattributes` (LF geral, CRLF em `.cmd`, UTF-8 sem BOM).
+- `templates/PRIVACIDADE-LGPD-template.md`: documento de privacidade/LGPD (papeis, bases legais, direitos do titular, retencao, incidentes) que o repo ja exigia mas nao fornecia.
+- `scripts/measure-context.ps1`: recalcula a economia de tokens do acervo (leitura roteada vs. total) para o dado nao ficar congelado.
+- `scripts/validate-router.ps1`: valida cobertura do roteador de guias e ausencia de colisao de palavras-chave; integrado ao `validate-repo.ps1`.
+- `guias/integracao/GUIA-CLAUDE-MODELOS-E-CUSTO.md`: camada especifica de Claude - escolha de Sonnet/Opus/Haiku por tarefa e reducao de custo (prompt caching, Batch, effort, streaming).
+- Secao "Medicao de referencia" em `core/DESIGN_SYSTEM_ECONOMIA_IA.md` com o dado real do acervo (leitura roteada custa ~17x menos contexto).
+
+### Alterado
+
+- `README.md`: tabela unica de mapa rapido reorganizada em secoes por finalidade; adicionadas secoes de seguranca/privacidade e de custo/economia de tokens.
+- `templates/SECURITY-template.md`: reforcado com auditoria, rate limit, cabecalhos de seguranca, protecao anti-injecao e secao LGPD.
+- `scripts/validate-repo.ps1`: passou a checar imagens locais quebradas em Markdown e a rodar o validador de roteador.
+- `AGENTS.md`: desambiguadas tres palavras-chave que colidiam entre guias (`formulario`, `grade`, `rate limit`), evitando que a IA abra dois guias "para conferir".
+
 ## [0.3.0] - 2026-07-23
 
 ### Adicionado
