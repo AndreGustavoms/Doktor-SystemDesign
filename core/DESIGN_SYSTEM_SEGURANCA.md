@@ -174,6 +174,7 @@ return <div>{userInput}</div>  // React escapa por padrao
 - Nunca retorne mais dados do que o necessario. Se a rota e publica, nao inclua campos internos.
 - Nunca exponha stack trace ou mensagem de erro interna ao cliente em producao.
 - Logs nao devem conter senha, token ou dado pessoal.
+- Se o projeto **trata dados pessoais** (nao so evita vaza-los), ha dever de privacidade/LGPD alem da seguranca tecnica: finalidade, base legal, retencao e direitos do titular. Registre em um documento proprio - base em [`../templates/PRIVACIDADE-LGPD-template.md`](../templates/PRIVACIDADE-LGPD-template.md).
 
 ```python
 # Errado - expoe detalhes internos

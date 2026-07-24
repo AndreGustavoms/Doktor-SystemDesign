@@ -50,6 +50,7 @@ Quando houver duvida, siga os documentos completos:
  - Nunca registre tokens, senhas, cookies, dados pessoais ou HTML sensivel em repositorio publico.
  - Logs devem ajudar debug sem vazar segredo.
  - Dependencias tambem sao superficie de ataque: pine versoes, commite o lockfile e rode auditoria (`pip-audit`, `npm audit`) quando adicionar ou atualizar dependencia.
+ - Se o projeto **trata dados pessoais de usuarios** (nao so evita vaza-los em log), ele tem dever de privacidade/LGPD: registre finalidade, base legal, retencao e direitos do titular. Use [`../templates/PRIVACIDADE-LGPD-template.md`](../templates/PRIVACIDADE-LGPD-template.md) e o [`../templates/SECURITY-template.md`](../templates/SECURITY-template.md).
 
 7. **Testar comportamento importante**
  - Regras criticas, bugs corrigidos, contratos de API, parser, autenticacao e fluxo destrutivo precisam de teste quando aplicavel.
@@ -105,6 +106,7 @@ Quando houver duvida, siga os documentos completos:
 - [ ] A solucao segue o padrao existente do repositorio.
 - [ ] As responsabilidades continuam separadas.
 - [ ] Nao ha segredo, dado sensivel ou URL privada exposta.
+- [ ] Se o projeto trata dados pessoais, ha documento de privacidade/LGPD (base: `templates/PRIVACIDADE-LGPD-template.md`).
 - [ ] Contratos afetados foram preservados ou documentados.
 - [ ] Testes/verificacoes relevantes foram executados ou justificados.
 - [ ] O codigo foi executado de verdade e a saida real foi observada (nao apenas "deve funcionar").
