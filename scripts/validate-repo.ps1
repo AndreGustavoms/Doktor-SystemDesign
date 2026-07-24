@@ -4,8 +4,9 @@
 
 .DESCRIPTION
   Checa ASCII, links Markdown relativos, imagens locais referenciadas, texto
-  quebrado conhecido, o roteador de guias do AGENTS.md e scripts principais.
-  Nao instala comandos nem altera PATH/perfil do usuario.
+  quebrado conhecido, o roteador de guias do AGENTS.md, a completude do
+  INDICE-GERAL.md e scripts principais. Nao instala comandos nem altera
+  PATH/perfil do usuario.
 #>
 [CmdletBinding()]
 param()
@@ -193,6 +194,20 @@ function Test-Router {
     }
 }
 
+function Test-Index {
+    $indexScript = Join-Path $RepoRoot 'scripts/validate-index.ps1'
+    if (-not (Test-Path -LiteralPath $indexScript)) {
+        Add-Failure "Missing script: $indexScript"
+        return
+    }
+    & powershell -NoProfile -ExecutionPolicy Bypass -File $indexScript | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Ok 'Indice geral (completude)'
+    } else {
+        Add-Failure 'Index validation failed (rode scripts/validate-index.ps1 para detalhes)'
+    }
+}
+
 Push-Location $RepoRoot
 try {
     Test-Ascii
@@ -200,6 +215,7 @@ try {
     Test-ImageSources
     Test-BrokenText
     Test-Router
+    Test-Index
     Test-Scripts
 
     if ($Failures.Count -gt 0) {

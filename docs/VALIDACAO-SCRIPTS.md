@@ -76,6 +76,7 @@ Essa validacao cobre:
 - imagens locais referenciadas em Markdown (capa, badges, `![]()` e `<img src>`);
 - texto quebrado conhecido;
 - roteador de guias do `AGENTS.md` (cobertura e palavras-chave, via `scripts/validate-router.ps1`);
+- completude do `docs/INDICE-GERAL.md` (via `scripts/validate-index.ps1`);
 - parser do instalador PowerShell;
 - help do comando CMD;
 - presenca dos scripts esperados.
@@ -91,6 +92,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-router.ps1
 ```
 
 Ele ja roda dentro do `validate-repo.ps1`, mas pode ser chamado sozinho ao editar guias.
+
+## Validacao do indice geral
+
+O `docs/INDICE-GERAL.md` se descreve como indice completo do repositorio. Este
+script garante que todo doc, guia, template e script principal esteja listado
+la - impedindo que o indice dessincronize quando um arquivo novo e adicionado:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-index.ps1
+```
+
+Ele tambem roda dentro do `validate-repo.ps1`.
 
 ## Medicao de custo de contexto
 
