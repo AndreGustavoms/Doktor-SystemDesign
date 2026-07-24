@@ -171,6 +171,30 @@ O Doktor System-Design agora usa uma baseline tecnica documentada em [docs/STACK
 
 Desvios sao permitidos quando houver motivo tecnico claro e documentado.
 
+## Seguranca e privacidade
+
+Padroes de seguranca e privacidade que todo projeto Doktor deve considerar:
+
+| Documento | Uso |
+|-----------|-----|
+| [core/DESIGN_SYSTEM_SEGURANCA.md](core/DESIGN_SYSTEM_SEGURANCA.md) | Padroes de seguranca, secrets, auth, validacao e OWASP basico. |
+| [templates/SECURITY-template.md](templates/SECURITY-template.md) | Checklist copiavel de seguranca por projeto (auth, auditoria, rate limit, headers). |
+| [templates/PRIVACIDADE-LGPD-template.md](templates/PRIVACIDADE-LGPD-template.md) | Documento de privacidade/LGPD para projetos que tratam dados pessoais. |
+
+Regra do repo: todo app com usuario, conta, token ou segredo deve ter `SECURITY.md`;
+todo app com dados pessoais deve ter tambem um documento de privacidade/LGPD.
+
+## Custo e economia de tokens
+
+O proposito do Doktor e reduzir o gasto de contexto e capacidade de IA por tarefa.
+Os principios estao em [core/DESIGN_SYSTEM_ECONOMIA_IA.md](core/DESIGN_SYSTEM_ECONOMIA_IA.md).
+Resumo pratico:
+
+- Siga o roteador ([AGENTS.md](AGENTS.md)) antes de ler qualquer coisa - nao leia "por garantia".
+- Leia primeiro o resumo vivo do `IA.md`; so desca ao historico se ele nao bastar.
+- Case o nivel do modelo ao risco da tarefa: mecanica -> leve; comum -> intermediario; decisao critica -> avancado.
+- Reaproveite cache de prompt e contexto estavel; nao refaca a mesma pergunta "para conferir".
+
 ## Validacao
 
 Rode localmente:
