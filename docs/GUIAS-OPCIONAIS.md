@@ -202,6 +202,18 @@ Padrao de **migracao de planilhas/documentos para databases estruturadas do Noti
 
 [Ver guia](../guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md)
 
+### Claude: Modelos e Custo
+
+**Camada especifica de Claude**: como escolher entre Sonnet, Opus e Haiku por
+tarefa e como reduzir custo com prompt caching, Batch API, effort proporcional
+e streaming. Complementa o guia de integracao LLM (generico) e o design system
+de economia de IA (provider-neutro).
+
+**Quando usar:** o projeto chama a API da Anthropic e voce quer gastar menos sem
+perder qualidade.
+
+[Ver guia](../guias/integracao/GUIA-CLAUDE-MODELOS-E-CUSTO.md)
+
 ### CI/CD Basico
 
 **Pipeline de integracao continua** (GitHub Actions como exemplo): lint e testes automaticos em todo push/PR, cache de dependencias, segredos protegidos e deploy condicionado ao sucesso dos testes.

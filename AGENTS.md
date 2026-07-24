@@ -72,6 +72,7 @@ Use um guia **somente** quando a tarefa pedir aquela funcionalidade. As palavras
 | [`guias/integracao/GUIA-DEPLOY-RAILWAY.md`](guias/integracao/GUIA-DEPLOY-RAILWAY.md) | Deploy de backend no Railway (PaaS): build, banco, HTTPS, logs | deploy, hospedagem, producao, railway, backend online |
 | [`guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md`](guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md) | Migrar planilhas/documentos para databases tipadas do Notion | notion, migracao, planilha, database, importacao |
 | [`guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md`](guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md) | Integracao com LLM: cliente isolado, prompt versionado, tool use, RAG basico | llm, ia, prompt, agente, tool use, rag, chatbot |
+| [`guias/integracao/GUIA-CLAUDE-MODELOS-E-CUSTO.md`](guias/integracao/GUIA-CLAUDE-MODELOS-E-CUSTO.md) | Claude na pratica: escolher Sonnet/Opus/Haiku por tarefa e reduzir custo (cache, batch, effort) | claude, anthropic, sonnet, opus, haiku, prompt caching, batch api, custo de token |
 | [`guias/integracao/GUIA-CI-CD-BASICO.md`](guias/integracao/GUIA-CI-CD-BASICO.md) | Pipeline de CI/CD: lint/teste automatico, cache, deploy condicionado | ci, cd, pipeline, github actions, deploy automatico |
 | [`guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md`](guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md) | Logs estruturados, health check e metricas minimas de producao | logs, observabilidade, health check, monitoramento, metricas |
 
