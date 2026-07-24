@@ -48,7 +48,7 @@ Padrao recomendado:
 
 Descricao curta em uma ou duas linhas, explicando o valor do projeto sem marketing vazio.
 
-[Como rodar](#como-rodar) | [Documentacao](#documentacao) | [Testes](#como-testar)
+[Como rodar](#como-rodar) | [Configuracao](#configuracao) | [Como testar](#como-testar)
 ```
 
 Badges podem ser usados, mas nao devem substituir explicacao clara.
