@@ -10,6 +10,8 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [AGENTS.md](../AGENTS.md) | Roteiro de leitura para agentes de IA. |
 | [IA.md](../IA.md) | Contexto operacional vivo deste repositorio. |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Como contribuir ou abrir PR. |
+| [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) | Codigo de conduta da comunidade. |
+| [SECURITY.md](../SECURITY.md) | Politica de reporte de vulnerabilidades deste repositorio. |
 | [CHANGELOG.md](../CHANGELOG.md) | Historico de versoes e mudancas. |
 
 ## Core obrigatorio
@@ -35,6 +37,8 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | Documento | Uso |
 |-----------|-----|
 | [docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md) | Baseline tecnica por contexto. |
+| [docs/CORE-PADROES-OBRIGATORIOS.md](CORE-PADROES-OBRIGATORIOS.md) | Indice dos documentos obrigatorios do `core/`. |
+| [docs/GUIAS-OPCIONAIS.md](GUIAS-OPCIONAIS.md) | Indice descritivo dos guias reutilizaveis por dominio. |
 | [docs/GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) | Fluxo rapido para aplicar o system design em projeto novo. |
 | [docs/IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor, misturando autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
@@ -98,6 +102,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-DEPLOY-RAILWAY.md](../guias/integracao/GUIA-DEPLOY-RAILWAY.md) | Deploy no Railway. |
 | [GUIA-NOTION-COMO-BASE-DE-DADOS.md](../guias/integracao/GUIA-NOTION-COMO-BASE-DE-DADOS.md) | Migrar planilhas/documentos para databases do Notion. |
 | [GUIA-INTEGRACAO-LLM-E-AGENTES.md](../guias/integracao/GUIA-INTEGRACAO-LLM-E-AGENTES.md) | Integracao com LLM: cliente isolado, prompt versionado, tool use, RAG. |
+| [GUIA-CLAUDE-MODELOS-E-CUSTO.md](../guias/integracao/GUIA-CLAUDE-MODELOS-E-CUSTO.md) | Claude na pratica: escolher Sonnet/Opus/Haiku por tarefa e reduzir custo. |
 | [GUIA-CI-CD-BASICO.md](../guias/integracao/GUIA-CI-CD-BASICO.md) | Pipeline de CI/CD: lint/teste automatico e deploy condicionado. |
 | [GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md](../guias/integracao/GUIA-OBSERVABILIDADE-LOGS-E-HEALTHCHECKS.md) | Logs estruturados, health check e metricas minimas. |
 
@@ -110,7 +115,10 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [scripts/cmd/install-doktor-cmd.cmd](../scripts/cmd/install-doktor-cmd.cmd) | Instala o comando `doktor` em CMD. |
 | [scripts/cmd/doktor-command.cmd](../scripts/cmd/doktor-command.cmd) | Implementacao do comando `doktor` para CMD. |
 | [scripts/hooks/commit-msg](../scripts/hooks/commit-msg) | Hook opcional para validar mensagens Conventional Commits. |
-| [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI. |
+| [scripts/validate-repo.ps1](../scripts/validate-repo.ps1) | Validador local e de CI (ASCII, links, imagens, roteador, scripts). |
+| [scripts/validate-router.ps1](../scripts/validate-router.ps1) | Valida cobertura e colisao de palavras-chave do roteador de guias no `AGENTS.md`. |
+| [scripts/validate-index.ps1](../scripts/validate-index.ps1) | Valida que todo doc, guia, template e script principal esta listado no `INDICE-GERAL.md`. |
+| [scripts/measure-context.ps1](../scripts/measure-context.ps1) | Mede a economia de contexto do acervo (leitura roteada vs. total). |
 | [scripts/tests/run-tests.ps1](../scripts/tests/run-tests.ps1) | Roda todas as suites de teste dos instaladores. |
 | [scripts/tests/installers.tests.ps1](../scripts/tests/installers.tests.ps1) | Testes automatizados dos 3 instaladores (PowerShell, CMD, Bash). |
 | [scripts/cmd/tests/ensure-gitignore.tests.ps1](../scripts/cmd/tests/ensure-gitignore.tests.ps1) | Testes do passo de `.gitignore` automatico no CMD. |
