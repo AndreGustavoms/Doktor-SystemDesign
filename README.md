@@ -201,9 +201,11 @@ Rode localmente:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-repo.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/tests/run-tests.ps1
 ```
 
-O mesmo validador roda na GitHub Actions em push e pull request.
+O validador (`validate-repo.ps1`) e a suite de testes dos instaladores
+(`run-tests.ps1`) rodam na GitHub Actions em push e pull request.
 
 ## Licenca e origem
 

@@ -15,3 +15,7 @@ jobs:
         shell: pwsh
         run: ./scripts/validate-repo.ps1
 
+      - name: Run installer test suites
+        shell: pwsh
+        run: ./scripts/tests/run-tests.ps1
+

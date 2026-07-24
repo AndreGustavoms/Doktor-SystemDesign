@@ -38,6 +38,10 @@ Rodar tudo de uma vez:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/tests/run-tests.ps1
 ```
 
+Essa suite tambem roda na GitHub Actions (`.github/workflows/validate.yml`) em
+push e pull request, junto do `validate-repo.ps1` - casos que dependem de
+`rsync` (Bash) sao pulados no runner Windows sem falhar o CI.
+
 Isso executa:
 
 | Suite | O que cobre |
