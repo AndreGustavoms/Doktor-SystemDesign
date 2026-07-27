@@ -4,12 +4,13 @@ Este documento registra padroes recorrentes observados nos repositorios publicos
 
 ## Escopo da leitura
 
-Leitura feita em 2026-06-22, considerando apenas informacao publica:
+Leitura inicial feita em 2026-06-22, atualizada em 2026-07-27, considerando apenas informacao publica:
 
 | Fonte | Papel na leitura |
 |---|---|
 | [AndreGustavoms](https://github.com/AndreGustavoms) | Perfil publico e lista de repositorios publicos. |
-| [AndreGustavoms/Contas.exe](https://github.com/AndreGustavoms/Contas.exe) | Principal repositorio autoral publico analisado. |
+| [AndreGustavoms/Contas.exe](https://github.com/AndreGustavoms/Contas.exe) | Principal repositorio autoral publico analisado (produto operacional). |
+| [AndreGustavoms/MeuEcooBETA](https://github.com/AndreGustavoms/MeuEcooBETA) | Segundo repositorio autoral analisado (landing page de trabalho). Adiciona um caso de frontend puro sem backend, util para contrastar com o padrao "produto operacional" do Contas.exe. |
 | [AndreGustavoms/Doktor-SystemDesign](https://github.com/AndreGustavoms/Doktor-SystemDesign) | Fork/base de system design; usado como contexto, nao como prova estetica autoral. |
 
 Limite importante: havia poucos repositorios publicos. As conclusoes abaixo devem orientar a direcao inicial, mas cada projeto ainda precisa decidir conforme dominio, publico e restricoes.
@@ -126,6 +127,18 @@ deploy simples em um servico
 documentacao operacional versionada
 ```
 
+### Caso frontend puro: MeuEcooBETA
+
+`MeuEcooBETA` e uma landing page de trabalho (projeto "Ecoo"), sem backend, com:
+
+- React 19 + TypeScript + Vite;
+- Tailwind CSS v4 com tema proprio (`ecoo`/`ink`) declarado em `src/index.css`;
+- estrutura de secoes: `Hero`, `FeatureRow`, `FaqAccordion`, `EmailCTA`, `Footer`, `Logo`;
+- conteudo de texto isolado em `data/content.ts`, separado dos componentes visuais;
+- inspiracao apenas na estrutura de secoes comuns a paginas de streaming, sem copiar identidade visual de terceiros.
+
+Isso mostra que o padrao autoral nao se limita a apps operacionais: quando o pedido e uma landing page, a mesma disciplina de stack (React + TS + Vite + Tailwind) e mantida, mas a organizacao vira "secoes de pagina" em vez de "app shell com dashboard". Separar texto/conteudo de componente (`data/content.ts`) e um padrao a reaproveitar em landing pages Doktor.
+
 ## Padrao de documentacao observado
 
 Fortes sinais positivos:
@@ -159,6 +172,30 @@ Use como direcao inicial quando o projeto nao trouxer identidade propria:
 - documentacao viva no repo;
 - seguranca desde o primeiro desenho.
 
+## Referencia externa: ecossistema VS (contexto de trabalho)
+
+Esta secao documenta uma referencia **externa**, nao autoral. Ela existe porque o autor (AndreGustavoms) trabalha proximo desse ecossistema, e pode ser util como ponto de comparacao, mas nao representa identidade Doktor nem deve virar padrao por padrao.
+
+Fonte publica: [flaviavs-commits](https://github.com/flaviavs-commits), bio "SaaS com IA + Infraestrutura AWS", ecossistema de produto chamado "VS" (Vitis Souls).
+
+Repositorio mais relevante para frontend: [vs-app-toolkit](https://github.com/flaviavs-commits/vs-app-toolkit) - um gerador de apps satelite do ecossistema VS, com:
+
+- backend Express + Prisma;
+- frontend React 18 + TypeScript + Vite + Tailwind CSS;
+- autenticacao via Firebase (Google OAuth) + JWT proprio, extraida de um app financeiro em producao;
+- "membership gate" (bloqueio por assinatura) aplicado tanto no frontend quanto no backend;
+- estrutura do template com `src/auth/` (modulo pronto, nao mexer) e `src/AppContent.tsx` (onde o app especifico comeca) - um padrao de "core compartilhado + area livre por app".
+
+Outros repositorios da mesma conta sao majoritariamente forks de [Felipe-Alcantara](https://github.com/Felipe-Alcantara) (`Felixo-System-Design`, ferramentas de Notion/MCP), ou seja, essa conta parte da **mesma linhagem de system design** que originou o Doktor, mas evoluiu de forma independente. Nao ha colaboracao direta entre as duas contas nos repositorios publicos analisados.
+
+O que pode ser util observar do vs-app-toolkit:
+
+- separar um "core" de autenticacao/gate reutilizavel do restante do app, quando varios produtos compartilham login;
+- Firebase como opcao valida para auth social rapida, quando o projeto pedir login Google sem construir OAuth do zero;
+- gerar esqueleto de app via script (`create-vs-app.py`) para produtos satelite de um mesmo ecossistema.
+
+Isso **nao** substitui a stack padrao Doktor nem a direcao estetica de `IDENTIDADE-DOKTOR.md`. E contexto de mercado, nao decisao de identidade.
+
 ## O que nao deve virar regra cega
 
 - Node.js nao deve substituir Django/Python em todos os backends.
@@ -166,6 +203,7 @@ Use como direcao inicial quando o projeto nao trouxer identidade propria:
 - Tema verde/ciano nao deve ser forcado em projetos com outra marca.
 - Um servico unico nao deve impedir separacao quando houver jobs, filas ou escala real.
 - Publicacao de repositorios privados nao foi analisada; nao inferir padroes deles.
+- O ecossistema VS (`flaviavs-commits`) e referencia externa de mercado, nao autoria Doktor; Firebase, Prisma e o padrao "membership gate" nao devem ser adotados por padrao so porque aparecem la.
 
 ## Checklist rapido para um novo projeto com identidade Doktor
 

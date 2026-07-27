@@ -4,6 +4,12 @@ Todas as mudancas relevantes do Doktor System-Design devem ser registradas aqui.
 
 Formato baseado em Conventional Commits e versoes semanticas.
 
+## [Unreleased]
+
+### Alterado
+
+- `docs/PADROES-OBSERVADOS-GITHUB.md`: adicionado o repositorio `AndreGustavoms/MeuEcooBETA` (landing page, React 19 + Tailwind v4) como segundo caso autoral, e nova secao de referencia externa sobre o ecossistema VS (`flaviavs-commits`), deixando explicito que e contexto de mercado e nao identidade Doktor.
+
 ## [0.4.0] - 2026-07-24
 
 ### Adicionado
