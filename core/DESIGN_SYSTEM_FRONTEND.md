@@ -36,11 +36,16 @@ Regra pratica:
 
 ## 3. Principios visuais
 
-### Direcao Doktor observada
+### Direcao Doktor
 
-Quando o projeto nao trouxer identidade propria, comece pela direcao definida em `IDENTIDADE-DOKTOR.md`: ferramenta operacional clara, superficies neutras, acento verde/ciano, cards compactos, badges de status, icones Lucide, documentacao forte e tema claro com dark mode opcional.
+O Doktor nao impoe paleta. Cor pertence a marca do produto; o que a identidade define e metodo - tokens nomeados, easing reutilizado, escala fluida, estados completos e movimento em camada separada. Veja `IDENTIDADE-DOKTOR.md`.
 
-Essa direcao nao e obrigatoria para toda marca. Ela serve como ponto de partida para produtos Doktor quando nao houver briefing visual mais especifico.
+Antes de escolher acabamento, defina o modo da tela:
+
+- **modo operacional** (dashboard, painel, CRUD): superficies neutras, cards compactos, badges de status, icones Lucide, animacao restrita a transicao de estado;
+- **modo marca** (landing, catalogo, checkout, login): acabamento mais rico, com repertorio nos guias de frontend.
+
+Regra de corte: se a pessoa vai olhar a tela por mais de dez minutos seguidos, use modo operacional.
 
 ### Heranca de system design
 

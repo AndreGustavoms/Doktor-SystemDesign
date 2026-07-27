@@ -14,6 +14,9 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 ### Alterado
 
+- `docs/IDENTIDADE-DOKTOR.md`: identidade deixa de prescrever paleta. A secao "Paleta de referencia" (que sugeria verde/ciano) vira "Cor", exigindo tokens nomeados sem impor tom, e "Personalidade visual" passa a descrever metodo (tokens, easing, `clamp`, hover com `:active`, animacao em camada) mais a distincao entre modo operacional e modo marca. Removida a recomendacao de evitar azul escuro e glow, que contrariava os proprios projetos do autor.
+- `core/DESIGN_SYSTEM_FRONTEND.md`: "Direcao Doktor observada" reescrita sem paleta fixa, com escolha de modo antes do acabamento.
+- `docs/PADROES-OBSERVADOS-GITHUB.md`: a secao "o que levar para o Doktor" passa a valer explicitamente para produto operacional, e o acento verde/ciano fica marcado como cor do `Contas.exe`, nao do Doktor.
 - `docs/PADROES-OBSERVADOS-GITHUB.md`: adicionado o repositorio `AndreGustavoms/MeuEcooBETA` (landing page, React 19 + Tailwind v4) como segundo caso autoral, e nova secao de referencia externa sobre o ecossistema VS (`flaviavs-commits`), deixando explicito que e contexto de mercado e nao identidade Doktor.
 
 ## [0.4.0] - 2026-07-24

@@ -160,12 +160,12 @@ Recomendacao para projetos Doktor:
 
 ## O que levar para o Doktor System-Design
 
-Use como direcao inicial quando o projeto nao trouxer identidade propria:
+Use como direcao inicial **para produto operacional** que nao trouxer identidade propria. Produto de marca segue outro caminho - veja os dois modos em [IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md).
 
 - ferramenta antes de marketing;
 - interface operacional, clara e compacta;
 - tema claro forte com dark mode opcional;
-- verde/ciano como acento, com neutros frios;
+- acento unico e funcional sobre neutros frios (no `Contas.exe`, verde/ciano - mas a cor e da marca, nao do Doktor);
 - cards e badges para organizar dados;
 - componentes proprios pequenos;
 - Lucide para iconografia;
