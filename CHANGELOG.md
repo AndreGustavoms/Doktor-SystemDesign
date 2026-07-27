@@ -6,6 +6,10 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 ## [Unreleased]
 
+### Adicionado
+
+- `guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md`: catalogo de acabamentos por componente (logo com glow e giro, texto com shimmer, botao com brilho atravessando, link com sublinhado que cresce, navbar que reage ao scroll, scrollbar customizada, card com elevacao), com a distincao entre modo operacional e modo marca, tokens base, escala fluida com `clamp` e secao de acessibilidade/desempenho.
+
 ### Alterado
 
 - `docs/PADROES-OBSERVADOS-GITHUB.md`: adicionado o repositorio `AndreGustavoms/MeuEcooBETA` (landing page, React 19 + Tailwind v4) como segundo caso autoral, e nova secao de referencia externa sobre o ecossistema VS (`flaviavs-commits`), deixando explicito que e contexto de mercado e nao identidade Doktor.

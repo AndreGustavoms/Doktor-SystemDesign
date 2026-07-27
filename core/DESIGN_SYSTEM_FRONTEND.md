@@ -241,6 +241,8 @@ Evite:
 
 Respeite `prefers-reduced-motion` quando houver animacoes relevantes.
 
+Para produtos de marca (landing, catalogo, checkout, login), o acabamento aceito e maior que em ferramenta operacional. O catalogo de efeitos por componente esta em [../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md](../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md), junto com o criterio para escolher entre modo operacional e modo marca.
+
 ## 10. Dados e listas
 
 Para tabelas, listas e dashboards:

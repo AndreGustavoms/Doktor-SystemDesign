@@ -68,6 +68,14 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 [Ver guia](../guias/frontend/GUIA-PARTICULAS-E-GLOW.md)
 
+### Biblioteca de Acabamento Premium
+
+**Catalogo de acabamentos** para os elementos presentes em todo projeto web (navbar, logo, botao, card, link, scrollbar), com a distincao entre **modo operacional** e **modo marca**.
+
+**Quando usar:** produto com marca propria, landing page, catalogo, checkout, login - telas em que a identidade visual e argumento comercial.
+
+[Ver guia](../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md)
+
 ### Arvore de Materiais Dual-View
 
 **Arvore de materiais com dois modos de visualizacao** (simples e dinamico), tracking de itens vistos via localStorage e contagem de progresso por pasta.
