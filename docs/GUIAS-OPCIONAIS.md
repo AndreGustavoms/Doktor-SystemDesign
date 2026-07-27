@@ -76,6 +76,14 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 [Ver guia](../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md)
 
+### Efeitos de Cena e Ambiente
+
+**Camadas de cena** para secoes de destaque: aurora, cintilancia, meteoro, sheen em card, contra-rotacao e orbita de CTA, com orcamento explicito de custo visual.
+
+**Quando usar:** secao heroi de landing, pagina de lancamento, campanha, login de produto premium. Segundo volume do acabamento premium.
+
+[Ver guia](../guias/frontend/GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md)
+
 ### Arvore de Materiais Dual-View
 
 **Arvore de materiais com dois modos de visualizacao** (simples e dinamico), tracking de itens vistos via localStorage e contagem de progresso por pasta.

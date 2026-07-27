@@ -16,7 +16,10 @@ Este guia responde a uma pergunta pratica: "o layout ja funciona, mas parece gen
 - tela que a pessoa usa oito horas por dia;
 - qualquer contexto em que o brilho competir com o dado.
 
-Para fundo animado e particulas, veja [GUIA-PARTICULAS-E-GLOW.md](GUIA-PARTICULAS-E-GLOW.md). Este guia trata de acabamento em componentes, nao de cenario de fundo.
+Este guia trata de acabamento em componentes. Para o que vem depois:
+
+- camadas de cena, aurora, meteoro e ambiente de secao heroi: [GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md](GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md);
+- particulas com Framer Motion e sistema de glow por niveis: [GUIA-PARTICULAS-E-GLOW.md](GUIA-PARTICULAS-E-GLOW.md).
 
 ## 1. Os dois modos
 

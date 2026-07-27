@@ -8,6 +8,7 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 ### Adicionado
 
+- `guias/frontend/GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md`: segundo volume do acabamento visual, com camadas de cena (aurora, cintilancia, meteoro, sheen em card, contra-rotacao de selo, orbita de CTA), principio de profundidade por diferenca de velocidade entre camadas e orcamento explicito de custo visual por pagina.
 - `guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md`: catalogo de acabamentos por componente (logo com glow e giro, texto com shimmer, botao com brilho atravessando, link com sublinhado que cresce, navbar que reage ao scroll, scrollbar customizada, card com elevacao), com a distincao entre modo operacional e modo marca, tokens base, escala fluida com `clamp` e secao de acessibilidade/desempenho.
 
 ### Alterado

@@ -74,6 +74,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [GUIA-BACKGROUND-VISUAL.md](../guias/frontend/GUIA-BACKGROUND-VISUAL.md) | Background visual em camadas. |
 | [GUIA-PARTICULAS-E-GLOW.md](../guias/frontend/GUIA-PARTICULAS-E-GLOW.md) | Particulas, glow e efeitos visuais. |
 | [GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md](../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md) | Acabamento premium por componente e distincao entre modo operacional e modo marca. |
+| [GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md](../guias/frontend/GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md) | Camadas de cena, efeitos de ambiente e orcamento de custo visual. |
 | [GUIA-HEATMAP-DE-ATIVIDADE.md](../guias/frontend/GUIA-HEATMAP-DE-ATIVIDADE.md) | Heatmap de atividade. |
 | [GUIA-ONBOARDING-E-AJUDA.md](../guias/frontend/GUIA-ONBOARDING-E-AJUDA.md) | Onboarding e ajuda permanente. |
 | [GUIA-ARVORE-HIERARQUICA.md](../guias/frontend/GUIA-ARVORE-HIERARQUICA.md) | Arvores hierarquicas e categorias aninhadas. |
