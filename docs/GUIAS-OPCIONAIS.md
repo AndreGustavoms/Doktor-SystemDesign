@@ -84,6 +84,14 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 [Ver guia](../guias/frontend/GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md)
 
+### Interface Tecnica e Glitch
+
+**Linguagem visual de sistema**: boot com blur, glitch de estabilizacao, cursor e datilografia, varredura de sinal, anel de HUD, shockwave e esteira infinita.
+
+**Quando usar:** produto tecnico, ferramenta de desenvolvedor, gamificacao, painel de dados ao vivo. Terceiro volume do acabamento visual.
+
+[Ver guia](../guias/frontend/GUIA-INTERFACE-TECNICA-E-GLITCH.md)
+
 ### Arvore de Materiais Dual-View
 
 **Arvore de materiais com dois modos de visualizacao** (simples e dinamico), tracking de itens vistos via localStorage e contagem de progresso por pasta.

@@ -19,6 +19,7 @@ Este guia responde a uma pergunta pratica: "o layout ja funciona, mas parece gen
 Este guia trata de acabamento em componentes. Para o que vem depois:
 
 - camadas de cena, aurora, meteoro e ambiente de secao heroi: [GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md](GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md);
+- linguagem tecnica com boot, glitch, terminal e HUD: [GUIA-INTERFACE-TECNICA-E-GLITCH.md](GUIA-INTERFACE-TECNICA-E-GLITCH.md);
 - particulas com Framer Motion e sistema de glow por niveis: [GUIA-PARTICULAS-E-GLOW.md](GUIA-PARTICULAS-E-GLOW.md).
 
 ## 1. Os dois modos
