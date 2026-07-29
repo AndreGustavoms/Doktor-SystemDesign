@@ -27,6 +27,7 @@
 | Construir ou alterar **frontend** | [`core/DESIGN_SYSTEM_FRONTEND.md`](core/DESIGN_SYSTEM_FRONTEND.md) | [`core/PROMPT_BASE_FRONTEND.md`](core/PROMPT_BASE_FRONTEND.md) (montar o prompt inicial) |
 | Construir ou alterar **backend** | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) | [`core/PROMPT_BASE_BACKEND.md`](core/PROMPT_BASE_BACKEND.md) (montar o prompt inicial) |
 | Organizar **estrutura e responsabilidades** do codigo | [`core/DESIGN_SYSTEM_ARQUITETURA.md`](core/DESIGN_SYSTEM_ARQUITETURA.md) | - |
+| Refatorar, **quebrar arquivo grande** ou decidir se algo vira modulo proprio | [`core/DESIGN_SYSTEM_MODULARIDADE.md`](core/DESIGN_SYSTEM_MODULARIDADE.md) | - |
 | Aplicar **seguranca** (secrets, autenticacao, validacao, OWASP) | [`core/DESIGN_SYSTEM_SEGURANCA.md`](core/DESIGN_SYSTEM_SEGURANCA.md) | - |
 | Projetar ou revisar **API REST** (contratos, status codes, versionamento) | [`core/DESIGN_SYSTEM_API_REST.md`](core/DESIGN_SYSTEM_API_REST.md) | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) quando envolver regra de negocio |
 | Escrever ou revisar **testes** (unitario, integracao, E2E, mocks) | [`core/DESIGN_SYSTEM_TESTES.md`](core/DESIGN_SYSTEM_TESTES.md) | - |

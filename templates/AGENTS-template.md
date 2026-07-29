@@ -35,6 +35,7 @@ Se um arquivo indicado ainda nao existir neste projeto, consulte a copia sincron
 | Backend, API, banco ou regra de negocio | `core/DESIGN_SYSTEM_BACKEND.md` |
 | API REST, contratos ou status codes | `core/DESIGN_SYSTEM_API_REST.md` |
 | Estrutura, camadas ou organizacao de codigo | `core/DESIGN_SYSTEM_ARQUITETURA.md` |
+| Refatorar, quebrar arquivo grande ou criar modulo novo | `core/DESIGN_SYSTEM_MODULARIDADE.md` |
 | Seguranca, secrets, auth ou dados sensiveis | `core/DESIGN_SYSTEM_SEGURANCA.md` |
 | Testes, cobertura, mocks ou nomenclatura | `core/DESIGN_SYSTEM_TESTES.md` |
 | README ou documentacao | `core/DESIGN_SYSTEM_README.md` |

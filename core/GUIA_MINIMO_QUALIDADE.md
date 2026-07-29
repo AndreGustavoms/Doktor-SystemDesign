@@ -16,6 +16,7 @@ Quando houver duvida, siga os documentos completos:
 
 - Backend: [`DESIGN_SYSTEM_BACKEND.md`](DESIGN_SYSTEM_BACKEND.md)
 - Frontend: [`DESIGN_SYSTEM_FRONTEND.md`](DESIGN_SYSTEM_FRONTEND.md)
+- Granularidade de arquivo: [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md)
 - README: [`DESIGN_SYSTEM_README.md`](DESIGN_SYSTEM_README.md)
 - Contexto operacional: [`TEMPLATE-CONTEXTO-IA.md`](TEMPLATE-CONTEXTO-IA.md)
 - Economia de contexto e escolha de modelo de IA: [`DESIGN_SYSTEM_ECONOMIA_IA.md`](DESIGN_SYSTEM_ECONOMIA_IA.md)
@@ -32,6 +33,7 @@ Quando houver duvida, siga os documentos completos:
 2. **Manter responsabilidades separadas**
  - Regra de negocio nao fica misturada com view/controller, acesso a banco, UI ou integracao externa.
  - Arquivos "faz-tudo" devem ser tratados como sinal de refatoracao.
+ - **Um arquivo, uma responsabilidade.** A prioridade nao e ter poucos arquivos: e permitir consertar uma parte do sistema lendo so os arquivos daquela parte. Arquivo grande custa tempo, token e risco de mexer no que nao devia. Nomes-deposito (`utils.ts`, `helpers.ts`, `misc.ts`, `common.ts`) sao proibidos; um componente, um hook e um contexto por arquivo. Limites por tipo e criterio de quebra em [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md).
 
 3. **Preferir simplicidade verificavel**
  - Use a solucao mais simples que resolva o problema real.
@@ -105,6 +107,7 @@ Quando houver duvida, siga os documentos completos:
 
 - [ ] A solucao segue o padrao existente do repositorio.
 - [ ] As responsabilidades continuam separadas.
+- [ ] Nenhum arquivo virou deposito e os limites de tamanho por tipo foram respeitados (ver `DESIGN_SYSTEM_MODULARIDADE.md`).
 - [ ] Nao ha segredo, dado sensivel ou URL privada exposta.
 - [ ] Se o projeto trata dados pessoais, ha documento de privacidade/LGPD (base: `templates/PRIVACIDADE-LGPD-template.md`).
 - [ ] Contratos afetados foram preservados ou documentados.

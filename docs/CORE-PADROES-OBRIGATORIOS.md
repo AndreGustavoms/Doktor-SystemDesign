@@ -30,6 +30,12 @@ Padrao obrigatorio de **organizacao, responsabilidade e estrutura de codigo**. D
 
 [Ver design system arquitetura](../core/DESIGN_SYSTEM_ARQUITETURA.md)
 
+## Design System Modularidade
+
+Padrao obrigatorio de **granularidade de arquivo**. Define o principio de responsabilidade unica por arquivo, proibe nomes-deposito (`utils.ts`, `helpers.ts`, `misc.ts`), exige um componente/hook/contexto por arquivo, e fixa limites por tipo (componente, hook, modulo Python, CSS, conteudo, documento). Inclui o criterio de quebra por responsabilidade e as regras de leitura durante correcao. O motivo e economico: arquivo grande custa tempo, token e risco de alterar codigo nao relacionado.
+
+[Ver design system modularidade](../core/DESIGN_SYSTEM_MODULARIDADE.md)
+
 ## Design System Frontend
 
 Guia completo de padronizacao visual para front-end, extraido do **Doktor**. Documenta paleta, tipografia, layout, componentes, animacoes e padroes de interface. Inclui separacao explicita entre principios universais e escolhas especificas do Doktor.

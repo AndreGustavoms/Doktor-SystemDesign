@@ -21,6 +21,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [core/GUIA_MINIMO_QUALIDADE.md](../core/GUIA_MINIMO_QUALIDADE.md) | Contrato curto de qualidade para qualquer entrega. |
 | [core/DESIGN_SYSTEM_API_REST.md](../core/DESIGN_SYSTEM_API_REST.md) | Padroes de API REST, status codes, versionamento, paginacao e erros. |
 | [core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md) | Padroes de organizacao, camadas, nomenclatura e responsabilidades. |
+| [core/DESIGN_SYSTEM_MODULARIDADE.md](../core/DESIGN_SYSTEM_MODULARIDADE.md) | Granularidade de arquivo: responsabilidade unica, limites por tipo e criterio de quebra. |
 | [core/DESIGN_SYSTEM_SEGURANCA.md](../core/DESIGN_SYSTEM_SEGURANCA.md) | Padroes de seguranca, secrets, auth, validacao e OWASP basico. |
 | [core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md) | Padroes de testes, piramide, nomenclatura, mocks e cobertura. |
 | [core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md) | Padroes de frontend, UI, UX, componentes e identidade visual. |

@@ -46,6 +46,7 @@ templates/AGENTS-template.md -> AGENTS.md
 core/GUIA_MINIMO_QUALIDADE.md
 core/DESIGN_SYSTEM_API_REST.md
 core/DESIGN_SYSTEM_ARQUITETURA.md
+core/DESIGN_SYSTEM_MODULARIDADE.md
 core/DESIGN_SYSTEM_README.md
 core/DESIGN_SYSTEM_SEGURANCA.md
 core/DESIGN_SYSTEM_TESTES.md
@@ -83,6 +84,7 @@ docs/CHECKLIST-PROJETO-PRONTO.md
 | Backend | `core/DESIGN_SYSTEM_BACKEND.md` |
 | API REST, contratos ou status codes | `core/DESIGN_SYSTEM_API_REST.md` |
 | Estrutura, camadas ou organizacao de codigo | `core/DESIGN_SYSTEM_ARQUITETURA.md` |
+| Refatorar, quebrar arquivo grande ou criar modulo | `core/DESIGN_SYSTEM_MODULARIDADE.md` |
 | Secrets, auth, permissao ou dados sensiveis | `core/DESIGN_SYSTEM_SEGURANCA.md` |
 | Testes, cobertura ou validacao automatica | `core/DESIGN_SYSTEM_TESTES.md` |
 | App web rodavel | `core/GUIA-START-APP-SCRIPT.md` |

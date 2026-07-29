@@ -61,12 +61,12 @@ src/
 ### Arquivos
 
 - Um arquivo por conceito: `userService.ts`, nao `helpers.ts` com tudo misturado.
-- Se um arquivo passa de 200-300 linhas, avalie se tem mais de uma responsabilidade.
 - Nome do arquivo = o que ele contem, sem ambiguidade.
+- **Granularidade e limite por tipo de arquivo**: ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md). Ele define o limite de cada tipo (componente, hook, modulo, CSS, documento), o criterio de quebra por responsabilidade e as regras de leitura durante correcao.
 
 ### Pastas
 
-- Nao crie pasta `utils/` como lixeira. Cada utilitario deve ter nome descritivo.
+- `utils/` e uma pasta valida, mas cada arquivo dentro dela precisa de nome descritivo (`formatCurrency.ts`, `maskCPF.ts`). O que nao pode existir e um arquivo `utils.*` unico acumulando funcoes sem relacao - ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md) secao 3.
 - Nao misture camadas: `services/` nao importa de `api/`, `api/` nao acessa banco direto.
 
 ---
@@ -136,7 +136,7 @@ Antes de considerar uma implementacao pronta:
 - [ ] Cada funcao faz uma unica coisa.
 - [ ] Nenhuma camada acessa o que nao deveria (ex: controller no banco).
 - [ ] Nomes descrevem o que o codigo faz sem precisar de comentario.
-- [ ] Arquivos com mais de 300 linhas foram revisados.
+- [ ] Os limites de tamanho por tipo de arquivo foram respeitados (ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md) secao 6).
 - [ ] Testes cobrem os casos principais de `services/` e `utils/`.
 - [ ] Nenhuma logica duplicada entre arquivos.
 - [ ] A estrutura de pastas reflete responsabilidades, nao tipos de arquivo.
