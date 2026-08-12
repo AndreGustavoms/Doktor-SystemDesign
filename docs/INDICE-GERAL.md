@@ -43,6 +43,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [docs/GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) | Fluxo rapido para aplicar o system design em projeto novo. |
 | [docs/IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor, misturando autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
+| [docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md](REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Curadoria externa de componentes animados, scroll narrativo, movimento e 3D. |
 | [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](GIT-POLITICA-DE-VERSIONAMENTO.md) | Regras de branch, commit e documentacao viva. |
 | [docs/CURADORIA-DOS-GUIAS.md](CURADORIA-DOS-GUIAS.md) | Plano de revisao dos guias importados. |
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar/sincronizar estes padroes em outros projetos. |

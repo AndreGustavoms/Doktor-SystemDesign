@@ -4,6 +4,10 @@ A pasta [`guias/`](../guias/) contem **padroes reutilizaveis por dominio**, orga
 
 > Voltar ao [README](../README.md). Agentes de IA: o indice compacto destes guias, com palavras-chave para casar com o prompt, esta em [`AGENTS.md`](../AGENTS.md).
 
+Para pesquisar bibliotecas, componentes animados, scroll narrativo e 3D antes
+de escolher um guia, consulte a curadoria em
+[`REFERENCIAS-VISUAIS-E-MOVIMENTO.md`](REFERENCIAS-VISUAIS-E-MOVIMENTO.md).
+
 Cada guia responde a tres perguntas:
 
 - Qual problema ele resolve

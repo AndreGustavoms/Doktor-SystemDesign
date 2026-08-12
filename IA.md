@@ -8,11 +8,12 @@
   historico completo continua protegido na secao "Historico detalhado" abaixo.
 -->
 
-Ultima atualizacao: [2026-07-24]
+Ultima atualizacao: [2026-08-12]
 
-- Fase: acervo maduro e auditado, agora com camada de saude de repositorio e automacao de qualidade. 26 guias tecnicos, todos padronizados; scripts de instalacao cobertos por 30 testes automatizados; capa/badges no README; arquivos de comunidade do GitHub presentes.
+- Fase: acervo maduro e auditado, agora com camada de saude de repositorio, automacao de qualidade e curadoria externa para interfaces de marca. 26 guias tecnicos, todos padronizados; scripts de instalacao cobertos por 30 testes automatizados; capa/badges no README; arquivos de comunidade do GitHub presentes.
 - Documentos-nucleo recentes: `core/DESIGN_SYSTEM_MODULARIDADE.md` (granularidade de arquivo: responsabilidade unica, limites por tipo, criterio de quebra - com o custo de token como motivo declarado), `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (nivel de tarefa vs. nivel de modelo, economia de contexto, com medicao real do acervo) e `docs/POLITICA-DE-ATUALIZACAO.md` (gatilhos de revisao e sincronizacao com a origem).
-- Versao publicada: `0.4.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
+- Versao publicada: `0.5.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
+- Referencias visuais: `docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md` organiza OriginKit, Skiper UI, Cult UI, GSAP, Motion e Three.js por finalidade, com guardrails de licenca, identidade, acessibilidade e performance.
 - Validacao automatizada: `scripts/validate-repo.ps1` agora checa ASCII, links, imagens locais e o roteador de guias (`scripts/validate-router.ps1`: cobertura + colisao de palavras-chave); `scripts/measure-context.ps1` recalcula a economia de contexto do acervo sob demanda.
 - Seguranca/privacidade: `SECURITY.md` na raiz (politica de reporte), `templates/SECURITY-template.md` reforcado e `templates/PRIVACIDADE-LGPD-template.md` novo para projetos com dados pessoais.
 - Git: regra formal de `git pull` antes de comecar a commitar e `git push` automatico ao final de cada leva, sem esperar confirmacao manual (ver `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`, secao 3).
@@ -113,6 +114,7 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - Tratar o `AGENTS.md` de projetos destino como roteador leve de contexto: guia minimo sempre, documentos por tipo de tarefa e guias opcionais somente sob demanda.
 - [2026-07-29] Modularidade vira documento proprio em `core/`, nao secao do `DESIGN_SYSTEM_ARQUITETURA.md`. Motivo: o tema tem regra suficiente para documento normativo (limites por tipo, criterio de quebra, proibicoes de nome, regras de correcao) e precisa ser roteavel por tarefa - quem vai refatorar deve abrir um documento sobre refatoracao, nao cacar uma subsecao dentro de arquitetura. Origem: regra redigida pelo autor no projeto `PrismaTest`, onde nasceu de um caso concreto (um `start_app.py` de 1716 linhas com seis responsabilidades). O angulo de custo de token/contexto e o que o acervo nao tinha - os documentos existentes tratavam tamanho de arquivo como questao de manutenibilidade humana.
 - [2026-07-29] `utils/` permanece como pasta valida no acervo; o proibido e o arquivo `utils.*` generico. O `DESIGN_SYSTEM_ARQUITETURA.md` se contradizia: prescrevia a pasta na estrutura padrao (linhas de estrutura backend e frontend) e logo abaixo dizia "nao crie pasta `utils/` como lixeira". Conciliado em favor da pasta porque ela ja esta nas estruturas prescritas e em projetos existentes; mudar isso quebraria layout de repositorio sem ganho real. O problema sempre foi o arquivo sem nome descritivo, nao o diretorio.
+- [2026-08-12] OriginKit, Skiper UI, Cult UI, GSAP, Motion e Three.js foram adotados como referencias externas oficiais para pesquisa de componentes, movimento, scroll e 3D. Decisao: documentar principios e criterios de escolha sem copiar identidade, codigo premium ou assets; toda adocao deve verificar licenca/versao, respeitar movimento reduzido e manter fallback utilizavel sem a camada visual avancada. Validacao prevista pela propria documentacao: validador do repositorio, links internos e revisao do indice/roteador.
 
 ## Pendencias
 

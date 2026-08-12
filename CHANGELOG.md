@@ -6,8 +6,11 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-12
+
 ### Adicionado
 
+- `docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md`: curadoria oficial de OriginKit, Skiper UI, Cult UI, GSAP, Motion e Three.js, com matriz de escolha e regras de licenca, identidade propria, acessibilidade, progressive enhancement e performance.
 - `core/DESIGN_SYSTEM_MODULARIDADE.md`: padrao obrigatorio de granularidade de arquivo. Responsabilidade unica por arquivo, proibicao de nomes-deposito (`utils.ts`, `helpers.ts`, `misc.ts`, `common.ts`), um componente/hook/contexto/tipo por arquivo, limites por tipo (componente 120/200, hook 80/150, modulo Python 150/300, CSS e conteudo 150/250, documento 250/400), criterio de quebra por responsabilidade ("cabe numa frase sem 'e'?") e regras de leitura durante correcao. O motivo declarado e economico: arquivo grande custa tempo, token e risco de alterar codigo nao relacionado - angulo que o acervo ainda nao cobria.
 - `guias/frontend/GUIA-INTERFACE-TECNICA-E-GLITCH.md`: terceiro volume do acabamento visual, com a linguagem de sistema (boot com blur, glitch de estabilizacao amortecida, cursor com `steps`, datilografia acessivel, varredura de sinal, anel de HUD, shockwave, ejecao de pacotes e esteira infinita) e o limite de que glitch so aparece na entrada.
 - `guias/frontend/GUIA-EFEITOS-DE-CENA-E-AMBIENTE.md`: segundo volume do acabamento visual, com camadas de cena (aurora, cintilancia, meteoro, sheen em card, contra-rotacao de selo, orbita de CTA), principio de profundidade por diferenca de velocidade entre camadas e orcamento explicito de custo visual por pagina.
@@ -15,6 +18,7 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 ### Alterado
 
+- `README.md`, `AGENTS.md`, `docs/INDICE-GERAL.md` e `docs/GUIAS-OPCIONAIS.md`: referencias visuais externas passaram a ter uma rota propria de descoberta, sem aumentar a leitura obrigatoria por tarefa.
 - `core/DESIGN_SYSTEM_ARQUITETURA.md`: resolvida a contradicao sobre `utils/`. O documento prescrevia a pasta na estrutura padrao e ao mesmo tempo dizia "nao crie pasta `utils/` como lixeira". Agora a pasta e explicitamente valida desde que cada arquivo dentro tenha nome descritivo (`formatCurrency.ts`); o proibido e o arquivo `utils.*` unico acumulando funcoes sem relacao. O intervalo generico de "200-300 linhas" passa a apontar para os limites por tipo em `DESIGN_SYSTEM_MODULARIDADE.md`, evitando dois numeros concorrentes no acervo.
 - `core/GUIA_MINIMO_QUALIDADE.md`: item 2 ("manter responsabilidades separadas") ganha a regra de um arquivo/uma responsabilidade, com o motivo economico e a proibicao de nomes-deposito; novo item no checklist rapido.
 - `docs/IDENTIDADE-DOKTOR.md`: identidade deixa de prescrever paleta. A secao "Paleta de referencia" (que sugeria verde/ciano) vira "Cor", exigindo tokens nomeados sem impor tom, e "Personalidade visual" passa a descrever metodo (tokens, easing, `clamp`, hover com `:active`, animacao em camada) mais a distincao entre modo operacional e modo marca. Removida a recomendacao de evitar azul escuro e glow, que contrariava os proprios projetos do autor.

@@ -68,6 +68,7 @@ Nao e um framework rigido nem uma stack obrigatoria. E uma base para reduzir ret
 |------|----------------|
 | [docs/IDENTIDADE-DOKTOR.md](docs/IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor: autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](docs/PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
+| [docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Curadoria externa de componentes animados, scroll, movimento e 3D. |
 | [docs/DECISOES-DE-IDENTIDADE.md](docs/DECISOES-DE-IDENTIDADE.md) | Registro das decisoes de autoria, marca, stack e identidade publica. |
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](docs/INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar ou sincronizar estes padroes em outros projetos. |
 | [docs/POLITICA-DE-ATUALIZACAO.md](docs/POLITICA-DE-ATUALIZACAO.md) | Como manter guias, stack e sincronizacao com a origem atualizados. |
@@ -123,6 +124,7 @@ Doktor-System-Design/
 |   |-- IDENTIDADE-DOKTOR.md
 |   |-- INDICE-GERAL.md
 |   |-- POLITICA-DE-ATUALIZACAO.md
+|   |-- REFERENCIAS-VISUAIS-E-MOVIMENTO.md
 |   |-- STACK-E-ARQUITETURA.md
 |   |-- VALIDACAO-SCRIPTS.md
 |   `-- INSTALACAO-EM-OUTROS-PROJETOS.md

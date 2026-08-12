@@ -25,6 +25,7 @@
 | Se a tarefa e... | Leia (alem do guia minimo) | Apoio opcional |
 |------------------|----------------------------|----------------|
 | Construir ou alterar **frontend** | [`core/DESIGN_SYSTEM_FRONTEND.md`](core/DESIGN_SYSTEM_FRONTEND.md) | [`core/PROMPT_BASE_FRONTEND.md`](core/PROMPT_BASE_FRONTEND.md) (montar o prompt inicial) |
+| Pesquisar **referencias visuais, componentes animados, scroll ou 3D** | [`docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md`](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Abra no maximo um guia visual de `guias/frontend/` depois de escolher a direcao |
 | Construir ou alterar **backend** | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) | [`core/PROMPT_BASE_BACKEND.md`](core/PROMPT_BASE_BACKEND.md) (montar o prompt inicial) |
 | Organizar **estrutura e responsabilidades** do codigo | [`core/DESIGN_SYSTEM_ARQUITETURA.md`](core/DESIGN_SYSTEM_ARQUITETURA.md) | - |
 | Refatorar, **quebrar arquivo grande** ou decidir se algo vira modulo proprio | [`core/DESIGN_SYSTEM_MODULARIDADE.md`](core/DESIGN_SYSTEM_MODULARIDADE.md) | - |
