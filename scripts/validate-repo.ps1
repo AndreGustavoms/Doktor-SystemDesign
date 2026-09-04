@@ -241,6 +241,11 @@ try {
 
     Write-Host ""
     Write-Host 'Validation OK' -ForegroundColor Green
+    # Sai explicitamente: sem isto, o processo herda o $LASTEXITCODE do ultimo
+    # comando nativo executado. Quando o ambiente pula a checagem de Bash
+    # (`cmd /c "bash --version"` falha no Windows), esse codigo fica != 0 e a
+    # validacao "OK" retornava 1 assim mesmo, reprovando no CI e nos hooks.
+    exit 0
 }
 finally {
     Pop-Location
