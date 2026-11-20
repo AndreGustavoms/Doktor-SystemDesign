@@ -94,11 +94,11 @@ Medicao executada por `scripts/measure-context.ps1` em 2026-11-20.
 
 | Cenario de leitura | Arquivos | Tokens aprox. |
 |---|---|---|
-| Ler o acervo inteiro "por garantia" | 82 | ~147.000 |
+| Ler o acervo inteiro "por garantia" | 82 | ~148.000 |
 | Leitura roteada por `AGENTS.md` + 2 docs-alvo de uma tarefa tipica | 3 | ~5.700 |
 
-Resultado: o acervo inteiro custa cerca de **25,8x** a leitura roteada. Seguir o
-roteador reduz a leitura em aproximadamente **96,1%**. Esse ganho e o proposito
+Resultado: o acervo inteiro custa cerca de **26x** a leitura roteada. Seguir o
+roteador reduz a leitura em aproximadamente **96,2%**. Esse ganho e o proposito
 central do repo: o acervo pode crescer (secao 3.1) sem que o custo por tarefa
 cresca junto, desde que o roteamento seja seguido.
 

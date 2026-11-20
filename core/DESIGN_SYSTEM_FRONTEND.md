@@ -42,11 +42,20 @@ Uma mesma aplicacao pode combinar os dois modos, mantendo tokens e componentes c
 
 Crie um conjunto pequeno de tokens semanticos e reutilize-o. O nome descreve o papel, nao a aparencia: `text-primary`, `surface`, `border`, `action`, `status-danger`. Isso permite temas e ajustes sem perseguir valores soltos.
 
+Quando houver variacoes de tema, marca ou plataforma, mantenha as camadas claras:
+
+- **Primitivos** guardam valores de base, como `blue-600`, `space-4` ou `radius-md`.
+- **Semanticos** ligam valores a funcao, como `text-primary`, `surface-raised` ou `action-primary`. Estes sao a interface normal que os componentes consomem.
+- **De componente** existem somente para uma necessidade repetida ou variacao estavel, como `dialog-shadow`; nao replique a escala sem motivo.
+
+Um projeto simples pode usar apenas propriedades customizadas CSS. Se varios produtos, marcas ou ferramentas precisarem trocar tokens, escolha uma fonte de verdade e avalie um formato de intercambio como o [Design Tokens Format 2025.10](../docs/REFERENCIAS-TECNICAS.md). A especificacao e estavel para uso, mas vem de um W3C Community Group e nao esta no W3C Standards Track; adote-a quando interoperabilidade reduzir retrabalho, nao por obrigacao.
+
 Defina conforme o produto:
 
 - cores de texto, superficie, borda, acao e estados;
 - escala tipografica, altura de linha e largura confortavel de leitura;
 - escala de espacamento e densidade;
+- largura maxima de conteudo, gutters, colunas e intervalos de secao quando forem compartilhados;
 - radius, borda, elevacao e foco;
 - duracao e curva de movimento;
 - tema claro/escuro e estados de alto contraste, se necessarios.
@@ -59,6 +68,9 @@ Projete para o conteudo e para o fluxo, nao para uma lista fixa de modelos de te
 
 - Prefira Grid, Flexbox, unidades relativas, limites de largura e imagens responsivas.
 - Escolha breakpoints quando o conteudo ou os controles deixam de caber; use unidades relativas quando pratico.
+- Use media queries para reorganizar o shell da pagina pelo viewport. Para um componente reutilizado em espacos de larguras diferentes, considere container queries; declare um container apenas onde ele for necessario e prefira consulta pela largura quando a altura nao importar.
+- Use `clamp()` para escalas fluidas com limites legiveis quando isso simplificar a composicao. Para texto, nao dependa apenas de `vw`; mantenha limites relativos e valide zoom e ampliacao.
+- Evite que conteudo longo force overflow: permita quebra de texto e revise larguras minimas intrinsecas em itens de Grid/Flexbox.
 - Reorganize a prioridade dos dados e a navegacao em telas estreitas; nao apenas reduza tudo.
 - Para tabelas densas, escolha conscientemente colunas prioritarias, detalhe por linha ou rolagem horizontal claramente indicada.
 - Evite largura e altura fixas para conteudo que pode crescer. Reserve proporcoes quando isso evita salto de layout.

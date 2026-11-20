@@ -12,7 +12,15 @@ Ultima revisao das fontes: 2026-11-20.
 | [WCAG 2.2: Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum) | Alvos interativos, espacamento e excecoes do criterio 2.5.8. |
 | [WCAG 2 at a Glance](https://www.w3.org/WAI/standards-guidelines/wcag/glance/) | Resumo para orientar a leitura; nao substitui o padrao. |
 | [Responsive web design - MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design) | Layouts flexiveis, breakpoints baseados no conteudo e tecnologias CSS responsivas. |
+| [CSS container queries - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries) | Adaptar componentes ao espaco do container; use quando o mesmo componente aparece em contextos de largura diferentes. |
+| [`clamp()` - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/clamp) | Escalas fluidas limitadas por valores minimo, preferido e maximo. |
 | [Using media queries for accessibility - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using_for_accessibility) | Preferencias do sistema, incluindo movimento reduzido. |
+
+## Design tokens
+
+| Fonte | Use para |
+|---|---|
+| [Design Tokens Format 2025.10 - DTCG](https://www.designtokens.org/tr/2025.10/) | Formato de intercambio entre ferramentas e plataformas. A versao 2025.10 e estavel; a especificacao e mantida por um W3C Community Group e nao e uma recomendacao W3C. |
 
 ## Padroes de interacao acessiveis
 

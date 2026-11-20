@@ -62,6 +62,11 @@ Se uma captura ou interacao nao foi observada, registre essa limitacao. Separe e
 
 Defina nomes semanticos para funcao. Registre valores depois de conhecer a marca, conteudo, contraste e temas do produto.
 
+- Fonte de verdade dos tokens:
+- Ferramentas ou plataformas que precisam compartilhar os tokens:
+- Formato de intercambio, se ele reduzir trabalho manual:
+- Camadas adotadas: primitivas, semanticas e de componente:
+
 | Categoria | Token/decisao | Valor do projeto | Uso e excecoes |
 |---|---|---|---|
 | Texto | text-primary, text-muted | | |
@@ -72,6 +77,8 @@ Defina nomes semanticos para funcao. Registre valores depois de conhecer a marca
 | Foco | focus-ring | | |
 | Tipografia | display, heading, body, label, data | | |
 | Espacamento | escala e densidade | | |
+| Layout | content-max, page-gutter, grid-gap, section-gap | | |
+| Breakpoint | condicoes de reorganizacao compartilhadas | | |
 | Forma | radius, stroke, elevacao | | |
 | Movimento | duracao, curva, reducao | | |
 
@@ -97,6 +104,9 @@ Escolha pontos de reorganizacao quando o conteudo ou os controles deixarem de ca
 
 Decisoes que afetam mais de uma tela:
 
+- Container de conteudo, gutters e grade:
+- Media queries por viewport e container queries por componente:
+- Escalas fluidas e limites de zoom:
 - Navegacao em tela estreita:
 - Sidebar, drawer ou menu:
 - Tabelas e dados densos:

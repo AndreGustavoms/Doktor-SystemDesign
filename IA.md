@@ -114,6 +114,8 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - [2026-11-20] O exemplo de cintilancia no guia de efeitos de cena tambem passou a gerar propriedades deterministas para evitar diferencas de hidratacao e respeitar `prefers-reduced-motion`.
 - [2026-11-20] Fontes Cal.com/Cal.diy revalidadas em materiais oficiais; estudo agora distingue o produto comercial fechado e sua migracao visual para COSS UI do codigo comunitario Cal.diy.
 - [2026-11-20] Medicao de contexto em core/DESIGN_SYSTEM_ECONOMIA_IA.md recalculada com scripts/measure-context.ps1: 82 arquivos Markdown (~147 mil tokens) contra 3 arquivos roteados (~5,7 mil), cerca de 96,1% menos leitura.
+- [2026-11-20] O padrao frontend agora separa tokens primitivos, semanticos e de componente, adiciona fundamentos de layout compartilhados e diferencia adaptacao por viewport de container queries. O template e as fontes tecnicas foram alinhados; DTCG 2025.10 aparece como formato de intercambio opcional, nao como requisito.
+- [2026-11-20] A medicao de contexto foi recalculada apos a revisao frontend: 82 arquivos Markdown (~148 mil tokens) contra 3 documentos roteados (~5,7 mil), cerca de 96,2% menos leitura.
 
 ## Decisoes tomadas
 
