@@ -14,6 +14,17 @@ Ultima revisao das fontes: 2026-11-20.
 | [Responsive web design - MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design) | Layouts flexiveis, breakpoints baseados no conteudo e tecnologias CSS responsivas. |
 | [Using media queries for accessibility - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using_for_accessibility) | Preferencias do sistema, incluindo movimento reduzido. |
 
+## Padroes de interacao acessiveis
+
+| Fonte | Use para |
+|---|---|
+| [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) | Exemplos de semantica e comportamento de teclado para widgets; nao substitui WCAG nem HTML nativo. |
+| [Dialog modal pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) | Foco inicial, contencao/restauracao de foco, Escape e rotulos de dialogs modais. |
+| [Menu button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) | Estado expandido, papel do botao e abertura por teclado em menus de acao. |
+| [Disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) | Botoes de mostrar/ocultar, aria-expanded e conteudo controlado, incluindo FAQ. |
+
+APG descreve padroes de widgets ARIA especificos. Prefira controles HTML nativos quando eles resolvem a tarefa; nao adicione roles ARIA sem implementar o comportamento de teclado correspondente.
+
 ## Performance web
 
 | Fonte | Use para |

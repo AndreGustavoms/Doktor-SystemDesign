@@ -71,6 +71,8 @@ Nao esconda acao essencial no mobile nem exija gesto de arrastar como unico meio
 
 Para interfaces web, use HTML semantico e os controles nativos quando atendem ao comportamento. Mire WCAG 2.2 nivel AA, salvo requisito contratual ou regulatorio diferente. Nao declare conformidade sem avaliar as paginas completas e seus estados.
 
+Para widgets compostos que precisem de interacao ARIA personalizada, consulte os padroes WAI-ARIA APG listados em [Referencias Tecnicas](../docs/REFERENCIAS-TECNICAS.md). Use o padrao de menu para menus de acoes; uma lista de navegacao comum nao precisa virar um widget ARIA de menu.
+
 Verifique:
 
 - uso por teclado, ordem de foco logica e foco visivel que nao fique coberto;

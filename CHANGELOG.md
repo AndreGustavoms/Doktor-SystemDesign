@@ -15,6 +15,10 @@ Formato baseado em Conventional Commits e versoes semanticas.
 
 - core/DESIGN_SYSTEM_FRONTEND.md: adiciona contratos de autenticacao, menus, dialogs, redirecionamentos e permissoes com base nos estudos de caso.
 - PROMPT_BASE_FRONTEND.md, AGENTS, Guia Rapido, README, indice e IA.md: conectam o estudo e o novo template ao fluxo sem torna-los obrigatorios para interfaces simples.
+- A capa do README agora usa assets/social-preview.jpg (1280 px de largura, 492702 bytes), com a mesma composicao e cerca de 81% menos bytes que o PNG anterior.
+- Referencias visuais corrigem o destino antigo de Origin UI para COSS UI; referencias tecnicas agora apontam para os padroes WAI-ARIA de dialog, menu e disclosure.
+- GUIA-SCRAPING-MULTIFORMATO.md ganha um mapa de leitura por metodo, remove versoes fixas, user-agent antigo e extracao de `client_id` de bundles; exige autorizacao para endpoints nao documentados, usa credenciais fora da URL e valida origem de cursores.
+- Guias visuais atualizam Framer Motion para Motion for React e os imports atuais; a arvore de materiais deixa de sugerir uma dependencia de animacao que nao usa e exemplos de particulas/estrelas respeitam movimento reduzido e renderizacao deterministica.
 
 ## [0.6.0] - 2026-11-20
 

@@ -43,6 +43,21 @@ Ao aplicar este guia, o projeto deve ter:
 - logs sem segredos;
 - criterios objetivos de pronto.
 
+## Atalho de leitura
+
+Este guia e um catalogo de metodos, nao uma leitura unica obrigatoria. Leia os contratos gerais e somente o caminho que corresponde a tarefa:
+
+| Preciso resolver | Leia |
+|---|---|
+| Delimitar escopo, limites e arquitetura | Secoes 1-7 e 17-20 |
+| Obter HTML/JSON estatico | Secoes 8, 10 e 12-14 |
+| Consumir API oficial, feed ou quota | Secoes 10-D a 10-G e 13-18 |
+| Usar endpoint JSON nao documentado | Secao 10-A somente com autorizacao e termos permitidos |
+| Renderizacao JavaScript, scroll ou captura manual | Secoes 9, 10-B, 10-C e 11 |
+| Persistencia, retomada e auditoria | Secoes 10-G e 13-20 |
+
+Nao leia os exemplos de todos os metodos quando a tarefa usa apenas um.
+
 ## Regra central
 
 Scraping de qualidade nao e "pegar HTML de qualquer jeito". E uma arquitetura auditavel, testavel, limitada por guardrails, respeitosa com autorizacoes e preparada para falhar de forma segura.
@@ -53,12 +68,11 @@ Este guia cobre:
 
 - coleta via HTTP simples;
 - consumo de API oficial documentada (JSON) com paginacao por numero de pagina;
-- consumo de API interna/nao documentada (JSON) como metodo preferido sobre navegador;
+- consumo de endpoint JSON nao documentado somente quando autorizado e permitido pelos termos da fonte;
 - coleta de feed RSS/Atom (XML) com parser offline e zero dependencia externa;
 - autenticacao em APIs oficiais: API key, OAuth Client Credentials, com segredos so do ambiente;
 - gestao de quota e rate-limit (`Retry-After`, backoff exponencial, escolha de endpoint barato);
 - coleta retomavel por checkpoint apos interrupcao/estouro de quota;
-- descoberta de token/`client_id` embutido em scripts da pagina;
 - resolucao de URL publica para entidade interna (endpoint `/resolve`);
 - paginacao por cursor (`next_href` / `linked_partitioning`) e resolucao em duas etapas (item so com id);
 - navegacao com Playwright;
@@ -89,7 +103,7 @@ Este guia nao cobre:
 ## 2. Stack recomendada
 
 ```text
-Python 3.11+
+Versao de Python suportada pelo projeto e pelas bibliotecas escolhidas
 urllib (stdlib) ou Requests/httpx para I/O HTTP
 Playwright (ou Selenium) para navegador real
 BeautifulSoup4 para parser de HTML
@@ -109,7 +123,7 @@ Regra pratica (do metodo mais barato para o mais caro):
 
 - Use **API oficial documentada** quando ela existir - e a fonte mais estavel e respeitosa; pagina por numero ou cursor e pode exigir autenticacao (ver secoes 10-D e 10-F).
 - Use **feed RSS/Atom (XML)** quando a fonte publicar um feed publico - parser offline, sem credenciais, zero dependencia (ver secao 10-E).
-- Use **API interna/nao documentada em JSON** quando nao houver API oficial mas o front-end consumir uma - rapido e sem navegador (ver secao 10-A).
+- Use endpoint JSON nao documentado somente quando houver autorizacao e os termos permitirem automacao. O front-end da pagina usar o endpoint nao concede, por si so, permissao nem estabilidade de contrato (ver secao 10-A).
 - Use **requests/httpx + parser offline** quando o HTML ja trouxer os dados.
 - Use **JSON embutido na pagina** quando o DOM vier vazio mas os dados estiverem em `__NEXT_DATA__`, JSON-LD ou payload serializado.
 - Use **Playwright/Selenium** quando a pagina depender de JavaScript, lazy loading, popup, scroll infinito, paginacao dinamica ou interacao humana.
@@ -140,7 +154,7 @@ scraper_module/
       base.py
       official_api.py    # API oficial documentada em JSON (paginacao/auth)
       rss_feed.py        # feed RSS/Atom (XML) com parser offline, sem credencial
-      http_api.py        # API interna/nao documentada em JSON (sem navegador)
+      authorized_json.py # endpoint JSON permitido pela fonte (sem navegador)
       browser.py         # navegador real (Selenium/Playwright) como fallback
       example_source.py
     pipeline.py          # orquestra os metodos com fallback e falha segura
@@ -178,7 +192,7 @@ Responsabilidades:
 | `models` | DTOs puros, sem ORM e sem dependencia de framework |
 | `browser` | Context manager Playwright, timeouts, user agent, lifecycle e screenshots de debug |
 | `flows` | Fluxos comuns de navegacao, descoberta, popup, paginacao e fallback |
-| `adapters` | Um adapter por fonte/metodo (API interna, HTTP, navegador), todos sob a mesma interface |
+| `adapters` | Um adapter por fonte/metodo (JSON autorizado, HTTP, navegador), todos sob a mesma interface |
 | `pipeline` | Ordem de tentativa dos metodos (mais barato -> fallback) e falha segura |
 | `manual_html` | Importacao offline de HTML salvo em disco |
 | `html_capture` | Servidor local e userscript para captura manual autorizada |
@@ -518,31 +532,32 @@ Cuidados:
 
 ---
 
-## 10-A. API interna/nao documentada em JSON (metodo preferido)
+## 10-A. API JSON observada (somente quando autorizada)
 
-Muitos sites modernos sao apenas uma casca: o front-end consome uma **API JSON interna**
-(`api-v2.exemplo.com`, `/_next/data/...`, `/graphql`, etc.) que entrega os dados ja estruturados.
-Quando ela existe e cobre o caso, **prefira-a a qualquer parser de HTML ou navegador**: e mais
-rapida, nao depende de Chrome/Playwright, funciona em qualquer SO e quebra menos (o JSON e mais
-estavel que classes CSS).
+A existencia de um endpoint que o front-end usa nao torna seu uso automatizado permitido nem
+transforma esse endpoint em contrato estavel. Confirme autorizacao, termos e limites da fonte
+antes de enviar requisicoes diretas. Se isso nao estiver claro, nao automatize o endpoint: use
+uma API oficial, exportacao autorizada ou captura manual permitida.
 
-Regra de ouro: **API oficial documentada > API interna nao documentada > HTML/JSON embutido >
-navegador**. Use API interna apenas quando nao houver API oficial e dentro dos guardrails da
-secao 18 (termos de uso, limites, sem bypass de auth).
+Quando o uso estiver autorizado e nao exigir bypass de autenticacao, um endpoint JSON pode reduzir
+o custo de parsing. A ordem de preferencia e: **API oficial documentada > feed publicado > endpoint
+JSON explicitamente permitido > HTML autorizado > navegador/captura manual autorizados**.
 
 O I/O HTTP pode ser feito so com a stdlib (`urllib`), sem dependencias extras, e **todo o parsing
 deve ficar em funcoes puras** (recebem texto/JSON, devolvem dados) para serem testaveis offline.
+O `http_get` abaixo e um exemplo minimo. Ele nao aplica politica de redirects: use-o sem credenciais
+ou substitua-o por um cliente que valide o destino final e rejeite redirects para outra origem antes
+de enviar headers de autenticacao.
 
 ```python
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-_DEFAULT_UA = "Mozilla/5.0 (...) Chrome/120.0.0.0 Safari/537.36"
-
-
 def http_get(url: str, headers: dict | None = None, timeout: float = 30.0) -> str | None:
-    """GET simples via urllib. Retorna o corpo como texto, ou None em erro (fail-safe)."""
-    req = Request(url, headers=headers or {"User-Agent": _DEFAULT_UA})
+    """GET simples autorizado. Nao simula navegador nem contorna controles de acesso."""
+    request_headers = {"Accept": "text/html,application/json"}
+    request_headers.update(headers or {})
+    req = Request(url, headers=request_headers)
     try:
         with urlopen(req, timeout=timeout) as response:
             return response.read().decode("utf-8", errors="replace")
@@ -550,58 +565,45 @@ def http_get(url: str, headers: dict | None = None, timeout: float = 30.0) -> st
         return None
 ```
 
-### Descoberta de token / `client_id` embutido
+Use somente a autenticacao descrita pela documentacao ou autorizacao da fonte. Carregue segredos do
+ambiente ou de um secret manager e envie-os pelo mecanismo documentado, normalmente um header; nao
+extraia `client_id` de bundles nem reutilize credenciais de sessao. Nunca registre tokens, nem mesmo
+prefixos. Registre apenas a fonte, o metodo e o estado da coleta.
 
-Algumas APIs internas exigem um token publico (`client_id`, `app_key`, build id) que o proprio
-front-end embute nos scripts JS da pagina. O padrao e: baixar a home, achar as URLs dos bundles JS,
-baixar os ultimos e extrair o token por regex. Mantenha as regex em funcoes puras testaveis.
+### Resolucao de URL publica -> identificador do endpoint autorizado (`/resolve`)
 
-```python
-import re
-
-_TOKEN_RE = re.compile(r'client_id\s*[:=]\s*["\']([a-zA-Z0-9]{32})["\']')
-_SCRIPT_URL_RE = re.compile(r'src="(https://cdn\.exemplo\.com/assets/[^"]+\.js)"')
-
-
-def find_script_urls(html: str) -> list[str]:
-    return _SCRIPT_URL_RE.findall(html or "")
-
-
-def extract_token_from_js(js: str) -> str | None:
-    match = _TOKEN_RE.search(js or "")
-    return match.group(1) if match else None
-
-
-def fetch_token(timeout: float = 30.0) -> str | None:
-    html = http_get("https://exemplo.com", timeout=timeout)
-    if not html:
-        return None
-    for script_url in find_script_urls(html)[-3:]:   # token costuma estar nos ultimos bundles
-        token = extract_token_from_js(http_get(script_url, timeout=timeout) or "")
-        if token:
-            return token
-    return None
-```
-
-Cuidados:
-
-- Token publico embutido no front-end nao e segredo, mas trate-o como volatil: pode rotacionar a
-  qualquer momento. Falhe de forma clara ("o site pode ter mudado") em vez de quebrar feio.
-- **Nunca** descubra, reutilize ou armazene tokens de sessao/autenticacao de usuario - isso e bypass
-  de auth e esta fora do escopo (secao 1).
-- Logue apenas um prefixo do token (`token[:8]...`), nunca o valor inteiro.
-
-### Resolucao de URL publica -> entidade interna (`/resolve`)
-
-A URL que o usuario cola e publica, mas a API interna trabalha com ids. Um endpoint de `resolve`
-costuma traduzir uma para a outra.
+A URL informada pode precisar ser convertida para um identificador pelo endpoint autorizado de
+`resolve`. Codifique o parametro de query e passe headers de autenticacao conforme a documentacao;
+nao inclua credenciais na URL. Sanitize a URL informada antes de encaminha-la e remova dados de
+sessao, tokens e contexto privado (secao 14).
 
 ```python
-def resolve_url(public_url: str, token: str, timeout: float = 30.0) -> dict | None:
-    api_url = f"https://api-v2.exemplo.com/resolve?url={public_url}&client_id={token}"
-    body = http_get(api_url, headers={"User-Agent": _DEFAULT_UA, "Accept": "application/json"}, timeout=timeout)
+import json
+from urllib.parse import urlencode, urljoin, urlsplit
+
+
+def is_allowed_api_url(url: str, allowed_hosts: set[str]) -> bool:
     try:
-        data = __import__("json").loads(body or "")
+        parsed = urlsplit(url)
+        return (
+            parsed.scheme == "https"
+            and parsed.hostname in allowed_hosts
+            and parsed.username is None
+            and parsed.password is None
+        )
+    except ValueError:
+        return False
+
+
+def resolve_url(public_url: str, headers: dict, timeout: float = 30.0) -> dict | None:
+    query = urlencode({"url": public_url})
+    api_url = f"https://api.exemplo.com/resolve?{query}"
+    if not is_allowed_api_url(api_url, {"api.exemplo.com"}):
+        return None
+    request_headers = {**headers, "Accept": "application/json"}
+    body = http_get(api_url, headers=request_headers, timeout=timeout)
+    try:
+        data = json.loads(body or "")
     except (ValueError, TypeError):
         return None
     return data if isinstance(data, dict) else None
@@ -609,28 +611,39 @@ def resolve_url(public_url: str, token: str, timeout: float = 30.0) -> dict | No
 
 ### Paginacao por cursor (`next_href` / `linked_partitioning`)
 
-Diferente da paginacao por numero de pagina (secao "flows"), muitas APIs devolvem um **cursor**: um
-`next_href` (ou `next_cursor`, `after`) que ja aponta para a proxima pagina. Pare quando o cursor
-sumir, ao bater o limite de itens **ou** o limite de paginas - sempre os dois tetos, para nao varrer
-infinito.
+Diferente da paginacao por numero de pagina (secao "flows"), algumas APIs devolvem um link `next_href`
+para a proxima pagina. Este exemplo aceita links absolutos ou relativos e valida o host antes de
+reutilizar headers de autenticacao. Para APIs que devolvem um cursor opaco (`next_cursor`, `after`),
+monte a URL usando o parametro documentado e codifique-o com `urlencode`; nunca coloque credenciais
+no cursor. Pare quando o cursor sumir, ao bater o limite de itens **ou** o limite de paginas.
 
 ```python
-def collect_paginated(first_url: str, token: str, config, log) -> list[str]:
+from urllib.parse import urljoin
+
+
+def collect_paginated(first_url: str, headers: dict, allowed_hosts: set[str], config, log) -> list[str]:
     items: list[str] = []
     next_href = first_url
     page = 0
+    if not is_allowed_api_url(next_href, allowed_hosts):
+        log("URL inicial fora da origem autorizada; coleta cancelada.")
+        return items
     while next_href and page < config.max_pages and len(items) < config.max_items:
-        body = http_get(next_href, headers={"Accept": "application/json"}, timeout=config.timeout_ms / 1000)
+        current_url = next_href
+        request_headers = {**headers, "Accept": "application/json"}
+        body = http_get(current_url, headers=request_headers, timeout=config.timeout_ms / 1000)
         if not body:
             log("Falha ao carregar pagina; encerrando coleta.")
             break
-        page_urls, next_href = parse_collection_page(body)  # parser puro -> ([], None) em erro
+        page_urls, cursor = parse_collection_page(body)  # parser puro -> ([], None) em erro
+        next_href = urljoin(current_url, cursor) if cursor else None
         items.extend(page_urls)
         page += 1
         log(f"Pagina {page}: +{len(page_urls)} (total {len(items)}).")
-        if next_href and "client_id" not in next_href:   # alguns cursores nao carregam o token
-            next_href += f"&client_id={token}"
         if next_href:
+            if not is_allowed_api_url(next_href, allowed_hosts):
+                log("Cursor fora da origem autorizada; coleta encerrada.")
+                break
             time.sleep(0.5)   # cortesia: nao martele a API
     return items[: config.max_items]
 ```
@@ -645,12 +658,15 @@ def parse_collection_page(payload: str) -> tuple[list[str], str | None]:
         data = json.loads(payload)
     except (json.JSONDecodeError, TypeError):
         return [], None
+    if not isinstance(data, dict):
+        return [], None
     urls = [
         item["permalink_url"]
         for item in data.get("collection", []) or []
         if isinstance(item, dict) and item.get("permalink_url")
     ]
-    return urls, data.get("next_href")
+    cursor = data.get("next_href")
+    return urls, cursor if isinstance(cursor, str) and cursor else None
 ```
 
 ### Resolucao em duas etapas (item so com id)
@@ -659,19 +675,25 @@ As vezes a listagem traz alguns itens completos e outros so com `id` (sem a URL/
 os pendentes com uma chamada extra por item - respeitando o teto e parando cedo.
 
 ```python
+from urllib.parse import quote
+
+
 direct_urls, pending_ids, title = parse_set(body)     # parser puro
 items = list(direct_urls)
 for item_id in pending_ids:
     if len(items) >= config.max_items:
         break
-    body = http_get(f"https://api-v2.exemplo.com/items/{item_id}?client_id={token}",
-                    headers={"Accept": "application/json"}, timeout=timeout)
+    item_url = f"https://api.exemplo.com/items/{quote(item_id, safe='')}"
+    if not is_allowed_api_url(item_url, {"api.exemplo.com"}):
+        continue
+    request_headers = {**headers, "Accept": "application/json"}
+    body = http_get(item_url, headers=request_headers, timeout=timeout)
     permalink = parse_item_permalink(body or "")        # parser puro -> str | None
     if permalink:
         items.append(permalink)
 ```
 
-Cuidados gerais com API interna:
+Cuidados gerais com endpoint JSON autorizado:
 
 - Sempre teto de paginas, itens e tempo; `time.sleep` curto entre chamadas.
 - Parser sempre puro e fail-safe: JSON invalido -> lista vazia, nunca excecao vazando nem dado parcial.
@@ -747,7 +769,7 @@ metodo novo passa a ser so registrar mais um adapter na lista.
 ```python
 def get_pipeline() -> list:
     """Metodos na ordem de tentativa: o mais facil/robusto primeiro."""
-    return [HttpApiAdapter(), SeleniumAdapter()]   # API interna -> navegador (fallback)
+    return [AuthorizedJsonAdapter(), SeleniumAdapter()]   # JSON permitido -> navegador autorizado
 
 
 def collect(target_url: str, spec, config, log) -> CollectResult:
@@ -834,7 +856,7 @@ Boas praticas:
 - Para endpoints que devolvem tudo de uma vez, tenha uma variante `fetch_single` com retry/backoff.
 - **Degrade com elegancia**: se um endpoint secundario (ex.: programas/categorias) falhar, derive o
   dado dos itens ja coletados em vez de abortar a coleta inteira.
-- User-Agent sempre presente e identificavel.
+- Quando a documentacao exigir User-Agent, use um identificador verdadeiro do projeto; nao simule um navegador.
 
 ---
 
@@ -1297,7 +1319,8 @@ Regras:
 | Parser por adapter | Extrai DTOs corretos de fixture HTML sanitizada |
 | Parser de API (JSON) | Coleta itens de fixture JSON sanitizada (pagina, set, cursor) |
 | Parser de RSS/Atom | Extrai itens de fixture XML; namespaces, datas, duracao, enclosure |
-| Descoberta de token | Acha URLs de script e extrai `client_id` de JS de fixture |
+| Origem do cursor | Rejeita cursores fora da lista de hosts autorizados antes de enviar headers |
+| Redirect com autenticacao | Rejeita redirects para origem nao permitida antes de reenviar credenciais |
 | Paginacao por numero | Para na pagina vazia/menor que `per_page` e respeita o teto |
 | Paginacao por cursor | Segue `next_href` ate o fim e respeita teto de paginas/itens |
 | Backoff / rate-limit | Respeita `Retry-After`, faz backoff em 5xx e nao repete 4xx |
@@ -1369,9 +1392,11 @@ Formato recomendado:
 
 ## 18. Guardrails operacionais
 
-- Respeitar termos de uso, autorizacoes, limites e robots quando aplicavel.
+- Respeitar termos de uso, autorizacoes, limites e robots quando aplicavel. O endpoint usado pelo
+  front-end nao e permissao implicita para coletar diretamente.
 - **Coleta de dados pessoais exige base legal (LGPD), nao so autorizacao tecnica.** Se o scraper captura dado pessoal, registre finalidade, base legal e retencao - use [`../../templates/PRIVACIDADE-LGPD-template.md`](../../templates/PRIVACIDADE-LGPD-template.md); cuidados tecnicos gerais em [`../../core/DESIGN_SYSTEM_SEGURANCA.md`](../../core/DESIGN_SYSTEM_SEGURANCA.md).
-- Preferir APIs oficiais quando elas existirem e cobrirem o caso.
+- Preferir APIs oficiais quando existirem e cobrirem o caso. Endpoint nao documentado exige
+  autorizacao explicita; na duvida, use outro metodo permitido.
 - **Segredos sempre do ambiente** (env var), nunca de arquivo, argumento de CLI ou commit.
 - **Nunca colocar credencial/token em URL, log ou mensagem de erro** - monte erros sem a URL quando a chave vai na query.
 - Respeitar quota e rate-limit (`Retry-After`, backoff); conhecer e preferir o endpoint mais barato.
@@ -1392,8 +1417,8 @@ Formato recomendado:
 
 1. Definir DTO puro.
 2. Criar `SourceAdapter` abstrato.
-3. Implementar um adapter por fonte/layout e por metodo (API oficial, RSS, API interna, HTTP, navegador).
-4. Priorizar API oficial > feed RSS/Atom > API interna em JSON > HTML/payload embutido > navegador.
+3. Implementar um adapter por fonte/layout e por metodo (API oficial, RSS, JSON autorizado, HTTP, navegador).
+4. Priorizar API oficial > feed publicado > JSON explicitamente permitido > HTML autorizado > navegador/captura manual autorizados.
 5. Manter o I/O HTTP fino e todo o parsing (HTML, JSON, XML) em funcoes puras e fail-safe.
 6. Tirar segredos so do ambiente; nunca em URL, log, argumento ou commit.
 7. Tratar paginacao (numero ou cursor), quota, rate-limit (`Retry-After`/backoff) e retomada por checkpoint.

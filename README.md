@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/social-preview.png" alt="Doktor System-Design" width="100%" />
+  <img src="assets/social-preview.jpg" alt="Doktor System-Design" width="100%" />
 </p>
 
 <p align="center">

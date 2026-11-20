@@ -147,7 +147,7 @@ function SimpleNode({
 
 ## Modo dinamico
 
-Use quando o projeto ja usa `lucide-react` e `framer-motion`, ou quando a arvore e uma parte importante da experiencia.
+Use quando a arvore for uma parte importante da experiencia ou o projeto ja usar Lucide. Animacao de expansao pode ser feita com CSS; adote Motion for React apenas quando ja estiver na stack ou quando a interacao justificar a dependencia.
 
 ```tsx
 import { ChevronRight, FileText, Folder, FolderOpen } from "lucide-react";

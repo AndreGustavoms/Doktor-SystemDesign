@@ -110,18 +110,33 @@ Estrela que acende e apaga, cada uma no seu tempo.
   animation:twinkle var(--dur,4s) ease-in-out infinite;
   animation-delay:var(--delay,0s);
 }
+
+@media (prefers-reduced-motion: reduce){
+  .star{animation:none;opacity:.45}
+}
 ```
 
+Gere as variacoes com uma funcao deterministica para manter as mesmas propriedades no servidor e
+no cliente durante a hidratacao.
+
 ```jsx
+function seededValue(seed) {
+  let value = seed | 0;
+  value ^= value << 13;
+  value ^= value >>> 17;
+  value ^= value << 5;
+  return (value >>> 0) / 0x1_0000_0000;
+}
+
 {Array.from({length: 40}, (_, i) => (
   <span
     key={i}
     className="star"
     style={{
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      '--dur': `${3 + Math.random() * 4}s`,
-      '--delay': `${Math.random() * 6}s`,
+      left: `${seededValue((i + 1) * 4 + 1) * 100}%`,
+      top: `${seededValue((i + 1) * 4 + 2) * 100}%`,
+      '--dur': `${3 + seededValue((i + 1) * 4 + 3) * 4}s`,
+      '--delay': `${seededValue((i + 1) * 4 + 4) * 6}s`,
     }}
   />
 ))}

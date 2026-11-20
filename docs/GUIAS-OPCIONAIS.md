@@ -66,7 +66,7 @@ Padrao de **cabecalho tecnico utilitario** com caminho navegavel, botao de copia
 
 ### Particulas e Sistema de Glow
 
-**Background de particulas flutuantes** com Framer Motion e **sistema completo de glow CSS** com 5 niveis de intensidade controlados por CSS variable.
+**Background de particulas flutuantes** com Motion for React e suporte a movimento reduzido, mais um **sistema de glow CSS** com 5 niveis de intensidade controlados por variavel CSS.
 
 **Quando usar:** landing pages, portfolios, dashboards dark-theme, interfaces com efeitos de glow.
 

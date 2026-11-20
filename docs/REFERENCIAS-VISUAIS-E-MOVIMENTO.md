@@ -17,14 +17,14 @@ Sistemas publicados resolvem necessidades e usuarios especificos. Compare o cont
 
 | Fonte | O que observar |
 |---|---|
-| [Origin UI](https://originui.com/) | Componentes e detalhes de interface para inspirar uma implementacao adaptada. |
-| [Skiper UI](https://skiper-ui.com/) | Interacoes de scroll, gestos e componentes experimentais. |
-| [Cult UI](https://www.cult-ui.com/) | Composicoes de marketing e efeitos de interface. |
+| [COSS UI (antiga Origin UI)](https://coss.com/ui) | Catalogo React de componentes acessiveis feito com Base UI e Tailwind; consulte para estudar campos, dialogs, drawers, menus e tabelas. E uma referencia ligada a essa stack, nao um padrao universal. |
+| [Skiper UI](https://skiper-ui.com/) | Galeria de componentes animados para shadcn/ui; confira dependencias, precos e licenca de cada item antes de adotar. |
+| [Cult UI](https://www.cult-ui.com/) | Componentes animados e blocos para shadcn/ui; use como repertorio visual e avalie o custo de movimento e dependencias. |
 | [GSAP](https://gsap.com/) | Coreografia com timelines, scroll e SVG. |
-| [Motion](https://motion.dev/) | Gestos e transicoes declarativas em interfaces. |
+| [Motion for React](https://motion.dev/) | Gestos e transicoes declarativas; projeto anteriormente chamado Framer Motion. O pacote atual e motion, com imports React por motion/react. |
 | [Three.js](https://threejs.org/) | Cena 3D quando profundidade e objeto espacial ajudam a explicar o produto. |
 
-As bibliotecas e galerias mudam. Confira a pagina original, a API atual, suporte, custo e licenca do exemplo especifico antes de adotar ou copiar codigo.
+As bibliotecas e galerias mudam. Origin UI agora redireciona para COSS UI; o link acima vai direto ao destino atual. Confira a pagina original, a API atual, o suporte, o custo e a licenca do item especifico antes de adotar ou copiar codigo.
 
 ## 3. Roteiro para revisar uma referencia
 

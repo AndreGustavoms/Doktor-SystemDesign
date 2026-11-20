@@ -42,11 +42,12 @@ Particulas e glow sao efeitos de apoio. Eles devem realcar hierarquia, foco e id
 
 ## 1. Background de particulas
 
-Exemplo com React e Framer Motion:
+Exemplo atual com Motion for React. Instale o pacote npm motion e importe da entrada motion/react; em Next App Router, o componente precisa rodar no cliente. Consulte a [documentacao oficial de instalacao](https://motion.dev/docs/react-installation).
 
 ```tsx
+"use client";
 import { useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 
 type Particle = {
   id: number;
@@ -60,17 +61,26 @@ type Particle = {
 
 const PARTICLE_COUNT = 28;
 
+function seededValue(seed: number): number {
+  let value = seed | 0;
+  value ^= value << 13;
+  value ^= value >>> 17;
+  value ^= value << 5;
+  return (value >>> 0) / 0x1_0000_0000;
+}
+
 export function BackgroundParticles() {
+  const shouldReduceMotion = useReducedMotion();
   const particles = useMemo<Particle[]>(
     () =>
       Array.from({ length: PARTICLE_COUNT }, (_, id) => ({
         id,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 4 + 2,
-        duration: Math.random() * 8 + 5,
-        delay: Math.random() * 2,
-        opacity: Math.random() * 0.35 + 0.25,
+        x: seededValue((id + 1) * 6 + 1) * 100,
+        y: seededValue((id + 1) * 6 + 2) * 100,
+        size: seededValue((id + 1) * 6 + 3) * 4 + 2,
+        duration: seededValue((id + 1) * 6 + 4) * 8 + 5,
+        delay: seededValue((id + 1) * 6 + 5) * 2,
+        opacity: seededValue((id + 1) * 6 + 6) * 0.35 + 0.25,
       })),
     []
   );
@@ -90,13 +100,20 @@ export function BackgroundParticles() {
             width: particle.size,
             height: particle.size,
           }}
-          animate={{ y: [0, -120], opacity: [0, particle.opacity, 0] }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            ease: "linear",
-            delay: particle.delay,
+          animate={{
+            y: shouldReduceMotion ? 0 : [0, -120],
+            opacity: shouldReduceMotion ? particle.opacity : [0, particle.opacity, 0],
           }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : {
+                  duration: particle.duration,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: particle.delay,
+                }
+          }
         />
       ))}
     </div>
@@ -106,14 +123,15 @@ export function BackgroundParticles() {
 
 Regras:
 
-- use `useMemo` para gerar particulas uma vez;
+- use valores deterministas para manter a mesma marcacao no servidor e no cliente;
+- mantenha `useMemo` para gerar as particulas uma vez;
 - mantenha `pointer-events-none`;
 - use `aria-hidden`;
 - deixe o conteudo principal com `relative z-10`;
 - comece com 20 a 30 particulas, nao 100;
 - reduza em mobile se necessario.
 
-## 2. Variante sem Framer Motion
+## 2. Variante CSS sem biblioteca de movimento
 
 ```css
 .particle-layer {
