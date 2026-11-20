@@ -25,6 +25,7 @@
 | Se a tarefa e... | Leia (alem do guia minimo) | Apoio opcional |
 |------------------|----------------------------|----------------|
 | Construir ou alterar **frontend** | [`core/DESIGN_SYSTEM_FRONTEND.md`](core/DESIGN_SYSTEM_FRONTEND.md) | [`core/PROMPT_BASE_FRONTEND.md`](core/PROMPT_BASE_FRONTEND.md) (montar o prompt inicial) |
+| Definir sistema de UI compartilhado para um projeto | [core/DESIGN_SYSTEM_FRONTEND.md](core/DESIGN_SYSTEM_FRONTEND.md) | [template de Design System Frontend](templates/DESIGN-SYSTEM-FRONTEND-template.md), apenas para produto com varias telas ou componentes compartilhados |
 | Definir **performance** | [core/DESIGN_SYSTEM_PERFORMANCE.md](core/DESIGN_SYSTEM_PERFORMANCE.md) | [docs/REFERENCIAS-TECNICAS.md](docs/REFERENCIAS-TECNICAS.md) para metricas e fontes oficiais |
 | Consultar **referencias tecnicas atuais** (WCAG, OWASP, HTTP, Web Vitals) | [docs/REFERENCIAS-TECNICAS.md](docs/REFERENCIAS-TECNICAS.md) | Abra somente a secao ligada a tarefa |
 | Pesquisar **referencias visuais, componentes animados, scroll ou 3D** | [`docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md`](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Abra no maximo um guia visual de `guias/frontend/` depois de escolher a direcao |

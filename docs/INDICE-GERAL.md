@@ -69,6 +69,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [SECURITY-template.md](../templates/SECURITY-template.md) | Checklist/documento de seguranca. |
 | [PRIVACIDADE-LGPD-template.md](../templates/PRIVACIDADE-LGPD-template.md) | Documento de privacidade e LGPD para projetos que tratam dados pessoais. |
 | [ADR-0001-template.md](../templates/ADR-0001-template.md) | Registro de decisao arquitetural. |
+| [DESIGN-SYSTEM-FRONTEND-template.md](../templates/DESIGN-SYSTEM-FRONTEND-template.md) | Registro leve de direcao visual, tokens, responsividade, componentes, fluxos, acessibilidade e performance de um projeto. |
 
 ## Guias frontend
 

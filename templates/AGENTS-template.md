@@ -15,6 +15,7 @@
 | Tarefa | Documento inicial |
 |---|---|
 | Frontend, UI ou UX | core/DESIGN_SYSTEM_FRONTEND.md |
+| Criar base de UI compartilhada para varias telas | core/DESIGN_SYSTEM_FRONTEND.md e templates/DESIGN-SYSTEM-FRONTEND-template.md |
 | Backend, dados ou regra de negocio | core/DESIGN_SYSTEM_BACKEND.md |
 | API HTTP | core/DESIGN_SYSTEM_API_REST.md |
 | Arquitetura ou fronteiras | core/DESIGN_SYSTEM_ARQUITETURA.md |

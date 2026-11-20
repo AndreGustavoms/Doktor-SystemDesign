@@ -98,6 +98,18 @@ Entregue:
 - evidencia de validacao e limites.
 ~~~
 
+## Quando a tarefa cria uma base de UI compartilhada
+
+Se o projeto tiver varias telas ou componentes compartilhados, use [Design System Frontend do Projeto](../templates/DESIGN-SYSTEM-FRONTEND-template.md) como registro enxuto das decisoes. Preencha somente as secoes que afetam o produto; nao transforme o template em um processo obrigatorio para uma pagina simples.
+
+Quando o usuario fornecer referencias:
+
+- examine cada fonte e registre URL, estado, viewport e data;
+- diferencie observacao direta, inferencia a partir do codigo e questao ainda sem verificacao;
+- capture a aparencia e teste interacoes quando o navegador estiver disponivel;
+- traduza principios para o contexto do produto sem copiar marca, texto, assets ou codigo sem licenca;
+- registre o que foi impossivel observar e nao afirme que houve screenshot ou teste manual sem evidencia.
+
 ## Roteiro de leitura
 
 Leia [Design System Frontend](DESIGN_SYSTEM_FRONTEND.md), [Guia Minimo de Qualidade](GUIA_MINIMO_QUALIDADE.md) e a secao de [Stack e Arquitetura](../docs/STACK-E-ARQUITETURA.md) relacionada ao projeto. Para desempenho ou uma interacao especial, abra [Performance](DESIGN_SYSTEM_PERFORMANCE.md) ou um unico guia opcional que corresponda ao fluxo.

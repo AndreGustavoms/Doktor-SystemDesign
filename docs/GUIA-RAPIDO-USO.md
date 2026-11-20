@@ -30,10 +30,12 @@ Nao copie todos os templates por padrao. Adicione cada documento quando ele escl
 4. Crie [IA-template.md](../templates/IA-template.md) se a continuidade entre sessoes justificar memoria operacional.
 5. Escolha uma stack a partir das restricoes; registre decisao duradoura em ADR.
 6. Leia apenas os guias do trabalho atual.
+7. Se o produto tiver varias telas ou componentes compartilhados, copie e adapte [Design System Frontend do Projeto](../templates/DESIGN-SYSTEM-FRONTEND-template.md). Para uma pagina simples, registre somente as decisoes necessarias na tarefa.
 
 ## 4. Roteamento por tarefa
 
 - Interface: [Frontend](../core/DESIGN_SYSTEM_FRONTEND.md), mais o guia opcional do padrao pedido.
+- Base de UI compartilhada: [template de Design System Frontend](../templates/DESIGN-SYSTEM-FRONTEND-template.md), quando varias telas precisarem manter tokens, componentes e comportamento consistentes.
 - Backend: [Backend](../core/DESIGN_SYSTEM_BACKEND.md).
 - API: [API REST](../core/DESIGN_SYSTEM_API_REST.md).
 - Arquitetura ou modularidade: [Arquitetura](../core/DESIGN_SYSTEM_ARQUITETURA.md) e [Modularidade](../core/DESIGN_SYSTEM_MODULARIDADE.md) se ambas forem necessarias.

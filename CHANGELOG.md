@@ -9,11 +9,12 @@ Formato baseado em Conventional Commits e versoes semanticas.
 ### Adicionado
 
 - docs/ESTUDO-REFERENCIAS-FRONTEND.md: estudo de sites editoriais e starters SaaS com arquitetura de conteudo, login, navegacao, dialogs, tabelas, riscos e limites de observacao.
+- templates/DESIGN-SYSTEM-FRONTEND-template.md: registro opcional de decisoes visuais e interativas para produtos com varias telas ou componentes compartilhados.
 
 ### Alterado
 
 - core/DESIGN_SYSTEM_FRONTEND.md: adiciona contratos de autenticacao, menus, dialogs, redirecionamentos e permissoes com base nos estudos de caso.
-- README, indice, referencias visuais e IA.md: conectam o novo estudo e registram o metodo e os limites da revisao.
+- PROMPT_BASE_FRONTEND.md, AGENTS, Guia Rapido, README, indice e IA.md: conectam o estudo e o novo template ao fluxo sem torna-los obrigatorios para interfaces simples.
 
 ## [0.6.0] - 2026-11-20
 

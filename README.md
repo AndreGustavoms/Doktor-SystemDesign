@@ -33,6 +33,7 @@ O repositorio e progressivo: comece pelo guia minimo, abra os documentos ligados
 | Ver principios comuns de qualidade | [Guia Minimo](core/GUIA_MINIMO_QUALIDADE.md) |
 | Escolher arquitetura e tecnologia | [Stack e Arquitetura](docs/STACK-E-ARQUITETURA.md) |
 | Trabalhar UI, responsividade e identidade visual | [Design System Frontend](core/DESIGN_SYSTEM_FRONTEND.md) |
+| Definir tokens e componentes compartilhados para um produto | [Template de Design System Frontend](templates/DESIGN-SYSTEM-FRONTEND-template.md) |
 | Planejar performance | [Design System Performance](core/DESIGN_SYSTEM_PERFORMANCE.md) |
 | Estudar sites, login, menus, dialogs e dashboards de referencia | [Estudo de Referencias Frontend](docs/ESTUDO-REFERENCIAS-FRONTEND.md) |
 | Revisar fontes tecnicas atuais | [Referencias Tecnicas](docs/REFERENCIAS-TECNICAS.md) |
