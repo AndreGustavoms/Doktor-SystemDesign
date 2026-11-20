@@ -66,3 +66,7 @@ Evidencia ou limitacao da revisao:
 ## Referencias tecnicas relacionadas
 
 Veja [Referencias Tecnicas](REFERENCIAS-TECNICAS.md) para acessibilidade, responsividade, seguranca, HTTP e performance web.
+
+## Estudos de caso analisados
+
+O [Estudo de Referencias Frontend](ESTUDO-REFERENCIAS-FRONTEND.md) detalha Jorge Web Pro, Lando Norris e repositorios SaaS publicos. Inclui estrutura, login, menus, dialogs, tabelas, responsividade inferida, riscos e limites da revisao. Use-o para comparar decisoes concretas; retome a fonte original antes de implementar, porque sites e repositorios mudam.

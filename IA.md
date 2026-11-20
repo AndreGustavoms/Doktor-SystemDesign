@@ -16,10 +16,10 @@ Ultima atualizacao: [2026-11-20]
 - Arquitetura: modularidade por coesao e fronteiras de mudanca, sem estrutura ou limite de linhas universal.
 - Backend e API: sem stack obrigatoria, contratos e erros consistentes, resiliencia e seguranca conforme escopo.
 - Testes: estrategia baseada em risco e comportamento; cobertura e modelos de piramide sao sinais, nao metas rigidas.
-- Referencias: docs/REFERENCIAS-TECNICAS.md aponta para W3C, MDN, web.dev, OWASP e IETF, revisadas em 2026-11-20. Referencias visuais ganharam roteiro de observacao, evidencias e analise de video/audio.
+- Referencias: docs/REFERENCIAS-TECNICAS.md aponta para W3C, MDN, web.dev, OWASP e IETF. O estudo de Jorge Web Pro, Lando Norris e sete projetos SaaS esta em docs/ESTUDO-REFERENCIAS-FRONTEND.md; os aprendizados de login, menus e dialogs foram incorporados ao padrao frontend.
 - Entrada de programa: start_app.py e launcher opcional quando reduzir atrito; CLI, biblioteca, container e CI mantem comandos adequados ao tipo de projeto.
-- Navegador: o host do navegador integrado estava indisponivel nesta sessao. A pesquisa tecnica usou fontes oficiais pela ferramenta web disponivel; fontes visuais individuais ainda aguardam URLs do usuario.
-- Proximo passo: receber as referencias do usuario e revisar cada uma visualmente, com capturas e audio quando a fonte e a ferramenta permitirem; transformar achados em melhorias especificas.
+- Navegador: o host do navegador integrado estava indisponivel nesta sessao. As paginas publicas e o codigo foram consultados por conteudo/HTML/CSS/JS e fontes oficiais; nao houve captura renderizada nem teste manual de viewport, clique, teclado ou DevTools. A rota /estude do site Jorge retornou 404; audio/video nao foram fornecidos.
+- Proximo passo: quando o usuario enviar novas referencias, revisar cada fonte com o navegador funcional, capturas por viewport e teste de interacao; ouvir/assistir audio ou video quando houver e a ferramenta permitir.
 - Git: trabalho isolado na branch docs/renova-design-system; validar links, codificacao, roteador e documentos antes do commit.
 ## Objetivo atual
 
@@ -104,6 +104,7 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
   - Validado apos as mudancas: `scripts/validate-repo.ps1` OK; suite de testes dos instaladores com 30 testes passando, 1 pulado (falta de `rsync`, comportamento esperado).
 
 - [2026-11-20] System design revisado para aplicacao progressiva: stack escolhida por contexto; arquitetura/modularidade por fronteiras de mudanca; testes por risco; launcher opcional; acessibilidade, responsividade e performance elevadas ao contrato de frontend; novas referencias tecnicas e roteiro de analise visual. A revisao substitui as regras rigidas registradas anteriormente sem apagar seus registros. Browser integrado indisponivel; fontes tecnicas verificadas por pesquisa web oficial. Referencias visuais personalizadas aguardam URLs do usuario.
+- [2026-11-20] Estudadas as paginas Jorge Web Pro e Lando Norris e os repositorios nextjs/saas-starter, ixartz/SaaS-Boilerplate, Kiranism/next-shadcn-dashboard-starter, wasp-lang/open-saas, Cal.diy, mickasmt/next-saas-stripe-starter e Tabler. O relatorio docs/ESTUDO-REFERENCIAS-FRONTEND.md registra fluxo, componentes, autenticacao, navegacao, dialogs, tabelas e riscos. O padrao frontend agora exige separar demo de auth real, validar redirecionamentos, nunca devolver senhas, verificar permissoes no servidor e definir contratos de foco/teclado para menus e dialogs. Navegador integrado indisponivel; nao foram obtidas capturas nem testes reais de interacao.
 
 ## Decisoes tomadas
 

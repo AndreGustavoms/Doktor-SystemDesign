@@ -126,6 +126,22 @@ Evite skeletons que imitam conteudo sem necessidade. Preserve dados do formulari
 
 Consulte guias opcionais apenas quando o fluxo pedir uma tabela, formulario complexo, calendario ou outro padrao especifico.
 
+### Autenticacao, menus e dialogs
+
+Quando o produto tiver sessao, organizacoes, menus ou dialogs, trate o comportamento como parte do contrato da interface:
+
+- Diferencie tela demonstrativa de autenticacao real. Valide credenciais no servidor, verifique a sessao e autorize cada recurso no servidor; esconder um link nao e controle de acesso.
+- Valide destinos de retorno com caminhos locais seguros ou uma allowlist. Nunca devolva senha em estado de acao, resposta, URL, log ou telemetria.
+- Exponha apenas os metodos de login configurados. Cubra envio, erro, sucesso, verificacao, recuperacao, sessao expirada e redirecionamento.
+- Use labels persistentes, autocomplete adequado, erros ligados ao campo e estados de envio que evitem duplicacao sem apagar a entrada.
+- Menus com icone precisam de nome acessivel e estado compreensivel. Controles que abrem paineis devem comunicar estado e relacao com o conteudo; teclado, toque, Escape e foco devem ter comportamento definido.
+- Em aplicacoes com organizacoes, mostre qual contexto esta ativo e trate papel da plataforma, papel de membro e permissao por recurso como dimensoes distintas.
+- Dialogs precisam de titulo associado, foco inicial intencional, foco contido quando modais, fechamento previsivel e restauracao do foco. Confirmacoes destrutivas descrevem o alvo e a consequencia.
+- Durante uma mutacao, mostre pendencia, previna envio duplicado, preserve os campos e comunique erro ou sucesso. Feche o dialogo e atualize dados no momento correto do fluxo.
+- Em telas estreitas, escolha entre dialogo, drawer ou bottom sheet pela tarefa. O padrao precisa continuar operavel com teclado, leitor de tela e rolagem ampliada.
+
+Para exemplos e alertas extraidos de repositorios publicos, consulte [Estudo de Referencias Frontend](../docs/ESTUDO-REFERENCIAS-FRONTEND.md). Essas referencias sao estudos de caso, nao implementacoes garantidas como seguras ou acessiveis.
+
 ## 9. Movimento e acabamento
 
 Movimento serve para feedback, continuidade, orientacao ou narrativa. Prefira transicoes curtas e previsiveis para ferramentas; reserve coreografia mais rica para momentos em que ela agrega significado. Evite loops constantes, parallax excessivo, cursor customizado que substitui controles e efeitos que aumentam custo sem esclarecer a interface.
@@ -153,6 +169,7 @@ Nao afirme que a interface foi vista ou testada se nao foi. Registre o que foi o
 - [ ] Semantica, teclado, foco, contraste, labels e erros foram considerados.
 - [ ] Componentes e tokens foram extraidos onde reduzem duplicacao ou variacao acidental.
 - [ ] Estados de carregamento, vazio, erro, sucesso e permissao foram tratados quando aplicaveis.
+- [ ] Login, menus, dialogs, redirecionamentos e permissoes cobrem teclado, foco e estados reais quando aplicaveis.
 - [ ] Movimento tem funcao e respeita a preferencia de reducao.
 - [ ] Performance e comportamento em navegadores/dispositivos relevantes foram considerados.
 - [ ] Documentacao e validacao refletem o que foi de fato executado.

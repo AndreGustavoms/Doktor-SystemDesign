@@ -46,6 +46,7 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [docs/IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor, misturando autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
 | [docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md](REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Fontes de design system e roteiro para estudar interacoes, responsividade, movimento e licenca. |
+| [docs/ESTUDO-REFERENCIAS-FRONTEND.md](ESTUDO-REFERENCIAS-FRONTEND.md) | Estudo de Jorge Web Pro, Lando Norris e referencias SaaS: UI, autenticacao, navegacao, dialogs, tabelas e limites observados. |
 | [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](GIT-POLITICA-DE-VERSIONAMENTO.md) | Regras de branch, commit e documentacao viva. |
 | [docs/CURADORIA-DOS-GUIAS.md](CURADORIA-DOS-GUIAS.md) | Plano de revisao dos guias importados. |
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar/sincronizar estes padroes em outros projetos. |

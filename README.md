@@ -34,6 +34,7 @@ O repositorio e progressivo: comece pelo guia minimo, abra os documentos ligados
 | Escolher arquitetura e tecnologia | [Stack e Arquitetura](docs/STACK-E-ARQUITETURA.md) |
 | Trabalhar UI, responsividade e identidade visual | [Design System Frontend](core/DESIGN_SYSTEM_FRONTEND.md) |
 | Planejar performance | [Design System Performance](core/DESIGN_SYSTEM_PERFORMANCE.md) |
+| Estudar sites, login, menus, dialogs e dashboards de referencia | [Estudo de Referencias Frontend](docs/ESTUDO-REFERENCIAS-FRONTEND.md) |
 | Revisar fontes tecnicas atuais | [Referencias Tecnicas](docs/REFERENCIAS-TECNICAS.md) |
 | Encontrar um guia especifico | [Indice Geral](docs/INDICE-GERAL.md) |
 
@@ -77,7 +78,7 @@ Este acervo nao determina framework, banco ou provedor de deploy. [Stack e Arqui
 
 ## Referencias e atualizacao
 
-[Referencias Tecnicas](docs/REFERENCIAS-TECNICAS.md) aponta para W3C, MDN, web.dev, OWASP e IETF. [Referencias Visuais e Movimento](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) ajuda a analisar design systems, componentes e movimento sem clonar a fonte.
+[Referencias Tecnicas](docs/REFERENCIAS-TECNICAS.md) aponta para W3C, MDN, web.dev, OWASP e IETF. [Referencias Visuais e Movimento](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) ajuda a analisar design systems, componentes e movimento sem clonar a fonte. O [Estudo de Referencias Frontend](docs/ESTUDO-REFERENCIAS-FRONTEND.md) registra analises de sites editoriais e starters SaaS, com os limites e riscos encontrados.
 
 Fontes e recomendacoes mudam. Reabra a fonte original quando a precisao atual importar e mantenha a data da ultima revisao.
 

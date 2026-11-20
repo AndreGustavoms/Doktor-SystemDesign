@@ -5,6 +5,16 @@ Todas as mudancas relevantes do Doktor System-Design devem ser registradas aqui.
 Formato baseado em Conventional Commits e versoes semanticas.
 
 ## [Unreleased]
+
+### Adicionado
+
+- docs/ESTUDO-REFERENCIAS-FRONTEND.md: estudo de sites editoriais e starters SaaS com arquitetura de conteudo, login, navegacao, dialogs, tabelas, riscos e limites de observacao.
+
+### Alterado
+
+- core/DESIGN_SYSTEM_FRONTEND.md: adiciona contratos de autenticacao, menus, dialogs, redirecionamentos e permissoes com base nos estudos de caso.
+- README, indice, referencias visuais e IA.md: conectam o novo estudo e registram o metodo e os limites da revisao.
+
 ## [0.6.0] - 2026-11-20
 
 ### Adicionado
