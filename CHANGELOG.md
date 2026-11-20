@@ -19,6 +19,8 @@ Formato baseado em Conventional Commits e versoes semanticas.
 - Referencias visuais corrigem o destino antigo de Origin UI para COSS UI; referencias tecnicas agora apontam para os padroes WAI-ARIA de dialog, menu e disclosure.
 - GUIA-SCRAPING-MULTIFORMATO.md ganha um mapa de leitura por metodo, remove versoes fixas, user-agent antigo e extracao de `client_id` de bundles; exige autorizacao para endpoints nao documentados, usa credenciais fora da URL e valida origem de cursores.
 - Guias visuais atualizam Framer Motion para Motion for React e os imports atuais; a arvore de materiais deixa de sugerir uma dependencia de animacao que nao usa e exemplos de particulas/estrelas respeitam movimento reduzido e renderizacao deterministica.
+- docs/ESTUDO-REFERENCIAS-FRONTEND.md atualiza as fontes oficiais de Cal.com/Cal.diy e distingue a migracao visual do produto comercial para COSS UI do codigo aberto comunitario.
+- core/DESIGN_SYSTEM_ECONOMIA_IA.md atualiza a medicao de contexto com os numeros atuais do script: 82 arquivos e cerca de 96,1% de economia por tarefa roteada.
 
 ## [0.6.0] - 2026-11-20
 

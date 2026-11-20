@@ -89,17 +89,18 @@ Quando notar um desses sinais, ajuste o fluxo antes de continuar - nao acumule o
 ## 6. Medicao de referencia
 
 Numeros reais deste acervo, para calibrar a secao 2 com dado e nao so intuicao.
-Aproximacao de ~4 caracteres por token sobre o conteudo `.md` versionado.
+Aproximacao de ~4 caracteres por token sobre os arquivos `.md` do repositorio, excluindo `.git`.
+Medicao executada por `scripts/measure-context.ps1` em 2026-11-20.
 
 | Cenario de leitura | Arquivos | Tokens aprox. |
 |---|---|---|
-| Ler o acervo inteiro "por garantia" | ~72 | ~127.700 |
-| Leitura roteada por `AGENTS.md` + 2 docs-alvo de uma tarefa tipica | 3 | ~7.500 |
+| Ler o acervo inteiro "por garantia" | 82 | ~147.000 |
+| Leitura roteada por `AGENTS.md` + 2 docs-alvo de uma tarefa tipica | 3 | ~5.700 |
 
-Resultado: seguir o roteador em vez de ler tudo custa cerca de **17x menos
-contexto** por tarefa - uma economia de aproximadamente **94%** de tokens de
-leitura. Esse ganho e o proposito central do repo: o acervo pode crescer (secao
-3.1) sem que o custo por tarefa cresca junto, desde que o roteamento seja seguido.
+Resultado: o acervo inteiro custa cerca de **25,8x** a leitura roteada. Seguir o
+roteador reduz a leitura em aproximadamente **96,1%**. Esse ganho e o proposito
+central do repo: o acervo pode crescer (secao 3.1) sem que o custo por tarefa
+cresca junto, desde que o roteamento seja seguido.
 
 Como reproduzir: rode `scripts/measure-context.ps1`, que recalcula estes numeros
 sobre o acervo atual. Os valores mudam conforme o acervo cresce; o que importa e

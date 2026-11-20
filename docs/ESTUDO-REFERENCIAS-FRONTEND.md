@@ -140,9 +140,11 @@ Fontes: [repositorio](https://github.com/wasp-lang/open-saas), [pagina de login]
 
 ### Cal.com / Cal.diy
 
-Fontes: [repositorio publico atual Cal.diy](https://github.com/calcom/cal.diy), [anuncio oficial da mudanca de escopo](https://next.cal.com/blog/cal-diy-open-source-to-closed-source) e [changelog v6.6](https://site.cal.com/blog/calcom-v6-6).
+Fontes: [repositorio publico atual Cal.diy](https://github.com/calcom/cal.diy), [anuncio oficial de que Cal.com passou a codigo fechado](https://website.cal.com/blog/cal-com-goes-closed-source-why), [situacao atual de Cal.diy e self-hosting](https://cal.com/blog/self-hosted-scheduling-platforms-benefits-and-challenges) e [changelog visual v6.6 do produto Cal.com](https://site.cal.com/blog/calcom-v6-6).
 
-**Atualizacao de escopo:** a empresa anunciou em 2026 que a base de producao do Cal.com deixou de ser publica e que o repositorio aberto passou a se chamar Cal.diy, sem partes comerciais, equipes e organizacoes. Portanto, o codigo publico atual nao e uma copia integral do SaaS de producao.
+**Atualizacao de escopo:** em abril de 2026 a empresa anunciou que a base de producao do Cal.com deixou de ser publica e que a versao comunitaria aberta passou a se chamar Cal.diy. A fonte oficial atual descreve Cal.diy como uma edicao MIT para uso pessoal, sem recursos de equipes, routing, workflows e planos enterprise; portanto, o codigo publico nao e uma copia integral do SaaS de producao. O changelog visual v6.6 descreve o produto comercial Cal.com e serve como referencia de interface, nao como evidencia do codigo de Cal.diy.
+
+**Referencia visual:** o changelog v6.6 informa que o produto comercial migrou as superficies principais para COSS UI, construida sobre Base UI. Use-o para estudar consistencia de componentes, navegacao lateral, tabelas, drawers e dialogs; consulte a [biblioteca publica COSS UI](https://coss.com/ui) para inspecionar os componentes, pois a implementacao comercial nao esta no Cal.diy.
 
 **O que estudar:** jornadas de agendamento, paginas publicas de reserva, metadados e locale; transicao entre paginas antigas e App Router; navegacao desktop/mobile; drawer em mobile; dialogos de reagendamento com motivo, pendencia, sucesso/erro e invalidacao de dados; modais globais representados por estado de URL.
 

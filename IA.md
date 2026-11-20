@@ -112,6 +112,8 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
 - [2026-11-20] Atualizados os exemplos de Framer Motion para o nome e o pacote atuais Motion for React (motion/react). O exemplo de particulas agora consulta movimento reduzido; removida a dependencia sugerida no guia de arvore de materiais, onde nenhum componente animado a utilizava.
 - [2026-11-20] Revisao adicional da limpeza: removida a coleta de `client_id` por extracao de bundles e o envio de credenciais em query strings; exemplos de API usam autenticacao documentada, allowlist de origem para cursores e orientacao para validar redirects. Particulas usam valores deterministas para manter a marcacao consistente entre servidor e cliente.
 - [2026-11-20] O exemplo de cintilancia no guia de efeitos de cena tambem passou a gerar propriedades deterministas para evitar diferencas de hidratacao e respeitar `prefers-reduced-motion`.
+- [2026-11-20] Fontes Cal.com/Cal.diy revalidadas em materiais oficiais; estudo agora distingue o produto comercial fechado e sua migracao visual para COSS UI do codigo comunitario Cal.diy.
+- [2026-11-20] Medicao de contexto em core/DESIGN_SYSTEM_ECONOMIA_IA.md recalculada com scripts/measure-context.ps1: 82 arquivos Markdown (~147 mil tokens) contra 3 arquivos roteados (~5,7 mil), cerca de 96,1% menos leitura.
 
 ## Decisoes tomadas
 
