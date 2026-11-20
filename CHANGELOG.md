@@ -5,6 +5,28 @@ Todas as mudancas relevantes do Doktor System-Design devem ser registradas aqui.
 Formato baseado em Conventional Commits e versoes semanticas.
 
 ## [Unreleased]
+## [0.6.0] - 2026-11-20
+
+### Adicionado
+
+- core/DESIGN_SYSTEM_PERFORMANCE.md: guia de metricas, orcamentos, medicao e otimizacao baseada em gargalo para web e servicos.
+- docs/REFERENCIAS-TECNICAS.md: fontes oficiais de acessibilidade, responsividade, seguranca, performance e HTTP; roteador por assunto e data de revisao.
+- docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md: roteiro para estudar cada fonte, observar estados e tamanhos, guardar evidencia, ouvir/assistir material quando disponivel e registrar limites.
+
+### Alterado
+
+- core/DESIGN_SYSTEM_FRONTEND.md: direcao visual, responsividade guiada por conteudo, tokens semanticos, acessibilidade, componentes e estados revistos.
+- Arquitetura, modularidade, backend, API, seguranca e testes: criterios por contexto e risco, com exemplos atuais e menos camadas e limites arbitrarios.
+- core/GUIA_MINIMO_QUALIDADE.md, prompts, README, AGENTS, templates, indices e checklists: roteamento para os novos padroes e aplicacao progressiva, sem exigir todos os documentos.
+- docs/STACK-E-ARQUITETURA.md: escolha de stack por produto, equipe, operacao e risco; sem combinacao universal.
+- core/GUIA-START-APP-SCRIPT.md: launcher interativo passa a ser opcional e adequado apenas quando reduz atrito real.
+- docs/DECISOES-DE-IDENTIDADE.md: historico de stack alinhado a diretriz sem stack imposta.
+- VERSION: avancada para 0.6.0.
+
+### Removido
+
+- Exigencia de start_app.py em qualquer programa.
+- Proibicoes universais de arquivo generico, limites fixos de linhas, piramide rigida e metas de cobertura como prova de qualidade.
 
 ## [0.5.0] - 2026-08-12
 

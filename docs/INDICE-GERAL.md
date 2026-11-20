@@ -14,20 +14,21 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 | [SECURITY.md](../SECURITY.md) | Politica de reporte de vulnerabilidades deste repositorio. |
 | [CHANGELOG.md](../CHANGELOG.md) | Historico de versoes e mudancas. |
 
-## Core obrigatorio
+## Core por tipo de tarefa
 
 | Documento | Uso |
 |-----------|-----|
 | [core/GUIA_MINIMO_QUALIDADE.md](../core/GUIA_MINIMO_QUALIDADE.md) | Contrato curto de qualidade para qualquer entrega. |
 | [core/DESIGN_SYSTEM_API_REST.md](../core/DESIGN_SYSTEM_API_REST.md) | Padroes de API REST, status codes, versionamento, paginacao e erros. |
 | [core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md) | Padroes de organizacao, camadas, nomenclatura e responsabilidades. |
-| [core/DESIGN_SYSTEM_MODULARIDADE.md](../core/DESIGN_SYSTEM_MODULARIDADE.md) | Granularidade de arquivo: responsabilidade unica, limites por tipo e criterio de quebra. |
+| [core/DESIGN_SYSTEM_MODULARIDADE.md](../core/DESIGN_SYSTEM_MODULARIDADE.md) | Criterios de coesao e fronteiras de mudanca; sem limites universais de tamanho. |
 | [core/DESIGN_SYSTEM_SEGURANCA.md](../core/DESIGN_SYSTEM_SEGURANCA.md) | Padroes de seguranca, secrets, auth, validacao e OWASP basico. |
-| [core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md) | Padroes de testes, piramide, nomenclatura, mocks e cobertura. |
+| [core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md) | Estrategia de verificacao baseada em risco, contratos e comportamento. |
 | [core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md) | Padroes de frontend, UI, UX, componentes e identidade visual. |
+| [core/DESIGN_SYSTEM_PERFORMANCE.md](../core/DESIGN_SYSTEM_PERFORMANCE.md) | Metricas e orcamentos de performance para interfaces e servicos. |
 | [core/DESIGN_SYSTEM_BACKEND.md](../core/DESIGN_SYSTEM_BACKEND.md) | Padroes de backend, arquitetura, API, persistencia, testes e seguranca. |
 | [core/DESIGN_SYSTEM_README.md](../core/DESIGN_SYSTEM_README.md) | Padrao para escrever READMEs consistentes. |
-| [core/GUIA-START-APP-SCRIPT.md](../core/GUIA-START-APP-SCRIPT.md) | Padrao de `start_app.py` com menu interativo para todo programa rodavel. |
+| [core/GUIA-START-APP-SCRIPT.md](../core/GUIA-START-APP-SCRIPT.md) | Criterios para comandos de execucao e uso opcional de launcher amigavel. |
 | [core/PROMPT_BASE_FRONTEND.md](../core/PROMPT_BASE_FRONTEND.md) | Prompt base para especificar tarefas de frontend. |
 | [core/PROMPT_BASE_BACKEND.md](../core/PROMPT_BASE_BACKEND.md) | Prompt base para especificar tarefas de backend. |
 | [core/TEMPLATE-CONTEXTO-IA.md](../core/TEMPLATE-CONTEXTO-IA.md) | Template para criar `IA.md` em outros projetos. |
@@ -37,13 +38,14 @@ Este indice organiza o Doktor System-Design por responsabilidade. Use-o quando q
 
 | Documento | Uso |
 |-----------|-----|
-| [docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md) | Baseline tecnica por contexto. |
-| [docs/CORE-PADROES-OBRIGATORIOS.md](CORE-PADROES-OBRIGATORIOS.md) | Indice dos documentos obrigatorios do `core/`. |
+| [docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md) | Criterios para escolher stack e arquitetura por contexto. |
+| [docs/REFERENCIAS-TECNICAS.md](REFERENCIAS-TECNICAS.md) | Fontes oficiais para acessibilidade, seguranca, performance e HTTP. |
+| [docs/CORE-PADROES-OBRIGATORIOS.md](CORE-PADROES-OBRIGATORIOS.md) | Seletor dos documentos core por assunto, nao leitura completa obrigatoria. |
 | [docs/GUIAS-OPCIONAIS.md](GUIAS-OPCIONAIS.md) | Indice descritivo dos guias reutilizaveis por dominio. |
 | [docs/GUIA-RAPIDO-USO.md](GUIA-RAPIDO-USO.md) | Fluxo rapido para aplicar o system design em projeto novo. |
 | [docs/IDENTIDADE-DOKTOR.md](IDENTIDADE-DOKTOR.md) | Identidade propria do Doktor, misturando autoria local, influencia da origem e direcao visual/tecnica. |
 | [docs/PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md) | Padroes esteticos, arquiteturais e operacionais observados nos repositorios publicos do autor. |
-| [docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md](REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Curadoria externa de componentes animados, scroll narrativo, movimento e 3D. |
+| [docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md](REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Fontes de design system e roteiro para estudar interacoes, responsividade, movimento e licenca. |
 | [docs/GIT-POLITICA-DE-VERSIONAMENTO.md](GIT-POLITICA-DE-VERSIONAMENTO.md) | Regras de branch, commit e documentacao viva. |
 | [docs/CURADORIA-DOS-GUIAS.md](CURADORIA-DOS-GUIAS.md) | Plano de revisao dos guias importados. |
 | [docs/INSTALACAO-EM-OUTROS-PROJETOS.md](INSTALACAO-EM-OUTROS-PROJETOS.md) | Como copiar/sincronizar estes padroes em outros projetos. |

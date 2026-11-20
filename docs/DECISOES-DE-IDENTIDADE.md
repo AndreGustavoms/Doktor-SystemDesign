@@ -50,17 +50,17 @@ Status: resolvido por enquanto. Os scripts foram simplificados para nao depender
 
 ## 4. Stack tecnica
 
-Decisao atual: a stack deixa de ser apenas uma preferencia herdada e passa a ser uma baseline tecnica documentada em [STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md).
+Direcao atual: o repositorio nao impoe uma stack. [STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md) oferece criterios de escolha por produto, equipe, operacao e risco.
 
 Opcoes:
 
 | Opcao | Impacto |
 |-------|---------|
-| Manter baseline por contexto | Escolha atual. Evita tratar uma stack unica como resposta para tudo. |
+| Escolher por contexto | Escolha atual. Mantem as alternativas abertas e registra os fatores de decisao. |
 | Trocar pela sua stack real | Melhor para portfolio se voce quiser explicitar preferencia pessoal. |
 | Remover stack do README | Evita assumir tecnologia antes do escopo do projeto, mas reduz utilidade operacional. |
 
-Status: resolvido. A stack representa a baseline tecnica do repositorio, nao uma declaracao de preferencia pessoal publica.
+Status: revisado em 2026-11-20. Uma diretriz anterior descrevia uma baseline por contexto; a revisao remove a ideia de stack padrao e mantem as tecnologias dos projetos publicos do autor como observacao, nao recomendacao.
 
 ## 5. Origem dos guias
 

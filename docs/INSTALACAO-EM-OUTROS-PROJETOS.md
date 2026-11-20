@@ -109,7 +109,7 @@ git pull origin main
 | Quero uma copia independente e atualizavel | Sincronizar uma copia local |
 | Quero instalar rapidamente sem Git depois | ZIP |
 | Quero manter vinculo Git | `git clone` |
-| Quero so os padroes obrigatorios | Sparse checkout de `core/` |
+| Quero consultar os guias core | Sparse checkout de core/ e selecao por tarefa |
 | Quero so guias reutilizaveis | Sparse checkout de `guias/` |
 | Quero um comando recorrente | Instaladores em `scripts/` |
 

@@ -1,257 +1,58 @@
 # Design System README
 
-Este documento define o padrao de qualidade para `README.md` em projetos que usam o Doktor System-Design.
-
-Um bom README deve permitir que uma pessoa entenda rapidamente o que o projeto faz, como rodar, como validar e onde encontrar detalhes.
-
-## 1. Objetivo
-
-O README deve responder:
-
-- O que e este projeto?
-- Para que ele serve?
-- Como instalar e rodar?
-- Como validar se esta funcionando?
-- Qual stack foi usada?
-- Onde estao os documentos importantes?
-- Quais limites, riscos ou pendencias importam?
-
-## 2. Estrutura recomendada
-
-Use esta ordem como base:
-
-```text
-1. Titulo
-2. Descricao curta
-3. Links rapidos
-4. Sobre o projeto
-5. Stack
-6. Como rodar
-7. Como testar/validar
-8. Estrutura do projeto
-9. Documentacao
-10. Configuracao e variaveis de ambiente
-11. Decisoes tecnicas relevantes
-12. Limitacoes e riscos
-13. Contribuicao
-14. Licenca
-```
-
-Nem todo projeto precisa de todas as secoes. Remova o que nao fizer sentido, mas nao esconda informacao necessaria para uso e manutencao.
-
-## 3. Header
-
-Padrao recomendado:
-
-```markdown
-# Nome do Projeto
-
-Descricao curta em uma ou duas linhas, explicando o valor do projeto sem marketing vazio.
-
-[Como rodar](#como-rodar) | [Configuracao](#configuracao) | [Como testar](#como-testar)
-```
-
-Badges podem ser usados, mas nao devem substituir explicacao clara.
-
-Use badges para:
-
-- linguagem/framework principal;
-- status de CI;
-- licenca;
-- versao publicada.
-
-Evite excesso de badges.
-
-## 4. Sobre o projeto
-
-Explique:
-
-- problema que resolve;
-- publico ou contexto de uso;
-- principais fluxos;
-- o que esta fora do escopo.
-
-Exemplo:
-
-```markdown
-## Sobre
-
-Este projeto e uma API para gerenciar tarefas internas. Ele oferece autenticacao,
-CRUD de tarefas, filtros por status e exportacao CSV. Nao inclui interface web.
-```
-
-## 5. Stack
-
-Liste a stack real, nao uma stack desejada.
-
-```markdown
-## Stack
-
-- Python 3.12
-- Django 5
-- Django REST Framework
-- PostgreSQL
-- pytest
-```
-
-Se a escolha fugir da baseline do Doktor System-Design, inclua uma justificativa curta ou aponte para `IA.md`.
-
-## 6. Como rodar
-
-Todo projeto executavel deve ter instrucoes de setup reproduziveis.
-
-Para app web, priorize:
-
-```bash
-python start_app.py
-```
-
-Quando houver setup manual, explique:
-
-```bash
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-Inclua pre-requisitos:
-
-- versao de linguagem;
-- banco;
-- variaveis de ambiente;
-- dependencias externas.
-
-## 7. Como testar
-
-Explique a validacao principal:
-
-```bash
-pytest
-```
-
-ou:
-
-```bash
-npm test
-```
-
-Se nao houver testes automaticos, registre verificacao manual objetiva:
-
-```markdown
-## Como validar
-
-1. Rode `python start_app.py`.
-2. Acesse `http://localhost:8000`.
-3. Crie um usuario de teste.
-4. Confirme que a listagem aparece sem erro.
-```
-
-## 8. Estrutura do projeto
-
-Mostre apenas o necessario para orientar:
-
-```text
-src/
-|-- components/
-|-- services/
-|-- pages/
-tests/
-docs/
-README.md
-IA.md
-```
-
-Evite arvore gigante que fica desatualizada rapidamente.
-
-## 9. Documentacao
-
-Linke documentos importantes:
-
-- `IA.md`;
-- docs tecnicos;
-- guias de deploy;
-- contratos de API;
-- decisoes de arquitetura;
-- exemplos de uso.
-
-## 10. Variaveis de ambiente
-
-Nunca coloque segredo real.
-
-Use tabela:
-
-| Variavel | Obrigatoria | Exemplo | Uso |
-|----------|-------------|---------|-----|
-| `DATABASE_URL` | Sim | `postgres://...` | Conexao com banco. |
-| `SECRET_KEY` | Sim | `change-me` | Chave da aplicacao. |
-
-Mantenha `.env.example` atualizado.
-
-## 11. Decisoes tecnicas
-
-Inclua quando a decisao afeta manutencao:
-
-```markdown
-## Decisoes tecnicas
-
-- SQLite em desenvolvimento para reduzir setup local.
-- PostgreSQL em producao por concorrencia e volume esperado.
-- Django REST Framework por produtividade em CRUD e autenticacao.
-```
-
-Decisoes longas devem ir para `IA.md` ou `docs/`.
-
-## 12. Limitacoes e riscos
-
-Se existe limite conhecido, documente.
-
-Exemplos:
-
-- "Nao suporta multi-tenant."
-- "Importacao roda em modo manual."
-- "Deploy ainda nao foi validado fora de ambiente local."
-
-Isso evita falsa sensacao de pronto.
-
-## 13. Linguagem
-
-Regras:
-
-- escreva para qualquer leitor;
-- evite contexto privado;
-- use placeholders genericos;
-- nao exponha caminho local, usuario, token ou URL privada;
-- prefira frases curtas;
-- trate trabalho futuro como oportunidade aberta, nao como anotacao interna.
-
-Prefira:
-
-```text
-Ideias para expansao
-```
-
-Evite:
-
-```text
-TODO que eu ainda preciso terminar
-```
-
-## 14. Checklist de README
-
-Antes de considerar o README pronto:
-
-- [ ] Explica o que o projeto faz.
-- [ ] Explica como rodar.
-- [ ] Explica como testar ou validar.
-- [ ] Lista stack real.
-- [ ] Aponta para documentos importantes.
-- [ ] Nao contem segredo ou dado privado.
-- [ ] Nao depende de contexto da conversa.
-- [ ] Esta atualizado com a estrutura atual.
-- [ ] Informa limitacoes relevantes.
-
-## 15. Frase de controle
-
-Um README bom e aquele que permite uma pessoa nova rodar, validar e entender o projeto sem pedir contexto adicional.
+Um README deve ajudar uma pessoa a entender o projeto e executar a tarefa mais importante sem precisar de contexto privado ou da conversa original.
+
+## 1. O que responder primeiro
+
+- O que o projeto faz e para quem?
+- Como instalar e executar o fluxo principal?
+- Como configurar o que e necessario?
+- Como validar uma mudanca?
+- Onde estao os contratos e decisoes importantes?
+- Quais limites ou riscos afetam o uso?
+
+## 2. Estrutura sugerida
+
+Use apenas secoes que resolvem perguntas reais deste projeto:
+
+~~~text
+Nome e descricao
+Uso ou demonstracao, se houver
+Pre-requisitos
+Instalacao e configuracao
+Como rodar
+Como testar ou validar
+Arquitetura e documentacao
+Decisoes, limitacoes e riscos
+Contribuicao
+Licenca
+~~~
+
+A ordem pode variar conforme o publico. Projetos pequenos precisam de menos secoes; servicos em producao precisam de instrucoes operacionais claras.
+
+## 3. Conteudo
+
+- Use comandos reais e reproduziveis do repositorio.
+- Separe setup, execucao, testes e deploy; nao invente um launcher ou comando generico.
+- Liste configuracoes necessarias sem incluir valores reais de segredo.
+- Registre a stack que existe, nao uma desejada.
+- Explique o contrato publico e a forma de reportar problemas quando aplicavel.
+- Escreva para quem nao conhece a conversa ou a equipe.
+- Use linguagem simples, acessivel e inclusiva. Evite slogans, contexto privado e promessas sem evidencia.
+- Enquadre melhorias futuras como ideias para contribuicao, nao compromissos.
+- Mantenha screenshots, badges e links uteis, com texto alternativo e origem apropriados.
+
+## 4. Exemplos e referencias
+
+Demonstre um caminho minimo utilizavel. Use dados sinteticos e um ambiente sem efeitos externos. Links devem apontar para a documentacao certa e nao substituir uma explicacao curta sobre por que abrir a fonte.
+
+Se houver interface visual, uma captura recente pode facilitar a leitura. Identifique o estado e o tamanho da janela; nao apresente imagem desatualizada como estado atual.
+
+## 5. Revisao
+
+- [ ] A primeira tela do README explica o valor e o uso do projeto.
+- [ ] Comandos foram conferidos no estado atual do repositorio.
+- [ ] Configuracao, ambiente e segredos estao separados.
+- [ ] Links, imagens, badges e texto alternativo funcionam.
+- [ ] Estrutura e limitacoes correspondem ao que existe.
+- [ ] O documento pode ser entendido sem conhecimento privado.

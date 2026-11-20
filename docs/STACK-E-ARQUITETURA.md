@@ -1,121 +1,56 @@
 # Stack e Arquitetura
 
-Este documento registra a stack padrao do Doktor System-Design. Ela nao e uma regra cega: cada projeto pode desviar quando houver motivo tecnico claro, mas a decisao precisa ficar documentada.
+Este documento orienta escolhas tecnicas para projetos novos e mudancas de stack. Nao existe uma combinacao universal que sirva a qualquer projeto.
 
-Para padroes observados nos repositorios publicos do autor, incluindo a variante fullstack em JavaScript usada no `Contas.exe`, consulte [PADROES-OBSERVADOS-GITHUB.md](PADROES-OBSERVADOS-GITHUB.md).
+## 1. Como decidir
 
-## 1. Regra principal
+Comece por restricoes e resultados, nao pela popularidade da ferramenta:
 
-Use a stack mais simples que resolva o problema com boa manutencao.
+- qual problema, publico e fluxo principal;
+- experiencia de quem vai manter;
+- tecnologia existente e custo de migracao;
+- plataforma de deploy, requisitos de dados e integracoes;
+- acessibilidade, desempenho, seguranca e disponibilidade esperados;
+- custo, licenca e manutencao de longo prazo;
+- prazo, capacidade de equipe e risco de lock-in.
 
-Evite escolher tecnologia por gosto abstrato. A stack deve ser justificada por:
+Use a stack existente quando ela atende os requisitos. Para um projeto novo sem restricoes, prefira tecnologias estaveis, bem documentadas e que a equipe consiga operar. Registre alternativas e trade-offs quando a escolha for cara ou dificil de reverter.
 
-- tamanho e complexidade do projeto;
-- perfil de quem vai manter;
-- necessidade de deploy;
-- integracoes externas;
-- requisitos de performance, seguranca e observabilidade;
-- reaproveitamento de codigo existente.
+## 2. Tabela de decisao por contexto
 
-## 2. Frontend
+| Necessidade | Direcoes possiveis | Pergunta de escolha |
+|---|---|---|
+| Pagina estatica ou conteudo | HTML/CSS, gerador estatico, framework existente | O conteudo precisa de estado, personalizacao ou atualizacao frequente? |
+| Interface rica ou app client-side | Framework de UI com TypeScript ou alternativa da equipe | O estado e a interacao justificam runtime e build maiores? |
+| Backend com admin, auth e CRUD | Framework completo ou composicao de servicos | O ecossistema integrado reduz trabalho real? |
+| API pequena e focada | Framework HTTP leve ou runtime existente | Quais contratos, validacao e operacao sao necessarios? |
+| App com varios dominios | Monolito modular | Fronteiras de dominio e deploy simples atendem agora? |
+| Sistema que exige deploy ou escala independentes | Servicos separados ou arquitetura distribuida | Ha ownership, carga ou isolamento que pague o custo operacional? |
+| Persistencia relacional | Banco relacional; SQLite para escopo local adequado | Quais transacoes, concorrencia, backup e operacao importam? |
+| Busca, cache, fila ou documentos | Servico especifico quando o padrao de acesso pedir | O ganho medido justifica mais um componente para operar? |
 
-### Padrao para aplicacoes web
+Exemplos sao opcoes, nao uma lista fechada ou endosso de versao.
 
-| Camada | Escolha padrao | Quando usar |
-|--------|----------------|-------------|
-| Linguagem | TypeScript | Interfaces com estado, regras de UI ou crescimento esperado. |
-| Framework | React | Dashboards, apps internos, paineis, CRUDs, ferramentas e interfaces reutilizaveis. |
-| Build | Vite | Projetos React leves, rapidos e com dev server simples. |
-| Estilo | Tailwind CSS | Quando a interface precisa de consistencia visual e customizacao rapida. |
+## 3. Regras de evolucao
 
-### Alternativas aceitas
+- Nao introduza microservicos para organizar pastas.
+- Comece com deploy simples e limites internos claros quando nao houver requisito distribuido.
+- Selecione banco por consultas, consistencia, volume e operacao; nao por moda.
+- Cache e fila adicionam invalidacao, reprocessamento e falhas novas. Adicione-os com um problema definido.
+- Framework e biblioteca reduzem codigo local, mas acrescentam atualizacao e dependencia. Avalie ambos os lados.
+- Reaproveitamento e interoperabilidade devem compensar o custo de abstracao.
 
-| Alternativa | Quando usar |
-|-------------|-------------|
-| HTML/CSS/JavaScript puro | Paginas pequenas, demos, prototipos simples ou entregas sem estado complexo. |
-| Bootstrap | Projetos legados, admin simples ou quando a velocidade importa mais que identidade visual propria. |
-| CSS puro | Componentes pequenos, paginas estaticas e casos onde Tailwind seria excesso. |
+## 4. Decisao registrada
 
-### Regra de decisao
+Use ADR para escolhas que afetam contratos, armazenamento, deploy ou fronteiras de equipe. O registro deve incluir:
 
-- Use React + TypeScript + Vite + Tailwind por padrao em apps.
-- Use HTML/CSS/JS puro quando React seria exagero.
-- Nao misture Bootstrap e Tailwind no mesmo projeto sem justificativa.
+- contexto e restricoes;
+- opcoes consideradas;
+- decisao e motivo;
+- trade-offs, riscos e gatilho de revisao.
 
-## 3. Backend
+Para escolhas locais de baixo impacto, uma nota no README ou IA.md basta. Ver [template de ADR](../templates/ADR-0001-template.md).
 
-### Padrao para APIs e sistemas CRUD
+## 5. Fontes tecnicas
 
-| Camada | Escolha padrao | Quando usar |
-|--------|----------------|-------------|
-| Linguagem | Python | APIs, automacoes, integracoes, scripts e backends de produtividade alta. |
-| Framework | Django | Sistemas CRUD, paineis administrativos, apps com usuarios, permissoes e banco relacional. |
-| API | Django REST Framework | APIs REST com serializers, autenticacao e contratos estaveis. |
-| Banco inicial | SQLite | Prototipos, MVPs locais e apps pequenos. |
-| Banco em producao | PostgreSQL | Aplicacoes publicas, multiusuario ou com crescimento esperado. |
-| Testes | pytest | Testes unitarios, integracao e regressao. |
-
-### Alternativas aceitas
-
-| Alternativa | Quando usar |
-|-------------|-------------|
-| FastAPI | APIs pequenas, alta enfase em tipagem/contrato ou servicos mais enxutos. |
-| Node.js/TypeScript | Quando o projeto ja vive na stack JS, exige integracao forte com bibliotecas Node ou segue a variante autoral observada em produtos fullstack como `Contas.exe`. |
-| C#/.NET | Contexto corporativo, legado, requisito explicito ou necessidade tecnica concreta. |
-
-### Regra de decisao
-
-- Use Django + DRF quando o problema for backend comum com banco, usuarios, CRUD e API.
-- Use FastAPI quando o servico for pequeno, focado e sem necessidade do ecossistema Django.
-- Use .NET somente quando houver motivo concreto.
-
-## 4. Dados e persistencia
-
-| Cenario | Escolha recomendada |
-|---------|---------------------|
-| Local, estudo, prototipo | SQLite |
-| Producao relacional | PostgreSQL |
-| Cache simples | Django cache framework |
-| Cache compartilhado/producao | Redis |
-| Arquivos locais | Storage local com caminho configuravel |
-| Arquivos publicos/producao | Storage externo com URL publica e controle de acesso |
-
-## 5. Deploy e operacao
-
-| Cenario | Escolha recomendada |
-|---------|---------------------|
-| Backend pequeno ou medio | Railway |
-| Frontend estatico | Vercel, Netlify ou GitHub Pages |
-| Projeto fullstack simples | Railway ou plataforma equivalente com banco gerenciado |
-| Necessidade corporativa | Infra definida pelo ambiente do cliente/time |
-
-Railway continua como guia opcional porque reduz complexidade operacional para backends pequenos e medios. Nao deve ser tratado como obrigatorio quando o projeto tiver requisitos especificos de infraestrutura.
-
-## 6. Scripts e automacao
-
-| Uso | Escolha recomendada |
-|-----|---------------------|
-| Automacao cross-platform | Python |
-| Windows/PowerShell | PowerShell |
-| Linux/macOS/WSL | Bash/Zsh |
-| Qualquer programa rodavel | `start_app.py` na raiz com menu interativo |
-
-Todo programa (web, CLI, automacao, script, desktop) deve priorizar `python start_app.py` como porta de entrada unica, com menu interativo - nao flags de linha de comando.
-
-## 7. Como registrar excecoes
-
-Quando um projeto desviar da stack padrao, registre no `IA.md` do projeto:
-
-- stack escolhida;
-- alternativas consideradas;
-- motivo da decisao;
-- impacto em deploy, testes e manutencao;
-- riscos assumidos.
-
-Exemplo:
-
-```text
-DECISAO: usar FastAPI em vez de Django.
-MOTIVO: API pequena, sem painel admin, com contrato OpenAPI como requisito central.
-RISCO: menos recursos prontos de auth/admin; compensado por escopo menor.
-```
+Consulte [Referencias Tecnicas](REFERENCIAS-TECNICAS.md) para padroes de acessibilidade, seguranca, API e performance. Confirme versoes e APIs na documentacao oficial antes de implementar; este documento evita fixar versoes de ferramentas.

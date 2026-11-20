@@ -1,276 +1,60 @@
-﻿# Design System - Testes
+# Design System Testes
 
-> **O que e**: Padrao obrigatorio de testes para projetos Doktor. Define o que testar, como nomear, cobertura minima, tipos de teste e o que nao vale a pena testar.
->
-> **Quando usar**: Em qualquer projeto com codigo executavel. Teste nao e fase final  - e parte da entrega.
+> Testes devem reduzir risco de mudanca e explicar comportamento importante. O tipo, a quantidade e a ferramenta dependem do produto, da arquitetura e do custo de falha.
 
----
+## 1. Estrategia baseada em risco
 
-## 1. Principio central
+Mapeie os fluxos e contratos que podem causar dano, perda de dados, interrupcao ou regressao frequente. Priorize-os. Uma suite util e confiavel, facil de rodar e ligada ao que a pessoa usuaria ou outro sistema observa.
 
-**Teste que nao quebra quando o comportamento muda nao esta testando nada.**
+Nao existe porcentagem de cobertura que prove qualidade. Use cobertura para encontrar trechos sem verificacao e avalie se os casos testados importam.
 
-O objetivo do teste nao e cobertura percentual  - e confianca para mudar o codigo sem medo. Um teste bem escrito documenta o comportamento esperado e avisa quando algo quebra. Um teste mal escrito e ruido.
+## 2. Niveis de verificacao
 
----
+- **Unidade**: regra ou transformacao com dependencias isoladas quando isso deixa o teste rapido e claro.
+- **Integracao**: colaboracao real entre modulos, framework, banco, fila ou protocolo.
+- **Contrato**: compatibilidade de APIs, eventos ou integracoes entre equipes e servicos.
+- **E2E**: jornada critica pela interface ou pela entrada publica do sistema.
+- **Manual/exploratorio**: visual, usabilidade, comportamento dificil de automatizar ou avaliacao em ambiente real.
 
-## 2. Tipos de teste
+A piramide e um modelo de custo, nao uma meta fixa. Use poucos E2E para fluxos importantes, mas nao evite um teste de integracao confiavel se ele proteger melhor o risco real. Para UI, combine automacao e verificacao manual.
 
-### Unitario
+## 3. O que torna um teste confiavel
 
-Testa uma unica funcao ou classe em isolamento. Sem banco, sem rede, sem sistema de arquivos.
+- Nomeie pelo comportamento observado e condicao relevante.
+- Mantenha preparacao, acao e verificacao faceis de ler; AAA e um formato possivel.
+- Isole testes de dados, ordem, relogio e rede quando necessario.
+- Verifique resultados observaveis e contratos, nao detalhes internos que podem mudar sem alterar comportamento.
+- Cada teste deve falhar por um motivo compreensivel; um teste pode validar varias consequencias do mesmo comportamento.
+- Evite sleeps fixos, dependencias compartilhadas, asserts vagos e retries que escondem instabilidade.
+- Use dados sinteticos; nao copie dados reais pessoais ou de producao.
 
-- **O que testar**: `services/`, `utils/`, logica de negocio pura.
-- **Velocidade**: milissegundos. Deve rodar centenas por segundo.
-- **Dependencias externas**: substituidas por mocks ou fakes apenas quando necessario.
+## 4. Banco, rede e mocks
 
-### Integracao
+Use infraestrutura real em testes de integracao quando ela for parte do comportamento que precisa ser verificado e o ambiente de teste for controlado. Use mock, fake ou simulador em limites externos quando isso tornar o teste deterministico ou evitar efeitos colaterais. Evite mockar toda colaboracao interna: isso pode apenas confirmar a implementacao atual.
 
-Testa a interacao entre camadas reais: servico + banco, rota + autenticacao, fila + worker.
+Para pagamento, email, APIs externas e servicos caros, use cliente de teste, sandbox ou fake conforme o contrato e o risco. Nunca envie operacoes reais por acidente durante a suite.
 
-- **O que testar**: fluxos completos que envolvem mais de uma camada.
-- **Banco**: use banco real (SQLite em memoria ou instancia de teste). Evite mock de banco  - [ja causou incidentes em producao](../docs/GIT-POLITICA-DE-VERSIONAMENTO.md).
-- **Velocidade**: segundos. Roda menos vezes, mas cobre o que unitario nao cobre.
+## 5. TDD e outras tecnicas
 
-### End-to-end (E2E)
+TDD pode ajudar quando requisitos estao claros e o ciclo teste-implementacao mostra a forma do dominio. Exploracao, prototipo ou ajuste visual podem comecar de outra forma. Ao concluir, proteja comportamento importante com verificacao adequada.
 
-Testa o sistema pelo ponto de vista do usuario: abre o browser, clica, preenche, verifica.
+Snapshot so e util quando a representacao completa faz parte do contrato. Prefira asserts pequenos e intencionais quando snapshots ficarem grandes ou opacos.
 
-- **O que testar**: fluxos criticos de negocio (login, cadastro, checkout, fluxo principal).
-- **Quando usar**: com moderacao. E2E e lento, fragil e caro de manter. Cubra so o que importa.
-- **Ferramentas**: Playwright (recomendado), Cypress.
+## 6. Execucao e manutencao
 
----
+- Separe comandos rapidos de suites custosas.
+- Execute verificacoes relevantes no fluxo local e na integracao continua.
+- Identifique e corrija testes instaveis; nao transforme falha recorrente em retry silencioso.
+- Controle portas, dados temporarios e recursos externos.
+- Mantenha instrucoes de setup e comandos proximos do README ou do gerenciador de projeto.
+- Quando nao for possivel automatizar, registre o procedimento manual e o que foi observado.
 
-## 3. Piramide de testes
+## Checklist de testes
 
-```
-        /\
-       /E2E\        poucos, so fluxos criticos
-      /------\
-     /Integracao\   medio volume, fluxos por camada
-    /------------\
-   /   Unitario   \  maioria dos testes, rapidos e isolados
-  /-----------------\
-```
-
-Se a base da piramide for pequena e o topo for grande, os testes serao lentos, frageis e dificeis de manter.
-
----
-
-## 4. Nomenclatura
-
-O nome do teste e documentacao. Leia o nome e entenda o que o sistema deve fazer.
-
-### Padrao
-
-```
-deve <resultado esperado> quando <condicao>
-should <expected result> when <condition>
-```
-
-### Exemplos
-
-```python
-# Python (pytest)
-def test_deve_retornar_erro_quando_cpf_invalido():
-def test_deve_criar_usuario_com_dados_validos():
-def test_nao_deve_permitir_email_duplicado():
-def test_deve_retornar_404_quando_usuario_nao_existe():
-```
-
-```typescript
-// TypeScript (Jest / Vitest)
-it('deve retornar erro quando CPF invalido')
-it('deve criar usuario com dados validos')
-it('nao deve permitir email duplicado')
-it('deve retornar 404 quando usuario nao existe')
-```
-
-**Nunca nomeie pelo metodo:**
-
-```python
-# Errado - nao diz o que o sistema deve fazer
-def test_validate_cpf():
-def test_create_user():
-```
-
----
-
-## 5. Estrutura de um bom teste
-
-Todo teste segue o padrao **AAA: Arrange, Act, Assert**.
-
-```python
-def test_deve_calcular_total_com_desconto():
-    # Arrange - prepara o estado necessario
-    produto = Produto(preco=100.0)
-    desconto = 0.10
-
-    # Act - executa a acao a ser testada
-    total = calcular_total(produto, desconto)
-
-    # Assert - verifica o resultado
-    assert total == 90.0
-```
-
-```typescript
-it('deve calcular total com desconto', () => {
-    // Arrange
-    const produto = { preco: 100 };
-    const desconto = 0.10;
-
-    // Act
-    const total = calcularTotal(produto, desconto);
-
-    // Assert
-    expect(total).toBe(90);
-});
-```
-
-Regras:
-- Um teste, um comportamento. Se o `assert` testa duas coisas, separe em dois testes.
-- Sem logica condicional no teste (`if`, `for`). Teste que tem `if` esta testando dois cenarios.
-- Sem dependencia entre testes. A ordem de execucao nao deve importar.
-
----
-
-## 6. O que testar
-
-### Sempre testar
-
-- Regras de negocio em `services/`  - sao o nucleo do sistema.
-- Validacoes e casos de erro  - o caminho feliz funciona; o que quebra o sistema sao os casos de borda.
-- Calculos, transformacoes e algoritmos.
-- Integracao com banco de dados via repositorios.
-- Rotas de API: status code, formato de resposta, autenticacao.
-
-### Casos de borda obrigatorios
-
-Para qualquer funcao que recebe input externo, teste:
-
-- Valor valido (caminho feliz).
-- Valor invalido ou mal formado.
-- Valor vazio ou nulo.
-- Valor no limite (minimo e maximo permitido).
-
----
-
-## 7. O que NAO testar
-
-Testar tudo e desperdicio. Evite:
-
-| O que | Por que nao testar |
-|-------|-------------------|
-| Getters e setters triviais | Nao ha logica, nao ha o que verificar |
-| Configuracao de framework | Django, React, etc. ja sao testados pelos seus mantenedores |
-| Migrations de banco | Teste o comportamento, nao a estrutura da tabela |
-| Constantes e enums | Sem logica condicional, sem teste |
-| Codigo gerado automaticamente | Nao e seu codigo |
-| Detalhes de implementacao | Teste o contrato (entrada/saida), nao como e feito internamente |
-
-Testar detalhes de implementacao torna a suite fragil: qualquer refatoracao quebra os testes mesmo sem mudar o comportamento.
-
----
-
-## 8. Mocks e fakes
-
-Use mock so quando necessario. Mock em excesso e sinal de design ruim.
-
-### Quando usar mock
-
-- Dependencias externas com efeito colateral: email, SMS, pagamento, servico terceiro.
-- Chamadas de rede em testes unitarios.
-- Relogio (`datetime.now()`) quando o teste depende do momento atual.
-
-### Quando NAO usar mock
-
-- Banco de dados em testes de integracao. Use banco real em memoria.
-- Servicos internos da propria aplicacao  - se voce mocka seu proprio codigo, nao esta testando integracao.
-
-```python
-# Errado - mocka o banco, nao testa a query real
-def test_busca_usuario(mock_db):
-    mock_db.query.return_value = [{"id": 1}]
-    resultado = buscar_usuario(1)
-    assert resultado["id"] == 1
-
-# Certo - banco real em memoria
-def test_busca_usuario(db_session):
-    usuario = Usuario(id=1, nome="Andre")
-    db_session.add(usuario)
-    db_session.commit()
-    resultado = buscar_usuario(1)
-    assert resultado.nome == "Andre"
-```
-
----
-
-## 9. Cobertura
-
-Cobertura e metrica, nao objetivo. 100% de cobertura com testes ruins nao garante nada.
-
-### Referencias por tipo de projeto
-
-| Tipo de projeto | Cobertura minima recomendada |
-|-----------------|------------------------------|
-| API com regras de negocio | 80% em `services/` e `repositories/` |
-| Utilitarios e bibliotecas | 90%+ |
-| Scripts e automacoes | 60%+ nos casos criticos |
-| Frontend (logica em hooks/utils) | 70%+ |
-
-### O que a cobertura nao diz
-
-- Que os testes verificam o comportamento correto.
-- Que os casos de borda foram cobertos.
-- Que o sistema funciona de ponta a ponta.
-
-Use cobertura para **encontrar codigo nao testado**, nao para declarar qualidade.
-
----
-
-## 10. Organizacao dos testes
-
-```text
-tests/
-|-- unit/
-|   |-- test_user_service.py
-|   |-- test_order_service.py
-|   `-- test_cpf_utils.py
-|-- integration/
-|   |-- test_user_api.py
-|   `-- test_order_flow.py
-`-- e2e/
-    `-- test_checkout_flow.py
-```
-
-- Um arquivo de teste por arquivo de producao em testes unitarios.
-- Nome do arquivo: `test_` + nome do modulo testado.
-- Fixtures e factories compartilhadas em `conftest.py` (pytest) ou `setup` dedicado.
-
----
-
-## 11. Ferramentas recomendadas
-
-| Contexto | Ferramenta |
-|----------|------------|
-| Python | pytest + pytest-cov |
-| Django | pytest-django |
-| TypeScript/Node | Vitest (recomendado) ou Jest |
-| React (componentes) | Testing Library + Vitest |
-| E2E | Playwright |
-| Cobertura | pytest-cov, c8 (Vitest) |
-
----
-
-## 12. Checklist de testes por entrega
-
-- [ ] Regras de negocio em `services/` cobertas por testes unitarios.
-- [ ] Casos de borda testados: valido, invalido, vazio, limite.
-- [ ] Testes de integracao cobrem os fluxos principais com banco real.
-- [ ] Nomes dos testes descrevem o comportamento esperado.
-- [ ] Cada teste verifica uma unica coisa.
-- [ ] Sem dependencia de ordem entre testes.
-- [ ] Mocks usados apenas para dependencias externas com efeito colateral.
-- [ ] Suite roda sem erro antes de qualquer commit.
-- [ ] Cobertura de `services/` acima do minimo definido para o projeto.
+- [ ] Os riscos e contratos principais estao cobertos.
+- [ ] O nivel de teste corresponde a fronteira que precisa ser protegida.
+- [ ] Testes nao dependem da ordem nem de dados privados.
+- [ ] Mocks estao nas fronteiras certas e nao substituem verificacoes importantes.
+- [ ] A suite e repetivel e reporta falhas com clareza.
+- [ ] Cobertura percentual e usada como sinal, nao como prova.
+- [ ] Validacao manual e limites nao automatizados estao registrados.

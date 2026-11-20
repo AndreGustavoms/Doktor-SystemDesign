@@ -4,22 +4,23 @@
 
 <!--
   EXCECAO a regra append-only: esta secao e um RESUMO reescrevivel (ver
-  core/TEMPLATE-CONTEXTO-IA.md). Reescreva-a a cada mudanca de estado - o
-  historico completo continua protegido na secao "Historico detalhado" abaixo.
+  core/TEMPLATE-CONTEXTO-IA.md). Reescreva-a a cada mudanca de estado; o
+  historico completo continua protegido na secao "Historico detalhado".
 -->
 
-Ultima atualizacao: [2026-08-12]
+Ultima atualizacao: [2026-11-20]
 
-- Fase: acervo maduro e auditado, agora com camada de saude de repositorio, automacao de qualidade e curadoria externa para interfaces de marca. 26 guias tecnicos, todos padronizados; scripts de instalacao cobertos por 30 testes automatizados; capa/badges no README; arquivos de comunidade do GitHub presentes.
-- Documentos-nucleo recentes: `core/DESIGN_SYSTEM_MODULARIDADE.md` (granularidade de arquivo: responsabilidade unica, limites por tipo, criterio de quebra - com o custo de token como motivo declarado), `core/DESIGN_SYSTEM_ECONOMIA_IA.md` (nivel de tarefa vs. nivel de modelo, economia de contexto, com medicao real do acervo) e `docs/POLITICA-DE-ATUALIZACAO.md` (gatilhos de revisao e sincronizacao com a origem).
-- Versao publicada: `0.5.0` (ver `CHANGELOG.md`). Regra ativa: `VERSION`/`CHANGELOG.md` devem ser atualizados a cada leva de commits relevante - nao deixar a versao "congelar" enquanto o acervo evolui (ver `docs/CHECKLIST-PUBLICACAO.md`, secao "Publicacao continua").
-- Referencias visuais: `docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md` organiza OriginKit, Skiper UI, Cult UI, GSAP, Motion e Three.js por finalidade, com guardrails de licenca, identidade, acessibilidade e performance.
-- Validacao automatizada: `scripts/validate-repo.ps1` agora checa ASCII, links, imagens locais e o roteador de guias (`scripts/validate-router.ps1`: cobertura + colisao de palavras-chave); `scripts/measure-context.ps1` recalcula a economia de contexto do acervo sob demanda.
-- Seguranca/privacidade: `SECURITY.md` na raiz (politica de reporte), `templates/SECURITY-template.md` reforcado e `templates/PRIVACIDADE-LGPD-template.md` novo para projetos com dados pessoais.
-- Git: regra formal de `git pull` antes de comecar a commitar e `git push` automatico ao final de cada leva, sem esperar confirmacao manual (ver `docs/GIT-POLITICA-DE-VERSIONAMENTO.md`, secao 3).
-- Proximo passo natural: nao ha pendencia de alta prioridade conhecida. Manutencao continua: revisar um guia so quando ficar desatualizado tecnicamente, e sempre que um guia novo for adicionado, checar cobertura no roteador (o validador ja pega guia fora do roteador e colisao de palavra-chave) e referencia cruzada com guias relacionados.
-- Risco aberto: nenhum bloqueante conhecido; atencao recorrente e manter os documentos de indice (`docs/INDICE-GERAL.md`, `docs/GUIAS-OPCIONAIS.md`, `AGENTS.md`) sincronizados sempre que um guia for adicionado ou renomeado.
-
+- Fase: revisao ampla dos padroes para projetos novos; documentos agora orientam decisoes por contexto, risco e evidencias.
+- Versao do trabalho: 0.6.0 em VERSION e CHANGELOG.md.
+- Frontend: guia renovado para direcao visual, tokens, responsividade, acessibilidade WCAG, componentes e estados. Performance tem documento proprio.
+- Arquitetura: modularidade por coesao e fronteiras de mudanca, sem estrutura ou limite de linhas universal.
+- Backend e API: sem stack obrigatoria, contratos e erros consistentes, resiliencia e seguranca conforme escopo.
+- Testes: estrategia baseada em risco e comportamento; cobertura e modelos de piramide sao sinais, nao metas rigidas.
+- Referencias: docs/REFERENCIAS-TECNICAS.md aponta para W3C, MDN, web.dev, OWASP e IETF, revisadas em 2026-11-20. Referencias visuais ganharam roteiro de observacao, evidencias e analise de video/audio.
+- Entrada de programa: start_app.py e launcher opcional quando reduzir atrito; CLI, biblioteca, container e CI mantem comandos adequados ao tipo de projeto.
+- Navegador: o host do navegador integrado estava indisponivel nesta sessao. A pesquisa tecnica usou fontes oficiais pela ferramenta web disponivel; fontes visuais individuais ainda aguardam URLs do usuario.
+- Proximo passo: receber as referencias do usuario e revisar cada uma visualmente, com capturas e audio quando a fonte e a ferramenta permitirem; transformar achados em melhorias especificas.
+- Git: trabalho isolado na branch docs/renova-design-system; validar links, codificacao, roteador e documentos antes do commit.
 ## Objetivo atual
 
 Transformar este repositorio em uma base propria de system design, qualidade e guias reutilizaveis para projetos Doktor, aproveitando o que havia de bom no repositorio de referencia sem copiar identidade pessoal de terceiros para o corpo da documentacao.
@@ -101,6 +102,8 @@ Transformar este repositorio em uma base propria de system design, qualidade e g
   - `docs/POLITICA-DE-ATUALIZACAO.md`: nota de escopo esclarecendo que o documento e especifico deste repositorio e nao deve ser copiado para projetos destino.
   - Pequenos ajustes de descoberta: `README.md` (mapa rapido ganhou `docs/POLITICA-DE-ATUALIZACAO.md` e `docs/VALIDACAO-SCRIPTS.md`); `docs/GUIA-RAPIDO-USO.md` (exemplos dos guias novos nas secoes de frontend/backend).
   - Validado apos as mudancas: `scripts/validate-repo.ps1` OK; suite de testes dos instaladores com 30 testes passando, 1 pulado (falta de `rsync`, comportamento esperado).
+
+- [2026-11-20] System design revisado para aplicacao progressiva: stack escolhida por contexto; arquitetura/modularidade por fronteiras de mudanca; testes por risco; launcher opcional; acessibilidade, responsividade e performance elevadas ao contrato de frontend; novas referencias tecnicas e roteiro de analise visual. A revisao substitui as regras rigidas registradas anteriormente sem apagar seus registros. Browser integrado indisponivel; fontes tecnicas verificadas por pesquisa web oficial. Referencias visuais personalizadas aguardam URLs do usuario.
 
 ## Decisoes tomadas
 

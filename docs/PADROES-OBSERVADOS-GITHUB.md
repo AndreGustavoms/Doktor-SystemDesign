@@ -117,7 +117,7 @@ O repositorio autoral publico analisado aponta para:
 | Documentacao | README, IA, arquitetura, deploy, seguranca |
 | Seguranca | sessao server-side, reauth, auditoria, rate limit, 2FA quando faz sentido |
 
-Isso nao substitui a baseline de [STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md). A leitura sugere uma variante pessoal forte para produtos fullstack em JavaScript:
+Isso nao substitui os criterios de escolha de [STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md). A leitura sugere uma variante pessoal forte para produtos fullstack em JavaScript:
 
 ```text
 React + TypeScript + Vite + Tailwind

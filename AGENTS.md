@@ -14,7 +14,7 @@
 ## 1. Protocolo de leitura
 
 1. **Leia sempre** [`core/GUIA_MINIMO_QUALIDADE.md`](core/GUIA_MINIMO_QUALIDADE.md) - o contrato curto de qualidade (menos de 100 linhas). Ele vale para qualquer entrega.
-2. **Identifique o tipo de tarefa** e abra apenas os documentos indicados na secao 2. Como regra pratica, uma tarefa comum precisa de no maximo 1-2 documentos alem do guia minimo; mais que isso e sinal de que a tarefa deveria ser dividida ou de que voce esta lendo "por garantia".
+2. **Identifique o tipo de tarefa** e abra apenas os documentos indicados na secao 2. Como regra pratica, uma tarefa simples costuma precisar de 1-2 documentos alem do guia minimo; tarefas amplas ou de alto risco podem precisar de mais.
 3. **Consulte `guias/` somente sob demanda**: use a tabela da secao 3 para ver se a funcionalidade pedida ja tem um guia pronto. Se nao tiver, nao leia nenhum. **O crescimento do numero de guias neste acervo nao deve aumentar quanto voce le por tarefa** - cada guia novo e mais uma linha na tabela de busca por palavra-chave, nao mais um documento a abrir "para garantir". Abra no maximo 1 guia opcional por tarefa, salvo caso raro de funcionalidade que combine explicitamente dois padroes (ex.: tabela + formulario na mesma tela).
 4. **Nao leia documentos "por garantia".** Cada arquivo deste repositorio so e necessario no cenario indicado abaixo. Para o raciocinio completo de quando isso vale a pena (nivel de tarefa vs. nivel de modelo, reaproveitamento de contexto ja registrado), veja [`core/DESIGN_SYSTEM_ECONOMIA_IA.md`](core/DESIGN_SYSTEM_ECONOMIA_IA.md).
 5. **Antes de editar manualmente, procure automacao existente.** Se houver script, comando, instalador ou ferramenta reutilizavel para a mudanca, reutilize ou estenda esse caminho primeiro. Edicao manual fica como excecao justificada (ver [`core/GUIA_MINIMO_QUALIDADE.md`](core/GUIA_MINIMO_QUALIDADE.md), item 9).
@@ -25,6 +25,8 @@
 | Se a tarefa e... | Leia (alem do guia minimo) | Apoio opcional |
 |------------------|----------------------------|----------------|
 | Construir ou alterar **frontend** | [`core/DESIGN_SYSTEM_FRONTEND.md`](core/DESIGN_SYSTEM_FRONTEND.md) | [`core/PROMPT_BASE_FRONTEND.md`](core/PROMPT_BASE_FRONTEND.md) (montar o prompt inicial) |
+| Definir **performance** | [core/DESIGN_SYSTEM_PERFORMANCE.md](core/DESIGN_SYSTEM_PERFORMANCE.md) | [docs/REFERENCIAS-TECNICAS.md](docs/REFERENCIAS-TECNICAS.md) para metricas e fontes oficiais |
+| Consultar **referencias tecnicas atuais** (WCAG, OWASP, HTTP, Web Vitals) | [docs/REFERENCIAS-TECNICAS.md](docs/REFERENCIAS-TECNICAS.md) | Abra somente a secao ligada a tarefa |
 | Pesquisar **referencias visuais, componentes animados, scroll ou 3D** | [`docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md`](docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) | Abra no maximo um guia visual de `guias/frontend/` depois de escolher a direcao |
 | Construir ou alterar **backend** | [`core/DESIGN_SYSTEM_BACKEND.md`](core/DESIGN_SYSTEM_BACKEND.md) | [`core/PROMPT_BASE_BACKEND.md`](core/PROMPT_BASE_BACKEND.md) (montar o prompt inicial) |
 | Organizar **estrutura e responsabilidades** do codigo | [`core/DESIGN_SYSTEM_ARQUITETURA.md`](core/DESIGN_SYSTEM_ARQUITETURA.md) | - |
@@ -35,7 +37,7 @@
 | Escolher ou justificar **stack/arquitetura** | [`docs/STACK-E-ARQUITETURA.md`](docs/STACK-E-ARQUITETURA.md) | [`docs/PADROES-OBSERVADOS-GITHUB.md`](docs/PADROES-OBSERVADOS-GITHUB.md) quando precisar alinhar com padroes publicos do autor |
 | Escrever ou revisar **README / documentacao** | [`core/DESIGN_SYSTEM_README.md`](core/DESIGN_SYSTEM_README.md) | - |
 | Aplicar este system design em **projeto novo** | [`docs/GUIA-RAPIDO-USO.md`](docs/GUIA-RAPIDO-USO.md) | [`templates/AGENTS-template.md`](templates/AGENTS-template.md) para orientar a IA no projeto destino; [`templates/`](templates/) para README, IA, deploy, seguranca e ADR |
-| Criar **qualquer programa rodavel** (web, CLI, automacao, script...) | [`core/GUIA-START-APP-SCRIPT.md`](core/GUIA-START-APP-SCRIPT.md) - todo programa exige um `start_app.py` na raiz com menu interativo (porta de entrada) | - |
+| Escolher a entrada de execucao de um projeto | [core/GUIA-START-APP-SCRIPT.md](core/GUIA-START-APP-SCRIPT.md) - launcher interativo so quando reduzir atrito real | - |
 | Registrar **contexto/memoria do projeto** | [`core/TEMPLATE-CONTEXTO-IA.md`](core/TEMPLATE-CONTEXTO-IA.md) - copie o template e preencha continuamente | - |
 | Decidir **qual nivel de IA usar** ou reduzir gasto de contexto/tokens | [`core/DESIGN_SYSTEM_ECONOMIA_IA.md`](core/DESIGN_SYSTEM_ECONOMIA_IA.md) | - |
 | Validar **projeto pronto** | [`docs/CHECKLIST-PROJETO-PRONTO.md`](docs/CHECKLIST-PROJETO-PRONTO.md) | [`scripts/validate-repo.ps1`](scripts/validate-repo.ps1), quando estiver validando este repo |

@@ -50,9 +50,9 @@ Padrao de **primeira experiencia do usuario** com onboarding leve, destaque cont
 
 ### Componentes UI Compostos
 
-Kit de **componentes UI compostos** com Card, Button, Badge e utilitario de classnames. TypeScript + Tailwind, leve e facil de transportar entre projetos.
+Receita de componentes compostos com Card, Button e Badge, em TypeScript + Tailwind. Adapte os exemplos a stack e tokens existentes; nao e um kit obrigatorio.
 
-**Quando usar:** qualquer projeto React + Tailwind que precise de componentes base consistentes.
+**Quando usar:** quando o projeto repetir componentes e estados de UI e quiser uma referencia inicial para adaptar.
 
 [Ver guia](../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md)
 

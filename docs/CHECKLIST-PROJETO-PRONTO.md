@@ -1,77 +1,45 @@
 # Checklist de Projeto Pronto
 
-Use este checklist antes de chamar um projeto de pronto, entregar para outra pessoa ou publicar.
+Use os pontos aplicaveis ao escopo e ao risco do produto. Um item fora de contexto nao precisa virar trabalho.
 
-## Escopo
+## Produto e operacao
 
-- [ ] O objetivo do projeto esta claro em uma frase.
-- [ ] O que esta fora do escopo foi registrado.
-- [ ] A stack real esta documentada.
-- [ ] `AGENTS.md` existe quando o projeto usa IA como apoio operacional.
-- [ ] As principais decisoes estao em `IA.md` ou `docs/`.
+- [ ] Objetivo, publico e fluxo principal estao claros.
+- [ ] O README mostra pre-requisitos, setup, configuracao e execucao real.
+- [ ] Contratos, limites e decisoes importantes estao documentados.
+- [ ] Outra pessoa consegue executar e validar sem contexto privado.
 
-## README
+## Interface, quando existir
 
-- [ ] Explica o que o projeto faz.
-- [ ] Explica como instalar.
-- [ ] Explica como rodar.
-- [ ] Explica como testar ou validar manualmente.
-- [ ] Lista variaveis de ambiente sem segredo real.
-- [ ] Aponta para docs importantes.
-- [ ] Registra limitacoes conhecidas.
+- [ ] A hierarquia ajuda a concluir a tarefa principal.
+- [ ] O layout funciona com conteudo real, telas estreitas e zoom.
+- [ ] Teclado, foco, labels, contraste e estados foram considerados.
+- [ ] Loading, vazio, erro, sucesso e permissao estao claros quando aplicaveis.
+- [ ] Movimento respeita preferencias e nao substitui significado.
+- [ ] Performance foi verificada nos fluxos mais importantes.
 
-## Frontend
+## Servicos, quando existirem
 
-- [ ] Layout funciona em mobile e desktop.
-- [ ] Componentes base foram reutilizados.
-- [ ] Estados de loading, vazio, erro e sucesso existem.
-- [ ] Formularios tem label, validacao e erro claro.
-- [ ] Botoes de icone tem `aria-label` ou tooltip.
-- [ ] Textos longos nao quebram containers.
-- [ ] Cores tem contraste suficiente.
+- [ ] Entradas e permissoes sao validadas no servidor.
+- [ ] Contratos, erros, paginacao e compatibilidade sao previsiveis.
+- [ ] Transacoes, repeticao e falhas de integracoes foram consideradas.
+- [ ] Logs ajudam o diagnostico sem expor segredos ou dados desnecessarios.
+- [ ] Dados e migrations tem ownership e plano de recuperacao quando necessario.
 
-## Backend
+## Seguranca e dados
 
-- [ ] Entradas sao validadas.
-- [ ] Erros tem formato previsivel.
-- [ ] Contratos de API usam status codes, paginacao e formato de erro consistentes quando houver API HTTP.
-- [ ] Regras de negocio ficam fora de controllers/views quando possivel.
-- [ ] Operacoes sensiveis exigem autenticacao/autorizacao.
-- [ ] Logs nao gravam segredo.
-- [ ] Banco e migracoes estao documentados.
-- [ ] Testes cobrem fluxo feliz e erros principais.
+- [ ] Segredos e dados reais sensiveis nao estao no repositorio ou exemplos.
+- [ ] Riscos e controles foram avaliados para as fronteiras expostas.
+- [ ] Dados pessoais tem finalidade, acesso, retencao e remocao tratados conforme o produto.
+- [ ] Dependencias e pipeline foram revisados conforme o risco.
 
-## Seguranca
+## Verificacao
 
-- [ ] `.env` real nao esta versionado.
-- [ ] `.env.example` existe quando houver variaveis.
-- [ ] Tokens, senhas e chaves nao aparecem no repo.
-- [ ] CORS, permissao e auth foram revisados.
-- [ ] Dados pessoais tem justificativa e cuidado minimo.
-- [ ] Dependencias criticas foram revisadas.
+- [ ] Testes e verificacoes protegem os comportamentos de maior risco.
+- [ ] A verificacao manual registra ambiente, estado observado e limites.
+- [ ] Testes instaveis ou pendencias conhecidas estao registrados.
+- [ ] Links e comandos da documentacao correspondem ao repositorio.
+- [ ] AGENTS e IA.md, quando usados, refletem o estado atual.
+- [ ] O resultado descreve o que mudou, como foi validado e o que falta.
 
-## Deploy
-
-- [ ] Existe `docs/DEPLOY.md` ou equivalente.
-- [ ] Plataforma de deploy esta definida.
-- [ ] Variaveis de ambiente de producao foram listadas.
-- [ ] Comando de build/start esta documentado.
-- [ ] Rollback ou re-deploy esta descrito.
-- [ ] Logs de producao sao acessiveis.
-
-## Qualidade
-
-- [ ] Estrutura, nomes e responsabilidades seguem o padrao do projeto.
-- [ ] Testes automatizados rodam localmente ou ha validacao manual objetiva.
-- [ ] CI roda validacoes basicas.
-- [ ] `AGENTS.md` aponta apenas para documentos existentes ou para uma copia Doktor sincronizada.
-- [ ] Links Markdown relevantes funcionam.
-- [ ] Encoding/texto quebrado foi verificado.
-- [ ] `IA.md` esta atualizado.
-- [ ] O historico Git tem commits pequenos e descritivos.
-- [ ] Os documentos lidos pela IA para chegar ate aqui foram apenas os indicados pelo `AGENTS.md` para cada tarefa - sem leitura "por garantia" nem mais de 1 guia opcional aberto por tarefa (ver `core/DESIGN_SYSTEM_ECONOMIA_IA.md`).
-- [ ] O nivel de modelo de IA usado em cada etapa foi proporcional ao risco/complexidade real da tarefa - nem subutilizado numa decisao critica, nem superdimensionado numa tarefa mecanica.
-
-## Frase de controle
-
-Um projeto esta pronto quando outra pessoa consegue rodar, validar, entender decisoes e continuar o trabalho sem depender da conversa original.
+Um projeto esta pronto para o proximo passo quando comportamento, operacao, riscos e limites estao visiveis para quem vai usa-lo ou mante-lo.

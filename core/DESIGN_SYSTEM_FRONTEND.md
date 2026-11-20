@@ -1,295 +1,158 @@
 # Design System Frontend
 
-Este documento define o padrao de qualidade para frontends no Doktor System-Design. Use-o para criar ou revisar interfaces com consistencia visual, responsividade, acessibilidade, manutencao e boa arquitetura de componentes.
+Este guia orienta a criacao de interfaces claras, distintas, responsivas, acessiveis e rapidas. Ele define criterios de qualidade; nao exige uma stack, paleta ou estilo unico.
 
-Para escolher stack, consulte tambem [../docs/STACK-E-ARQUITETURA.md](../docs/STACK-E-ARQUITETURA.md). Para identidade visual e tecnica do Doktor, consulte [../docs/IDENTIDADE-DOKTOR.md](../docs/IDENTIDADE-DOKTOR.md). Para direcao estetica observada nos repositorios publicos do autor, consulte [../docs/PADROES-OBSERVADOS-GITHUB.md](../docs/PADROES-OBSERVADOS-GITHUB.md).
+Consulte [Stack e Arquitetura](../docs/STACK-E-ARQUITETURA.md) para escolhas tecnicas, [Referencias Tecnicas](../docs/REFERENCIAS-TECNICAS.md) para fontes normativas e [Referencias Visuais e Movimento](../docs/REFERENCIAS-VISUAIS-E-MOVIMENTO.md) para repertorio visual.
 
-## 1. Papel deste documento
+## 1. Resultado esperado
 
-Use este guia para responder:
+Uma boa interface ajuda a pessoa a concluir sua tarefa sem atrito e transmite a identidade do produto com consistencia. Ela deve continuar compreensivel em telas diferentes, com teclado, zoom, conteudo real, falhas de rede e preferencias de acessibilidade.
 
-- A interface e clara, consistente e responsiva?
-- Os componentes sao reutilizaveis e bem nomeados?
-- A identidade visual esta documentada?
-- Estados de loading, erro, vazio e sucesso foram considerados?
-- A UI funciona em mobile e desktop?
-- A implementacao evita acoplamento visual e logico desnecessario?
+Defina antes de desenhar:
 
-Este arquivo nao substitui um briefing de produto. Ele define padroes de qualidade.
+- quem usa e qual tarefa principal quer concluir;
+- o contexto de uso (frequencia, dispositivo, ambiente, conectividade);
+- quais dados, estados e erros aparecem;
+- o que a tela deve priorizar;
+- quais restricoes de marca, tecnologia e conteudo existem.
 
-## 2. Stack padrao
+## 2. Direcao visual
 
-Resumo da baseline:
+A aparencia deve parecer feita para o produto, nao montada a partir de uma galeria generica. Escolha uma direcao visual deliberada e registre-a em linguagem simples:
 
-| Cenario | Padrao |
-|---------|--------|
-| App web com estado e componentes | React + TypeScript + Vite + Tailwind CSS |
-| Pagina simples ou prototipo pequeno | HTML + CSS + JavaScript |
-| Projeto legado/admin rapido | Bootstrap quando ja fizer sentido |
+- personalidade e tom visual;
+- hierarquia de titulo, texto, dado e acao;
+- densidade adequada ao trabalho;
+- composicao, alinhamento, ritmo e espaco em branco;
+- tipografia, formas, superficies e nivel de contraste;
+- uso de cor, imagem, ilustracao, iconografia e movimento.
 
-Regra pratica:
+A beleza vem de hierarquia, proporcao, detalhe e coerencia. Evite aplicar a mesma grade de cards, hero, gradiente, vidro fosco ou sombra em todo produto. Use cada efeito para reforcar uma ideia ou estado. Mantenha o conteudo e a acao principal mais evidentes que a decoracao.
 
-- Use React + TypeScript + Vite + Tailwind para apps.
-- Use HTML/CSS/JS puro quando React for excesso.
-- Nao misture Bootstrap e Tailwind sem justificativa.
-- Documente desvios no `IA.md` do projeto.
+### Modo de uso da tela
 
-## 3. Principios visuais
+Use a densidade e o contexto, nao uma regra por tempo de uso, para escolher o tratamento:
 
-### Direcao Doktor
+- **Operacional**: leitura rapida, dados densos, filtros e tarefas repetidas. Priorize legibilidade, alinhamento, estados e baixa distracao.
+- **Editorial ou marca**: descoberta, narrativa, catalogo e apresentacao. Pode explorar composicao, tipografia e movimento, desde que a navegacao e as tarefas continuem claras.
 
-O Doktor nao impoe paleta. Cor pertence a marca do produto; o que a identidade define e metodo - tokens nomeados, easing reutilizado, escala fluida, estados completos e movimento em camada separada. Veja `IDENTIDADE-DOKTOR.md`.
+Uma mesma aplicacao pode combinar os dois modos, mantendo tokens e componentes coerentes.
 
-Antes de escolher acabamento, defina o modo da tela:
+## 3. Sistema visual
 
-- **modo operacional** (dashboard, painel, CRUD): superficies neutras, cards compactos, badges de status, icones Lucide, animacao restrita a transicao de estado;
-- **modo marca** (landing, catalogo, checkout, login): acabamento mais rico, com repertorio nos guias de frontend.
+Crie um conjunto pequeno de tokens semanticos e reutilize-o. O nome descreve o papel, nao a aparencia: `text-primary`, `surface`, `border`, `action`, `status-danger`. Isso permite temas e ajustes sem perseguir valores soltos.
 
-Regra de corte: se a pessoa vai olhar a tela por mais de dez minutos seguidos, use modo operacional.
+Defina conforme o produto:
 
-### Heranca de system design
+- cores de texto, superficie, borda, acao e estados;
+- escala tipografica, altura de linha e largura confortavel de leitura;
+- escala de espacamento e densidade;
+- radius, borda, elevacao e foco;
+- duracao e curva de movimento;
+- tema claro/escuro e estados de alto contraste, se necessarios.
 
-A base original trouxe uma ideia importante: transformar solucoes recorrentes em guias reaproveitaveis. No Doktor, essa heranca vira uma linguagem propria: cada padrao deve ser aplicavel sem conhecer o projeto original, mas ainda carregar o cuidado de manual tecnico, checklist e exemplo pratico.
+Cor nao pode ser o unico meio de comunicar erro, selecao ou status. Garanta contraste para texto, controles e foco. Evite gradientes decorativos sem papel semantico.
 
-### Clareza antes de decoracao
+## 4. Responsividade
 
-- A tela deve comunicar prioridade, estado e proxima acao rapidamente.
-- Efeitos visuais nao podem competir com conteudo ou controles.
-- Texto deve ser curto, direto e escaneavel.
+Projete para o conteudo e para o fluxo, nao para uma lista fixa de modelos de telefone. Mobile-first e uma boa estrategia quando a experiencia principal comeca em telas estreitas, mas nao e uma obrigacao universal.
 
-### Consistencia
+- Prefira Grid, Flexbox, unidades relativas, limites de largura e imagens responsivas.
+- Escolha breakpoints quando o conteudo ou os controles deixam de caber; use unidades relativas quando pratico.
+- Reorganize a prioridade dos dados e a navegacao em telas estreitas; nao apenas reduza tudo.
+- Para tabelas densas, escolha conscientemente colunas prioritarias, detalhe por linha ou rolagem horizontal claramente indicada.
+- Evite largura e altura fixas para conteudo que pode crescer. Reserve proporcoes quando isso evita salto de layout.
+- Teste larguras estreitas, intermediarias e amplas, conteudo longo, zoom e orientacao. Um layout responsivo nao deve depender de um unico breakpoint.
+- Preserve operacoes por teclado e toque. Para web, use WCAG 2.2 AA como alvo de projeto quando apropriado; os criterios sobre tamanho de alvo, reflow e foco tem excecoes e devem ser lidos no contexto.
 
-- Use uma escala previsivel de espacamento.
-- Reaproveite tokens de cor, radius, sombra e tipografia.
-- Componentes com o mesmo papel devem ter o mesmo comportamento.
+Nao esconda acao essencial no mobile nem exija gesto de arrastar como unico meio de operacao.
 
-### Responsividade
+## 5. Acessibilidade como requisito de interface
 
-- Projete mobile-first.
-- Evite layouts que dependem de largura fixa.
-- Componentes devem funcionar em telas pequenas sem sobreposicao.
-- Tabelas grandes precisam de estrategia: scroll horizontal, cards responsivos ou colunas priorizadas.
+Para interfaces web, use HTML semantico e os controles nativos quando atendem ao comportamento. Mire WCAG 2.2 nivel AA, salvo requisito contratual ou regulatorio diferente. Nao declare conformidade sem avaliar as paginas completas e seus estados.
 
-### Acessibilidade
+Verifique:
 
-- Todo controle interativo precisa ser acessivel por teclado.
-- Use contraste suficiente.
-- Inputs precisam de label visivel ou associada.
-- Estados de foco devem ser perceptiveis.
-- Icones sem texto precisam de `aria-label` ou tooltip adequado.
+- uso por teclado, ordem de foco logica e foco visivel que nao fique coberto;
+- nomes acessiveis, labels persistentes, instrucoes e erros ligados aos campos;
+- contraste de texto, controles, estados e foco;
+- zoom e reflow sem perda de conteudo ou funcao;
+- alvos de toque com tamanho e espacamento confortaveis;
+- alternativas textuais, legendas ou transcricoes quando aplicavel;
+- anuncios acessiveis para atualizacoes importantes sem mover foco indevidamente;
+- preferencias de contraste, tema e movimento quando suportadas.
 
-## 4. Tokens de design
+Use `prefers-reduced-motion` para remover ou substituir movimento nao essencial. Movimento nunca deve ser necessario para entender o estado. A automacao de acessibilidade ajuda, mas nao substitui teclado e inspecao manual.
 
-Cada projeto deve declarar seus tokens principais.
+## 6. Componentes e composicao
 
-### Cores
+Crie componentes quando houver comportamento, significado ou variacao que mereca uma fronteira reutilizavel. Extraia componentes por coesao e repeticao real; nao transforme cada elemento HTML em uma camada de abstracao.
 
-Defina no minimo:
+Cada componente reutilizavel deve ter:
 
-- cor de fundo;
-- cor de superficie;
-- texto principal;
-- texto secundario;
-- borda;
-- destaque/acao primaria;
-- sucesso;
-- alerta;
-- erro;
-- informacao.
+- um papel e nome claros;
+- uma API pequena, com variantes intencionais;
+- comportamento semantico e teclado esperado;
+- estados definidos;
+- estilos alinhados aos tokens;
+- limites de responsabilidade conhecidos.
 
-Evite que a interface inteira dependa de uma unica familia de cor. Use contraste e hierarquia visual.
+Componha componentes simples antes de criar um componente universal com muitas flags. Mantenha conteudo, dominio, acesso a dados e apresentacao separados na medida que facilite mudancas independentes. Siga as convencoes do framework existente.
 
-### Tipografia
+Elementos comuns como botoes, campos, selecao, dialogo, notificacao e lista devem ser consistentes quando aparecerem. Nao crie um kit completo antes de saber quais elementos o produto usa. Para exemplos portaveis, consulte [Componentes UI Compostos](../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md).
 
-Defina:
+## 7. Estados e fluxos
 
-- fonte base;
-- escala de titulos;
-- tamanho padrao de corpo;
-- peso para enfase;
-- altura de linha;
-- regra para textos longos.
-
-Nao use fonte hero em cards, tabelas, sidebars ou paineis densos.
+Pense no ciclo completo, nao apenas no estado ideal:
 
-### Espacamento
+- inicial e carregando;
+- vazio e sem resultado;
+- dados parciais ou desatualizados;
+- erro com proximo passo;
+- sucesso e confirmacao;
+- sem permissao;
+- selecionado, ativo, desabilitado e em envio.
 
-Use escala consistente, por exemplo:
+Evite skeletons que imitam conteudo sem necessidade. Preserve dados do formulario quando um envio falhar. Erros devem aparecer junto ao contexto e explicar como corrigir. Evite duplo envio em operacoes que criam ou pagam algo.
 
-```text
-4, 8, 12, 16, 24, 32, 48, 64
-```
+## 8. Formularios, navegacao e dados
 
-Evite ajustes aleatorios por componente.
+- Todo campo tem label e instrucoes necessarias; placeholder e apenas exemplo.
+- Valide no momento adequado e apresente erros especificos sem apagar entrada valida.
+- Use navegacao que combine com a tarefa: cabecalho, abas, trilha, painel ou etapas.
+- Para listas, torne busca, filtro, ordenacao e contagem descobriveis quando forem uteis.
+- Use tabela quando a comparacao tabular importar; escolha lista ou cartoes quando isso facilitar leitura e toque.
+- Nao esconda acoes essenciais atras de hover. Garanta estado de foco equivalente.
 
-### Radius e borda
+Consulte guias opcionais apenas quando o fluxo pedir uma tabela, formulario complexo, calendario ou outro padrao especifico.
 
-- Cards e paineis: ate 8px por padrao.
-- Botoes e inputs: consistentes entre si.
-- Use borda para separar superfices quando sombra for excesso.
+## 9. Movimento e acabamento
 
-## 5. Arquitetura de componentes
+Movimento serve para feedback, continuidade, orientacao ou narrativa. Prefira transicoes curtas e previsiveis para ferramentas; reserve coreografia mais rica para momentos em que ela agrega significado. Evite loops constantes, parallax excessivo, cursor customizado que substitui controles e efeitos que aumentam custo sem esclarecer a interface.
 
-Organizacao recomendada:
+Comece com a pagina utilizavel sem a camada decorativa. Confira teclado, foco, movimento reduzido e desempenho antes de adotar bibliotecas ou efeitos de cena.
 
-```text
-src/
-|-- components/
-|   |-- ui/          # Button, Card, Input, Modal, Badge
-|   |-- layout/      # Header, Sidebar, Shell
-|   `-- feature/     # Componentes especificos de dominio
-|-- pages/
-|-- hooks/
-|-- services/
-|-- utils/
-|-- styles/
-`-- main.tsx
-```
+## 10. Validacao de UI
 
-### Componentes base
+Valide com conteudo real e estados relevantes. Combine ferramentas automatizadas com observacao manual:
 
-Todo projeto com UI reutilizavel deve ter, quando aplicavel:
+- telas estreitas, intermediarias e amplas;
+- teclado, foco e ampliacao de texto;
+- loading, vazio, erro, sucesso e permissao;
+- textos longos, numeros extremos e nomes grandes;
+- tema e movimento reduzido quando suportados;
+- navegador e dispositivos representativos do publico.
 
-- `Button`
-- `Input`
-- `Select`
-- `Checkbox`
-- `Textarea`
-- `Card`
-- `Badge`
-- `Modal/Dialog`
-- `Toast/Alert`
-- `Tabs`
-- `Table` ou lista estruturada
-- `EmptyState`
-- `LoadingState`
-- `ErrorState`
-- `PathBreadcrumb`
-- `CopyPathButton`
-- `MetadataBar`
+Nao afirme que a interface foi vista ou testada se nao foi. Registre o que foi observado e o que permanece sem verificacao. Avalie performance conforme [Design System Performance](DESIGN_SYSTEM_PERFORMANCE.md).
 
-Para cabecalhos tecnicos com caminho, copiar e ultima atividade, use [../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md](../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md).
+## Checklist frontend
 
-### Variantes
-
-Prefira variantes explicitas por props:
-
-```text
-variant: primary | secondary | ghost | danger
-size: sm | md | lg
-state: default | loading | disabled
-```
-
-Evite duplicar componentes quando uma variante clara resolve.
-
-## 6. Estados obrigatorios
-
-Toda tela relevante deve considerar:
-
-- carregando;
-- vazio;
-- erro;
-- sucesso;
-- permissao negada;
-- dado parcial;
-- item selecionado;
-- estado desabilitado;
-- interacao em andamento.
-
-Uma tela sem estado vazio ou erro ainda nao esta pronta.
-
-## 7. Formularios
-
-Padroes:
-
-- label claro;
-- placeholder apenas como apoio, nao como label;
-- mensagem de erro por campo;
-- validacao antes de enviar;
-- feedback de envio;
-- bloqueio contra duplo submit;
-- foco no primeiro erro quando possivel.
-
-Erros devem explicar como corrigir.
-
-## 8. Navegacao
-
-Escolha o padrao conforme o produto:
-
-| Cenario | Navegacao recomendada |
-|---------|-----------------------|
-| App operacional | Sidebar ou topbar compacta |
-| Dashboard | Sidebar + breadcrumbs quando houver profundidade |
-| Site simples | Header responsivo |
-| Fluxo guiado | Steps/progresso |
-
-Evite landing page quando o pedido for construir ferramenta, app ou dashboard. A primeira tela deve ser a experiencia util.
-
-## 9. Animacoes
-
-Use animacao para orientar, nao para distrair.
-
-Permitido:
-
-- hover sutil;
-- transicao de abertura/fechamento;
-- feedback de loading;
-- entrada de item em lista;
-- realce temporario apos acao.
-
-Evite:
-
-- efeitos constantes competindo com conteudo;
-- animacoes longas em ferramentas operacionais;
-- decoracao pesada sem funcao;
-- dependencia de animacao para entender a UI.
-
-Respeite `prefers-reduced-motion` quando houver animacoes relevantes.
-
-Para produtos de marca (landing, catalogo, checkout, login), o acabamento aceito e maior que em ferramenta operacional. O catalogo de efeitos por componente esta em [../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md](../guias/frontend/GUIA-BIBLIOTECA-DE-ACABAMENTO-PREMIUM.md), junto com o criterio para escolher entre modo operacional e modo marca.
-
-## 10. Dados e listas
-
-Para tabelas, listas e dashboards:
-
-- defina ordenacao padrao;
-- mostre filtros quando houver muitos itens;
-- preserve estado de busca/filtro quando fizer sentido;
-- exiba contagem;
-- trate lista vazia;
-- diferencie loading inicial de atualizacao;
-- evite truncar informacao critica sem tooltip ou detalhe.
-
-## 11. Integracao com backend
-
-Servicos de API devem ficar fora de componentes visuais.
-
-Organizacao recomendada:
-
-```text
-services/
-|-- apiClient.ts
-|-- usersService.ts
-`-- projectsService.ts
-```
-
-Componentes devem consumir hooks ou services, nao montar URLs e regras HTTP diretamente.
-
-## 12. Checklist frontend
-
-Antes de considerar uma entrega pronta:
-
-- [ ] A stack escolhida esta documentada ou segue a baseline.
-- [ ] Layout funciona em mobile e desktop.
-- [ ] Componentes base foram reutilizados.
-- [ ] Estados de loading, vazio e erro existem.
-- [ ] Formularios validam entrada e mostram erro claro.
-- [ ] Textos nao estouram containers.
-- [ ] Cores e contraste sao adequados.
-- [ ] Interacoes por teclado e foco foram consideradas.
-- [ ] API/services estao separados da UI.
-- [ ] README, `IA.md` ou docs afetados foram atualizados.
-
-## 13. Frase de controle
-
-Uma interface boa para o Doktor System-Design e aquela que uma pessoa consegue usar, manter e adaptar sem precisar entender o projeto original que inspirou seus componentes.
+- [ ] A tarefa principal e a hierarquia visual estao claras.
+- [ ] A direcao visual combina com o produto e nao depende de decoracao generica.
+- [ ] Layout, conteudo e controles se adaptam a larguras e zoom diferentes.
+- [ ] Semantica, teclado, foco, contraste, labels e erros foram considerados.
+- [ ] Componentes e tokens foram extraidos onde reduzem duplicacao ou variacao acidental.
+- [ ] Estados de carregamento, vazio, erro, sucesso e permissao foram tratados quando aplicaveis.
+- [ ] Movimento tem funcao e respeita a preferencia de reducao.
+- [ ] Performance e comportamento em navegadores/dispositivos relevantes foram considerados.
+- [ ] Documentacao e validacao refletem o que foi de fato executado.

@@ -1,197 +1,71 @@
 # Guia Rapido de Uso
 
-Este guia mostra como aplicar o Doktor System-Design em um projeto novo sem ler o repositorio inteiro.
+Use o Doktor System-Design para dar contexto e criterio a projetos novos sem copiar uma pilha de documentos que nao sera usada.
 
-O objetivo pratico e deixar a IA orientada desde o primeiro pedido: contrato minimo claro, memoria operacional curta e guias sob demanda. O Doktor deve reduzir retrabalho e consumo de contexto, nao adicionar burocracia.
+## 1. Comece pelo problema
 
-## Quando usar
+Defina em poucas linhas:
 
-Use quando voce quer iniciar, revisar ou organizar um projeto com padroes claros de arquitetura, documentacao, qualidade e apoio por IA.
+- quem vai usar o projeto;
+- qual tarefa ou problema ele resolve;
+- que dados, integracoes e riscos estao envolvidos;
+- como o resultado sera reconhecido;
+- quais restricoes de stack, custo, deploy ou prazo existem.
 
-## Quando nao usar
+## 2. Escolha o nivel de adocao
 
-Nao use como checklist cego. Se o projeto for muito pequeno, aplique apenas o minimo necessario: README, `IA.md`, stack real e validacao objetiva.
+| Nivel | Quando usar | Base |
+|---|---|---|
+| Leve | Prototipo, ferramenta pequena ou exploracao | Guia Minimo, README e comandos reais |
+| Focado | Uma tarefa de frontend, backend ou API | Guia Minimo mais os documentos do escopo |
+| Completo | Produto com usuarios, dados, integracoes ou operacao continua | AGENTS, IA.md, arquitetura, seguranca, testes e guias relevantes |
 
-## Escolha o tamanho da adocao
+Nao copie todos os templates por padrao. Adicione cada documento quando ele esclarecer uma decisao, orientar uso ou reduzir risco.
 
-| Nivel | Use quando | Inclua |
-|-------|------------|--------|
-| Minimo | Script, estudo pequeno ou prototipo curto | `AGENTS.md`, `README.md`, `IA.md`, guia minimo e stack real |
-| Recomendado | Projeto que outra pessoa ou IA deve continuar depois | Minimo + checklist de pronto, template de README e contexto IA |
-| Completo | App web, API, fullstack ou projeto publicavel | Recomendado + design system de frontend/backend, deploy, seguranca e guias sob demanda |
+## 3. Prepare o repositorio
 
-Comece pelo menor nivel que ainda permita responder: o que e o projeto, como roda, como valida e quais decisoes ja foram tomadas.
+1. Leia [Guia Minimo de Qualidade](../core/GUIA_MINIMO_QUALIDADE.md).
+2. Confira o README, os comandos e as convencoes existentes.
+3. Copie e adapte [AGENTS-template.md](../templates/AGENTS-template.md) quando agentes de IA forem parte do fluxo.
+4. Crie [IA-template.md](../templates/IA-template.md) se a continuidade entre sessoes justificar memoria operacional.
+5. Escolha uma stack a partir das restricoes; registre decisao duradoura em ADR.
+6. Leia apenas os guias do trabalho atual.
 
-## Fluxo de 5 minutos
+## 4. Roteamento por tarefa
 
-1. Crie a estrutura base no projeto destino:
+- Interface: [Frontend](../core/DESIGN_SYSTEM_FRONTEND.md), mais o guia opcional do padrao pedido.
+- Backend: [Backend](../core/DESIGN_SYSTEM_BACKEND.md).
+- API: [API REST](../core/DESIGN_SYSTEM_API_REST.md).
+- Arquitetura ou modularidade: [Arquitetura](../core/DESIGN_SYSTEM_ARQUITETURA.md) e [Modularidade](../core/DESIGN_SYSTEM_MODULARIDADE.md) se ambas forem necessarias.
+- Seguranca, dados ou autenticacao: [Seguranca](../core/DESIGN_SYSTEM_SEGURANCA.md).
+- Testes e verificacao: [Testes](../core/DESIGN_SYSTEM_TESTES.md).
+- Performance: [Performance](../core/DESIGN_SYSTEM_PERFORMANCE.md).
+- Stack: [Stack e Arquitetura](STACK-E-ARQUITETURA.md).
+- Referencia atual ou padrao tecnico: [Referencias Tecnicas](REFERENCIAS-TECNICAS.md).
+- Programa local que precisa de um launcher amigavel: [Entrada e Execucao](../core/GUIA-START-APP-SCRIPT.md).
 
-```text
-AGENTS.md
-README.md
-IA.md
-docs/
-core/
-```
+## 5. Construir em ciclos curtos
 
-2. Copie o roteiro raiz para agentes:
+1. Confirme o comportamento e os contratos.
+2. Entregue um fluxo vertical pequeno que possa ser usado.
+3. Revise estados, acessibilidade, seguranca e desempenho conforme o risco.
+4. Execute as verificacoes adequadas e registre evidencias reais.
+5. Atualize o README, IA.md, contratos ou ADRs afetados.
+6. Deixe proximos passos como oportunidades para contribuicao, sem prometer o que nao esta priorizado.
 
-```text
-templates/AGENTS-template.md -> AGENTS.md
-```
+## Primeiro pedido para IA
 
-3. Copie os arquivos essenciais:
-
-```text
-core/GUIA_MINIMO_QUALIDADE.md
-core/DESIGN_SYSTEM_API_REST.md
-core/DESIGN_SYSTEM_ARQUITETURA.md
-core/DESIGN_SYSTEM_MODULARIDADE.md
-core/DESIGN_SYSTEM_README.md
-core/DESIGN_SYSTEM_SEGURANCA.md
-core/DESIGN_SYSTEM_TESTES.md
-core/TEMPLATE-CONTEXTO-IA.md
-docs/STACK-E-ARQUITETURA.md
-docs/CHECKLIST-PROJETO-PRONTO.md
-```
-
-4. Use os templates:
-
-| Necessidade | Template |
-|-------------|----------|
-| Roteiro para IA | [../templates/AGENTS-template.md](../templates/AGENTS-template.md) |
-| README inicial | [../templates/README-template.md](../templates/README-template.md) |
-| Memoria operacional IA | [../templates/IA-template.md](../templates/IA-template.md) |
-| Deploy | [../templates/DEPLOY-template.md](../templates/DEPLOY-template.md) |
-| Seguranca | [../templates/SECURITY-template.md](../templates/SECURITY-template.md) |
-| Decisao arquitetural | [../templates/ADR-0001-template.md](../templates/ADR-0001-template.md) |
-
-5. Escolha a stack no contexto correto:
-
-| Tipo de projeto | Caminho recomendado |
-|-----------------|--------------------|
-| Frontend app | React + TypeScript + Vite + Tailwind |
-| Frontend simples | HTML + CSS + JavaScript |
-| Backend CRUD/API | Python + Django + DRF |
-| Fullstack JS pragmatico | React + TypeScript + Node + PostgreSQL |
-| Script/automacao | Python ou PowerShell conforme ambiente |
-
-6. Copie documentos extras somente quando a tarefa pedir:
-
-| Quando pedir... | Copie/consulte |
-|-----------------|----------------|
-| Frontend | `core/DESIGN_SYSTEM_FRONTEND.md` |
-| Backend | `core/DESIGN_SYSTEM_BACKEND.md` |
-| API REST, contratos ou status codes | `core/DESIGN_SYSTEM_API_REST.md` |
-| Estrutura, camadas ou organizacao de codigo | `core/DESIGN_SYSTEM_ARQUITETURA.md` |
-| Refatorar, quebrar arquivo grande ou criar modulo | `core/DESIGN_SYSTEM_MODULARIDADE.md` |
-| Secrets, auth, permissao ou dados sensiveis | `core/DESIGN_SYSTEM_SEGURANCA.md` |
-| Testes, cobertura ou validacao automatica | `core/DESIGN_SYSTEM_TESTES.md` |
-| App web rodavel | `core/GUIA-START-APP-SCRIPT.md` |
-| Guia especifico | Apenas o arquivo correspondente em `guias/` |
-
-7. Antes de considerar pronto, rode a validacao real do projeto:
-
-```bash
-comando de teste, lint ou validacao manual documentada
-```
-
-Se voce estiver validando uma copia completa deste repositorio, rode:
-
-```powershell
-pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/validate-repo.ps1
-```
-
-No Windows PowerShell antigo:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-repo.ps1
-```
-
-## Por tipo de tarefa
-
-### Novo frontend
-
-Leia:
-
-- [../core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md)
-- [../core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md)
-- [../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md](../guias/frontend/GUIA-COMPONENTES-UI-COMPOSTOS.md)
-- [../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md](../guias/frontend/GUIA-BREADCRUMB-E-METADATA-BAR.md), se houver caminho tecnico ou arquivo
-- [../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md](../guias/frontend/GUIA-FORMULARIOS-COMPLEXOS.md), se houver formulario com validacao cruzada ou etapas
-- [../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md](../guias/frontend/GUIA-TABELA-DE-DADOS-SERVER-SIDE.md), se houver listagem grande com paginacao no servidor
-
-Entregue:
-
-- componentes base em `components/ui`;
-- estados de loading, vazio e erro;
-- layout mobile e desktop;
-- README com setup e validacao.
-
-### Novo backend
-
-Leia:
-
-- [../core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md)
-- [../core/DESIGN_SYSTEM_BACKEND.md](../core/DESIGN_SYSTEM_BACKEND.md)
-- [../core/DESIGN_SYSTEM_API_REST.md](../core/DESIGN_SYSTEM_API_REST.md), se houver API HTTP
-- [../core/DESIGN_SYSTEM_SEGURANCA.md](../core/DESIGN_SYSTEM_SEGURANCA.md)
-- [../core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md)
-- [../core/PROMPT_BASE_BACKEND.md](../core/PROMPT_BASE_BACKEND.md)
-- [../docs/STACK-E-ARQUITETURA.md](STACK-E-ARQUITETURA.md)
-- [../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md](../guias/backend/GUIA-AUTENTICACAO-JWT-OAUTH.md), se houver login por token ou OAuth
-- [../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md](../guias/backend/GUIA-FILAS-E-JOBS-ASSINCRONOS.md), se houver processamento assincrono ou agendado
-
-Entregue:
-
-- contratos de API claros;
-- validacao de entrada;
-- testes minimos;
-- docs de variaveis e deploy;
-- registro em `IA.md`.
-
-### Novo fullstack
-
-Leia primeiro:
-
-- [../core/GUIA_MINIMO_QUALIDADE.md](../core/GUIA_MINIMO_QUALIDADE.md)
-- [../core/DESIGN_SYSTEM_ARQUITETURA.md](../core/DESIGN_SYSTEM_ARQUITETURA.md)
-- [../core/DESIGN_SYSTEM_FRONTEND.md](../core/DESIGN_SYSTEM_FRONTEND.md)
-- [../core/DESIGN_SYSTEM_BACKEND.md](../core/DESIGN_SYSTEM_BACKEND.md)
-- [../core/DESIGN_SYSTEM_API_REST.md](../core/DESIGN_SYSTEM_API_REST.md), se houver API HTTP
-- [../core/DESIGN_SYSTEM_SEGURANCA.md](../core/DESIGN_SYSTEM_SEGURANCA.md)
-- [../core/DESIGN_SYSTEM_TESTES.md](../core/DESIGN_SYSTEM_TESTES.md)
-
-Depois escolha guias opcionais apenas quando a funcionalidade aparecer.
-
-## Primeiro pedido para a IA
-
-Use este formato ao iniciar um projeto com o Doktor:
-
-```text
-Use o AGENTS.md deste projeto como roteiro.
-Leia primeiro core/GUIA_MINIMO_QUALIDADE.md e IA.md.
-Depois abra apenas os documentos necessarios para esta tarefa.
-
-Objetivo do projeto:
-[descreva em uma frase]
-
+~~~text
+Siga o AGENTS.md e o Guia Minimo de Qualidade deste projeto.
+Leia o resumo vivo de IA.md, se existir.
+Objetivo:
+[uma frase sobre o projeto]
 Tarefa agora:
-[descreva a primeira entrega]
-
-Stack desejada ou restricao:
-[preencha se ja souber, senao peca para justificar]
-
+[resultado e comportamento esperado]
+Contexto e restricoes:
+[stack existente, usuarios, dados, deploy, limites]
 Criterio de pronto:
-[como validar que a entrega funcionou]
-```
+[como reconhecer o resultado e o que verificar]
+~~~
 
-## Regra pratica
-
-O Doktor nao deve deixar o projeto mais pesado. Ele deve deixar mais facil responder:
-
-- o que esta sendo construido;
-- como roda;
-- como valida;
-- quais decisoes ja foram tomadas;
-- o que falta para publicar.
+O Doktor deve tornar mais facil entender o objetivo, executar o projeto, validar mudancas, acompanhar decisoes e continuar o trabalho.

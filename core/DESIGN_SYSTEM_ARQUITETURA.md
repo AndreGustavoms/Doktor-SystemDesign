@@ -1,142 +1,103 @@
-# Design System - Arquitetura de Codigo
+# Design System Arquitetura
 
-> **O que e**: Padrao obrigatorio de organizacao, responsabilidade e estrutura de codigo para projetos Doktor.
->
-> **Quando usar**: Em qualquer projeto novo ou em refatoracao. Vale para frontend, backend e scripts.
+> Este documento ajuda a escolher limites e dependencias que mantem o software compreensivel e mudavel. A estrutura deve servir ao dominio e ao fluxo de trabalho, nao uma arvore de pastas universal.
 
----
+## 1. Objetivo
 
-## 1. Principio central
+Arquitetura distribui responsabilidades e torna mudancas previsiveis. O objetivo nao e maximizar camadas, padroes ou quantidade de arquivos; e permitir evoluir o sistema sem espalhar conhecimento e risco.
 
-**Cada arquivo, funcao e pasta tem uma unica responsabilidade.**
+Use nomes e fronteiras que facilitem responder:
 
-Se voce precisa usar "e" para descrever o que uma funcao faz, ela faz coisas demais.
+- onde uma regra de negocio vive;
+- quem valida uma entrada externa;
+- onde efeitos colaterais acontecem;
+- qual contrato conecta dois modulos;
+- quais partes podem mudar sem alterar as demais.
 
----
+## 2. Escolha a menor arquitetura que serve
 
-## 2. Estrutura de pastas
+- Um script pequeno pode ser um unico modulo organizado.
+- Uma aplicacao em crescimento costuma funcionar bem como **monolito modular**: um deploy simples, modulos com contratos claros e baixo acoplamento.
+- Separe servicos ou deploys quando escala, isolamento, disponibilidade, seguranca ou autonomia de equipe justificar o custo operacional.
+- Adote event-driven, fila ou cache quando um requisito observavel pedir isso, nao para antecipar crescimento hipotetico.
 
-Organize por **responsabilidade**, nao por tipo de arquivo.
+Registre em um ADR decisoes caras, dificeis de reverter ou com trade-offs relevantes. Use [ADR-0001-template.md](../templates/ADR-0001-template.md).
 
-### Backend (Python/Django)
+## 3. Organize pelo dominio e pelas mudancas
 
-```text
+Prefira iniciar a navegacao por feature, produto ou dominio. Dentro de um modulo, crie subpastas para responsabilidades que realmente tenham fronteiras proprias.
+
+Exemplo ilustrativo, adaptado ao framework:
+
+~~~text
 src/
-|-- api/              # Rotas e controllers - so recebe requisicao e delega
-|-- services/         # Regras de negocio - logica pura, sem HTTP
-|-- repositories/     # Acesso a dados - queries e persistencia
-|-- models/           # Modelos e entidades
-|-- schemas/          # Validacao e serializacao (Pydantic, DRF serializers)
-|-- utils/            # Funcoes puras reutilizaveis, sem efeito colateral
-|-- config/           # Configuracoes e variaveis de ambiente
-tests/
-|-- unit/             # Testa funcoes isoladas (services, utils)
-|-- integration/      # Testa fluxos completos com banco real
-```
+|-- modules/
+|   |-- accounts/
+|   |   |-- domain/
+|   |   |-- application/
+|   |   |-- adapters/
+|   |   +-- ui/
+|   +-- reports/
+|-- shared/
+|-- app/
++-- tests/
+~~~
 
-### Frontend (React/TypeScript)
+Nem todo modulo precisa de todas as pastas. Um framework pode impor outra estrutura; respeite-a e preserve as fronteiras conceituais. Evite pastas vazias ou camadas criadas apenas para seguir o desenho.
 
-```text
-src/
-|-- pages/            # Uma pasta por pagina - so composicao, sem logica
-|-- components/       # Componentes reutilizaveis, sem regra de negocio
-|-- hooks/            # Logica de estado e efeitos encapsulada
-|-- services/         # Chamadas a API - nada mais
-|-- utils/            # Funcoes puras reutilizaveis
-|-- types/            # Tipos e interfaces TypeScript
-|-- constants/        # Valores fixos e enums
-```
+## 4. Fronteiras e dependencias
 
----
+- Regras centrais do produto devem ser compreensiveis sem conhecer detalhes de transporte, interface ou provedor externo quando isso for importante para o dominio.
+- Adaptadores traduzem protocolos, banco, fila, arquivos e servicos externos para contratos internos.
+- Dependencias entre modulos devem ser explicitas e orientadas a contratos pequenos.
+- Evite ciclos, importacao global de estado e acesso a dados de outro modulo por detalhes internos.
+- Mantenha a logica de composicao na borda: rotas, views, jobs e comandos delegam ao caso de uso adequado.
+- Compartilhe um modelo ou componente quando ele tiver significado realmente comum, nao apenas porque dois nomes se parecem.
 
-## 3. Regras de responsabilidade
+Um CRUD simples nao precisa de dominio rico, repository generico e interfaces para cada chamada. Introduza abstracao quando ela isolar variacao, efeito colateral ou uma fronteira de mudanca real.
 
-### Funcoes
+## 5. Responsabilidades praticas
 
-- **Uma funcao, uma tarefa.** Se o nome tem "and" ou "e", separe.
-- Maximo de 20-30 linhas. Se passar, provavelmente e duas funcoes.
-- Nome no imperativo e especifico: `getUserById`, nao `getData`.
-- Sem efeitos colaterais ocultos: uma funcao que busca dados nao deve tambem salvar logs.
+| Responsabilidade | Lugar tipico |
+|---|---|
+| Entrada HTTP, CLI ou evento | Adaptador de entrada |
+| Regras e invariantes do produto | Dominio ou caso de uso |
+| Persistencia e transacao | Adaptador de dados |
+| Servico externo | Cliente/adaptador isolado |
+| UI e composicao visual | Tela, componente ou feature de frontend |
+| Configuracao e inicializacao | Borda de composicao |
+| Observabilidade e auditoria | Infraestrutura, sem vazar dados sensiveis |
 
-### Arquivos
+Os nomes variam por stack. Evite misturar regra de negocio, renderizacao, consultas, rede e configuracao no mesmo ponto quando isso dificultar testes ou mudancas independentes.
 
-- Um arquivo por conceito: `userService.ts`, nao `helpers.ts` com tudo misturado.
-- Nome do arquivo = o que ele contem, sem ambiguidade.
-- **Granularidade e limite por tipo de arquivo**: ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md). Ele define o limite de cada tipo (componente, hook, modulo, CSS, documento), o criterio de quebra por responsabilidade e as regras de leitura durante correcao.
+## 6. Contratos e mudancas
 
-### Pastas
+- Defina limites de entrada e saida, erros e ownership de dados.
+- Valide dados ao cruzar uma fronteira de confianca.
+- Prefira interfaces pequenas e estaveis; evite expor classes internas de um modulo.
+- Mudancas incompativeis em contrato exigem plano de migracao, coordenacao ou versionamento conforme quem consome.
+- Use idempotencia, transacao e compensacao quando a operacao puder ser repetida ou distribuida.
+- Documente limitacoes e falhas esperadas de dependencias externas.
 
-- `utils/` e uma pasta valida, mas cada arquivo dentro dela precisa de nome descritivo (`formatCurrency.ts`, `maskCPF.ts`). O que nao pode existir e um arquivo `utils.*` unico acumulando funcoes sem relacao - ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md) secao 3.
-- Nao misture camadas: `services/` nao importa de `api/`, `api/` nao acessa banco direto.
+## 7. Evolucao e diagnostico
 
----
+Sinais para rever a arquitetura:
 
-## 4. Camadas e dependencias
+- toda mudanca exige editar varios modulos sem relacao;
+- a mesma regra existe em lugares diferentes;
+- testes precisam de muita configuracao para validar comportamento simples;
+- detalhes de um provedor vazam para o dominio ou a UI;
+- ha ciclos de dependencia ou contratos compartilhados que mudam sem coordenacao;
+- a operacao exige mais deploy, fila ou servico do que o valor entregue justifica.
 
-As camadas so podem depender das camadas abaixo, nunca das de cima:
+Refatore a fronteira que causa atrito, preservando comportamento e contratos quando possivel. Nao mova codigo so para combinar com um diagrama.
 
-```
-api / controllers
-      |
-   services
-      |
-  repositories
-      |
-    models
-```
+## Checklist de arquitetura
 
-- `api` chama `services`, nunca acessa banco direto.
-- `services` contem a regra de negocio, nunca sabe que existe HTTP.
-- `repositories` isola queries - `services` nao escreve SQL.
-
----
-
-## 5. Nomenclatura
-
-| Contexto | Padrao | Exemplo |
-|----------|--------|---------|
-| Funcoes e metodos | camelCase, verbo + substantivo | `createUser`, `fetchOrders` |
-| Classes e componentes | PascalCase | `UserService`, `ButtonGroup` |
-| Variaveis | camelCase, descritivo | `isLoading`, `userList` |
-| Constantes | UPPER_SNAKE_CASE | `MAX_RETRIES`, `API_BASE_URL` |
-| Arquivos (JS/TS) | camelCase ou PascalCase conforme conteudo | `userService.ts`, `UserCard.tsx` |
-| Arquivos (Python) | snake_case | `user_service.py`, `order_repository.py` |
-| Pastas | kebab-case ou snake_case | `user-profile/`, `order_management/` |
-
-Nomes ruins sao divida tecnica. `data`, `info`, `manager`, `handler` sozinhos nao dizem nada.
-
----
-
-## 6. Testes
-
-- Teste deve ter o mesmo nivel de cuidado que o codigo de producao.
-- Nome do teste descreve o comportamento, nao o metodo: `deve retornar erro quando CPF invalido`.
-- Um teste, um cenario. Nao teste dois comportamentos no mesmo `it` ou `def test_`.
-- Testes unitarios cobrem `services/` e `utils/`. Testes de integracao cobrem fluxos completos.
-
----
-
-## 7. O que evitar
-
-| Antipadrao | Por que e ruim | O que fazer |
-|------------|----------------|-------------|
-| God object / God function | Impossivel testar e manter | Separar em responsabilidades menores |
-| Comentario explicando o que o codigo faz | O codigo deve ser autoexplicativo | Renomear variaveis e funcoes |
-| `utils.py` com 500 linhas | Vira lixeira sem estrutura | Arquivos por dominio: `date_utils.py`, `string_utils.py` |
-| Logica de negocio no controller | Impossivel reutilizar e testar | Mover para `services/` |
-| Numeros e strings magicas no codigo | Sem contexto, propenso a erro | Extrair para constante nomeada |
-| Importacao circular | Indica camadas mal definidas | Revisar separacao de responsabilidades |
-
----
-
-## 8. Checklist de entrega
-
-Antes de considerar uma implementacao pronta:
-
-- [ ] Cada funcao faz uma unica coisa.
-- [ ] Nenhuma camada acessa o que nao deveria (ex: controller no banco).
-- [ ] Nomes descrevem o que o codigo faz sem precisar de comentario.
-- [ ] Os limites de tamanho por tipo de arquivo foram respeitados (ver [`DESIGN_SYSTEM_MODULARIDADE.md`](DESIGN_SYSTEM_MODULARIDADE.md) secao 6).
-- [ ] Testes cobrem os casos principais de `services/` e `utils/`.
-- [ ] Nenhuma logica duplicada entre arquivos.
-- [ ] A estrutura de pastas reflete responsabilidades, nao tipos de arquivo.
+- [ ] A arquitetura corresponde ao tamanho, risco e forma de operacao atuais.
+- [ ] As fronteiras refletem dominios ou motivos reais de mudanca.
+- [ ] Dependencias e efeitos colaterais estao visiveis.
+- [ ] A logica importante pode ser exercitada sem infraestrutura desnecessaria.
+- [ ] Modulos expoem contratos pequenos e nao criam ciclos.
+- [ ] Complexidade distribuida tem justificativa concreta.
+- [ ] Decisoes dificeis de reverter e trade-offs estao registrados.

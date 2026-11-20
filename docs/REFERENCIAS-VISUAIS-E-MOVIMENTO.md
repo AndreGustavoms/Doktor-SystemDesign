@@ -1,58 +1,68 @@
-# Referencias Visuais, Movimento e 3D
+# Referencias Visuais e Movimento
 
-Este documento mantem uma curadoria de referencias externas para interfaces de
-marca, landing pages, componentes animados e experiencias 3D. Ele serve como
-ponto de pesquisa antes de desenhar uma nova experiencia visual Doktor.
+> Repertorio externo para estudar principios e interacoes. Estas fontes nao sao um tema visual obrigatorio nem substituem pesquisa com as pessoas que usarao o produto.
 
-As referencias orientam comportamento, composicao e qualidade de interacao.
-Elas nao autorizam copiar identidade, codigo, assets ou componentes comerciais.
+## 1. Fontes para estudar sistemas e padroes
 
-## Catalogo oficial
+| Fonte | Melhor uso |
+|---|---|
+| [Material Design 3](https://m3.material.io/) | Tokens, componentes, temas e comportamento multiplataforma. |
+| [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) | Layout adaptavel, comportamento e convencoes das plataformas Apple. |
+| [GOV.UK Design System](https://design-system.service.gov.uk/) | Componentes e padroes de servico, formularios e mensagens de erro com orientacao de uso. |
+| [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Criterios de acessibilidade; use em conjunto com as referencias oficiais de apoio. |
 
-| Referencia | Categoria | O que observar | Quando consultar |
-|------------|-----------|----------------|------------------|
-| [OriginKit](https://www.originkit.dev/) | Componentes animados | Reveals, transicoes, composicao de landing page e componentes com movimento | Ao buscar uma interacao de marca pronta para ser reinterpretada no projeto |
-| [Skiper UI](https://skiper-ui.com/) | Componentes experimentais para shadcn/ui | Image reveal, drag, scroll, cursor trail, dynamic island e microinteracoes | Ao desenhar uma interacao incomum sem perder clareza de uso |
-| [Cult UI](https://www.cult-ui.com/) | Componentes, efeitos e blocos | Cards com estados ricos, efeitos visuais, secoes de marketing e composicoes experimentais | Ao pesquisar padroes abertos ou referencias premium para landing pages |
-| [GSAP](https://gsap.com/) | Motor de animacao | Timeline, scroll narrativo, SVG, texto, UI e coordenacao de sequencias | Quando a experiencia exige coreografia precisa ou varias animacoes sincronizadas |
-| [Motion](https://motion.dev/) | Animacao para JavaScript e frameworks | Gestos, layout animation, scroll-linked motion e transforms independentes | Quando o projeto precisa de animacao declarativa, leve e integrada a componentes |
-| [Three.js](https://threejs.org/) | 3D/WebGL | Cena, camera, luz, materiais, geometria, shaders e interacao espacial | Quando o 3D comunica o produto e existe orcamento de performance para sustenta-lo |
+Sistemas publicados resolvem necessidades e usuarios especificos. Compare o contexto antes de transportar um padrao.
 
-## Como escolher
+## 2. Repertorio de interacao e acabamento
 
-| Necessidade | Ponto de partida |
-|------------|------------------|
-| Descobrir componentes e acabamentos visuais | OriginKit, Skiper UI e Cult UI |
-| Coordenar uma narrativa complexa de scroll | GSAP |
-| Animar componentes, gestos e mudancas de layout | Motion |
-| Criar cena, objeto ou ambiente 3D real | Three.js |
-| Misturar componentes com uma cena de marca | Comece pelo componente e adicione GSAP, Motion ou Three.js somente onde houver ganho claro |
+| Fonte | O que observar |
+|---|---|
+| [Origin UI](https://originui.com/) | Componentes e detalhes de interface para inspirar uma implementacao adaptada. |
+| [Skiper UI](https://skiper-ui.com/) | Interacoes de scroll, gestos e componentes experimentais. |
+| [Cult UI](https://www.cult-ui.com/) | Composicoes de marketing e efeitos de interface. |
+| [GSAP](https://gsap.com/) | Coreografia com timelines, scroll e SVG. |
+| [Motion](https://motion.dev/) | Gestos e transicoes declarativas em interfaces. |
+| [Three.js](https://threejs.org/) | Cena 3D quando profundidade e objeto espacial ajudam a explicar o produto. |
 
-## Regras de adocao
+As bibliotecas e galerias mudam. Confira a pagina original, a API atual, suporte, custo e licenca do exemplo especifico antes de adotar ou copiar codigo.
 
-1. **Reinterpretar, nao clonar.** Extraia o principio da interacao e adapte-o aos
-   tokens, conteudo e identidade do projeto.
-2. **Confirmar licenca e plano.** Uma vitrine pode misturar conteudo aberto,
-   gratuito e premium. Verifique a licenca do item especifico antes de copiar
-   codigo ou asset.
-3. **Usar documentacao oficial.** Confirme API, versao, instalacao e suporte no
-   site oficial antes de implementar.
-4. **Aplicar progressive enhancement.** O conteudo principal deve continuar
-   acessivel se WebGL, animacao ou JavaScript falhar.
-5. **Respeitar movimento reduzido.** Toda animacao nao essencial deve responder
-   a `prefers-reduced-motion` e ter estado final legivel sem transicao.
-6. **Definir orcamento visual.** Meca custo de JavaScript, GPU, imagens e fontes.
-   Nao combine varias bibliotecas de animacao sem uma justificativa objetiva.
-7. **Movimento deve explicar algo.** Use animacao para hierarquia, continuidade,
-   causalidade, feedback ou narrativa. Se ela so disputa atencao, remova.
+## 3. Roteiro para revisar uma referencia
 
-## Criterio de pronto
+Para cada URL, imagem, video ou audio recebido:
 
-- A referencia escolhida e a finalidade da interacao foram registradas.
-- A implementacao usa identidade e conteudo proprios.
-- Licenca e versao foram verificadas na fonte oficial.
-- Teclado, foco, contraste e movimento reduzido foram testados.
-- A pagina continua utilizavel sem a camada visual avancada.
-- Performance foi observada em desktop e em viewport movel realista.
+1. Abra a fonte original e registre titulo, URL, data e contexto do produto.
+2. Explore a experiencia nos estados e tamanhos relevantes, em vez de julgar apenas a primeira dobra.
+3. Observe hierarquia, alinhamento, tipografia, espaco, cor, componentes e comportamento.
+4. Capture evidencia visual com origem, viewport e estado identificados. Nao use a captura como substituto da analise.
+5. Para video ou audio, assista ou escute o material quando a ferramenta permitir; se nao permitir, registre a limitacao e procure transcricao ou material alternativo.
+6. Separe o que e principio reutilizavel do que depende da marca, plataforma, conteudo ou licenca.
+7. Avalie teclado, foco, contraste, movimento reduzido, telas estreitas e custo de carregamento.
+8. Converta os achados em tokens, componentes ou criterios do projeto. Justifique o que sera adaptado ou descartado.
 
-Ultima revisao desta curadoria: 2026-08-12.
+## 4. Regras de uso
+
+- Reinterprete o principio; nao clone layout, marca, copy, asset ou codigo sem direito de uso.
+- Confirme termos e licenca no item exato, especialmente em exemplos premium.
+- Mantenha conteudo e controles utilizaveis sem WebGL, animacao ou JavaScript decorativo.
+- Use movimento para hierarquia, continuidade, feedback ou narrativa. Respeite `prefers-reduced-motion`.
+- Defina um orcamento para imagens, fontes, JavaScript e GPU antes de empilhar efeitos.
+- Nao adote mais de uma biblioteca de movimento sem motivo medido.
+- Prefira uma referencia que esclarece a necessidade atual a uma colecao longa de efeitos.
+
+## 5. Registro curto de referencia
+
+~~~text
+Fonte e data:
+Produto e contexto:
+Elemento ou comportamento observado:
+Principio que pode ser reutilizado:
+Adaptacao proposta:
+Acessibilidade e responsividade:
+Licenca e custo:
+Impacto esperado em performance:
+Evidencia ou limitacao da revisao:
+~~~
+
+## Referencias tecnicas relacionadas
+
+Veja [Referencias Tecnicas](REFERENCIAS-TECNICAS.md) para acessibilidade, responsividade, seguranca, HTTP e performance web.
